@@ -72,9 +72,9 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'videos':
       return {
         category: 'videos',
-        primaryProviders: ['archive_film_noir', 'archive_speedruns', 'archive_animation_shorts', 'archive_movie_trailers', 'archive_open_movies', 'archive_prelinger_films', 'archive_newsreels', 'archive_silent_films', 'archive_computer_chronicles', 'archive_animation_classics', 'archive_tv_commercials', 'youtube_video', 'dailymotion_video', 'vimeo_video', 'peertube_video', 'archive_feature_films', 'archive_cartoons', 'archive_prelinger', 'tvmaze_video', 'wikimedia_video', 'internet_archive_video', 'nasa_video'],
+        primaryProviders: ['archive_drive_in_intermissions', 'archive_classic_sci_fi_movies', 'archive_film_noir', 'archive_speedruns', 'archive_animation_shorts', 'archive_movie_trailers', 'archive_open_movies', 'archive_prelinger_films', 'archive_newsreels', 'archive_silent_films', 'archive_computer_chronicles', 'archive_animation_classics', 'archive_tv_commercials', 'youtube_video', 'dailymotion_video', 'vimeo_video', 'peertube_video', 'archive_feature_films', 'archive_cartoons', 'archive_prelinger', 'tvmaze_video', 'wikimedia_video', 'internet_archive_video', 'nasa_video'],
         fallbackProviders: ['pexels_video', 'pixabay_video'],
-        planSummary: 'Primary: Film Noir Classics + Speedruns & Longplays + Golden Age Cartoons + Cinema Trailers + Open Source Movies + Prelinger Films + Universal Newsreels + Silent Classics + YouTube + PeerTube.'
+        planSummary: 'Primary: Drive-In Intermissions + Atomic Sci-Fi + Film Noir Classics + Speedruns & Longplays + Golden Age Cartoons + Cinema Trailers + Open Source Movies + Prelinger Films + YouTube + PeerTube.'
       };
 
     case 'music': {
@@ -103,6 +103,8 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
 
     case 'audio': {
       const primary = [
+        'archive_cbs_mystery_theater',
+        'archive_vintage_audiobooks',
         'archive_apollo_audio',
         'archive_historic_radio_news',
         'archive_old_time_radio',
@@ -125,7 +127,7 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         category: 'audio',
         primaryProviders: primary,
         fallbackProviders: fallback,
-        planSummary: 'Primary: Apollo Mission Audio Loops + 20th Century Historic Radio News + Old Time Radio + Sci-Fi Theater + Field Recordings + Apple Podcasts + LibriVox.'
+        planSummary: 'Primary: CBS Radio Mystery Theater + Spoken Word Literature & Poetry + Apollo Audio Loops + Historic Radio News + Old Time Radio + Apple Podcasts.'
       };
     }
 
@@ -156,9 +158,9 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'books':
       return {
         category: 'books',
-        primaryProviders: ['archive_computer_manuals', 'archive_golden_age_comics', 'archive_medical_heritage', 'archive_nasa_historical', 'archive_retro_magazines', 'archive_folkscanomy', 'google_books', 'open_library', 'archive_pulp_scifi', 'gutendex', 'internet_archive_books', 'wikibooks', 'archive_childrens_books', 'archive_comics', 'poetrydb'],
+        primaryProviders: ['archive_flight_manuals', 'archive_computer_manuals', 'archive_golden_age_comics', 'archive_medical_heritage', 'archive_nasa_historical', 'archive_retro_magazines', 'archive_folkscanomy', 'google_books', 'open_library', 'archive_pulp_scifi', 'gutendex', 'internet_archive_books', 'wikibooks', 'archive_childrens_books', 'archive_comics', 'poetrydb'],
         fallbackProviders: [],
-        planSummary: 'Primary: Vintage Computer Manuals & Schematics + Golden Age Comics + Medical Heritage + NASA Apollo Manuals + Retro Magazines + Google Books + Open Library.'
+        planSummary: 'Primary: Aviation Flight Manuals + Computer Manuals & Schematics + Golden Age Comics + Medical Heritage + NASA Documents + Google Books + Open Library.'
       };
 
     case 'maps':
@@ -180,25 +182,25 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'art':
       return {
         category: 'art',
-        primaryProviders: ['archive_sheet_music', 'archive_bthl_architecture', 'archive_vintage_posters', 'smk_art', 'smithsonian_open_access', 'artic', 'met_museum', 'cleveland_art', 'smk_images', 'vam_images', 'europeana_images', 'wellcome_images'],
+        primaryProviders: ['loc_digital_collections', 'archive_demoscene', 'archive_vintage_fashion', 'archive_sheet_music', 'archive_bthl_architecture', 'archive_vintage_posters', 'smk_art', 'smithsonian_open_access', 'artic', 'met_museum', 'cleveland_art', 'smk_images', 'vam_images', 'europeana_images', 'wellcome_images'],
         fallbackProviders: [],
-        planSummary: 'Primary: Historic Sheet Music & Scores + Architectural Blueprints (BTHL) + Vintage Posters + SMK + Smithsonian + AIC + The Met.'
+        planSummary: 'Primary: Library of Congress Digital Collections + Demoscene Art + Vintage Fashion Plates + Historic Sheet Music + Architectural Blueprints (BTHL) + Posters + SMK + Smithsonian + AIC.'
       };
 
     case 'datasets':
       return {
         category: 'datasets',
-        primaryProviders: ['nih_pubchem', 'archive_us_patents', 'nasa_eonet', 'archive_usgs_bulletins', 'data_gov_ca', 'data_gov_uk', 'data_gov', 'huggingface', 'harvard_dataverse', 'cern_opendata', 'zenodo_datasets', 'world_bank', 'nasa_exoplanets', 'usgs_earthquakes'],
+        primaryProviders: ['nih_clinical_trials', 'nih_pubchem', 'archive_us_patents', 'nasa_eonet', 'archive_usgs_bulletins', 'data_gov_ca', 'data_gov_uk', 'data_gov', 'huggingface', 'harvard_dataverse', 'cern_opendata', 'zenodo_datasets', 'world_bank', 'nasa_exoplanets', 'usgs_earthquakes'],
         fallbackProviders: [],
-        planSummary: 'Primary: NIH PubChem Chemical Records + US Patent Office Inventions + NASA EONET + USGS Geological Bulletins + Canada Open Data + UK Open Data + Data.gov + CERN Open Data.'
+        planSummary: 'Primary: NIH ClinicalTrials.gov + NIH PubChem Chemicals + US Patents + NASA EONET + USGS Geological Bulletins + Canada Open Data + UK Open Data + Data.gov + CERN Open Data.'
       };
 
     case 'code':
       return {
         category: 'code',
-        primaryProviders: ['arch_linux_pkgs', 'clojars_packages', 'nuget_packages', 'metacpan_perl', 'hex_pm', 'github', 'pub_dev', 'docker_hub', 'maven_central', 'pypi', 'rubygems', 'packagist', 'homebrew', 'crates_io', 'gitlab', 'cdnjs', 'npm', 'hn_code'],
+        primaryProviders: ['archive_historic_software', 'arch_linux_pkgs', 'clojars_packages', 'nuget_packages', 'metacpan_perl', 'hex_pm', 'github', 'pub_dev', 'docker_hub', 'maven_central', 'pypi', 'rubygems', 'packagist', 'homebrew', 'crates_io', 'gitlab', 'cdnjs', 'npm', 'hn_code'],
         fallbackProviders: [],
-        planSummary: 'Primary: Arch Linux Packages + Clojars (Clojure/JVM) + NuGet (.NET) + MetaCPAN (Perl) + Hex.pm (Elixir/Erlang) + GitHub + Dart pub.dev + Docker Hub.'
+        planSummary: 'Primary: Historical Computing Software + Arch Linux Packages + Clojars (Clojure/JVM) + NuGet (.NET) + MetaCPAN (Perl) + Hex.pm (Elixir/Erlang) + GitHub + Dart pub.dev + Docker Hub.'
       };
 
     case 'biodiversity':
@@ -401,6 +403,16 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         'archive_golden_age_comics',
         'archive_us_patents',
         'archive_david_rumsey_maps',
+        'loc_digital_collections',
+        'nih_clinical_trials',
+        'archive_cbs_mystery_theater',
+        'archive_demoscene',
+        'archive_flight_manuals',
+        'archive_vintage_fashion',
+        'archive_vintage_audiobooks',
+        'archive_drive_in_intermissions',
+        'archive_historic_software',
+        'archive_classic_sci_fi_movies',
         'pokeapi'
       ];
       const allFallback = [

@@ -91,6 +91,18 @@ import {
   queryArchiveUsPatents,
   queryArchiveDavidRumseyMaps
 } from './providers/super_expansion';
+import {
+  queryLocDigitalCollections,
+  queryNihClinicalTrials,
+  queryArchiveCbsMysteryTheater,
+  queryArchiveDemoscene,
+  queryArchiveFlightManuals,
+  queryArchiveVintageFashion,
+  queryArchiveVintageAudiobooks,
+  queryArchiveDriveInIntermissions,
+  queryArchiveHistoricSoftware,
+  queryArchiveClassicSciFiMovies
+} from './providers/hyper_expansion';
 
 export interface RouteExecutionResult {
   results: ResourceItem[];
@@ -299,10 +311,30 @@ export const PROVIDER_DISPATCH_MAP: Record<string, (q: string) => Promise<Resour
   archive_computer_manuals: (q) => queryArchiveComputerManuals(q),
   archive_golden_age_comics: (q) => queryArchiveGoldenAgeComics(q),
   archive_us_patents: (q) => queryArchiveUsPatents(q),
-  archive_david_rumsey_maps: (q) => queryArchiveDavidRumseyMaps(q)
+  archive_david_rumsey_maps: (q) => queryArchiveDavidRumseyMaps(q),
+  loc_digital_collections: (q) => queryLocDigitalCollections(q),
+  nih_clinical_trials: (q) => queryNihClinicalTrials(q),
+  archive_cbs_mystery_theater: (q) => queryArchiveCbsMysteryTheater(q),
+  archive_demoscene: (q) => queryArchiveDemoscene(q),
+  archive_flight_manuals: (q) => queryArchiveFlightManuals(q),
+  archive_vintage_fashion: (q) => queryArchiveVintageFashion(q),
+  archive_vintage_audiobooks: (q) => queryArchiveVintageAudiobooks(q),
+  archive_drive_in_intermissions: (q) => queryArchiveDriveInIntermissions(q),
+  archive_historic_software: (q) => queryArchiveHistoricSoftware(q),
+  archive_classic_sci_fi_movies: (q) => queryArchiveClassicSciFiMovies(q)
 };
 
 export const DEFAULT_PROVIDER_TEST_QUERIES: Record<string, string> = {
+  loc_digital_collections: 'lincoln',
+  nih_clinical_trials: 'oncology',
+  archive_cbs_mystery_theater: 'mansion',
+  archive_demoscene: 'future crew',
+  archive_flight_manuals: 'spitfire',
+  archive_vintage_fashion: 'couture',
+  archive_vintage_audiobooks: 'edgar allan poe',
+  archive_drive_in_intermissions: 'popcorn',
+  archive_historic_software: 'unix',
+  archive_classic_sci_fi_movies: 'mars',
   archive_film_noir: 'detour',
   archive_speedruns: 'mario',
   archive_bhl_botany: 'flora',

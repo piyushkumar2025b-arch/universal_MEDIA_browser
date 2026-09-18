@@ -616,6 +616,46 @@ export const SourceAggregatorBar: React.FC<SourceAggregatorBarProps> = ({
                     <div className="font-semibold text-neutral-900">Historical Cartography & Antique World Maps</div>
                     <div className="text-[11px] text-neutral-500 mt-0.5">High-resolution scans of antique world maps, topographic charts, and 18th-20th century cartography.</div>
                   </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Library of Congress Digital Collections</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Historic photographs, architectural drawings, civil war surveys, and presidential manuscripts from the US national library.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">NIH ClinicalTrials.gov Protocol Registry</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Official National Library of Medicine clinical trial records, investigated drugs, trial phases, and outcomes.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">CBS Radio Mystery Theater Complete Archive</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">1,300+ full remastered radio mystery episodes hosted by E.G. Marshall with gothic drama and suspense.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">International Demoscene Art & Music</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Amiga and PC computer demoparty releases, real-time procedural animations, and MOD tracker chiptunes.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Aviation History & Flight Operations Manuals</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Historic pilot operating handbooks (POH), Boeing, Cessna, Spitfire, and supersonic jet flight checklists.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Historical Costume & Fashion Plates (18th-20th C.)</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Hand-colored Victorian, Edwardian, and Art Deco couture engravings and historic garment tailoring guides.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Spoken Word Classic Literature & Poetry</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Classic dramatic literary narrations, poetry recitations, and Shakespearean spoken audiobooks.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Classic Drive-In Theater Intermission Reels</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Nostalgic 1950s/1960s drive-in theater intermission countdowns, animated concession trailers, and shorts.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Historical Software & Digital Computing Showcase</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Landmark software releases, early operating systems, compilers, and pioneering digital historical artifacts.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Atomic Age Sci-Fi & Drive-In Cinema Classics</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Golden Age 1950s science fiction cinema, creature features, UFO movies, and atomic monster reels.</div>
+                  </div>
                 </div>
               </div>
             </div>
