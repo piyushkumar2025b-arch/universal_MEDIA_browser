@@ -536,6 +536,86 @@ export const SourceAggregatorBar: React.FC<SourceAggregatorBarProps> = ({
                     <div className="font-semibold text-neutral-900">Integrated Taxonomic Information System (USGS / ITIS)</div>
                     <div className="text-[11px] text-neutral-500 mt-0.5">Official biological taxonomy database across kingdoms Animalia, Plantae, Fungi, and Monera with TSN identifiers.</div>
                   </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">NASA Earth Observatory Natural Event Tracker (EONET)</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Active real-time planetary events: wildfires, severe storms, volcanic eruptions, and icebergs.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Arch Linux Official & Community Packages</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Linux system software, tools, and developer libraries indexed across core, extra, and multilib repos.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Clojars Clojure & JVM Artifact Registry</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Community repository for Clojure and JVM libraries, build tools, and functional software packages.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Internet Archive MS-DOS Games Showcase</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Playable vintage 80s/90s MS-DOS PC games, shareware classics, and retro computing titles via DOSBox.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Medical Heritage Library (MHL)</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Rare historical medicine treatises, anatomical plates, apothecary guides, and public health volumes.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Historical Sheet Music & Musical Scores</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Preserved public domain musical scores, classical piano compositions, and ragtime notation with PDF scans.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Old Time Radio Golden Age Broadcasts</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Vintage dramatic radio plays, mystery theaters, and detective episodes with streamable audio.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">USGS Geological Survey Historic Bulletins</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Official geological field investigations, mineral maps, volcanic reports, and hydrology bulletins.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">NASA Apollo & Spaceflight Mission Documents</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Apollo flight plans, technical mission transcripts, astronaut manuals, and spacecraft schematics.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Classic Animation & Cartoon Shorts (Golden Age)</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Golden Age public domain animated cinema, early 20th century cartoons, and streaming animation reels.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Internet Archive Film Noir Masterpieces</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">1940s-1950s dramatic cinema classics, high-contrast chiaroscuro cinematography, and suspense reels.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Video Game Speedruns & Longplays Archive</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Preserved video game speedruns, tool-assisted speedruns (TAS), and gameplay playthroughs.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Biodiversity Heritage Library (BHL)</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Rare natural history treatises, botanical color plates, and historical zoology volumes.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">NIH PubChem Chemical & Molecular Database</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Official National Library of Medicine chemical records, molecular formulas, weights, and 2D diagrams.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">NASA Apollo Lunar Mission Audio Archives</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Original air-to-ground mission audio loops, Capcom Houston dialogue, and launch transmissions.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">20th Century Historic Radio News Broadcasts</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Original historic radio news flashes, wartime bulletins, and mid-century broadcast journalism.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Vintage Computer Manuals & Schematics</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Historical computing manuals, mainframe and microcomputer schematics, and hardware specifications.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Golden Age Comics & Graphic Novels (1930s-1950s)</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Scanned Golden Age comic books, classic sci-fi serials, superheroes, and vintage pop art.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">US Patent Office Historic Inventions & Schematics</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Historical USPTO patent grants, invention diagrams, engineering blueprints, and mechanical claims.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Historical Cartography & Antique World Maps</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">High-resolution scans of antique world maps, topographic charts, and 18th-20th century cartography.</div>
+                  </div>
                 </div>
               </div>
             </div>

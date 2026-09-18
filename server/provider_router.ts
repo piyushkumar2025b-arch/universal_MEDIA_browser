@@ -67,6 +67,30 @@ import {
   queryOtrSciFi,
   queryFieldRecordings
 } from './providers/further_sources';
+import {
+  queryNasaEonet,
+  queryArchLinuxPackages,
+  queryClojarsPackages,
+  queryArchiveMsDosGames,
+  queryArchiveMedicalHeritage,
+  queryArchiveSheetMusic,
+  queryArchiveOldTimeRadio,
+  queryArchiveUsgsBulletins,
+  queryArchiveNasaHistorical,
+  queryArchiveAnimationShorts
+} from './providers/universal_expansion';
+import {
+  queryArchiveFilmNoir,
+  queryArchiveSpeedruns,
+  queryArchiveBhlBotany,
+  queryNihPubChem,
+  queryArchiveApolloAudio,
+  queryArchiveHistoricRadioNews,
+  queryArchiveComputerManuals,
+  queryArchiveGoldenAgeComics,
+  queryArchiveUsPatents,
+  queryArchiveDavidRumseyMaps
+} from './providers/super_expansion';
 
 export interface RouteExecutionResult {
   results: ResourceItem[];
@@ -255,10 +279,50 @@ export const PROVIDER_DISPATCH_MAP: Record<string, (q: string) => Promise<Resour
   archive_movie_trailers: (q) => queryMovieTrailers(q),
   archive_vintage_posters: (q) => queryVintagePosters(q),
   archive_otr_scifi: (q) => queryOtrSciFi(q),
-  archive_field_recordings: (q) => queryFieldRecordings(q)
+  archive_field_recordings: (q) => queryFieldRecordings(q),
+  nasa_eonet: (q) => queryNasaEonet(q),
+  arch_linux_pkgs: (q) => queryArchLinuxPackages(q),
+  clojars_packages: (q) => queryClojarsPackages(q),
+  archive_msdos_games: (q) => queryArchiveMsDosGames(q),
+  archive_medical_heritage: (q) => queryArchiveMedicalHeritage(q),
+  archive_sheet_music: (q) => queryArchiveSheetMusic(q),
+  archive_old_time_radio: (q) => queryArchiveOldTimeRadio(q),
+  archive_usgs_bulletins: (q) => queryArchiveUsgsBulletins(q),
+  archive_nasa_historical: (q) => queryArchiveNasaHistorical(q),
+  archive_animation_shorts: (q) => queryArchiveAnimationShorts(q),
+  archive_film_noir: (q) => queryArchiveFilmNoir(q),
+  archive_speedruns: (q) => queryArchiveSpeedruns(q),
+  archive_bhl_botany: (q) => queryArchiveBhlBotany(q),
+  nih_pubchem: (q) => queryNihPubChem(q),
+  archive_apollo_audio: (q) => queryArchiveApolloAudio(q),
+  archive_historic_radio_news: (q) => queryArchiveHistoricRadioNews(q),
+  archive_computer_manuals: (q) => queryArchiveComputerManuals(q),
+  archive_golden_age_comics: (q) => queryArchiveGoldenAgeComics(q),
+  archive_us_patents: (q) => queryArchiveUsPatents(q),
+  archive_david_rumsey_maps: (q) => queryArchiveDavidRumseyMaps(q)
 };
 
 export const DEFAULT_PROVIDER_TEST_QUERIES: Record<string, string> = {
+  archive_film_noir: 'detour',
+  archive_speedruns: 'mario',
+  archive_bhl_botany: 'flora',
+  nih_pubchem: 'caffeine',
+  archive_apollo_audio: 'apollo 11',
+  archive_historic_radio_news: 'broadcast',
+  archive_computer_manuals: 'apple',
+  archive_golden_age_comics: 'captain',
+  archive_us_patents: 'telephone',
+  archive_david_rumsey_maps: 'california',
+  nasa_eonet: 'wildfires',
+  arch_linux_pkgs: 'neovim',
+  clojars_packages: 'cheshire',
+  archive_msdos_games: 'pacman',
+  archive_medical_heritage: 'anatomy',
+  archive_sheet_music: 'ragtime',
+  archive_old_time_radio: 'sherlock',
+  archive_usgs_bulletins: 'mineral',
+  archive_nasa_historical: 'apollo',
+  archive_animation_shorts: 'cartoon',
   nuget_packages: 'json',
   metacpan_perl: 'moose',
   data_gov_ca: 'climate',
