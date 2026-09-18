@@ -1,0 +1,49 @@
+provider:
+  id: pokeapi
+  name: PokéAPI
+  category:
+    - games
+    - datasets
+
+documentation:
+  website: "https://pokeapi.co"
+  api_docs: "https://pokeapi.co/docs/v2"
+
+connection:
+  base_url: "https://pokeapi.co/api/v2"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  pokemon:
+    method: GET
+    path: /pokemon
+    parameters:
+      limit:
+        required: false
+        type: integer
+        default: 20
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 6000
+  requests_per_month: 200000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require:
+    - results
+
+fallback: []

@@ -1,0 +1,76 @@
+provider:
+  id: freesound
+  name: Freesound
+  category:
+    - audio
+
+documentation:
+  website: "https://freesound.org"
+  api_docs: "https://freesound.org/docs/api/"
+
+connection:
+  base_url: "https://freesound.org/apiv2"
+  protocol: https
+  authentication:
+    type: token
+    location: header
+    variable: FREESOUND_API_KEY
+
+endpoints:
+  search:
+    method: GET
+    path: /search/text/
+    parameters:
+      query:
+        required: true
+        type: string
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+        default: 20
+      fields:
+        required: false
+        type: string
+        default: "id,name,description,tags,username,license,duration,previews,type,filesize"
+      filter:
+        required: false
+        type: string
+      sort:
+        required: false
+        type: string
+
+  get:
+    method: GET
+    path: /sounds/{id}/
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 2000
+  requests_per_month: 60000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - openverse
+  - wikimedia
+  - internet_archive

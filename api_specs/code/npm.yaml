@@ -1,0 +1,53 @@
+provider:
+  id: npm
+  name: npm Package Registry
+  category:
+    - code
+    - software
+
+documentation:
+  website: "https://www.npmjs.com"
+  api_docs: "https://github.com/npm/registry/blob/master/docs/REGISTRY-API.md"
+
+connection:
+  base_url: "https://registry.npmjs.org"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /-/v1/search
+    parameters:
+      text:
+        required: true
+        type: string
+      size:
+        required: false
+        type: integer
+        default: 12
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3600
+  requests_per_month: 100000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require:
+    - objects
+
+fallback:
+  - github

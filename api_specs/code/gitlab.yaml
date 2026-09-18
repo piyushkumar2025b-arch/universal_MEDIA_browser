@@ -1,0 +1,50 @@
+provider:
+  id: gitlab
+  name: GitLab Open Source Projects
+  category:
+    - code
+    - software
+
+documentation:
+  website: "https://gitlab.com"
+  api_docs: "https://docs.gitlab.com/ee/api/projects.html"
+
+connection:
+  base_url: "https://gitlab.com/api/v4"
+  protocol: https
+  authentication:
+    type: token_optional
+    location: header
+    variable: GITLAB_TOKEN
+
+endpoints:
+  search:
+    method: GET
+    path: /projects
+    parameters:
+      search:
+        required: true
+        type: string
+      per_page:
+        required: false
+        type: integer
+        default: 12
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_minute: 300
+
+errors:
+  retry:
+    - 429
+    - 500
+
+validation:
+  require:
+    - id
+    - web_url

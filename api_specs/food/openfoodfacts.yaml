@@ -1,0 +1,53 @@
+provider:
+  id: openfoodfacts
+  name: Open Food Facts
+  category:
+    - food
+    - datasets
+
+documentation:
+  website: "https://world.openfoodfacts.org"
+  api_docs: "https://openfoodfacts.github.io/api-documentation/"
+
+connection:
+  base_url: "https://world.openfoodfacts.org"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /cgi/search.pl
+    parameters:
+      search_terms:
+        required: true
+        type: string
+      json:
+        required: true
+        type: integer
+        default: 1
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 6000
+  requests_per_month: 150000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require:
+    - products
+
+fallback:
+  - themealdb

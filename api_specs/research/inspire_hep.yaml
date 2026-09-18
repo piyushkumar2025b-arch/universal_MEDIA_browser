@@ -1,0 +1,47 @@
+provider:
+  id: inspire_hep
+  name: INSPIRE-HEP CERN High-Energy Physics
+  category:
+    - papers
+    - research
+
+documentation:
+  website: "https://inspirehep.net"
+  api_docs: "https://inspirehep.net/help/knowledge-base/web-api/"
+
+connection:
+  base_url: "https://inspirehep.net/api"
+  protocol: https
+  authentication:
+    type: none
+
+endpoints:
+  search:
+    method: GET
+    path: /literature
+    parameters:
+      q:
+        required: true
+        type: string
+      size:
+        required: false
+        type: integer
+        default: 12
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_second: 5
+
+errors:
+  retry:
+    - 429
+    - 500
+
+validation:
+  require:
+    - hits

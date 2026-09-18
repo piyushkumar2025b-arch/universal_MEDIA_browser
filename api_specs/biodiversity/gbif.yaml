@@ -1,0 +1,52 @@
+provider:
+  id: gbif
+  name: Global Biodiversity Information Facility
+  category:
+    - biodiversity
+    - science
+
+documentation:
+  website: "https://www.gbif.org"
+  api_docs: "https://techdocs.gbif.org/en/openapi/"
+
+connection:
+  base_url: "https://api.gbif.org/v1"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  species_search:
+    method: GET
+    path: /species/search
+    parameters:
+      q:
+        required: true
+        type: string
+      limit:
+        required: false
+        type: integer
+        default: 12
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3600
+  requests_per_month: 100000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require:
+    - results
+
+fallback: []

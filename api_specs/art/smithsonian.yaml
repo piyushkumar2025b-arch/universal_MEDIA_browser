@@ -1,0 +1,40 @@
+provider:
+  id: smithsonian_open_access
+  name: Smithsonian Institution Open Access
+  category:
+    - art
+    - images
+
+documentation:
+  website: "https://www.si.edu/openaccess"
+  api_docs: "https://edan.si.edu/openaccess/apidocs/"
+
+connection:
+  base_url: "https://api.si.edu/openaccess/api/v1.0"
+  protocol: https
+  authentication:
+    type: query_param
+    location: query
+    variable: DEMO_KEY
+
+endpoints:
+  search:
+    method: GET
+    path: /search
+    parameters:
+      q:
+        required: true
+        type: string
+      rows:
+        required: false
+        type: integer
+        default: 20
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 1000

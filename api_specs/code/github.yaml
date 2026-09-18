@@ -1,0 +1,55 @@
+provider:
+  id: github
+  name: GitHub Repositories
+  category:
+    - code
+    - software
+
+documentation:
+  website: "https://github.com"
+  api_docs: "https://docs.github.com/en/rest"
+
+connection:
+  base_url: "https://api.github.com"
+  protocol: https
+  authentication:
+    type: token_optional
+    location: header
+    variable: GITHUB_TOKEN
+
+endpoints:
+  search:
+    method: GET
+    path: /search/repositories
+    parameters:
+      q:
+        required: true
+        type: string
+      per_page:
+        required: false
+        type: integer
+        default: 12
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 60
+  requests_per_month: 5000
+
+errors:
+  retry:
+    - 403
+    - 429
+    - 500
+
+validation:
+  require:
+    - total_count
+    - items
+
+fallback:
+  - npm

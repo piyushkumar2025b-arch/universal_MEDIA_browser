@@ -1,0 +1,55 @@
+provider:
+  id: world_bank
+  name: World Bank Open Data
+  category:
+    - datasets
+    - economics
+
+documentation:
+  website: "https://data.worldbank.org"
+  api_docs: "https://datahelpdesk.worldbank.org/knowledgebase/topics/12558-developer-information"
+
+connection:
+  base_url: "https://api.worldbank.org/v2"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  indicator:
+    method: GET
+    path: /indicator
+    parameters:
+      format:
+        required: true
+        type: string
+        default: json
+      per_page:
+        required: false
+        type: integer
+        default: 12
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3600
+  requests_per_month: 100000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require:
+    - id
+    - name
+
+fallback:
+  - data_gov

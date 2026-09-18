@@ -1,0 +1,53 @@
+provider:
+  id: usgs
+  name: USGS Earth Resources Observation and Science
+  category:
+    - maps
+    - earth_science
+
+documentation:
+  website: "https://www.usgs.gov"
+  api_docs: "https://earthquake.usgs.gov/fdsnws/event/1/"
+
+connection:
+  base_url: "https://earthquake.usgs.gov/fdsnws/event/1"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  query:
+    method: GET
+    path: /query
+    parameters:
+      format:
+        required: true
+        type: string
+        default: geojson
+      minmagnitude:
+        required: false
+        type: number
+        default: 3.0
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3600
+  requests_per_month: 100000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require:
+    - features
+
+fallback: []

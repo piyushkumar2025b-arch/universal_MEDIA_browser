@@ -1,0 +1,35 @@
+provider:
+  id: pub_dev
+  name: Dart & Flutter pub.dev Registry
+  category:
+    - code
+
+documentation:
+  website: "https://pub.dev"
+  api_docs: "https://pub.dev/help/api"
+
+connection:
+  base_url: "https://pub.dev/api"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /search
+    parameters:
+      q:
+        required: true
+        type: string
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3600

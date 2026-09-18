@@ -1,0 +1,56 @@
+provider:
+  id: nasa_asteroids
+  name: NASA JPL Near-Earth Asteroid Close Approach Data (CAD)
+  category:
+    - nasa
+    - datasets
+    - space
+
+documentation:
+  website: "https://cneos.jpl.nasa.gov"
+  api_docs: "https://ssd-api.jpl.nasa.gov/doc/cad.html"
+
+connection:
+  base_url: "https://ssd-api.jpl.nasa.gov"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  cad:
+    method: GET
+    path: /cad.api
+    parameters:
+      dist-max:
+        required: false
+        type: string
+        default: 10LD
+      limit:
+        required: false
+        type: number
+        default: 25
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 5000
+  requests_per_month: 100000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require:
+    - signature
+    - data
+
+fallback:
+  - nasa

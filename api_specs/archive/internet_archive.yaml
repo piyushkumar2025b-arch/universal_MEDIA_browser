@@ -1,0 +1,82 @@
+provider:
+  id: internet_archive
+  name: Internet Archive
+  category:
+    - archive
+    - video
+    - audio
+    - research
+    - datasets
+
+documentation:
+  website: "https://archive.org"
+  api_docs: "https://archive.org/developers/"
+
+connection:
+  base_url: "https://archive.org"
+  protocol: https
+  authentication:
+    type: none
+    location: header
+    variable: null
+
+endpoints:
+  advanced_search:
+    method: GET
+    path: /advancedsearch.php
+    parameters:
+      q:
+        required: true
+        type: string
+      fl[]:
+        required: false
+        type: array
+        default: ["identifier", "title", "description", "creator", "year", "mediatype", "licenseurl"]
+      sort[]:
+        required: false
+        type: array
+        default: ["downloads desc"]
+      rows:
+        required: false
+        type: integer
+        default: 15
+      output:
+        required: true
+        type: string
+        default: json
+
+  metadata:
+    method: GET
+    path: /metadata/{identifier}
+
+  download:
+    method: GET
+    path: /download/{identifier}/{filename}
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3000
+  requests_per_month: 60000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - wikimedia
+  - openverse

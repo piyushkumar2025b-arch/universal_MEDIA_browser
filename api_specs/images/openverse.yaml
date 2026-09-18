@@ -1,0 +1,72 @@
+provider:
+  id: openverse
+  name: Openverse
+  category:
+    - images
+    - audio
+
+documentation:
+  website: "https://openverse.org"
+  api_docs: "https://docs.openverse.org/api/"
+
+connection:
+  base_url: "https://api.openverse.org/v1"
+  protocol: https
+  authentication:
+    type: oauth2_or_anonymous
+    location: header
+    variable: OPENVERSE_ACCESS_TOKEN
+
+endpoints:
+  search:
+    method: GET
+    path: /images/
+    parameters:
+      q:
+        required: true
+        type: string
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+      license:
+        required: false
+        type: string
+      license_type:
+        required: false
+        type: string
+
+  get:
+    method: GET
+    path: /images/{id}/
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 1000
+  requests_per_month: 100000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - wikimedia
+  - pexels
+  - unsplash

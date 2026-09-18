@@ -1,0 +1,48 @@
+provider:
+  id: themealdb
+  name: TheMealDB
+  category:
+    - food
+
+documentation:
+  website: "https://www.themealdb.com"
+  api_docs: "https://www.themealdb.com/api.php"
+
+connection:
+  base_url: "https://www.themealdb.com/api/json/v1/1"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /search.php
+    parameters:
+      s:
+        required: true
+        type: string
+
+pagination:
+  type: none
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3600
+  requests_per_month: 100000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require:
+    - meals
+
+fallback:
+  - openfoodfacts

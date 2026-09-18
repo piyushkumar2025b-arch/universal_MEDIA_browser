@@ -1,0 +1,44 @@
+provider:
+  id: free_music_archive
+  name: Free Music Archive (FMA)
+  category:
+    - audio
+    - music
+
+documentation:
+  website: "https://freemusicarchive.org"
+  api_docs: "https://archive.org/details/freemusicarchive"
+
+connection:
+  base_url: "https://archive.org"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /advancedsearch.php
+    parameters:
+      q:
+        required: true
+        type: string
+      rows:
+        required: false
+        type: integer
+        default: 16
+      output:
+        required: false
+        type: string
+        default: json
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3600

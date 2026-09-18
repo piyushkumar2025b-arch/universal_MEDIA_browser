@@ -1,0 +1,53 @@
+provider:
+  id: met_museum
+  name: Metropolitan Museum of Art
+  category:
+    - art
+    - images
+
+documentation:
+  website: "https://www.metmuseum.org"
+  api_docs: "https://metmuseum.github.io/"
+
+connection:
+  base_url: "https://collectionapi.metmuseum.org/public/collection/v1"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /search
+    parameters:
+      q:
+        required: true
+        type: string
+      hasImages:
+        required: false
+        type: boolean
+        default: true
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 4800
+  requests_per_month: 200000
+
+errors:
+  retry:
+    - 429
+    - 500
+
+validation:
+  require:
+    - objectIDs
+
+fallback:
+  - artic

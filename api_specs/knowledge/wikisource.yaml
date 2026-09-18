@@ -1,0 +1,59 @@
+provider:
+  id: wikisource
+  name: Wikisource Free Library of Primary Sources
+  category:
+    - knowledge
+    - literature
+
+documentation:
+  website: "https://en.wikisource.org"
+  api_docs: "https://en.wikisource.org/w/api.php"
+
+connection:
+  base_url: "https://en.wikisource.org/w"
+  protocol: https
+  authentication:
+    type: none
+
+endpoints:
+  search:
+    method: GET
+    path: /api.php
+    parameters:
+      action:
+        required: true
+        type: string
+        default: query
+      list:
+        required: true
+        type: string
+        default: search
+      srsearch:
+        required: true
+        type: string
+      format:
+        required: false
+        type: string
+        default: json
+      srlimit:
+        required: false
+        type: integer
+        default: 10
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_second: 50
+
+errors:
+  retry:
+    - 429
+    - 500
+
+validation:
+  require:
+    - query

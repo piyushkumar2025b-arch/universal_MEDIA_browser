@@ -1,0 +1,48 @@
+provider:
+  id: crates_io
+  name: Crates.io Rust Package Registry
+  category:
+    - code
+    - software
+
+documentation:
+  website: "https://crates.io"
+  api_docs: "https://crates.io/data-access"
+
+connection:
+  base_url: "https://crates.io/api/v1"
+  protocol: https
+  authentication:
+    type: none
+
+endpoints:
+  search:
+    method: GET
+    path: /crates
+    parameters:
+      q:
+        required: true
+        type: string
+      per_page:
+        required: false
+        type: integer
+        default: 12
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_second: 1
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 503
+
+validation:
+  require:
+    - crates

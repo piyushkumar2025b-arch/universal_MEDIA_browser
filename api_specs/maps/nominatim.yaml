@@ -1,0 +1,97 @@
+provider:
+  id: nominatim
+  name: OpenStreetMap / Nominatim
+  category:
+    - maps
+
+documentation:
+  website: "https://nominatim.openstreetmap.org"
+  api_docs: "https://nominatim.org/release-docs/latest/api/Overview/"
+
+connection:
+  base_url: "https://nominatim.openstreetmap.org"
+  protocol: https
+  authentication:
+    type: custom_user_agent
+    location: header
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /search
+    parameters:
+      q:
+        required: true
+        type: string
+      format:
+        required: true
+        type: string
+        default: jsonv2
+      limit:
+        required: false
+        type: integer
+        default: 15
+      addressdetails:
+        required: false
+        type: integer
+        default: 1
+      extratags:
+        required: false
+        type: integer
+        default: 1
+      namedetails:
+        required: false
+        type: integer
+      accept-language:
+        required: false
+        type: string
+        default: en
+
+  reverse:
+    method: GET
+    path: /reverse
+    parameters:
+      lat:
+        required: true
+        type: number
+      lon:
+        required: true
+        type: number
+      format:
+        required: true
+        type: string
+        default: jsonv2
+      addressdetails:
+        required: false
+        type: integer
+        default: 1
+
+pagination:
+  type: limit_offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 1000
+  requests_per_month: 20000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - photon
+  - overpass
+  - wikimedia

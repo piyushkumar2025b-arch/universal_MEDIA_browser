@@ -1,0 +1,6 @@
+{
+  "name": "URMIL — Universal Media Browser",
+  "description": "A beautiful universal search and resource browser for images, videos, audio, research papers, maps, and datasets with instant preview and effortless downloads.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

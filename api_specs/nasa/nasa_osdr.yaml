@@ -1,0 +1,54 @@
+provider:
+  id: nasa_osdr
+  name: NASA Open Science Data Repository (Astrobiology)
+  category:
+    - nasa
+    - research
+    - datasets
+
+documentation:
+  website: "https://osdr.nasa.gov"
+  api_docs: "https://osdr.nasa.gov/bio/repo/help/rest-api"
+
+connection:
+  base_url: "https://osdr.nasa.gov"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /osdr/data/search
+    parameters:
+      term:
+        required: true
+        type: string
+      size:
+        required: false
+        type: number
+        default: 15
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3000
+  requests_per_month: 80000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require:
+    - hits
+
+fallback:
+  - nasa_ntrs

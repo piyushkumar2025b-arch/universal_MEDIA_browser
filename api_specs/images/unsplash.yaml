@@ -1,0 +1,74 @@
+provider:
+  id: unsplash
+  name: Unsplash
+  category:
+    - images
+
+documentation:
+  website: "https://unsplash.com"
+  api_docs: "https://unsplash.com/documentation"
+
+connection:
+  base_url: "https://api.unsplash.com"
+  protocol: https
+  authentication:
+    type: client_id
+    location: header
+    variable: UNSPLASH_ACCESS_KEY
+
+endpoints:
+  search:
+    method: GET
+    path: /search/photos
+    parameters:
+      query:
+        required: true
+        type: string
+      page:
+        required: false
+        type: integer
+      per_page:
+        required: false
+        type: integer
+      order_by:
+        required: false
+        type: string
+      color:
+        required: false
+        type: string
+      orientation:
+        required: false
+        type: string
+
+  get:
+    method: GET
+    path: /photos/{id}
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 50
+  requests_per_month: 5000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - openverse
+  - wikimedia
+  - pexels

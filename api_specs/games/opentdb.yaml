@@ -1,0 +1,48 @@
+provider:
+  id: opentdb
+  name: Open Trivia Database Quizzes
+  category:
+    - games
+    - trivia
+
+documentation:
+  website: "https://opentdb.com"
+  api_docs: "https://opentdb.com/api_config.php"
+
+connection:
+  base_url: "https://opentdb.com"
+  protocol: https
+  authentication:
+    type: none
+
+endpoints:
+  search:
+    method: GET
+    path: /api.php
+    parameters:
+      amount:
+        required: true
+        type: integer
+        default: 10
+      encode:
+        required: false
+        type: string
+        default: url3986
+
+pagination:
+  type: none
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_second: 5
+
+errors:
+  retry:
+    - 429
+    - 500
+
+validation:
+  require:
+    - results

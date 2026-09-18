@@ -1,0 +1,55 @@
+provider:
+  id: open_meteo
+  name: Open-Meteo Weather API
+  category:
+    - weather
+
+documentation:
+  website: "https://open-meteo.com"
+  api_docs: "https://open-meteo.com/en/docs"
+
+connection:
+  base_url: "https://api.open-meteo.com/v1"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  forecast:
+    method: GET
+    path: /forecast
+    parameters:
+      latitude:
+        required: true
+        type: number
+      longitude:
+        required: true
+        type: number
+      current:
+        required: false
+        type: string
+
+pagination:
+  type: none
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 10000
+  requests_per_month: 300000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require:
+    - latitude
+    - longitude
+    - current
+
+fallback: []

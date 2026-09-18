@@ -1,0 +1,70 @@
+provider:
+  id: data_gov
+  name: Data.gov
+  category:
+    - datasets
+
+documentation:
+  website: "https://data.gov"
+  api_docs: "https://data.gov/developers/apis/"
+
+connection:
+  base_url: "https://catalog.data.gov/api/3"
+  protocol: https
+  authentication:
+    type: none
+    location: header
+    variable: null
+
+endpoints:
+  package_search:
+    method: GET
+    path: /action/package_search
+    parameters:
+      q:
+        required: true
+        type: string
+      rows:
+        required: false
+        type: integer
+        default: 15
+      start:
+        required: false
+        type: integer
+        default: 0
+
+  package_show:
+    method: GET
+    path: /action/package_show
+    parameters:
+      id:
+        required: true
+        type: string
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3000
+  requests_per_month: 50000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - zenodo
+  - huggingface

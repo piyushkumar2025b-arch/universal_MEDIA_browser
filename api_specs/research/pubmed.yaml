@@ -1,0 +1,101 @@
+provider:
+  id: pubmed
+  name: PubMed / NCBI
+  category:
+    - research
+    - papers
+
+documentation:
+  website: "https://pubmed.ncbi.nlm.nih.gov"
+  api_docs: "https://www.ncbi.nlm.nih.gov/books/NBK25501/"
+
+connection:
+  base_url: "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
+  protocol: https
+  authentication:
+    type: api_key_or_anonymous
+    location: query
+    variable: NCBI_API_KEY
+
+endpoints:
+  search:
+    method: GET
+    path: /esearch.fcgi
+    parameters:
+      db:
+        required: true
+        type: string
+        default: pubmed
+      term:
+        required: true
+        type: string
+      retmode:
+        required: true
+        type: string
+        default: json
+      retmax:
+        required: false
+        type: integer
+        default: 15
+      retstart:
+        required: false
+        type: integer
+        default: 0
+      tool:
+        required: false
+        type: string
+      email:
+        required: false
+        type: string
+      api_key:
+        required: false
+        type: string
+
+  summary:
+    method: GET
+    path: /esummary.fcgi
+    parameters:
+      db:
+        required: true
+        type: string
+        default: pubmed
+      id:
+        required: true
+        type: string
+      retmode:
+        required: true
+        type: string
+        default: json
+
+  fetch:
+    method: GET
+    path: /efetch.fcgi
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3600
+  requests_per_month: 100000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - europe_pmc
+  - crossref
+  - arxiv

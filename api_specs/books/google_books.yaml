@@ -1,0 +1,54 @@
+provider:
+  id: google_books
+  name: Google Books
+  category:
+    - books
+
+documentation:
+  website: "https://books.google.com"
+  api_docs: "https://developers.google.com/books"
+
+connection:
+  base_url: "https://www.googleapis.com/books/v1"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /volumes
+    parameters:
+      q:
+        required: true
+        type: string
+      maxResults:
+        required: false
+        type: integer
+        default: 15
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 1000
+  requests_per_month: 30000
+
+errors:
+  retry:
+    - 429
+    - 500
+
+validation:
+  require:
+    - id
+    - volumeInfo
+
+fallback:
+  - open_library
+  - gutendex

@@ -1,0 +1,57 @@
+provider:
+  id: open_library
+  name: Open Library
+  category:
+    - books
+    - documents
+
+documentation:
+  website: "https://openlibrary.org"
+  api_docs: "https://openlibrary.org/developers/api"
+
+connection:
+  base_url: "https://openlibrary.org"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /search.json
+    parameters:
+      q:
+        required: true
+        type: string
+      limit:
+        required: false
+        type: integer
+        default: 15
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 6000
+  requests_per_month: 200000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+
+validation:
+  require:
+    - key
+    - title
+
+fallback:
+  - gutendex
+  - google_books

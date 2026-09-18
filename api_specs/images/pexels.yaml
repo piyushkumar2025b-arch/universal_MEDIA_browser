@@ -1,0 +1,78 @@
+provider:
+  id: pexels
+  name: Pexels
+  category:
+    - images
+    - videos
+
+documentation:
+  website: "https://www.pexels.com"
+  api_docs: "https://www.pexels.com/api/documentation/"
+
+connection:
+  base_url: "https://api.pexels.com/v1"
+  protocol: https
+  authentication:
+    type: api_key
+    location: header
+    variable: PEXELS_API_KEY
+
+endpoints:
+  search:
+    method: GET
+    path: /search
+    parameters:
+      query:
+        required: true
+        type: string
+      page:
+        required: false
+        type: integer
+      per_page:
+        required: false
+        type: integer
+      orientation:
+        required: false
+        type: string
+      size:
+        required: false
+        type: string
+      color:
+        required: false
+        type: string
+      locale:
+        required: false
+        type: string
+
+  get:
+    method: GET
+    path: /photos/{id}
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 200
+  requests_per_month: 20000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - openverse
+  - wikimedia
+  - unsplash

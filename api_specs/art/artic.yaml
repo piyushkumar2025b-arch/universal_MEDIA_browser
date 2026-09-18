@@ -1,0 +1,55 @@
+provider:
+  id: artic
+  name: Art Institute of Chicago
+  category:
+    - art
+    - images
+
+documentation:
+  website: "https://www.artic.edu"
+  api_docs: "https://api.artic.edu/docs/"
+
+connection:
+  base_url: "https://api.artic.edu/api/v1"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /artworks/search
+    parameters:
+      q:
+        required: true
+        type: string
+      limit:
+        required: false
+        type: integer
+        default: 12
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3600
+  requests_per_month: 100000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 503
+
+validation:
+  require:
+    - id
+    - title
+
+fallback:
+  - met_museum

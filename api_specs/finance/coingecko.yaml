@@ -1,0 +1,43 @@
+provider:
+  id: coingecko
+  name: CoinGecko Crypto & Digital Asset Market
+  category:
+    - finance
+    - crypto
+
+documentation:
+  website: "https://www.coingecko.com"
+  api_docs: "https://docs.coingecko.com/reference/introduction"
+
+connection:
+  base_url: "https://api.coingecko.com/api/v3"
+  protocol: https
+  authentication:
+    type: none
+
+endpoints:
+  search:
+    method: GET
+    path: /search
+    parameters:
+      query:
+        required: true
+        type: string
+
+pagination:
+  type: none
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_minute: 30
+
+errors:
+  retry:
+    - 429
+    - 500
+
+validation:
+  require:
+    - coins

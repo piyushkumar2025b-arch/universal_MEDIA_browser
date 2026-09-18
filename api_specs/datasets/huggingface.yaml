@@ -1,0 +1,78 @@
+provider:
+  id: huggingface
+  name: Hugging Face Hub
+  category:
+    - datasets
+
+documentation:
+  website: "https://huggingface.co"
+  api_docs: "https://huggingface.co/docs/hub/api"
+
+connection:
+  base_url: "https://huggingface.co/api"
+  protocol: https
+  authentication:
+    type: bearer
+    location: header
+    variable: HF_TOKEN
+
+endpoints:
+  datasets_search:
+    method: GET
+    path: /datasets
+    parameters:
+      search:
+        required: true
+        type: string
+      limit:
+        required: false
+        type: integer
+        default: 15
+      full:
+        required: false
+        type: boolean
+        default: true
+
+  models_search:
+    method: GET
+    path: /models
+    parameters:
+      search:
+        required: true
+        type: string
+      limit:
+        required: false
+        type: integer
+        default: 15
+
+  dataset_info:
+    method: GET
+    path: /datasets/{dataset_id}
+
+pagination:
+  type: limit_offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3000
+  requests_per_month: 60000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - zenodo
+  - data_gov

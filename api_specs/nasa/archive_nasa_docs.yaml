@@ -1,0 +1,62 @@
+provider:
+  id: archive_nasa_docs
+  name: NASA Historical Mission Documentation Archive (Internet Archive)
+  category:
+    - nasa
+    - research
+    - books
+
+documentation:
+  website: "https://archive.org/details/nasa"
+  api_docs: "https://archive.org/help/aboutsearch.htm"
+
+connection:
+  base_url: "https://archive.org"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /advancedsearch.php
+    parameters:
+      q:
+        required: true
+        type: string
+      fl[]:
+        required: false
+        type: string
+        default: identifier,title,creator,description,year
+      rows:
+        required: false
+        type: number
+        default: 15
+      output:
+        required: false
+        type: string
+        default: json
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3000
+  requests_per_month: 80000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require:
+    - response
+
+fallback:
+  - nasa_ntrs

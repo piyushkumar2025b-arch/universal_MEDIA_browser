@@ -1,0 +1,54 @@
+provider:
+  id: nasa_mars_rovers
+  name: NASA Mars Exploration Rovers (Curiosity & Perseverance)
+  category:
+    - nasa
+    - images
+    - space
+
+documentation:
+  website: "https://mars.nasa.gov"
+  api_docs: "https://images.nasa.gov"
+
+connection:
+  base_url: "https://images-api.nasa.gov"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /search
+    parameters:
+      q:
+        required: true
+        type: string
+      media_type:
+        required: false
+        type: string
+        default: image
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 2000
+  requests_per_month: 50000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require:
+    - collection
+
+fallback:
+  - nasa

@@ -1,0 +1,57 @@
+provider:
+  id: wikipedia
+  name: Wikipedia
+  category:
+    - knowledge
+    - encyclopedia
+
+documentation:
+  website: "https://wikipedia.org"
+  api_docs: "https://www.mediawiki.org/wiki/API:Main_page"
+
+connection:
+  base_url: "https://en.wikipedia.org/w/api.php"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: ""
+    parameters:
+      action:
+        required: true
+        type: string
+        default: query
+      list:
+        required: true
+        type: string
+        default: search
+      srsearch:
+        required: true
+        type: string
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 720000
+  requests_per_month: 20000000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require:
+    - query
+    - search
+
+fallback: []

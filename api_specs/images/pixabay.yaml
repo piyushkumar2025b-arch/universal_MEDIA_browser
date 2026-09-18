@@ -1,0 +1,55 @@
+provider:
+  id: pixabay
+  name: Pixabay
+  category:
+    - images
+    - video
+
+documentation:
+  website: "https://pixabay.com"
+  api_docs: "https://pixabay.com/api/docs/"
+
+connection:
+  base_url: "https://pixabay.com/api"
+  protocol: https
+  authentication:
+    type: api_key
+    location: query
+    variable: PIXABAY_API_KEY
+
+endpoints:
+  search:
+    method: GET
+    path: /
+    parameters:
+      q:
+        required: true
+        type: string
+      image_type:
+        required: false
+        type: string
+        default: photo
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 5000
+  requests_per_month: 150000
+
+errors:
+  retry:
+    - 429
+    - 500
+
+validation:
+  require:
+    - hits
+
+fallback:
+  - openverse
+  - pexels
+  - unsplash

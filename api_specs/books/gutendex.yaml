@@ -1,0 +1,51 @@
+provider:
+  id: gutendex
+  name: Project Gutenberg (Gutendex)
+  category:
+    - books
+
+documentation:
+  website: "https://www.gutenberg.org"
+  api_docs: "https://gutendex.com"
+
+connection:
+  base_url: "https://gutendex.com"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /books
+    parameters:
+      search:
+        required: true
+        type: string
+
+pagination:
+  type: page
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3600
+  requests_per_month: 100000
+
+errors:
+  retry:
+    - 500
+    - 502
+    - 503
+
+validation:
+  require:
+    - id
+    - title
+    - formats
+
+fallback:
+  - open_library

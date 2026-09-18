@@ -1,0 +1,46 @@
+provider:
+  id: nasa_apod
+  name: NASA Astronomy Picture of the Day (APOD)
+  category:
+    - images
+    - science
+
+documentation:
+  website: "https://apod.nasa.gov"
+  api_docs: "https://api.nasa.gov/"
+
+connection:
+  base_url: "https://api.nasa.gov/planetary"
+  protocol: https
+  authentication:
+    type: token_optional
+    location: query
+    variable: NASA_API_KEY
+
+endpoints:
+  search:
+    method: GET
+    path: /apod
+    parameters:
+      count:
+        required: false
+        type: integer
+        default: 8
+
+pagination:
+  type: none
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 50
+
+errors:
+  retry:
+    - 429
+    - 500
+
+validation:
+  require:
+    - url

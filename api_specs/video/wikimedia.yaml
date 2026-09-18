@@ -1,0 +1,86 @@
+provider:
+  id: wikimedia_video
+  name: Wikimedia Commons Video
+  category:
+    - video
+
+documentation:
+  website: "https://commons.wikimedia.org"
+  api_docs: "https://commons.wikimedia.org/wiki/Commons:API"
+
+connection:
+  base_url: "https://commons.wikimedia.org/w/api.php"
+  protocol: https
+  authentication:
+    type: none
+    location: header
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: ""
+    parameters:
+      action:
+        required: true
+        type: string
+        default: query
+      generator:
+        required: true
+        type: string
+        default: search
+      gsrsearch:
+        required: true
+        type: string
+      gsrnamespace:
+        required: false
+        type: integer
+        default: 6
+      prop:
+        required: true
+        type: string
+        default: imageinfo
+      iiprop:
+        required: true
+        type: string
+        default: "url|size|mime|extmetadata"
+      format:
+        required: true
+        type: string
+        default: json
+      gsrlimit:
+        required: false
+        type: integer
+        default: 20
+
+  get:
+    method: GET
+    path: ""
+
+pagination:
+  type: continuation
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 2500
+  requests_per_month: 50000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - internet_archive
+  - pexels

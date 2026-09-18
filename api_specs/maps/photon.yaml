@@ -1,0 +1,47 @@
+provider:
+  id: photon_maps
+  name: Photon Komoot OpenStreetMap Geocoder
+  category:
+    - maps
+    - geography
+
+documentation:
+  website: "https://photon.komoot.io"
+  api_docs: "https://github.com/komoot/photon"
+
+connection:
+  base_url: "https://photon.komoot.io"
+  protocol: https
+  authentication:
+    type: none
+
+endpoints:
+  search:
+    method: GET
+    path: /api/
+    parameters:
+      q:
+        required: true
+        type: string
+      limit:
+        required: false
+        type: integer
+        default: 10
+
+pagination:
+  type: none
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_second: 5
+
+errors:
+  retry:
+    - 429
+    - 500
+
+validation:
+  require:
+    - features

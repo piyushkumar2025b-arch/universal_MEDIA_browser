@@ -1,0 +1,56 @@
+provider:
+  id: musicbrainz
+  name: MusicBrainz
+  category:
+    - audio
+    - music
+
+documentation:
+  website: "https://musicbrainz.org"
+  api_docs: "https://musicbrainz.org/doc/MusicBrainz_API"
+
+connection:
+  base_url: "https://musicbrainz.org/ws/2"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  recording:
+    method: GET
+    path: /recording
+    parameters:
+      query:
+        required: true
+        type: string
+      fmt:
+        required: true
+        type: string
+        default: json
+      limit:
+        required: false
+        type: integer
+        default: 15
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3600
+  requests_per_month: 100000
+
+errors:
+  retry:
+    - 503
+
+validation:
+  require:
+    - recordings
+
+fallback:
+  - openverse_audio

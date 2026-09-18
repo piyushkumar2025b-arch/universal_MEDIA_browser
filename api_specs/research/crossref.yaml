@@ -1,0 +1,77 @@
+provider:
+  id: crossref
+  name: Crossref
+  category:
+    - research
+    - papers
+
+documentation:
+  website: "https://www.crossref.org"
+  api_docs: "https://www.crossref.org/documentation/retrieve-metadata/rest-api/"
+
+connection:
+  base_url: "https://api.crossref.org/v1"
+  protocol: https
+  authentication:
+    type: polite_pool
+    location: query
+    variable: CROSSREF_MAILTO
+
+endpoints:
+  search:
+    method: GET
+    path: /works
+    parameters:
+      query:
+        required: true
+        type: string
+      rows:
+        required: false
+        type: integer
+        default: 15
+      offset:
+        required: false
+        type: integer
+        default: 0
+      sort:
+        required: false
+        type: string
+      order:
+        required: false
+        type: string
+      mailto:
+        required: false
+        type: string
+
+  get:
+    method: GET
+    path: /works/{doi}
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 10000
+  requests_per_month: 200000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - europe_pmc
+  - pubmed
+  - arxiv

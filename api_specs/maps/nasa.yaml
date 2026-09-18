@@ -1,0 +1,86 @@
+provider:
+  id: nasa
+  name: NASA Open Data
+  category:
+    - maps
+    - images
+    - datasets
+
+documentation:
+  website: "https://data.nasa.gov"
+  api_docs: "https://api.nasa.gov"
+
+connection:
+  base_url: "https://api.nasa.gov"
+  protocol: https
+  authentication:
+    type: api_key
+    location: query
+    variable: NASA_API_KEY
+
+endpoints:
+  apod:
+    method: GET
+    path: /planetary/apod
+    parameters:
+      api_key:
+        required: true
+        type: string
+        default: DEMO_KEY
+      count:
+        required: false
+        type: integer
+
+  earth:
+    method: GET
+    path: /planetary/earth/imagery
+    parameters:
+      lat:
+        required: true
+        type: number
+      lon:
+        required: true
+        type: number
+      dim:
+        required: false
+        type: number
+      date:
+        required: false
+        type: string
+
+  mars:
+    method: GET
+    path: /mars-photos/api/v1/rovers/curiosity/photos
+
+  neo:
+    method: GET
+    path: /neo/rest/v1/feed
+
+pagination:
+  type: none
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 1000
+  requests_per_month: 20000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - openverse
+  - wikimedia
+  - usgs

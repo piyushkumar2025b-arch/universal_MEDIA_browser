@@ -1,0 +1,51 @@
+provider:
+  id: hal_open_science
+  name: HAL Open Science National Archive
+  category:
+    - papers
+    - research
+
+documentation:
+  website: "https://hal.science"
+  api_docs: "https://api.archives-ouvertes.fr/docs/search"
+
+connection:
+  base_url: "https://api.archives-ouvertes.fr"
+  protocol: https
+  authentication:
+    type: none
+
+endpoints:
+  search:
+    method: GET
+    path: /search/
+    parameters:
+      q:
+        required: true
+        type: string
+      wt:
+        required: false
+        type: string
+        default: json
+      rows:
+        required: false
+        type: integer
+        default: 12
+
+pagination:
+  type: cursor
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_second: 10
+
+errors:
+  retry:
+    - 429
+    - 500
+
+validation:
+  require:
+    - response

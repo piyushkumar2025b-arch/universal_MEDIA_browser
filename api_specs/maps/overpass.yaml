@@ -1,0 +1,55 @@
+provider:
+  id: overpass
+  name: Overpass API
+  category:
+    - maps
+
+documentation:
+  website: "https://overpass-turbo.eu"
+  api_docs: "https://wiki.openstreetmap.org/wiki/Overpass_API"
+
+connection:
+  base_url: "https://overpass-api.de/api"
+  protocol: https
+  authentication:
+    type: none
+    location: header
+    variable: null
+
+endpoints:
+  interpreter:
+    method: POST
+    path: /interpreter
+    parameters:
+      data:
+        required: true
+        type: string
+
+pagination:
+  type: none
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 1000
+  requests_per_month: 25000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - nominatim
+  - photon
+  - wikimedia

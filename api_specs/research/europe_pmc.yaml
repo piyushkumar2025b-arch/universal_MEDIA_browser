@@ -1,0 +1,76 @@
+provider:
+  id: europe_pmc
+  name: Europe PMC
+  category:
+    - research
+    - papers
+
+documentation:
+  website: "https://europepmc.org"
+  api_docs: "https://europepmc.org/RestfulWebService"
+
+connection:
+  base_url: "https://www.ebi.ac.uk/europepmc/webservices/rest"
+  protocol: https
+  authentication:
+    type: none
+    location: header
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /search
+    parameters:
+      query:
+        required: true
+        type: string
+      format:
+        required: true
+        type: string
+        default: json
+      pageSize:
+        required: false
+        type: integer
+        default: 15
+      resultType:
+        required: false
+        type: string
+        default: core
+
+  references:
+    method: GET
+    path: /{source}/{id}/references
+
+  supplementaryFiles:
+    method: GET
+    path: /{id}/supplementaryFiles
+
+pagination:
+  type: cursor
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 5000
+  requests_per_month: 100000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - crossref
+  - pubmed
+  - arxiv

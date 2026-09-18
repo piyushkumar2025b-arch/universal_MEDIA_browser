@@ -1,0 +1,45 @@
+provider:
+  id: nasa_spaceweather
+  name: NOAA / NASA Space Weather Prediction Center (SWPC)
+  category:
+    - nasa
+    - weather
+    - datasets
+
+documentation:
+  website: "https://www.swpc.noaa.gov"
+  api_docs: "https://services.swpc.noaa.gov"
+
+connection:
+  base_url: "https://services.swpc.noaa.gov"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  k_index:
+    method: GET
+    path: /json/planetary_k_index_1m.json
+
+pagination:
+  type: none
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 10000
+  requests_per_month: 200000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require: []
+
+fallback:
+  - open_meteo

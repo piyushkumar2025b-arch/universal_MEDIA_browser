@@ -1,0 +1,50 @@
+provider:
+  id: frankfurter
+  name: Frankfurter (European Central Bank Forex)
+  category:
+    - finance
+    - economics
+
+documentation:
+  website: "https://www.frankfurter.app"
+  api_docs: "https://www.frankfurter.app/docs/"
+
+connection:
+  base_url: "https://api.frankfurter.app"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  latest:
+    method: GET
+    path: /latest
+    parameters:
+      from:
+        required: false
+        type: string
+        default: USD
+
+pagination:
+  type: none
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 10000
+  requests_per_month: 300000
+
+errors:
+  retry:
+    - 500
+    - 503
+
+validation:
+  require:
+    - rates
+    - base
+
+fallback: []

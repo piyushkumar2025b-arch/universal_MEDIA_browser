@@ -1,0 +1,43 @@
+provider:
+  id: archive_animation_classics
+  name: Classic Cartoons & Animation
+  category:
+    - videos
+
+documentation:
+  website: "https://archive.org/details/animationandcartoons"
+  api_docs: "https://archive.org/advancedsearch.php"
+
+connection:
+  base_url: "https://archive.org"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /advancedsearch.php
+    parameters:
+      q:
+        required: true
+        type: string
+      rows:
+        required: false
+        type: integer
+        default: 16
+      output:
+        required: false
+        type: string
+        default: json
+
+pagination:
+  type: offset
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 3600

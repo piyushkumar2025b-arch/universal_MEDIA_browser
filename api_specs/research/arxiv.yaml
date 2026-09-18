@@ -1,0 +1,72 @@
+provider:
+  id: arxiv
+  name: arXiv
+  category:
+    - research
+    - papers
+
+documentation:
+  website: "https://arxiv.org"
+  api_docs: "https://arxiv.org/help/api/user-manual"
+
+connection:
+  base_url: "https://export.arxiv.org/api"
+  protocol: https
+  authentication:
+    type: none
+    location: header
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /query
+    parameters:
+      search_query:
+        required: true
+        type: string
+      start:
+        required: false
+        type: integer
+        default: 0
+      max_results:
+        required: false
+        type: integer
+        default: 15
+      sortBy:
+        required: false
+        type: string
+        default: relevance
+      sortOrder:
+        required: false
+        type: string
+        default: descending
+
+pagination:
+  type: offset
+
+response:
+  format: atom_xml
+
+rate_limit:
+  requests_per_hour: 1200
+  requests_per_month: 25000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+
+validation:
+  require:
+    - id
+    - title
+    - source_url
+
+fallback:
+  - crossref
+  - europe_pmc
+  - pubmed

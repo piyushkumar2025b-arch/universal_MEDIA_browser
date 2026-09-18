@@ -1,0 +1,57 @@
+provider:
+  id: openalex
+  name: OpenAlex Scholarly Graph
+  category:
+    - research
+    - papers
+
+documentation:
+  website: "https://openalex.org"
+  api_docs: "https://docs.openalex.org"
+
+connection:
+  base_url: "https://api.openalex.org"
+  protocol: https
+  authentication:
+    type: none
+    location: none
+    variable: null
+
+endpoints:
+  search:
+    method: GET
+    path: /works
+    parameters:
+      search:
+        required: true
+        type: string
+      per-page:
+        required: false
+        type: integer
+        default: 15
+
+pagination:
+  type: cursor
+
+response:
+  format: json
+
+rate_limit:
+  requests_per_hour: 4000
+  requests_per_month: 3000000
+
+errors:
+  retry:
+    - 429
+    - 500
+    - 503
+
+validation:
+  require:
+    - id
+    - title
+
+fallback:
+  - crossref
+  - arxiv
+  - pubmed
