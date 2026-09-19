@@ -230,6 +230,16 @@ export function rankAndFilterResources(
         if (i.attributes.duration) score += 2;
       }
 
+      // Live News boost for real-time sources
+      if (i.category === 'news' || i.attributes?.isLiveNews) {
+        score += 25;
+        if (i.attributes?.publishedAt) score += 15;
+        const queryIsNews = /\b(news|breaking|latest|today|war|election|president|minister|conflict|crisis|update|press|politics|market|headline|economy)\b/i.test(query);
+        if (queryIsNews) {
+          score += 150; // Decisive priority boost for news intent
+        }
+      }
+
       return score;
     };
 
@@ -299,16 +309,20 @@ function interleaveMultiModal(
   const relevantItems = query ? items.filter(isRelevant) : items;
   const irrelevantItems = query ? items.filter((i) => !isRelevant(i)) : [];
 
+  const news = relevantItems.filter((i) => i.category === 'news' || i.attributes?.isLiveNews);
   const images = relevantItems.filter((i) => i.category === 'images' || i.category === 'art' || i.category === 'gifs');
   const videos = relevantItems.filter((i) => i.category === 'videos');
   const audio = relevantItems.filter((i) => i.category === 'music' || i.category === 'audio');
   const papers = relevantItems.filter((i) => i.category === 'papers');
   const books = relevantItems.filter((i) => i.category === 'books');
   const others = relevantItems.filter(
-    (i) => !['images', 'art', 'gifs', 'videos', 'music', 'audio', 'papers', 'books'].includes(i.category)
+    (i) => !['images', 'art', 'gifs', 'videos', 'music', 'audio', 'papers', 'books', 'news'].includes(i.category) && !i.attributes?.isLiveNews
   );
 
+  const queryIsNews = /\b(news|breaking|latest|today|war|election|president|minister|conflict|crisis|update|press|politics|market|headline|economy)\b/i.test(query);
+
   const interleaved: ResourceItem[] = [];
+  let newsIdx = 0;
   let imgIdx = 0;
   let vidIdx = 0;
   let audIdx = 0;
@@ -316,9 +330,23 @@ function interleaveMultiModal(
   let bkIdx = 0;
   let othIdx = 0;
 
+  // If query indicates news intent, front-load priority breaking headlines
+  if (queryIsNews && news.length > 0) {
+    const frontLoadCount = Math.min(4, news.length);
+    for (let f = 0; f < frontLoadCount; f++) {
+      interleaved.push(news[newsIdx++]);
+    }
+  }
+
   const total = relevantItems.length;
   while (interleaved.length < total) {
     let addedAny = false;
+
+    // 0. Live News Wire
+    if (newsIdx < news.length) {
+      interleaved.push(news[newsIdx++]);
+      addedAny = true;
+    }
 
     // 1. Video
     if (vidIdx < videos.length) {

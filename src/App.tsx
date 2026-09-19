@@ -102,7 +102,8 @@ export default function App() {
     food: 0,
     games: 0,
     '3d': 0,
-    nasa: 0
+    nasa: 0,
+    news: 0
   });
 
   const [nasaSubCategory, setNasaSubCategory] = useState<NasaSubCategory>('all');

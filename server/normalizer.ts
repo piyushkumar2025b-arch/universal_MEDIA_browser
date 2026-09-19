@@ -137,6 +137,15 @@ export function normalizeCategory(raw?: any): ResourceCategory {
     case 'astro':
       return 'nasa';
 
+    case 'news':
+    case 'headline':
+    case 'headlines':
+    case 'press':
+    case 'breaking':
+    case 'current':
+    case 'journalism':
+      return 'news';
+
     case 'all':
     default:
       return 'all';

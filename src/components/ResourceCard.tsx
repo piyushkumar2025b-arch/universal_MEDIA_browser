@@ -24,7 +24,8 @@ import {
   Box,
   Image as ImageIcon,
   Loader2,
-  Music
+  Music,
+  Newspaper
 } from 'lucide-react';
 import { ResourceItem, ResourceCategory } from '../types/resource';
 import { getContentPhoto } from '../utils/contentPhotos';
@@ -747,8 +748,33 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
           </div>
         )}
 
+        {/* Live News Wire & Headlines */}
+        {resource.category === 'news' && (
+          <div className="aspect-[16/10] w-full relative overflow-hidden bg-neutral-950 flex items-center justify-center">
+            {resource.thumbnailUrl || resource.previewUrl ? (
+              <RealMediaImage
+                src={resource.thumbnailUrl || resource.previewUrl}
+                alt={resource.title}
+                providerName={resource.source.providerName}
+                category={resource.category}
+                lqip={resource.attributes?.lqip}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            ) : (
+              <div className="p-4 text-center">
+                <Newspaper className="h-10 w-10 text-red-500 mx-auto mb-2" />
+                <span className="text-xs text-neutral-200 font-medium line-clamp-2">{resource.title}</span>
+              </div>
+            )}
+            <span className="absolute top-2.5 right-11 rounded-md bg-neutral-950/85 backdrop-blur-md px-2 py-0.5 text-[10px] font-semibold text-red-400 border border-red-800/40 flex items-center gap-1.5 shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+              <span>LIVE WIRE</span>
+            </span>
+          </div>
+        )}
+
         {/* Universal Fallback for any other category */}
-        {!['images', 'gifs', 'videos', 'music', 'audio', 'papers', 'maps', 'datasets', 'books', 'art', 'weather', 'code', 'biodiversity', 'knowledge', 'finance', 'food', 'games', '3d'].includes(resource.category) && (
+        {!['images', 'gifs', 'videos', 'music', 'audio', 'papers', 'maps', 'datasets', 'books', 'art', 'weather', 'code', 'biodiversity', 'knowledge', 'finance', 'food', 'games', '3d', 'news'].includes(resource.category) && (
           <div className="aspect-[16/10] w-full relative overflow-hidden bg-neutral-900 flex items-center justify-center">
             {resource.thumbnailUrl || resource.previewUrl ? (
               <RealMediaImage
@@ -795,8 +821,10 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
           {/* Source Provider & License Badges */}
           <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
             {/* Media Modality Chip */}
-            <span className="inline-flex items-center rounded-md bg-neutral-900 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">
-              {resource.category === 'images' ? 'Picture' : resource.category === 'art' ? 'Art' : resource.category}
+            <span className={`inline-flex items-center rounded-md px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white ${
+              resource.category === 'news' ? 'bg-red-600' : 'bg-neutral-900'
+            }`}>
+              {resource.category === 'images' ? 'Picture' : resource.category === 'art' ? 'Art' : resource.category === 'news' ? 'LIVE NEWS' : resource.category}
             </span>
 
             {/* Real Source Provider Pill */}
@@ -840,7 +868,7 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
             className="flex-1 flex items-center justify-center gap-1.5 rounded-lg border border-neutral-200 bg-white py-1.5 px-3 text-xs font-medium text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900 transition-colors"
           >
             <Eye className="h-3.5 w-3.5 text-neutral-400" />
-            <span>{resource.category === 'papers' ? 'Read' : 'Preview'}</span>
+            <span>{resource.category === 'papers' ? 'Read' : resource.category === 'news' ? 'Read Wire' : 'Preview'}</span>
           </button>
 
           <button

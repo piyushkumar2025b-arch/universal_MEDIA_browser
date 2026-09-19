@@ -103,6 +103,58 @@ import {
   queryArchiveHistoricSoftware,
   queryArchiveClassicSciFiMovies
 } from './providers/hyper_expansion';
+import {
+  queryLocChroniclingAmerica,
+  queryArchiveXMinusOne,
+  queryArchiveSilentComedy,
+  queryArchiveRailroadHistory,
+  queryArchiveAutoBrochures,
+  queryArchiveEarlyCgi,
+  queryArchiveWildlifeAudio,
+  queryArchive78rpmJazz,
+  queryArchiveVintageBoardgames,
+  queryArchiveUsgsTopomaps
+} from './providers/ultra_expansion';
+import {
+  queryArchiveHistoricalMenus,
+  queryArchiveSherlockHolmesRadio,
+  queryArchiveWeirdTales,
+  queryArchiveAstronomyHeritage,
+  queryArchiveClassicHorror,
+  queryArchiveTinPanAlley,
+  queryArchiveOralHistory,
+  queryArchiveTradeCatalogs,
+  queryArchiveNaturalistExpeditions,
+  queryArchiveHamRadioTechnical,
+  queryArchiveChildrensAudioClassics,
+  queryRestCountriesGeo
+} from './providers/mega_expansion';
+import {
+  queryArchiveDragnetRadio,
+  queryArchiveVintageSeedCatalogs,
+  queryArchiveClassicWesternMovies,
+  queryArchiveDeltaBlues,
+  queryArchiveScientificAmericanVintage,
+  queryArchiveJackBennyComedy,
+  queryArchiveArchitecturalPatternBooks,
+  queryArchiveVintageSoundEffects,
+  queryArchiveBrewingHistory,
+  queryArchiveVintageMagicBooks,
+  queryArchiveHistoricMicroscopy,
+  queryArchiveWargameSimulations
+} from './providers/giga_expansion';
+import {
+  queryGoogleNews,
+  queryBbcWorldNews,
+  queryTheGuardianNews,
+  queryAlJazeeraNews,
+  queryNprNews,
+  queryHackerNewsLive,
+  queryTechCrunchNews,
+  querySpaceflightNews,
+  queryWikinewsOpen,
+  queryDevtoNews
+} from './providers/live_news';
 
 export interface RouteExecutionResult {
   results: ResourceItem[];
@@ -321,10 +373,88 @@ export const PROVIDER_DISPATCH_MAP: Record<string, (q: string) => Promise<Resour
   archive_vintage_audiobooks: (q) => queryArchiveVintageAudiobooks(q),
   archive_drive_in_intermissions: (q) => queryArchiveDriveInIntermissions(q),
   archive_historic_software: (q) => queryArchiveHistoricSoftware(q),
-  archive_classic_sci_fi_movies: (q) => queryArchiveClassicSciFiMovies(q)
+  archive_classic_sci_fi_movies: (q) => queryArchiveClassicSciFiMovies(q),
+  loc_chronicling_america: (q) => queryLocChroniclingAmerica(q),
+  archive_x_minus_one: (q) => queryArchiveXMinusOne(q),
+  archive_silent_comedy: (q) => queryArchiveSilentComedy(q),
+  archive_railroad_history: (q) => queryArchiveRailroadHistory(q),
+  archive_auto_brochures: (q) => queryArchiveAutoBrochures(q),
+  archive_early_cgi: (q) => queryArchiveEarlyCgi(q),
+  archive_wildlife_audio: (q) => queryArchiveWildlifeAudio(q),
+  archive_78rpm_jazz: (q) => queryArchive78rpmJazz(q),
+  archive_vintage_boardgames: (q) => queryArchiveVintageBoardgames(q),
+  archive_usgs_topomaps: (q) => queryArchiveUsgsTopomaps(q),
+  archive_historical_menus: (q) => queryArchiveHistoricalMenus(q),
+  archive_sherlock_holmes_radio: (q) => queryArchiveSherlockHolmesRadio(q),
+  archive_weird_tales: (q) => queryArchiveWeirdTales(q),
+  archive_astronomy_heritage: (q) => queryArchiveAstronomyHeritage(q),
+  archive_classic_horror: (q) => queryArchiveClassicHorror(q),
+  archive_tin_pan_alley: (q) => queryArchiveTinPanAlley(q),
+  archive_oral_history: (q) => queryArchiveOralHistory(q),
+  archive_trade_catalogs: (q) => queryArchiveTradeCatalogs(q),
+  archive_naturalist_expeditions: (q) => queryArchiveNaturalistExpeditions(q),
+  archive_ham_radio_technical: (q) => queryArchiveHamRadioTechnical(q),
+  archive_childrens_audio_classics: (q) => queryArchiveChildrensAudioClassics(q),
+  rest_countries_geo: (q) => queryRestCountriesGeo(q),
+  archive_dragnet_radio: (q) => queryArchiveDragnetRadio(q),
+  archive_vintage_seed_catalogs: (q) => queryArchiveVintageSeedCatalogs(q),
+  archive_classic_western_movies: (q) => queryArchiveClassicWesternMovies(q),
+  archive_delta_blues: (q) => queryArchiveDeltaBlues(q),
+  archive_scientific_american_vintage: (q) => queryArchiveScientificAmericanVintage(q),
+  archive_jack_benny_comedy: (q) => queryArchiveJackBennyComedy(q),
+  archive_architectural_pattern_books: (q) => queryArchiveArchitecturalPatternBooks(q),
+  archive_vintage_sound_effects: (q) => queryArchiveVintageSoundEffects(q),
+  archive_brewing_history: (q) => queryArchiveBrewingHistory(q),
+  archive_vintage_magic_books: (q) => queryArchiveVintageMagicBooks(q),
+  archive_historic_microscopy: (q) => queryArchiveHistoricMicroscopy(q),
+  archive_wargame_simulations: (q) => queryArchiveWargameSimulations(q),
+  google_news: (q) => queryGoogleNews(q),
+  bbc_world_news: (q) => queryBbcWorldNews(q),
+  the_guardian_news: (q) => queryTheGuardianNews(q),
+  al_jazeera_news: (q) => queryAlJazeeraNews(q),
+  npr_news: (q) => queryNprNews(q),
+  hacker_news_live: (q) => queryHackerNewsLive(q),
+  techcrunch_news: (q) => queryTechCrunchNews(q),
+  spaceflight_news: (q) => querySpaceflightNews(q),
+  wikinews_open: (q) => queryWikinewsOpen(q),
+  devto_news: (q) => queryDevtoNews(q)
 };
 
 export const DEFAULT_PROVIDER_TEST_QUERIES: Record<string, string> = {
+  archive_dragnet_radio: 'friday',
+  archive_vintage_seed_catalogs: 'tomato',
+  archive_classic_western_movies: 'sheriff',
+  archive_delta_blues: 'blues',
+  archive_scientific_american_vintage: 'dynamo',
+  archive_jack_benny_comedy: 'benny',
+  archive_architectural_pattern_books: 'victorian',
+  archive_vintage_sound_effects: 'thunder',
+  archive_brewing_history: 'fermentation',
+  archive_vintage_magic_books: 'houdini',
+  archive_historic_microscopy: 'diatom',
+  archive_wargame_simulations: 'napoleon',
+  archive_historical_menus: 'waldorf',
+  archive_sherlock_holmes_radio: 'baskerville',
+  archive_weird_tales: 'lovecraft',
+  archive_astronomy_heritage: 'andromeda',
+  archive_classic_horror: 'dracula',
+  archive_tin_pan_alley: 'ragtime',
+  archive_oral_history: 'normandy',
+  archive_trade_catalogs: 'lathe',
+  archive_naturalist_expeditions: 'darwin',
+  archive_ham_radio_technical: 'amplifier',
+  archive_childrens_audio_classics: 'cinderella',
+  rest_countries_geo: 'japan',
+  loc_chronicling_america: 'lincoln',
+  archive_x_minus_one: 'mars',
+  archive_silent_comedy: 'chaplin',
+  archive_railroad_history: 'locomotive',
+  archive_auto_brochures: 'ford',
+  archive_early_cgi: 'pixar',
+  archive_wildlife_audio: 'songbird',
+  archive_78rpm_jazz: 'armstrong',
+  archive_vintage_boardgames: 'chess',
+  archive_usgs_topomaps: 'yosemite',
   loc_digital_collections: 'lincoln',
   nih_clinical_trials: 'oncology',
   archive_cbs_mystery_theater: 'mansion',
@@ -527,7 +657,17 @@ export const DEFAULT_PROVIDER_TEST_QUERIES: Record<string, string> = {
   pokeapi: 'pikachu',
   archive_pcgames: 'doom',
   open5e_rpg: 'dragon',
-  opentdb: 'science'
+  opentdb: 'science',
+  google_news: 'technology',
+  bbc_world_news: 'world',
+  the_guardian_news: 'global',
+  al_jazeera_news: 'news',
+  npr_news: 'headlines',
+  hacker_news_live: 'ai',
+  techcrunch_news: 'startups',
+  spaceflight_news: 'rocket',
+  wikinews_open: 'events',
+  devto_news: 'programming'
 };
 
 export async function testSingleProvider(providerId: string, customQuery?: string) {
@@ -671,7 +811,8 @@ export async function executeRoutedSearch(filters: SearchFilters): Promise<Route
     food: processed.filter((i) => i.category === 'food').length,
     games: processed.filter((i) => i.category === 'games').length,
     '3d': processed.filter((i) => i.category === '3d').length,
-    nasa: processed.filter((i) => i.category === 'nasa').length
+    nasa: processed.filter((i) => i.category === 'nasa').length,
+    news: processed.filter((i) => i.category === 'news').length
   };
 
   return {

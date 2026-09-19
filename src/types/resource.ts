@@ -18,7 +18,8 @@ export type ResourceCategory =
   | 'food'
   | 'games'
   | '3d'
-  | 'nasa';
+  | 'nasa'
+  | 'news';
 
 export type NasaSubCategory = 
   | 'all'

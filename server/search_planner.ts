@@ -72,13 +72,15 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'videos':
       return {
         category: 'videos',
-        primaryProviders: ['archive_drive_in_intermissions', 'archive_classic_sci_fi_movies', 'archive_film_noir', 'archive_speedruns', 'archive_animation_shorts', 'archive_movie_trailers', 'archive_open_movies', 'archive_prelinger_films', 'archive_newsreels', 'archive_silent_films', 'archive_computer_chronicles', 'archive_animation_classics', 'archive_tv_commercials', 'youtube_video', 'dailymotion_video', 'vimeo_video', 'peertube_video', 'archive_feature_films', 'archive_cartoons', 'archive_prelinger', 'tvmaze_video', 'wikimedia_video', 'internet_archive_video', 'nasa_video'],
+        primaryProviders: ['archive_classic_western_movies', 'archive_classic_horror', 'archive_silent_comedy', 'archive_early_cgi', 'archive_drive_in_intermissions', 'archive_classic_sci_fi_movies', 'archive_film_noir', 'archive_speedruns', 'archive_animation_shorts', 'archive_movie_trailers', 'archive_open_movies', 'archive_prelinger_films', 'archive_newsreels', 'archive_silent_films', 'archive_computer_chronicles', 'archive_animation_classics', 'archive_tv_commercials', 'youtube_video', 'dailymotion_video', 'vimeo_video', 'peertube_video', 'archive_feature_films', 'archive_cartoons', 'archive_prelinger', 'tvmaze_video', 'wikimedia_video', 'internet_archive_video', 'nasa_video'],
         fallbackProviders: ['pexels_video', 'pixabay_video'],
-        planSummary: 'Primary: Drive-In Intermissions + Atomic Sci-Fi + Film Noir Classics + Speedruns & Longplays + Golden Age Cartoons + Cinema Trailers + Open Source Movies + Prelinger Films + YouTube + PeerTube.'
+        planSummary: 'Primary: Classic Western Cinema + Gothic Horror + Silent Slapstick + SIGGRAPH CGI + Drive-In Intermissions + Sci-Fi + Film Noir + Speedruns + Cartoons + Prelinger + YouTube.'
       };
 
     case 'music': {
       const primary = [
+        'archive_delta_blues',
+        'archive_78rpm_jazz',
         'apple_music',
         'musopen_classical',
         'free_music_archive',
@@ -97,12 +99,20 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         category: 'music',
         primaryProviders: primary,
         fallbackProviders: fallback,
-        planSummary: 'Primary: Apple Music + Musopen Symphony Archive + Free Music Archive (FMA) + Radio Browser Live + 78rpm + Wikimedia + ccMixter + Live Music Archive.'
+        planSummary: 'Primary: Early Acoustic Delta Blues + Great 78 Project Early Jazz & Blues + Apple Music + Musopen Symphony + Free Music Archive + Radio Browser + 78rpm + Live Music.'
       };
     }
 
     case 'audio': {
       const primary = [
+        'archive_dragnet_radio',
+        'archive_jack_benny_comedy',
+        'archive_vintage_sound_effects',
+        'archive_sherlock_holmes_radio',
+        'archive_oral_history',
+        'archive_childrens_audio_classics',
+        'archive_x_minus_one',
+        'archive_wildlife_audio',
         'archive_cbs_mystery_theater',
         'archive_vintage_audiobooks',
         'archive_apollo_audio',
@@ -158,17 +168,17 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'books':
       return {
         category: 'books',
-        primaryProviders: ['archive_flight_manuals', 'archive_computer_manuals', 'archive_golden_age_comics', 'archive_medical_heritage', 'archive_nasa_historical', 'archive_retro_magazines', 'archive_folkscanomy', 'google_books', 'open_library', 'archive_pulp_scifi', 'gutendex', 'internet_archive_books', 'wikibooks', 'archive_childrens_books', 'archive_comics', 'poetrydb'],
+        primaryProviders: ['archive_scientific_american_vintage', 'archive_vintage_magic_books', 'archive_weird_tales', 'archive_trade_catalogs', 'loc_chronicling_america', 'archive_railroad_history', 'archive_flight_manuals', 'archive_computer_manuals', 'archive_golden_age_comics', 'archive_medical_heritage', 'archive_nasa_historical', 'archive_retro_magazines', 'archive_folkscanomy', 'google_books', 'open_library', 'archive_pulp_scifi', 'gutendex', 'internet_archive_books', 'wikibooks', 'archive_childrens_books', 'archive_comics', 'poetrydb'],
         fallbackProviders: [],
-        planSummary: 'Primary: Aviation Flight Manuals + Computer Manuals & Schematics + Golden Age Comics + Medical Heritage + NASA Documents + Google Books + Open Library.'
+        planSummary: 'Primary: Scientific American Historical Periodicals + Houdini Magic Treatises + Weird Tales Pulp + Industrial Trade Catalogs + LOC Chronicling America + Google Books.'
       };
 
     case 'maps':
       return {
         category: 'maps',
-        primaryProviders: ['archive_david_rumsey_maps', 'nominatim', 'photon_maps', 'archive_historic_maps', 'wikivoyage', 'open_meteo_geocoding', 'open_meteo_elevation', 'usgs'],
+        primaryProviders: ['archive_usgs_topomaps', 'archive_david_rumsey_maps', 'nominatim', 'photon_maps', 'archive_historic_maps', 'wikivoyage', 'open_meteo_geocoding', 'open_meteo_elevation', 'usgs'],
         fallbackProviders: [],
-        planSummary: 'Primary: Antique World Maps & Cartography + OpenStreetMap Nominatim + Photon Komoot Engine + USGS Historical Topographic Maps + Wikivoyage + USGS Earth Science.'
+        planSummary: 'Primary: USGS Topographic Quadrangle Maps + Antique World Maps & Cartography + OpenStreetMap Nominatim + Photon Komoot Engine + Historic Maps.'
       };
 
     case 'weather':
@@ -182,33 +192,33 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'art':
       return {
         category: 'art',
-        primaryProviders: ['loc_digital_collections', 'archive_demoscene', 'archive_vintage_fashion', 'archive_sheet_music', 'archive_bthl_architecture', 'archive_vintage_posters', 'smk_art', 'smithsonian_open_access', 'artic', 'met_museum', 'cleveland_art', 'smk_images', 'vam_images', 'europeana_images', 'wellcome_images'],
+        primaryProviders: ['archive_architectural_pattern_books', 'archive_tin_pan_alley', 'archive_auto_brochures', 'loc_digital_collections', 'archive_demoscene', 'archive_vintage_fashion', 'archive_sheet_music', 'archive_bthl_architecture', 'archive_vintage_posters', 'smk_art', 'smithsonian_open_access', 'artic', 'met_museum', 'cleveland_art', 'smk_images', 'vam_images', 'europeana_images', 'wellcome_images'],
         fallbackProviders: [],
-        planSummary: 'Primary: Library of Congress Digital Collections + Demoscene Art + Vintage Fashion Plates + Historic Sheet Music + Architectural Blueprints (BTHL) + Posters + SMK + Smithsonian + AIC.'
+        planSummary: 'Primary: Victorian Architectural Pattern Handbooks + Tin Pan Alley Lithographs + Classic Automotive Design + Library of Congress + Demoscene Art + Vintage Fashion + Posters + SMK + Smithsonian + AIC.'
       };
 
     case 'datasets':
       return {
         category: 'datasets',
-        primaryProviders: ['nih_clinical_trials', 'nih_pubchem', 'archive_us_patents', 'nasa_eonet', 'archive_usgs_bulletins', 'data_gov_ca', 'data_gov_uk', 'data_gov', 'huggingface', 'harvard_dataverse', 'cern_opendata', 'zenodo_datasets', 'world_bank', 'nasa_exoplanets', 'usgs_earthquakes'],
+        primaryProviders: ['rest_countries_geo', 'archive_astronomy_heritage', 'nih_clinical_trials', 'nih_pubchem', 'archive_us_patents', 'nasa_eonet', 'archive_usgs_bulletins', 'data_gov_ca', 'data_gov_uk', 'data_gov', 'huggingface', 'harvard_dataverse', 'cern_opendata', 'zenodo_datasets', 'world_bank', 'nasa_exoplanets', 'usgs_earthquakes'],
         fallbackProviders: [],
-        planSummary: 'Primary: NIH ClinicalTrials.gov + NIH PubChem Chemicals + US Patents + NASA EONET + USGS Geological Bulletins + Canada Open Data + UK Open Data + Data.gov + CERN Open Data.'
+        planSummary: 'Primary: REST Countries Geopolitical Profile + Historical Observatory Sky Surveys + NIH ClinicalTrials.gov + NIH PubChem + US Patents + NASA EONET + USGS Bulletins + Canada/UK Open Data + Data.gov + CERN.'
       };
 
     case 'code':
       return {
         category: 'code',
-        primaryProviders: ['archive_historic_software', 'arch_linux_pkgs', 'clojars_packages', 'nuget_packages', 'metacpan_perl', 'hex_pm', 'github', 'pub_dev', 'docker_hub', 'maven_central', 'pypi', 'rubygems', 'packagist', 'homebrew', 'crates_io', 'gitlab', 'cdnjs', 'npm', 'hn_code'],
+        primaryProviders: ['archive_ham_radio_technical', 'archive_historic_software', 'arch_linux_pkgs', 'clojars_packages', 'nuget_packages', 'metacpan_perl', 'hex_pm', 'github', 'pub_dev', 'docker_hub', 'maven_central', 'pypi', 'rubygems', 'packagist', 'homebrew', 'crates_io', 'gitlab', 'cdnjs', 'npm', 'hn_code'],
         fallbackProviders: [],
-        planSummary: 'Primary: Historical Computing Software + Arch Linux Packages + Clojars (Clojure/JVM) + NuGet (.NET) + MetaCPAN (Perl) + Hex.pm (Elixir/Erlang) + GitHub + Dart pub.dev + Docker Hub.'
+        planSummary: 'Primary: Vintage Ham Radio Vacuum Tube Schematics + Historical Software + Arch Linux + Clojars + NuGet + MetaCPAN + Hex.pm + GitHub + pub.dev + Docker Hub.'
       };
 
     case 'biodiversity':
       return {
         category: 'biodiversity',
-        primaryProviders: ['archive_bhl_botany', 'catalogue_of_life', 'itis_taxonomy', 'paleo_db', 'gbif', 'inaturalist_bio', 'dog_ceo', 'worms_marine', 'uniprot', 'chembl', 'gbif_images'],
+        primaryProviders: ['archive_vintage_seed_catalogs', 'archive_historic_microscopy', 'archive_naturalist_expeditions', 'archive_bhl_botany', 'catalogue_of_life', 'itis_taxonomy', 'paleo_db', 'gbif', 'inaturalist_bio', 'dog_ceo', 'worms_marine', 'uniprot', 'chembl', 'gbif_images'],
         fallbackProviders: [],
-        planSummary: 'Primary: Biodiversity Heritage Library (BHL) + Catalogue of Life (COL) + ITIS Taxonomy (USGS) + Paleobiology Database + GBIF + iNaturalist + Dog CEO.'
+        planSummary: 'Primary: Heirloom Seed & Nursery Catalogs + Historic Microscopy Atlases + Naturalist Field Notes + Biodiversity Heritage Library (BHL) + Catalogue of Life + ITIS Taxonomy + Paleobiology Database + GBIF.'
       };
 
     case 'knowledge': {
@@ -241,17 +251,17 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'food':
       return {
         category: 'food',
-        primaryProviders: ['archive_historic_cookbooks', 'openfoodfacts', 'fruityvice', 'themealdb', 'thecocktaildb', 'openbrewerydb'],
+        primaryProviders: ['archive_brewing_history', 'archive_historical_menus', 'archive_historic_cookbooks', 'openfoodfacts', 'fruityvice', 'themealdb', 'thecocktaildb', 'openbrewerydb'],
         fallbackProviders: [],
-        planSummary: 'Primary: Historic Cookbooks & Gastronomy + Open Food Facts + Fruityvice Botanical Data + TheMealDB + TheCocktailDB + Open Brewery DB.'
+        planSummary: 'Primary: Historic Brewing Treatises & Fermentation Heritage + Historical Restaurant Menus + Historic Cookbooks + Open Food Facts + Fruityvice + TheMealDB + TheCocktailDB + Open Brewery DB.'
       };
 
     case 'games':
       return {
         category: 'games',
-        primaryProviders: ['archive_msdos_games', 'archive_arcade_games', 'pokeapi', 'scryfall', 'yugioh', 'freetogame', 'dnd5e_srd', 'archive_pcgames', 'open5e_rpg', 'opentdb'],
+        primaryProviders: ['archive_wargame_simulations', 'archive_vintage_boardgames', 'archive_msdos_games', 'archive_arcade_games', 'pokeapi', 'scryfall', 'yugioh', 'freetogame', 'dnd5e_srd', 'archive_pcgames', 'open5e_rpg', 'opentdb'],
         fallbackProviders: [],
-        planSummary: 'Primary: Internet Archive MS-DOS Games + Coin-Op Arcade Preservation + PokéAPI Creature Database + Scryfall MTG + Yu-Gi-Oh! Cards + FreeToGame.'
+        planSummary: 'Primary: Tabletop Conflict Simulation & Wargame Manuals + Vintage Board Game Box Art & Rules + Internet Archive MS-DOS Games + Coin-Op Arcade + PokéAPI + Scryfall MTG + Yu-Gi-Oh! Cards + FreeToGame.'
       };
 
     case 'nasa': {
@@ -328,9 +338,37 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
       };
     }
 
+    case 'news': {
+      const primary = [
+        'google_news',
+        'bbc_world_news',
+        'the_guardian_news',
+        'al_jazeera_news',
+        'npr_news',
+        'hacker_news_live',
+        'techcrunch_news',
+        'spaceflight_news',
+        'wikinews_open',
+        'devto_news'
+      ];
+      const fallback = [
+        'archive_historic_radio_news',
+        'archive_newsreels',
+        'loc_chronicling_america'
+      ];
+      return {
+        category: 'news',
+        primaryProviders: primary,
+        fallbackProviders: fallback,
+        planSummary: 'Real-Time Global News Wire: Google News + BBC World + The Guardian + Al Jazeera + NPR + Hacker News Live + TechCrunch + Spaceflight News + Wikinews.'
+      };
+    }
+
     case 'all':
     default: {
       const allPrimary = [
+        'google_news',
+        'bbc_world_news',
         'wikipedia',
         'smithsonian_open_access',
         'youtube_video',
@@ -413,6 +451,40 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         'archive_drive_in_intermissions',
         'archive_historic_software',
         'archive_classic_sci_fi_movies',
+        'loc_chronicling_america',
+        'archive_x_minus_one',
+        'archive_silent_comedy',
+        'archive_railroad_history',
+        'archive_auto_brochures',
+        'archive_early_cgi',
+        'archive_wildlife_audio',
+        'archive_78rpm_jazz',
+        'archive_vintage_boardgames',
+        'archive_usgs_topomaps',
+        'archive_historical_menus',
+        'archive_sherlock_holmes_radio',
+        'archive_weird_tales',
+        'archive_astronomy_heritage',
+        'archive_classic_horror',
+        'archive_tin_pan_alley',
+        'archive_oral_history',
+        'archive_trade_catalogs',
+        'archive_naturalist_expeditions',
+        'archive_ham_radio_technical',
+        'archive_childrens_audio_classics',
+        'rest_countries_geo',
+        'archive_dragnet_radio',
+        'archive_vintage_seed_catalogs',
+        'archive_classic_western_movies',
+        'archive_delta_blues',
+        'archive_scientific_american_vintage',
+        'archive_jack_benny_comedy',
+        'archive_architectural_pattern_books',
+        'archive_vintage_sound_effects',
+        'archive_brewing_history',
+        'archive_vintage_magic_books',
+        'archive_historic_microscopy',
+        'archive_wargame_simulations',
         'pokeapi'
       ];
       const allFallback = [
@@ -462,11 +534,29 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
       } else {
         allFallback.push('google_search', 'google_images');
       }
+
+      const queryStr = (filters.query || '').trim().toLowerCase();
+      const isNewsQuery = /\b(news|breaking|latest|today|war|election|president|minister|conflict|crisis|update|press|politics|market|headline|economy)\b/i.test(queryStr);
+      if (isNewsQuery) {
+        allPrimary.unshift(
+          'google_news',
+          'bbc_world_news',
+          'the_guardian_news',
+          'al_jazeera_news',
+          'npr_news',
+          'hacker_news_live',
+          'techcrunch_news',
+          'spaceflight_news'
+        );
+      }
+
       return {
         category: 'all',
         primaryProviders: allPrimary,
         fallbackProviders: allFallback,
-        planSummary: 'High-Velocity Multi-Domain Federation across primary tier-1 nodes + deep fallback cluster.'
+        planSummary: isNewsQuery
+          ? 'Live News Priority Federation: Real-time global wire feeds boosted for breaking events & current reporting.'
+          : 'High-Velocity Multi-Domain Federation across primary tier-1 nodes + deep fallback cluster.'
       };
     }
   }

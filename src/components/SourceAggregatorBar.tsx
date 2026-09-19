@@ -15,7 +15,8 @@ import {
   Palette,
   Compass,
   Box,
-  Rocket
+  Rocket,
+  Newspaper
 } from 'lucide-react';
 import { ResourceItem, ResourceCategory } from '../types/resource';
 
@@ -72,6 +73,12 @@ export const SourceAggregatorBar: React.FC<SourceAggregatorBarProps> = ({
       label: 'All Media Unified',
       icon: Layers,
       color: 'text-neutral-900 bg-neutral-900 text-white'
+    },
+    {
+      id: 'news' as ResourceCategory,
+      label: 'Live News Wire',
+      icon: Newspaper,
+      color: 'text-red-700 bg-red-50 hover:bg-red-100 border-red-200'
     },
     {
       id: 'images' as ResourceCategory,
@@ -655,6 +662,212 @@ export const SourceAggregatorBar: React.FC<SourceAggregatorBarProps> = ({
                   <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
                     <div className="font-semibold text-neutral-900">Atomic Age Sci-Fi & Drive-In Cinema Classics</div>
                     <div className="text-[11px] text-neutral-500 mt-0.5">Golden Age 1950s science fiction cinema, creature features, UFO movies, and atomic monster reels.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Library of Congress Chronicling America (1777-1963)</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Historic American newspapers, front page headlines, regional journalism, and digitized PDF scans from 1777 to 1963.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">NBC X Minus One Sci-Fi Radio Theater</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">1950s Golden Age NBC radio dramatizations of legendary sci-fi authors Asimov, Heinlein, and Bradbury.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Classic Silent Comedy & Slapstick Masterpieces</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Pioneering physical comedy and silent cinema features from Buster Keaton, Charlie Chaplin, and Harold Lloyd.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Historic Railroad Documents & Locomotive Schematics</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">19th/20th century steam locomotive blueprints, train schedules, railroad network maps, and transit history.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Classic Automotive Brochures & Coachwork Design</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Vintage car showroom brochures, coachwork illustrations, concept cars, and automotive engineering guides.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">SIGGRAPH Early Computer Graphics & CGI Animation</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Pioneering 1980s-1990s CGI animation festival reels, early 3D wireframes, raytracing milestones, and procedural art.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Avian Bioacoustics & Wildlife Soundscapes</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Pristine outdoor field recordings of bird song repertoires, animal vocalizations, and natural acoustic wilderness.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">The Great 78 Project Early Jazz & Blues Discs</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Digitized historical 78 RPM shellac phonograph discs preserving early jazz, delta blues, swing, and ragtime.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Vintage Tabletop Board Game Manuals & Box Art</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Vintage tabletop rulebooks, box art graphics, strategy manuals, and classic board game design heritage.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">USGS Historical Topographic Quadrangle Maps</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Detailed historical 7.5- and 15-minute quadrangle survey maps with elevation contours, trails, and old settlements.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Historical Restaurant & Ocean Liner Menus (1850s-1980s)</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Vintage culinary menus from famous restaurants, grand hotels, transatlantic steamships, and railway dining cars.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Sherlock Holmes Golden Age Radio Mysteries</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Original broadcast recordings starring Basil Rathbone as Sherlock Holmes and Nigel Bruce as Dr. Watson.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Weird Tales & Classic Supernatural Pulp Archive</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Original digitized pulp magazine issues featuring cosmic horror, dark fantasy, and iconic cover illustrations.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Historical Observatory Sky Surveys & Lunar Atlases</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Historical observatory photographic glass plate scans, lunar surface atlases, and early astrophysical surveys.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Classic Gothic Horror & Monster Cinema (1920s-1960s)</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Public domain gothic horror films, vampire cinema, creature features, and early expressionist masterpieces.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Tin Pan Alley & Broadway Sheet Music Lithographs</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Original piano sheet music editions with elaborate multi-color lithograph cover art from the 1890s through 1930s.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Historical Eyewitness Testimonies & Spoken Memoirs</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Primary source spoken oral history audio accounts and interviews documenting 20th-century historical events.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Industrial Machinery & Craft Tool Trade Catalogs</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Engraved 19th/20th-century commercial catalogs for iron foundries, machine tools, woodworking, and steam power.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Naturalist Field Notes & Historical Expedition Journals</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Handwritten expedition field journals, biological specimen logs, and Darwinian naturalist field sketches.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Vintage Ham Radio & Vacuum Tube Schematics</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Historic amateur radio manuals, transmitter schematics, antenna theory guides, and vacuum tube circuit designs.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Golden Age Children's Storybook Audio & Fables</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Vintage phonograph children's records with orchestral scores, voice actor dramatizations, and classic fairy tales.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">REST Countries Global Geopolitical Database</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Open geopolitical registry providing official nation names, high-resolution SVG flags, capitals, currencies, and coordinates.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Dragnet Golden Age Detective Radio OTR</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Original Los Angeles police procedural radio broadcasts starring Jack Webb as Sergeant Joe Friday.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Heirloom Seed & Botanical Nursery Catalogs (1850-1980)</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Historic horticultural seed catalogs with vintage chromolithographs of heirloom vegetables, fruits, and garden flora.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Classic Western & Frontier Cinema Masterpieces</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Golden Age Western cinema, frontier cowboy adventures, and classic public domain feature films.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Early Delta Blues & Country Blues Field Recordings</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">78 RPM shellac recordings and field tapes preserving acoustic delta blues, slide guitar, and harmonica traditions.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Scientific American Historical Archive (1845-1909)</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">19th-century issues of Scientific American documenting steam power, early electricity, telegraphy, and patent inventions.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">The Jack Benny Program Golden Age Radio Comedy</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Classic radio comedy masterworks starring Jack Benny, Mary Livingstone, and Eddie 'Rochester' Anderson.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Victorian Architectural Pattern & Carpentry Handbooks</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">19th-century architectural pattern books with building elevations, floor plans, joinery details, and masonry guides.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Historic Foley & Radio Drama Sound Effects Archive</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Vintage mechanical and acoustic sound design foley libraries from historic radio dramas and theater productions.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Historic Brewing Treatises & Zymurgy Heritage</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Historical beer brewing handbooks, fermentation science treatises, and heritage craft brewing recipes.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Houdini & Historic Conjuring Arts Manuals</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Rare 19th/20th-century illusionism handbooks, sleight-of-hand secrets, and Harry Houdini escape treatises.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Historic Microscopy Drawings & Micro-Life Atlases</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Engraved 19th-century microscopic atlases detailing diatoms, radiolarians, protozoans, and optical investigations.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-neutral-200/90 bg-neutral-50/50">
+                    <div className="font-semibold text-neutral-900">Historical Tabletop Conflict Simulation & Wargame Manuals</div>
+                    <div className="text-[11px] text-neutral-500 mt-0.5">Classic hex-and-counter conflict simulation rulebooks, military history scenarios, and tactical tabletop manuals.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-red-200 bg-red-50/40">
+                    <div className="font-semibold text-red-900 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+                      Google News Real-Time Wire
+                    </div>
+                    <div className="text-[11px] text-neutral-600 mt-0.5">Global breaking news RSS feed across international topics, geopolitics, and science.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-red-200 bg-red-50/40">
+                    <div className="font-semibold text-red-900 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+                      BBC World News Live
+                    </div>
+                    <div className="text-[11px] text-neutral-600 mt-0.5">Verified international reporting, top global headlines, and breaking investigative journalism.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-red-200 bg-red-50/40">
+                    <div className="font-semibold text-red-900 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+                      The Guardian World Wire
+                    </div>
+                    <div className="text-[11px] text-neutral-600 mt-0.5">International news, global politics, climate reports, and independent investigative coverage.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-red-200 bg-red-50/40">
+                    <div className="font-semibold text-red-900 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+                      Al Jazeera English Live Wire
+                    </div>
+                    <div className="text-[11px] text-neutral-600 mt-0.5">Global journalism with deep coverage of Middle Eastern geopolitics and international affairs.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-red-200 bg-red-50/40">
+                    <div className="font-semibold text-red-900 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+                      NPR National & World News
+                    </div>
+                    <div className="text-[11px] text-neutral-600 mt-0.5">National Public Radio breaking domestic and international reporting, politics, and culture.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-red-200 bg-red-50/40">
+                    <div className="font-semibold text-red-900 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+                      Hacker News Real-Time Wire
+                    </div>
+                    <div className="text-[11px] text-neutral-600 mt-0.5">Y Combinator community live tech, computer science, startup, and AI development news.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-red-200 bg-red-50/40">
+                    <div className="font-semibold text-red-900 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+                      TechCrunch Silicon & VC Wire
+                    </div>
+                    <div className="text-[11px] text-neutral-600 mt-0.5">Breaking startup tech reporting, venture capital financing, and frontier technology updates.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-red-200 bg-red-50/40">
+                    <div className="font-semibold text-red-900 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+                      Spaceflight News API (SNAPI)
+                    </div>
+                    <div className="text-[11px] text-neutral-600 mt-0.5">Orbital rocket launches, SpaceX, NASA, ESA missions, space exploration, and planetary science.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-red-200 bg-red-50/40">
+                    <div className="font-semibold text-red-900 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+                      Wikinews Open Wire
+                    </div>
+                    <div className="text-[11px] text-neutral-600 mt-0.5">Wikimedia Foundation open-source collaborative journalism and neutral international updates.</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-red-200 bg-red-50/40">
+                    <div className="font-semibold text-red-900 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+                      DEV Community Real-Time News
+                    </div>
+                    <div className="text-[11px] text-neutral-600 mt-0.5">Software developer ecosystem news, modern web architecture, and programming insights.</div>
                   </div>
                 </div>
               </div>

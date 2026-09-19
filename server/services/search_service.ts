@@ -59,7 +59,7 @@ export class SearchService {
     let categoryCounts: Record<ResourceCategory, number> = {
       all: 0, images: 0, videos: 0, gifs: 0, music: 0, audio: 0, papers: 0, books: 0,
       maps: 0, weather: 0, datasets: 0, art: 0, code: 0, finance: 0, biodiversity: 0,
-      knowledge: 0, food: 0, games: 0, '3d': 0, nasa: 0
+      knowledge: 0, food: 0, games: 0, '3d': 0, nasa: 0, news: 0
     };
 
     const isCacheExpired = cachedEntry && (Date.now() - cachedEntry.timestamp > APP_CONFIG.search.cacheTtlMs);

@@ -776,13 +776,15 @@ function computeCategoryCounts(items: ResourceItem[]): Record<ResourceCategory, 
     food: items.filter((i) => i.category === 'food').length,
     games: items.filter((i) => i.category === 'games').length,
     '3d': items.filter((i) => i.category === '3d').length,
-    nasa: items.filter((i) => i.category === 'nasa').length
+    nasa: items.filter((i) => i.category === 'nasa').length,
+    news: items.filter((i) => i.category === 'news').length
   };
 }
 
 export function getAllCategories(): { id: ResourceCategory; label: string; icon: string }[] {
   return [
     { id: 'all', label: 'All Resources', icon: '✨' },
+    { id: 'news', label: 'Latest News', icon: '📰' },
     { id: 'nasa', label: 'NASA Space', icon: '🚀' },
     { id: 'images', label: 'Images', icon: '🖼️' },
     { id: 'videos', label: 'Videos', icon: '🎬' },
