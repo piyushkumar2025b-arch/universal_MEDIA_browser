@@ -72,13 +72,16 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'videos':
       return {
         category: 'videos',
-        primaryProviders: ['archive_classic_western_movies', 'archive_classic_horror', 'archive_silent_comedy', 'archive_early_cgi', 'archive_drive_in_intermissions', 'archive_classic_sci_fi_movies', 'archive_film_noir', 'archive_speedruns', 'archive_animation_shorts', 'archive_movie_trailers', 'archive_open_movies', 'archive_prelinger_films', 'archive_newsreels', 'archive_silent_films', 'archive_computer_chronicles', 'archive_animation_classics', 'archive_tv_commercials', 'youtube_video', 'dailymotion_video', 'vimeo_video', 'peertube_video', 'archive_feature_films', 'archive_cartoons', 'archive_prelinger', 'tvmaze_video', 'wikimedia_video', 'internet_archive_video', 'nasa_video'],
+        primaryProviders: ['archive_pre_code_cinema', 'archive_classic_western_movies', 'archive_classic_horror', 'archive_silent_comedy', 'archive_early_cgi', 'archive_drive_in_intermissions', 'archive_classic_sci_fi_movies', 'archive_film_noir', 'archive_speedruns', 'archive_animation_shorts', 'archive_movie_trailers', 'archive_open_movies', 'archive_prelinger_films', 'archive_newsreels', 'archive_silent_films', 'archive_computer_chronicles', 'archive_animation_classics', 'archive_tv_commercials', 'youtube_video', 'dailymotion_video', 'vimeo_video', 'peertube_video', 'archive_feature_films', 'archive_cartoons', 'archive_prelinger', 'tvmaze_video', 'wikimedia_video', 'internet_archive_video', 'nasa_video'],
         fallbackProviders: ['pexels_video', 'pixabay_video'],
-        planSummary: 'Primary: Classic Western Cinema + Gothic Horror + Silent Slapstick + SIGGRAPH CGI + Drive-In Intermissions + Sci-Fi + Film Noir + Speedruns + Cartoons + Prelinger + YouTube.'
+        planSummary: 'Primary: Pre-Code Hollywood Cinema + Classic Western Cinema + Gothic Horror + Silent Slapstick + SIGGRAPH CGI + Sci-Fi + Film Noir + Prelinger + YouTube.'
       };
 
     case 'music': {
       const primary = [
+        'somafm_radio',
+        'archive_grateful_dead',
+        'archive_modular_synthesizers',
         'archive_delta_blues',
         'archive_78rpm_jazz',
         'apple_music',
@@ -99,12 +102,16 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         category: 'music',
         primaryProviders: primary,
         fallbackProviders: fallback,
-        planSummary: 'Primary: Early Acoustic Delta Blues + Great 78 Project Early Jazz & Blues + Apple Music + Musopen Symphony + Free Music Archive + Radio Browser + 78rpm + Live Music.'
+        planSummary: 'Primary: SomaFM Live Radio + Grateful Dead Live Vault + Modular Synthesizers + Early Acoustic Delta Blues + Great 78 Jazz + Apple Music + Musopen + Free Music Archive.'
       };
     }
 
     case 'audio': {
       const primary = [
+        'somafm_radio',
+        'archive_grateful_dead',
+        'archive_wax_cylinders',
+        'archive_modular_synthesizers',
         'archive_dragnet_radio',
         'archive_jack_benny_comedy',
         'archive_vintage_sound_effects',
@@ -137,7 +144,7 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         category: 'audio',
         primaryProviders: primary,
         fallbackProviders: fallback,
-        planSummary: 'Primary: CBS Radio Mystery Theater + Spoken Word Literature & Poetry + Apollo Audio Loops + Historic Radio News + Old Time Radio + Apple Podcasts.'
+        planSummary: 'Primary: SomaFM Channels + Grateful Dead Vault + Acoustic Wax Cylinders + Modular Synths + CBS Radio Mystery Theater + Apollo Loops + Old Time Radio.'
       };
     }
 
@@ -168,61 +175,61 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'books':
       return {
         category: 'books',
-        primaryProviders: ['archive_scientific_american_vintage', 'archive_vintage_magic_books', 'archive_weird_tales', 'archive_trade_catalogs', 'loc_chronicling_america', 'archive_railroad_history', 'archive_flight_manuals', 'archive_computer_manuals', 'archive_golden_age_comics', 'archive_medical_heritage', 'archive_nasa_historical', 'archive_retro_magazines', 'archive_folkscanomy', 'google_books', 'open_library', 'archive_pulp_scifi', 'gutendex', 'internet_archive_books', 'wikibooks', 'archive_childrens_books', 'archive_comics', 'poetrydb'],
+        primaryProviders: ['archive_vintage_computer_magazines', 'archive_pulp_sci_fi', 'archive_scientific_american_vintage', 'archive_vintage_magic_books', 'archive_weird_tales', 'archive_trade_catalogs', 'loc_chronicling_america', 'archive_railroad_history', 'archive_flight_manuals', 'archive_computer_manuals', 'archive_golden_age_comics', 'archive_medical_heritage', 'archive_nasa_historical', 'archive_retro_magazines', 'archive_folkscanomy', 'google_books', 'open_library', 'archive_pulp_scifi', 'gutendex', 'internet_archive_books', 'wikibooks', 'archive_childrens_books', 'archive_comics', 'poetrydb'],
         fallbackProviders: [],
-        planSummary: 'Primary: Scientific American Historical Periodicals + Houdini Magic Treatises + Weird Tales Pulp + Industrial Trade Catalogs + LOC Chronicling America + Google Books.'
+        planSummary: 'Primary: Vintage Computer Magazines (Byte/Compute!) + Pulp Sci-Fi (Galaxy) + Scientific American Historical Periodicals + Houdini Magic + Google Books.'
       };
 
     case 'maps':
       return {
         category: 'maps',
-        primaryProviders: ['archive_usgs_topomaps', 'archive_david_rumsey_maps', 'nominatim', 'photon_maps', 'archive_historic_maps', 'wikivoyage', 'open_meteo_geocoding', 'open_meteo_elevation', 'usgs'],
+        primaryProviders: ['archive_historic_atlases', 'archive_usgs_topomaps', 'archive_david_rumsey_maps', 'nominatim', 'photon_maps', 'archive_historic_maps', 'wikivoyage', 'open_meteo_geocoding', 'open_meteo_elevation', 'usgs'],
         fallbackProviders: [],
-        planSummary: 'Primary: USGS Topographic Quadrangle Maps + Antique World Maps & Cartography + OpenStreetMap Nominatim + Photon Komoot Engine + Historic Maps.'
+        planSummary: 'Primary: Antique Cartography & World Atlases + USGS Topographic Quadrangle Maps + Antique Maps + OpenStreetMap Nominatim + Photon Komoot Engine.'
       };
 
     case 'weather':
       return {
         category: 'weather',
-        primaryProviders: ['open_meteo', 'open_meteo_elevation', 'open_meteo_air', 'open_meteo_marine'],
+        primaryProviders: ['noaa_weather_alerts', 'open_meteo', 'open_meteo_elevation', 'open_meteo_air', 'open_meteo_marine'],
         fallbackProviders: [],
-        planSummary: 'Primary: Open-Meteo Atmospheric Forecast + Terrestrial Elevation & Altitudes + Air Quality Index + Ocean Wave & Marine Model.'
+        planSummary: 'Primary: NOAA NWS Severe Weather & Disaster Alerts + Open-Meteo Atmospheric Forecast + Terrestrial Elevation + Air Quality Index + Marine Model.'
       };
 
     case 'art':
       return {
         category: 'art',
-        primaryProviders: ['archive_architectural_pattern_books', 'archive_tin_pan_alley', 'archive_auto_brochures', 'loc_digital_collections', 'archive_demoscene', 'archive_vintage_fashion', 'archive_sheet_music', 'archive_bthl_architecture', 'archive_vintage_posters', 'smk_art', 'smithsonian_open_access', 'artic', 'met_museum', 'cleveland_art', 'smk_images', 'vam_images', 'europeana_images', 'wellcome_images'],
+        primaryProviders: ['archive_usda_pomology', 'archive_architectural_pattern_books', 'archive_tin_pan_alley', 'archive_auto_brochures', 'loc_digital_collections', 'archive_demoscene', 'archive_vintage_fashion', 'archive_sheet_music', 'archive_bthl_architecture', 'archive_vintage_posters', 'smk_art', 'smithsonian_open_access', 'artic', 'met_museum', 'cleveland_art', 'smk_images', 'vam_images', 'europeana_images', 'wellcome_images'],
         fallbackProviders: [],
-        planSummary: 'Primary: Victorian Architectural Pattern Handbooks + Tin Pan Alley Lithographs + Classic Automotive Design + Library of Congress + Demoscene Art + Vintage Fashion + Posters + SMK + Smithsonian + AIC.'
+        planSummary: 'Primary: USDA Botanical Watercolors & Pomology + Victorian Architectural Patterns + Tin Pan Alley + Classic Automotive Design + Smithsonian + AIC.'
       };
 
     case 'datasets':
       return {
         category: 'datasets',
-        primaryProviders: ['rest_countries_geo', 'archive_astronomy_heritage', 'nih_clinical_trials', 'nih_pubchem', 'archive_us_patents', 'nasa_eonet', 'archive_usgs_bulletins', 'data_gov_ca', 'data_gov_uk', 'data_gov', 'huggingface', 'harvard_dataverse', 'cern_opendata', 'zenodo_datasets', 'world_bank', 'nasa_exoplanets', 'usgs_earthquakes'],
+        primaryProviders: ['openfda_devices', 'openfda_drugs', 'openfda_recalls', 'rest_countries_geo', 'archive_astronomy_heritage', 'nih_clinical_trials', 'nih_pubchem', 'archive_us_patents', 'nasa_eonet', 'archive_usgs_bulletins', 'data_gov_ca', 'data_gov_uk', 'data_gov', 'huggingface', 'harvard_dataverse', 'cern_opendata', 'zenodo_datasets', 'world_bank', 'nasa_exoplanets', 'usgs_earthquakes'],
         fallbackProviders: [],
-        planSummary: 'Primary: REST Countries Geopolitical Profile + Historical Observatory Sky Surveys + NIH ClinicalTrials.gov + NIH PubChem + US Patents + NASA EONET + USGS Bulletins + Canada/UK Open Data + Data.gov + CERN.'
+        planSummary: 'Primary: openFDA Medical Devices 510(k) + openFDA Pharmaceuticals + Safety Recalls + REST Countries + NIH ClinicalTrials.gov + PubChem + Data.gov.'
       };
 
     case 'code':
       return {
         category: 'code',
-        primaryProviders: ['archive_ham_radio_technical', 'archive_historic_software', 'arch_linux_pkgs', 'clojars_packages', 'nuget_packages', 'metacpan_perl', 'hex_pm', 'github', 'pub_dev', 'docker_hub', 'maven_central', 'pypi', 'rubygems', 'packagist', 'homebrew', 'crates_io', 'gitlab', 'cdnjs', 'npm', 'hn_code'],
+        primaryProviders: ['archive_vintage_computer_magazines', 'archive_ham_radio_technical', 'archive_historic_software', 'arch_linux_pkgs', 'clojars_packages', 'nuget_packages', 'metacpan_perl', 'hex_pm', 'github', 'pub_dev', 'docker_hub', 'maven_central', 'pypi', 'rubygems', 'packagist', 'homebrew', 'crates_io', 'gitlab', 'cdnjs', 'npm', 'hn_code'],
         fallbackProviders: [],
-        planSummary: 'Primary: Vintage Ham Radio Vacuum Tube Schematics + Historical Software + Arch Linux + Clojars + NuGet + MetaCPAN + Hex.pm + GitHub + pub.dev + Docker Hub.'
+        planSummary: 'Primary: Vintage Computer Code & Articles + Ham Radio Technical Manuals + Historical Software + Arch Linux + Clojars + NuGet + MetaCPAN + GitHub + Docker Hub.'
       };
 
     case 'biodiversity':
       return {
         category: 'biodiversity',
-        primaryProviders: ['archive_vintage_seed_catalogs', 'archive_historic_microscopy', 'archive_naturalist_expeditions', 'archive_bhl_botany', 'catalogue_of_life', 'itis_taxonomy', 'paleo_db', 'gbif', 'inaturalist_bio', 'dog_ceo', 'worms_marine', 'uniprot', 'chembl', 'gbif_images'],
+        primaryProviders: ['archive_usda_pomology', 'archive_vintage_seed_catalogs', 'archive_historic_microscopy', 'archive_naturalist_expeditions', 'archive_bhl_botany', 'catalogue_of_life', 'itis_taxonomy', 'paleo_db', 'gbif', 'inaturalist_bio', 'dog_ceo', 'worms_marine', 'uniprot', 'chembl', 'gbif_images'],
         fallbackProviders: [],
-        planSummary: 'Primary: Heirloom Seed & Nursery Catalogs + Historic Microscopy Atlases + Naturalist Field Notes + Biodiversity Heritage Library (BHL) + Catalogue of Life + ITIS Taxonomy + Paleobiology Database + GBIF.'
+        planSummary: 'Primary: USDA Pomology Botanical Watercolors + Heirloom Seed Catalogs + Historic Microscopy Atlases + BHL Botany + Catalogue of Life + GBIF.'
       };
 
     case 'knowledge': {
-      const primary = ['archive_computer_history', 'wikipedia', 'wikidata', 'wikivoyage', 'wiktionary', 'dbpedia', 'wikisource', 'wikiquote'];
+      const primary = ['openfda_drugs', 'archive_aviation_history', 'archive_computer_history', 'wikipedia', 'wikidata', 'wikivoyage', 'wiktionary', 'dbpedia', 'wikisource', 'wikiquote'];
       const fallback: string[] = [];
       const hasGoogle = !!(getGoogleApiKey() && getGoogleSearchEngineId());
       if (hasGoogle) {
@@ -235,8 +242,8 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         primaryProviders: primary,
         fallbackProviders: fallback,
         planSummary: hasGoogle
-          ? 'Primary: Google Custom Search + Computer History Museum + Wikipedia + Wikidata + Wikivoyage + Wiktionary + DBpedia + Wikisource + Wikiquote.'
-          : 'Primary: Computer History Museum Archive + Wikipedia + Wikidata + Wikivoyage + Wiktionary + DBpedia + Wikisource + Wikiquote. Fallback: Google Custom Search.'
+          ? 'Primary: Google Custom Search + openFDA Pharmaceutical Monographs + Aviation History + Computer History Museum + Wikipedia + Wikidata.'
+          : 'Primary: openFDA Drug Monographs + Aeronautics History Manuals + Computer History Museum + Wikipedia + Wikidata + DBpedia. Fallback: Google Custom Search.'
       };
     }
 
@@ -259,9 +266,9 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'games':
       return {
         category: 'games',
-        primaryProviders: ['archive_wargame_simulations', 'archive_vintage_boardgames', 'archive_msdos_games', 'archive_arcade_games', 'pokeapi', 'scryfall', 'yugioh', 'freetogame', 'dnd5e_srd', 'archive_pcgames', 'open5e_rpg', 'opentdb'],
+        primaryProviders: ['archive_video_game_design', 'archive_wargame_simulations', 'archive_vintage_boardgames', 'archive_msdos_games', 'archive_arcade_games', 'pokeapi', 'scryfall', 'yugioh', 'freetogame', 'dnd5e_srd', 'archive_pcgames', 'open5e_rpg', 'opentdb'],
         fallbackProviders: [],
-        planSummary: 'Primary: Tabletop Conflict Simulation & Wargame Manuals + Vintage Board Game Box Art & Rules + Internet Archive MS-DOS Games + Coin-Op Arcade + PokéAPI + Scryfall MTG + Yu-Gi-Oh! Cards + FreeToGame.'
+        planSummary: 'Primary: Video Game Design Documents & Source Archives + Tabletop Simulation Manuals + Vintage Board Games + MS-DOS Games + Coin-Op Arcade + PokéAPI + Scryfall MTG.'
       };
 
     case 'nasa': {
@@ -344,6 +351,12 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         'bbc_world_news',
         'the_guardian_news',
         'al_jazeera_news',
+        'dw_news',
+        'france24_news',
+        'ars_technica_news',
+        'the_register_news',
+        'nasa_breaking_news',
+        'openfda_recalls',
         'npr_news',
         'hacker_news_live',
         'techcrunch_news',
@@ -360,7 +373,7 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         category: 'news',
         primaryProviders: primary,
         fallbackProviders: fallback,
-        planSummary: 'Real-Time Global News Wire: Google News + BBC World + The Guardian + Al Jazeera + NPR + Hacker News Live + TechCrunch + Spaceflight News + Wikinews.'
+        planSummary: 'Real-Time Global News Wire: Google News + BBC World + The Guardian + Al Jazeera + Deutsche Welle + France 24 + Ars Technica + The Register + NASA + openFDA Recalls.'
       };
     }
 
@@ -369,6 +382,26 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
       const allPrimary = [
         'google_news',
         'bbc_world_news',
+        'dw_news',
+        'france24_news',
+        'ars_technica_news',
+        'the_register_news',
+        'nasa_breaking_news',
+        'openfda_drugs',
+        'openfda_devices',
+        'openfda_recalls',
+        'noaa_weather_alerts',
+        'somafm_radio',
+        'archive_grateful_dead',
+        'archive_wax_cylinders',
+        'archive_vintage_computer_magazines',
+        'archive_video_game_design',
+        'archive_aviation_history',
+        'archive_historic_atlases',
+        'archive_pre_code_cinema',
+        'archive_pulp_sci_fi',
+        'archive_usda_pomology',
+        'archive_modular_synthesizers',
         'wikipedia',
         'smithsonian_open_access',
         'youtube_video',
@@ -541,8 +574,14 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         allPrimary.unshift(
           'google_news',
           'bbc_world_news',
+          'dw_news',
+          'france24_news',
           'the_guardian_news',
           'al_jazeera_news',
+          'ars_technica_news',
+          'the_register_news',
+          'nasa_breaking_news',
+          'openfda_recalls',
           'npr_news',
           'hacker_news_live',
           'techcrunch_news',
