@@ -44,6 +44,8 @@ router.get('/download-proxy', (req, res) => downloadController.proxyDownload(req
 // System Telemetry, Health & Specifications
 // ==========================================
 router.get('/v1/system/providers', (req, res) => systemController.getProviders(req, res));
+router.get('/providers', (req, res) => systemController.getProviders(req, res));
+router.get('/v1/providers', (req, res) => systemController.getProviders(req, res));
 router.post('/v1/system/test-provider/:id', (req, res) => systemController.testProvider(req, res));
 router.get('/v1/system/test-provider/:id', (req, res) => systemController.testProvider(req, res));
 router.get('/v1/system/provider-test', (req, res) => systemController.testProvider(req, res));

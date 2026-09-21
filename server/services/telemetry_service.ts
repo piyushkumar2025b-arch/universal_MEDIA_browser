@@ -32,6 +32,8 @@ export class TelemetryService {
     return {
       status: 'operational',
       policy: 'STRICT_REAL_TIME_RETRIEVAL_ONLY',
+      totalRegistered: list.length,
+      totalActive: list.filter(p => p.status !== 'offline').length,
       providers: list,
       timestamp: new Date().toISOString()
     };

@@ -72,13 +72,15 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'videos':
       return {
         category: 'videos',
-        primaryProviders: ['archive_pre_code_cinema', 'archive_classic_western_movies', 'archive_classic_horror', 'archive_silent_comedy', 'archive_early_cgi', 'archive_drive_in_intermissions', 'archive_classic_sci_fi_movies', 'archive_film_noir', 'archive_speedruns', 'archive_animation_shorts', 'archive_movie_trailers', 'archive_open_movies', 'archive_prelinger_films', 'archive_newsreels', 'archive_silent_films', 'archive_computer_chronicles', 'archive_animation_classics', 'archive_tv_commercials', 'youtube_video', 'dailymotion_video', 'vimeo_video', 'peertube_video', 'archive_feature_films', 'archive_cartoons', 'archive_prelinger', 'tvmaze_video', 'wikimedia_video', 'internet_archive_video', 'nasa_video'],
+        primaryProviders: ['variety_film_wire', 'archive_pre_code_cinema', 'archive_classic_western_movies', 'archive_classic_horror', 'archive_silent_comedy', 'archive_early_cgi', 'archive_drive_in_intermissions', 'archive_classic_sci_fi_movies', 'archive_film_noir', 'archive_speedruns', 'archive_animation_shorts', 'archive_movie_trailers', 'archive_open_movies', 'archive_prelinger_films', 'archive_newsreels', 'archive_silent_films', 'archive_computer_chronicles', 'archive_animation_classics', 'archive_tv_commercials', 'youtube_video', 'dailymotion_video', 'vimeo_video', 'peertube_video', 'archive_feature_films', 'archive_cartoons', 'archive_prelinger', 'tvmaze_video', 'wikimedia_video', 'internet_archive_video', 'nasa_video'],
         fallbackProviders: ['pexels_video', 'pixabay_video'],
-        planSummary: 'Primary: Pre-Code Hollywood Cinema + Classic Western Cinema + Gothic Horror + Silent Slapstick + SIGGRAPH CGI + Sci-Fi + Film Noir + Prelinger + YouTube.'
+        planSummary: 'Primary: Variety Hollywood Wire + Pre-Code Hollywood Cinema + Classic Western Cinema + Gothic Horror + Silent Slapstick + SIGGRAPH CGI + Sci-Fi + Film Noir + Prelinger + YouTube.'
       };
 
     case 'music': {
       const primary = [
+        'rollingstone_music_wire',
+        'billboard_chart_news',
         'somafm_radio',
         'archive_grateful_dead',
         'archive_modular_synthesizers',
@@ -103,7 +105,7 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         category: 'music',
         primaryProviders: primary,
         fallbackProviders: fallback,
-        planSummary: 'Primary: SomaFM Live Radio + Grateful Dead Live Vault + Modular Synthesizers + Early Acoustic Delta Blues + Great 78 Jazz + Apple Music + Musopen + Free Music Archive.'
+        planSummary: 'Primary: Rolling Stone Music Wire + Billboard Charts Wire + SomaFM Live Radio + Grateful Dead Vault + Modular Synthesizers + Delta Blues + Apple Music.'
       };
     }
 
@@ -168,9 +170,9 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'papers':
       return {
         category: 'papers',
-        primaryProviders: ['openalex', 'nasa_ntrs', 'inspire_hep', 'hal_open_science', 'ncbi_pmc', 'europe_pmc', 'crossref', 'arxiv', 'pubmed', 'zenodo', 'plos', 'doaj'],
+        primaryProviders: ['physorg_physics', 'medicalxpress_health', 'openalex', 'nasa_ntrs', 'inspire_hep', 'hal_open_science', 'ncbi_pmc', 'europe_pmc', 'crossref', 'arxiv', 'pubmed', 'zenodo', 'plos', 'doaj'],
         fallbackProviders: [],
-        planSummary: 'Primary: OpenAlex + NASA NTRS + PubMed Central + INSPIRE-HEP + HAL Open Science + Europe PMC + Crossref DOI + arXiv + Zenodo.'
+        planSummary: 'Primary: Phys.org Physical Sciences + Medical Xpress Clinical Wire + OpenAlex + NASA NTRS + PubMed Central + INSPIRE-HEP + HAL Open Science + arXiv.'
       };
 
     case 'books':
@@ -184,25 +186,25 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'maps':
       return {
         category: 'maps',
-        primaryProviders: ['iss_current_location', 'archive_historic_atlases', 'archive_usgs_topomaps', 'archive_david_rumsey_maps', 'nominatim', 'photon_maps', 'archive_historic_maps', 'wikivoyage', 'open_meteo_geocoding', 'open_meteo_elevation', 'usgs'],
+        primaryProviders: ['archive_civil_war_historic_maps', 'iss_current_location', 'archive_historic_atlases', 'archive_usgs_topomaps', 'archive_david_rumsey_maps', 'nominatim', 'photon_maps', 'archive_historic_maps', 'wikivoyage', 'open_meteo_geocoding', 'open_meteo_elevation', 'usgs'],
         fallbackProviders: [],
-        planSummary: 'Primary: WhereTheISS.at Live Space Station Telemetry + Antique Cartography & World Atlases + USGS Topographic Quadrangle Maps + OpenStreetMap Nominatim.'
+        planSummary: 'Primary: American Civil War Battlefield Cartography + ISS Telemetry + Antique Atlases + USGS Quadrangle Maps + Nominatim.'
       };
 
     case 'weather':
       return {
         category: 'weather',
-        primaryProviders: ['noaa_weather_alerts', 'open_meteo', 'open_meteo_elevation', 'open_meteo_air', 'open_meteo_marine'],
+        primaryProviders: ['scidaily_earth_climate', 'noaa_weather_alerts', 'open_meteo', 'open_meteo_elevation', 'open_meteo_air', 'open_meteo_marine'],
         fallbackProviders: [],
-        planSummary: 'Primary: NOAA NWS Severe Weather & Disaster Alerts + Open-Meteo Atmospheric Forecast + Terrestrial Elevation + Air Quality Index + Marine Model.'
+        planSummary: 'Primary: ScienceDaily Earth & Climate Research Wire + NOAA NWS Weather Alerts + Open-Meteo Atmospheric Forecast + Terrestrial Elevation + Marine.'
       };
 
     case 'art':
       return {
         category: 'art',
-        primaryProviders: ['archive_world_war_posters', 'archive_usda_pomology', 'archive_architectural_pattern_books', 'archive_tin_pan_alley', 'archive_auto_brochures', 'loc_digital_collections', 'archive_demoscene', 'archive_vintage_fashion', 'archive_sheet_music', 'archive_bthl_architecture', 'archive_vintage_posters', 'smk_art', 'smithsonian_open_access', 'artic', 'met_museum', 'cleveland_art', 'smk_images', 'vam_images', 'europeana_images', 'wellcome_images'],
+        primaryProviders: ['archive_ancient_numismatics', 'smithsonian_mag_heritage', 'archive_world_war_posters', 'archive_usda_pomology', 'archive_architectural_pattern_books', 'archive_tin_pan_alley', 'archive_auto_brochures', 'loc_digital_collections', 'archive_demoscene', 'archive_vintage_fashion', 'archive_sheet_music', 'archive_bthl_architecture', 'archive_vintage_posters', 'smk_art', 'smithsonian_open_access', 'artic', 'met_museum', 'cleveland_art', 'smk_images', 'vam_images', 'europeana_images', 'wellcome_images'],
         fallbackProviders: [],
-        planSummary: 'Primary: World War Vintage Propaganda Posters + USDA Pomology Watercolors + Victorian Architectural Patterns + Tin Pan Alley + Smithsonian + AIC.'
+        planSummary: 'Primary: Ancient Numismatics Archive + Smithsonian Magazine Heritage + World War Propaganda Posters + USDA Pomology Watercolors + Victorian Architectural Patterns.'
       };
 
     case 'datasets':
@@ -216,9 +218,9 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'code':
       return {
         category: 'code',
-        primaryProviders: ['hackaday_hardware', 'phoronix_hardware', 'archive_vintage_computer_magazines', 'archive_ham_radio_technical', 'archive_historic_software', 'arch_linux_pkgs', 'clojars_packages', 'nuget_packages', 'metacpan_perl', 'hex_pm', 'github', 'pub_dev', 'docker_hub', 'maven_central', 'pypi', 'rubygems', 'packagist', 'homebrew', 'crates_io', 'gitlab', 'cdnjs', 'npm', 'hn_code'],
+        primaryProviders: ['the_verge_tech', 'engadget_tech', 'techradar_hardware', 'cnet_tech_reviews', 'archive_vintage_radio_schematics', 'hackaday_hardware', 'phoronix_hardware', 'archive_vintage_computer_magazines', 'archive_ham_radio_technical', 'archive_historic_software', 'arch_linux_pkgs', 'clojars_packages', 'nuget_packages', 'metacpan_perl', 'hex_pm', 'github', 'pub_dev', 'docker_hub', 'maven_central', 'pypi', 'rubygems', 'packagist', 'homebrew', 'crates_io', 'gitlab', 'cdnjs', 'npm', 'hn_code'],
         fallbackProviders: [],
-        planSummary: 'Primary: Hackaday Open Hardware & Reverse Engineering + Phoronix Linux Benchmarks + Vintage Computer Code + Historic Software + Arch Linux + GitHub.'
+        planSummary: 'Primary: The Verge Wire + Engadget Hardware + TechRadar Benchmarks + CNET Tech + Vintage Radio Schematics + Hackaday + Phoronix Linux + GitHub.'
       };
 
     case 'biodiversity':
@@ -230,7 +232,7 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
       };
 
     case 'knowledge': {
-      const primary = ['archive_historical_patent_diagrams', 'openfda_drugs', 'archive_aviation_history', 'archive_computer_history', 'wikipedia', 'wikidata', 'wikivoyage', 'wiktionary', 'dbpedia', 'wikisource', 'wikiquote'];
+      const primary = ['eff_digital_rights', 'smithsonian_mag_heritage', 'archive_historical_patent_diagrams', 'openfda_drugs', 'archive_aviation_history', 'archive_computer_history', 'wikipedia', 'wikidata', 'wikivoyage', 'wiktionary', 'dbpedia', 'wikisource', 'wikiquote'];
       const fallback: string[] = [];
       const hasGoogle = !!(getGoogleApiKey() && getGoogleSearchEngineId());
       if (hasGoogle) {
@@ -243,33 +245,33 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         primaryProviders: primary,
         fallbackProviders: fallback,
         planSummary: hasGoogle
-          ? 'Primary: Google Custom Search + Historic US Patent Blueprints + openFDA Drug Monographs + Aviation History + Computer History Museum + Wikipedia.'
-          : 'Primary: Historic US Patent Blueprints + openFDA Drug Monographs + Aeronautics History Manuals + Wikipedia + Wikidata. Fallback: Google Custom Search.'
+          ? 'Primary: Google Custom Search + EFF Digital Rights + Smithsonian Magazine + Historic US Patent Blueprints + openFDA Drug Monographs + Wikipedia.'
+          : 'Primary: EFF Digital Rights + Smithsonian Magazine + Historic US Patent Blueprints + openFDA Monographs + Wikipedia + Wikidata.'
       };
     }
 
     case 'finance':
       return {
         category: 'finance',
-        primaryProviders: ['coinpaprika_crypto', 'cnbc_markets', 'frankfurter', 'coingecko', 'exchange_rates'],
+        primaryProviders: ['yahoo_finance_markets', 'cointelegraph_crypto', 'coindesk_markets', 'coinpaprika_crypto', 'cnbc_markets', 'frankfurter', 'coingecko', 'exchange_rates'],
         fallbackProviders: [],
-        planSummary: 'Primary: CoinPaprika Crypto Index + CNBC Financial Markets + Frankfurter / ECB Rates + CoinGecko Digital Assets + Open Exchange Rates.'
+        planSummary: 'Primary: Yahoo Finance Wire + Cointelegraph Web3 Wire + CoinDesk Markets + CoinPaprika Crypto Index + CNBC Financial Markets + Frankfurter / ECB Rates.'
       };
 
     case 'food':
       return {
         category: 'food',
-        primaryProviders: ['archive_brewing_history', 'archive_historical_menus', 'archive_historic_cookbooks', 'openfoodfacts', 'fruityvice', 'themealdb', 'thecocktaildb', 'openbrewerydb'],
+        primaryProviders: ['archive_historic_culinary_ephemera', 'archive_brewing_history', 'archive_historical_menus', 'archive_historic_cookbooks', 'openfoodfacts', 'fruityvice', 'themealdb', 'thecocktaildb', 'openbrewerydb'],
         fallbackProviders: [],
-        planSummary: 'Primary: Historic Brewing Treatises & Fermentation Heritage + Historical Restaurant Menus + Historic Cookbooks + Open Food Facts + Fruityvice + TheMealDB + TheCocktailDB + Open Brewery DB.'
+        planSummary: 'Primary: Historic Culinary Treatises & Rare Recipes + Historic Brewing Heritage + Historic Restaurant Menus + Open Food Facts + TheMealDB.'
       };
 
     case 'games':
       return {
         category: 'games',
-        primaryProviders: ['eurogamer_feed', 'rockpapershotgun_feed', 'archive_video_game_design', 'archive_wargame_simulations', 'archive_vintage_boardgames', 'archive_msdos_games', 'archive_arcade_games', 'pokeapi', 'scryfall', 'yugioh', 'freetogame', 'dnd5e_srd', 'archive_pcgames', 'open5e_rpg', 'opentdb'],
+        primaryProviders: ['polygon_gaming', 'pcgamer_hardware', 'eurogamer_feed', 'rockpapershotgun_feed', 'archive_video_game_design', 'archive_wargame_simulations', 'archive_vintage_boardgames', 'archive_msdos_games', 'archive_arcade_games', 'pokeapi', 'scryfall', 'yugioh', 'freetogame', 'dnd5e_srd', 'archive_pcgames', 'open5e_rpg', 'opentdb'],
         fallbackProviders: [],
-        planSummary: 'Primary: Eurogamer News + Rock Paper Shotgun PC & Indie Analysis + Video Game Design Documents + Tabletop Simulation Manuals + MS-DOS Games + PokéAPI.'
+        planSummary: 'Primary: Polygon Gaming Wire + PC Gamer Rig & GPU Wire + Eurogamer News + Rock Paper Shotgun + Video Game Design Archives + PokéAPI.'
       };
 
     case 'nasa': {
@@ -321,6 +323,8 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         case 'all':
         default:
           primary = [
+            'spacenews_aerospace',
+            'universetoday_astronomy',
             'nasa',
             'nasa_apod',
             'nasa_mars_rovers',
@@ -348,6 +352,12 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
 
     case 'news': {
       const primary = [
+        'latimes_world_news',
+        'wsj_world_wire',
+        'propublica_investigations',
+        'bellingcat_osint',
+        'theintercept_dispatches',
+        'defensenews_global',
         'cbs_news',
         'abc_news',
         'time_magazine',
@@ -385,13 +395,19 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         category: 'news',
         primaryProviders: primary,
         fallbackProviders: fallback,
-        planSummary: 'Real-Time Global News Wire: CBS + ABC + TIME + The Independent + CNBC + Politico + WIRED + MIT Tech Review + ScienceDaily + Nature + Google News.'
+        planSummary: 'Real-Time Global News Wire: LA Times + WSJ + ProPublica + Bellingcat + Intercept + CBS + ABC + TIME + The Independent + CNBC + Politico + WIRED.'
       };
     }
 
     case 'all':
     default: {
       const allPrimary = [
+        'latimes_world_news',
+        'wsj_world_wire',
+        'yahoo_finance_markets',
+        'the_verge_tech',
+        'polygon_gaming',
+        'physorg_physics',
         'cbs_news',
         'abc_news',
         'time_magazine',

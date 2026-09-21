@@ -86971,5 +86971,1719 @@
         }
       }
     ]
+  },
+  {
+    "query": "technology",
+    "category": "news",
+    "timestamp": 1790007267246,
+    "deepPagesFetched": 11,
+    "items": [
+      {
+        "id": "wikinews-255058",
+        "title": "Facebook to share the technology 'behind its servers'",
+        "category": "news",
+        "description": "Wide Web Facebook announced Thursday it will begin to share some of the technology from their social network. The company indicated it would like to share",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800&auto=format&fit=crop&q=80",
+        "previewUrl": "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800&auto=format&fit=crop&q=80",
+        "downloadUrl": "https://en.wikinews.org/wiki/Facebook_to_share_the_technology_'behind_its_servers'",
+        "source": {
+          "providerId": "wikinews_open",
+          "providerName": "Wikinews Open Source Journalism",
+          "resourceUrl": "https://en.wikinews.org/wiki/Facebook_to_share_the_technology_'behind_its_servers'"
+        },
+        "license": {
+          "type": "Creative Commons BY",
+          "url": "https://en.wikinews.org/wiki/Facebook_to_share_the_technology_'behind_its_servers'",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Wikimedia Foundation",
+          "publishedAt": "2024-12-18T11:44:08Z",
+          "isLiveNews": true
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "gnews-aHR0cHM6Ly9uZXdz",
+        "title": "Ecuador to use United Arab Emirates AI technology for border security - upi.com",
+        "category": "news",
+        "description": "Ecuador to use United Arab Emirates AI technology for border security  upi.com",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&auto=format&fit=crop&q=80",
+        "previewUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&auto=format&fit=crop&q=80",
+        "downloadUrl": "https://news.google.com/rss/articles/CBMingFBVV95cUxON2tucmlzY3pLVWdZdVFJaHdQODFYVVJ0dVdpQTRCRndjY0lyb3VUZGJySWFfMHlaTHZNS1JPQ3dFazhqdllwYk55LU5PZDRUeWYzVWRVYXNuaFp5TmVZeGFEblltOEFmZEVmbVJoMUlHS3BFVWN4b3poSXkxRVdRVGcxRU10WVI3QUM3Zl83ZC1TaW1QYmJRX25TcFJBZ9IBowFBVV95cUxPVENVZldXTnZ2NjRLTUl1azY2LU1uMGZLRERpNXQ2clkwTUNDT0hzVWlIVzB0MXVOOU9kajRqT1BCQTEwQ3l5cENxUlhjdnNQd2dxM2N4R0dRSVdEUkF5S0VmZ3BIdXdVQ1ZUOVc0ZzVORWdIZHZsLXZSSG54LVd1dHUyblFkZ2RlSmR0TnA1YXNFbzd0bnI4UXNDbDdWU1lfQTlV?oc=5",
+        "source": {
+          "providerId": "google_news",
+          "providerName": "Google News (upi.com)",
+          "resourceUrl": "https://news.google.com/rss/articles/CBMingFBVV95cUxON2tucmlzY3pLVWdZdVFJaHdQODFYVVJ0dVdpQTRCRndjY0lyb3VUZGJySWFfMHlaTHZNS1JPQ3dFazhqdllwYk55LU5PZDRUeWYzVWRVYXNuaFp5TmVZeGFEblltOEFmZEVmbVJoMUlHS3BFVWN4b3poSXkxRVdRVGcxRU10WVI3QUM3Zl83ZC1TaW1QYmJRX25TcFJBZ9IBowFBVV95cUxPVENVZldXTnZ2NjRLTUl1azY2LU1uMGZLRERpNXQ2clkwTUNDT0hzVWlIVzB0MXVOOU9kajRqT1BCQTEwQ3l5cENxUlhjdnNQd2dxM2N4R0dRSVdEUkF5S0VmZ3BIdXdVQ1ZUOVc0ZzVORWdIZHZsLXZSSG54LVd1dHUyblFkZ2RlSmR0TnA1YXNFbzd0bnI4UXNDbDdWU1lfQTlV?oc=5"
+        },
+        "license": {
+          "type": "Editorial News Access",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxON2tucmlzY3pLVWdZdVFJaHdQODFYVVJ0dVdpQTRCRndjY0lyb3VUZGJySWFfMHlaTHZNS1JPQ3dFazhqdllwYk55LU5PZDRUeWYzVWRVYXNuaFp5TmVZeGFEblltOEFmZEVmbVJoMUlHS3BFVWN4b3poSXkxRVdRVGcxRU10WVI3QUM3Zl83ZC1TaW1QYmJRX25TcFJBZ9IBowFBVV95cUxPVENVZldXTnZ2NjRLTUl1azY2LU1uMGZLRERpNXQ2clkwTUNDT0hzVWlIVzB0MXVOOU9kajRqT1BCQTEwQ3l5cENxUlhjdnNQd2dxM2N4R0dRSVdEUkF5S0VmZ3BIdXdVQ1ZUOVc0ZzVORWdIZHZsLXZSSG54LVd1dHUyblFkZ2RlSmR0TnA1YXNFbzd0bnI4UXNDbDdWU1lfQTlV?oc=5",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "upi.com",
+          "publishedAt": "Fri, 18 Sep 2026 17:49:29 GMT",
+          "isLiveNews": true,
+          "language": "en"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "mit-aHR0cHM6Ly93d3cu",
+        "title": "The Download: investigating deaths at the US border’s “virtual wall”",
+        "category": "news",
+        "description": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The US spent billions on border surveillance. Why can’t it catch people before they die? When José Morales Bernal crossed the border into the US in April 2024, the day before…",
+        "thumbnailUrl": "https://wp.technologyreview.com/wp-content/uploads/2025/04/Duks-Koschitz-and-Robert-Brackett-III.jpg?fit=2128,1196",
+        "previewUrl": "https://wp.technologyreview.com/wp-content/uploads/2025/04/Duks-Koschitz-and-Robert-Brackett-III.jpg?fit=2128,1196",
+        "downloadUrl": "https://www.technologyreview.com/2026/09/21/1144834/the-download-investigating-deaths-at-the-us-borders-virtual-wall/",
+        "source": {
+          "providerId": "mit_tech_review",
+          "providerName": "MIT Technology Review",
+          "resourceUrl": "https://www.technologyreview.com/2026/09/21/1144834/the-download-investigating-deaths-at-the-us-borders-virtual-wall/"
+        },
+        "license": {
+          "type": "MIT License",
+          "url": "https://www.technologyreview.com/2026/09/21/1144834/the-download-investigating-deaths-at-the-us-borders-virtual-wall/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Massachusetts Institute of Technology",
+          "publishedAt": "Mon, 21 Sep 2026 12:20:00 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "mit",
+            "ai",
+            "quantum",
+            "biotechnology",
+            "technology-review"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "mit-aHR0cHM6Ly93d3cu",
+        "title": "How we made the first comprehensive map of deaths along the US border’s “virtual wall”",
+        "category": "news",
+        "description": "Our 15-month investigation into death and surveillance along the US-Mexico border began with a simple question: Why did so many people die near government surveillance towers meant to help track and apprehend them? This story is part of Dying on Camera, a collaboration between MIT Technology Review and Times of San Diego. Journalists in both newsrooms spent the past…",
+        "thumbnailUrl": "https://wp.technologyreview.com/wp-content/uploads/2026/09/Map-thumbnail-16_9-2.png",
+        "previewUrl": "https://wp.technologyreview.com/wp-content/uploads/2026/09/Map-thumbnail-16_9-2.png",
+        "downloadUrl": "https://www.technologyreview.com/2026/09/21/1144161/border-towers-surveillance-methodology/",
+        "source": {
+          "providerId": "mit_tech_review",
+          "providerName": "MIT Technology Review",
+          "resourceUrl": "https://www.technologyreview.com/2026/09/21/1144161/border-towers-surveillance-methodology/"
+        },
+        "license": {
+          "type": "MIT License",
+          "url": "https://www.technologyreview.com/2026/09/21/1144161/border-towers-surveillance-methodology/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Massachusetts Institute of Technology",
+          "publishedAt": "Mon, 21 Sep 2026 12:00:00 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "mit",
+            "ai",
+            "quantum",
+            "biotechnology",
+            "technology-review"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "mit-aHR0cHM6Ly93d3cu",
+        "title": "4 ways to address the failures we found along the US border’s “virtual wall”",
+        "category": "news",
+        "description": "MIT Technology Review today published our investigation into how many people have died near the “virtual wall” of surveillance towers that the US government has installed along the US-Mexico border. We found cases of people who walked undetected through areas surveilled by advanced, AI-enabled towers and later died nearby, where their bodies remained unnoticed for…",
+        "thumbnailUrl": "https://wp.technologyreview.com/wp-content/uploads/2026/09/AP21194653997791.jpg?w=840",
+        "previewUrl": "https://wp.technologyreview.com/wp-content/uploads/2026/09/AP21194653997791.jpg?w=840",
+        "downloadUrl": "https://www.technologyreview.com/2026/09/21/1144164/border-towers-surveillance-policy-recommendations/",
+        "source": {
+          "providerId": "mit_tech_review",
+          "providerName": "MIT Technology Review",
+          "resourceUrl": "https://www.technologyreview.com/2026/09/21/1144164/border-towers-surveillance-policy-recommendations/"
+        },
+        "license": {
+          "type": "MIT License",
+          "url": "https://www.technologyreview.com/2026/09/21/1144164/border-towers-surveillance-policy-recommendations/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Massachusetts Institute of Technology",
+          "publishedAt": "Mon, 21 Sep 2026 12:00:00 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "mit",
+            "ai",
+            "quantum",
+            "biotechnology",
+            "technology-review"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "mit-aHR0cHM6Ly93d3cu",
+        "title": "The Download: AI’s extinction risk and bioweapons threat",
+        "category": "news",
+        "description": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Could AI really kill us all? Your questions, answered On Wednesday, MIT Technology Review hosted a live Roundtables event that asked the question many seem to be asking right now: could…",
+        "thumbnailUrl": "https://wp.technologyreview.com/wp-content/uploads/2024/12/MM10211_240711_05211.jpg?w=840",
+        "previewUrl": "https://wp.technologyreview.com/wp-content/uploads/2024/12/MM10211_240711_05211.jpg?w=840",
+        "downloadUrl": "https://www.technologyreview.com/2026/09/18/1142577/the-download-ai-extinction-threat-bioweapons/",
+        "source": {
+          "providerId": "mit_tech_review",
+          "providerName": "MIT Technology Review",
+          "resourceUrl": "https://www.technologyreview.com/2026/09/18/1142577/the-download-ai-extinction-threat-bioweapons/"
+        },
+        "license": {
+          "type": "MIT License",
+          "url": "https://www.technologyreview.com/2026/09/18/1142577/the-download-ai-extinction-threat-bioweapons/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Massachusetts Institute of Technology",
+          "publishedAt": "Fri, 18 Sep 2026 12:10:00 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "mit",
+            "ai",
+            "quantum",
+            "biotechnology",
+            "technology-review"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "mit-aHR0cHM6Ly93d3cu",
+        "title": "Could AI really kill us all? Your questions, answered.",
+        "category": "news",
+        "description": "On Wednesday, MIT Technology Review hosted a live Roundtables event for subscribers that asked the question everyone’s asking right now: Could AI really kill us all? But attendees had so many more questions than we had time to answer in the 30 minute session. So we asked our senior AI editor Will Douglas Heaven and…",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1507668077129-56e32842fceb?w=800&auto=format&fit=crop&q=80",
+        "previewUrl": "https://images.unsplash.com/photo-1507668077129-56e32842fceb?w=800&auto=format&fit=crop&q=80",
+        "downloadUrl": "https://www.technologyreview.com/2026/09/18/1144435/could-ai-really-kill-us-all-your-questions-answered/",
+        "source": {
+          "providerId": "mit_tech_review",
+          "providerName": "MIT Technology Review",
+          "resourceUrl": "https://www.technologyreview.com/2026/09/18/1144435/could-ai-really-kill-us-all-your-questions-answered/"
+        },
+        "license": {
+          "type": "MIT License",
+          "url": "https://www.technologyreview.com/2026/09/18/1144435/could-ai-really-kill-us-all-your-questions-answered/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Massachusetts Institute of Technology",
+          "publishedAt": "Fri, 18 Sep 2026 11:29:22 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "mit",
+            "ai",
+            "quantum",
+            "biotechnology",
+            "technology-review"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "mit-aHR0cHM6Ly93d3cu",
+        "title": "The Download: mice with part-human brains and climate tech innovators",
+        "category": "news",
+        "description": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Meet a mouse whose brain cortex is made up of human cells Multiple cameras tracked a mouse as it wandered around a small arena. A computer charted its position and speed,…",
+        "thumbnailUrl": "https://wp.technologyreview.com/wp-content/uploads/2024/12/digitaltwins-FF_01-main_1-e1733955050501.jpg?fit=2560,1706",
+        "previewUrl": "https://wp.technologyreview.com/wp-content/uploads/2024/12/digitaltwins-FF_01-main_1-e1733955050501.jpg?fit=2560,1706",
+        "downloadUrl": "https://www.technologyreview.com/2026/09/17/1144314/the-download-mice-part-human-brains-climate-tech-innovators/",
+        "source": {
+          "providerId": "mit_tech_review",
+          "providerName": "MIT Technology Review",
+          "resourceUrl": "https://www.technologyreview.com/2026/09/17/1144314/the-download-mice-part-human-brains-climate-tech-innovators/"
+        },
+        "license": {
+          "type": "MIT License",
+          "url": "https://www.technologyreview.com/2026/09/17/1144314/the-download-mice-part-human-brains-climate-tech-innovators/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Massachusetts Institute of Technology",
+          "publishedAt": "Thu, 17 Sep 2026 12:10:00 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "mit",
+            "ai",
+            "quantum",
+            "biotechnology",
+            "technology-review"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "latimes-aHR0cHM6Ly93d3cu",
+        "title": "Reining in Big Tech: How California lawmakers plan to regulate AI and social media",
+        "category": "news",
+        "description": "California lawmakers advance bills targeting addictive social media, artificial intelligence in the workplace and voracious data centers amid mounting public anxiety over technology's harms.",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&auto=format&fit=crop&q=80",
+        "previewUrl": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&auto=format&fit=crop&q=80",
+        "downloadUrl": "https://www.latimes.com/business/story/2026-08-31/reigning-in-big-tech-how-california-lawmakers-plan-to-regulate-ai-social-media",
+        "source": {
+          "providerId": "latimes_world_news",
+          "providerName": "Los Angeles Times World Wire",
+          "resourceUrl": "https://www.latimes.com/business/story/2026-08-31/reigning-in-big-tech-how-california-lawmakers-plan-to-regulate-ai-social-media"
+        },
+        "license": {
+          "type": "Editorial Open Access",
+          "url": "https://www.latimes.com/business/story/2026-08-31/reigning-in-big-tech-how-california-lawmakers-plan-to-regulate-ai-social-media",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Los Angeles Times Communications LLC",
+          "publishedAt": "Tue, 1 Sep 2026 00:57:01 GMT",
+          "isLiveNews": true,
+          "tags": [
+            "latimes",
+            "news",
+            "world",
+            "california",
+            "investigative"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "defnews-aHR0cHM6Ly93d3cu",
+        "title": "US military must adapt as formations will be ‘hunted’ by autonomous systems, Caine says",
+        "category": "news",
+        "description": "Technology, such as AI and autonomous systems, is changing the character of war, Joint Chiefs of Staff Chairman Gen. Dan Caine said.",
+        "thumbnailUrl": "https://cloudfront-us-east-1.images.arcpublishing.com/archetype/7FOWBNXUTJHOXEAKAX3HL2AYSI.JPG",
+        "previewUrl": "https://cloudfront-us-east-1.images.arcpublishing.com/archetype/7FOWBNXUTJHOXEAKAX3HL2AYSI.JPG",
+        "downloadUrl": "https://www.defensenews.com/news/your-military/2026/09/16/us-military-must-adapt-as-formations-will-be-hunted-by-autonomous-systems-caine-says/",
+        "source": {
+          "providerId": "defensenews_global",
+          "providerName": "Defense News Global Wire",
+          "resourceUrl": "https://www.defensenews.com/news/your-military/2026/09/16/us-military-must-adapt-as-formations-will-be-hunted-by-autonomous-systems-caine-says/"
+        },
+        "license": {
+          "type": "Editorial Open Access",
+          "url": "https://www.defensenews.com/news/your-military/2026/09/16/us-military-must-adapt-as-formations-will-be-hunted-by-autonomous-systems-caine-says/",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Sightline Media Group",
+          "publishedAt": "Wed, 16 Sep 2026 16:41:30 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "defensenews",
+            "defense",
+            "military",
+            "procurement",
+            "geopolitics"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "pol-aHR0cHM6Ly93d3cu",
+        "title": "Alex Bores launches $30 million effort to unify Dems on AI",
+        "category": "news",
+        "description": "\"Who Decides\" was launched by the New York state lawmaker who became one of the AI industry's chief targets when he ran for Congress on a platform focused on regulating the technology.",
+        "thumbnailUrl": "https://static.politico.com/7b/2e/6cce30ea4d1384f3d76f6a57426d/20260207-katsanis-alex-borges-final-58.jpg",
+        "previewUrl": "https://static.politico.com/7b/2e/6cce30ea4d1384f3d76f6a57426d/20260207-katsanis-alex-borges-final-58.jpg",
+        "downloadUrl": "https://www.politico.com/news/2026/09/14/alex-bores-ai-group-who-decides-01076451",
+        "source": {
+          "providerId": "politico_wire",
+          "providerName": "Politico Policy & Governance Wire",
+          "resourceUrl": "https://www.politico.com/news/2026/09/14/alex-bores-ai-group-who-decides-01076451"
+        },
+        "license": {
+          "type": "Editorial News Access",
+          "url": "https://www.politico.com/news/2026/09/14/alex-bores-ai-group-who-decides-01076451",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "POLITICO LLC / Axel Springer",
+          "publishedAt": "Mon, 14 Sep 2026 23:56:15 EDT",
+          "isLiveNews": true,
+          "tags": [
+            "politico",
+            "governance",
+            "policy",
+            "legislation",
+            "diplomacy"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "scidaily-aHR0cHM6Ly93d3cu",
+        "title": "New nanoparticles make hidden chemical differences light up",
+        "category": "news",
+        "description": "Scientists have developed ultra-bright nanoparticles that can detect tiny amounts of chemicals and distinguish between molecules that look almost identical. The technology could one day provide a cheaper way to catch dangerous drug impurities or trace pollutants using simple low-cost lasers.",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&auto=format&fit=crop&q=80",
+        "previewUrl": "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&auto=format&fit=crop&q=80",
+        "downloadUrl": "https://www.sciencedaily.com/releases/2026/09/260919031030.htm",
+        "source": {
+          "providerId": "sciencedaily_wire",
+          "providerName": "ScienceDaily Research Wire",
+          "resourceUrl": "https://www.sciencedaily.com/releases/2026/09/260919031030.htm"
+        },
+        "license": {
+          "type": "Open Access Research Reporting",
+          "url": "https://www.sciencedaily.com/releases/2026/09/260919031030.htm",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "ScienceDaily, LLC",
+          "publishedAt": "Sun, 20 Sep 2026 07:35:28 EDT",
+          "isLiveNews": true,
+          "tags": [
+            "sciencedaily",
+            "research",
+            "science",
+            "astronomy",
+            "biology",
+            "physics"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "ars-aHR0cHM6Ly9hcnN0",
+        "title": "Review: Neagley is a worthy spinoff to megahit Reacher",
+        "category": "news",
+        "description": "It's a bit uneven in execution but still delivers as fast-paced, entertaining escapist fare.",
+        "thumbnailUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/neagley-1152x648-1789589203.jpg",
+        "previewUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/neagley-1152x648-1789589203.jpg",
+        "downloadUrl": "https://arstechnica.com/culture/2026/09/review-neagley-is-a-worthy-spinoff-to-megahit-reacher/",
+        "source": {
+          "providerId": "ars_technica_news",
+          "providerName": "Ars Technica Tech & Science Wire",
+          "resourceUrl": "https://arstechnica.com/culture/2026/09/review-neagley-is-a-worthy-spinoff-to-megahit-reacher/"
+        },
+        "license": {
+          "type": "Editorial News Access",
+          "url": "https://arstechnica.com/culture/2026/09/review-neagley-is-a-worthy-spinoff-to-megahit-reacher/",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Condé Nast / Ars Technica",
+          "author": "Jennifer Ouellette",
+          "publishedAt": "Mon, 21 Sep 2026 13:53:46 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "ars-technica",
+            "cybersecurity",
+            "tech",
+            "science",
+            "computing"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "ars-aHR0cHM6Ly9hcnN0",
+        "title": "Apple Mac mini review: The new M6 impresses, but the price hike is rough",
+        "category": "news",
+        "description": "The M4 Mac mini was one of Apple's best values. The $899 M6 mini, not so much.",
+        "thumbnailUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/IMG_3731-1152x648.jpeg",
+        "previewUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/IMG_3731-1152x648.jpeg",
+        "downloadUrl": "https://arstechnica.com/gadgets/2026/09/apple-m6-mac-mini-review-300-price-hike-spoils-a-nice-upgrade/",
+        "source": {
+          "providerId": "ars_technica_news",
+          "providerName": "Ars Technica Tech & Science Wire",
+          "resourceUrl": "https://arstechnica.com/gadgets/2026/09/apple-m6-mac-mini-review-300-price-hike-spoils-a-nice-upgrade/"
+        },
+        "license": {
+          "type": "Editorial News Access",
+          "url": "https://arstechnica.com/gadgets/2026/09/apple-m6-mac-mini-review-300-price-hike-spoils-a-nice-upgrade/",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Condé Nast / Ars Technica",
+          "author": "Andrew Cunningham",
+          "publishedAt": "Mon, 21 Sep 2026 13:00:24 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "ars-technica",
+            "cybersecurity",
+            "tech",
+            "science",
+            "computing"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "ars-aHR0cHM6Ly9hcnN0",
+        "title": "Googlebooks launch October 4 starting at $899—here are the five models you can preorder today",
+        "category": "news",
+        "description": "Googlebooks offer premium hardware and deep smartphone integration, but you may not like the price.",
+        "thumbnailUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/HP-Googlebook-1152x648.jpg",
+        "previewUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/HP-Googlebook-1152x648.jpg",
+        "downloadUrl": "https://arstechnica.com/gadgets/2026/09/googlebook-laptops-launch-october-4-starting-at-899-preorders-for-five-models-live-today/",
+        "source": {
+          "providerId": "ars_technica_news",
+          "providerName": "Ars Technica Tech & Science Wire",
+          "resourceUrl": "https://arstechnica.com/gadgets/2026/09/googlebook-laptops-launch-october-4-starting-at-899-preorders-for-five-models-live-today/"
+        },
+        "license": {
+          "type": "Editorial News Access",
+          "url": "https://arstechnica.com/gadgets/2026/09/googlebook-laptops-launch-october-4-starting-at-899-preorders-for-five-models-live-today/",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Condé Nast / Ars Technica",
+          "author": "Ryan Whitwam",
+          "publishedAt": "Mon, 21 Sep 2026 13:00:11 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "ars-technica",
+            "cybersecurity",
+            "tech",
+            "science",
+            "computing"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "ars-aHR0cHM6Ly9hcnN0",
+        "title": "An undercover Google analyst infiltrated a notorious supply-chain hacking gang",
+        "category": "news",
+        "description": "Google’s threat intelligence group said it had a mole inside TeamPCP's inner circle.",
+        "thumbnailUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/GettyImages-2216350484-1152x648.jpg",
+        "previewUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/GettyImages-2216350484-1152x648.jpg",
+        "downloadUrl": "https://arstechnica.com/security/2026/09/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/",
+        "source": {
+          "providerId": "ars_technica_news",
+          "providerName": "Ars Technica Tech & Science Wire",
+          "resourceUrl": "https://arstechnica.com/security/2026/09/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"
+        },
+        "license": {
+          "type": "Editorial News Access",
+          "url": "https://arstechnica.com/security/2026/09/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Condé Nast / Ars Technica",
+          "author": "Andy Greenberg, WIRED.com",
+          "publishedAt": "Sun, 20 Sep 2026 11:07:00 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "ars-technica",
+            "cybersecurity",
+            "tech",
+            "science",
+            "computing"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "ars-aHR0cHM6Ly9hcnN0",
+        "title": "Don't call it an SUV: The Ferrari Purosangue review",
+        "category": "news",
+        "description": "Unlike previous Ferrari four-seaters, this one is better for humans than cargo.",
+        "thumbnailUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/2026-Ferrari-Purosangue-1-of-15-1152x648-1789751602.jpg",
+        "previewUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/2026-Ferrari-Purosangue-1-of-15-1152x648-1789751602.jpg",
+        "downloadUrl": "https://arstechnica.com/cars/2026/09/dont-call-it-an-suv-the-ferrari-purosangue-review/",
+        "source": {
+          "providerId": "ars_technica_news",
+          "providerName": "Ars Technica Tech & Science Wire",
+          "resourceUrl": "https://arstechnica.com/cars/2026/09/dont-call-it-an-suv-the-ferrari-purosangue-review/"
+        },
+        "license": {
+          "type": "Editorial News Access",
+          "url": "https://arstechnica.com/cars/2026/09/dont-call-it-an-suv-the-ferrari-purosangue-review/",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Condé Nast / Ars Technica",
+          "author": "Jonathan M. Gitlin",
+          "publishedAt": "Sun, 20 Sep 2026 10:00:02 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "ars-technica",
+            "cybersecurity",
+            "tech",
+            "science",
+            "computing"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "ars-aHR0cHM6Ly9hcnN0",
+        "title": "T. rex teeth indicate it ran as warm as an elephant",
+        "category": "news",
+        "description": "Isotope ratios provide a hint that the giants were actively managing temperatures.",
+        "thumbnailUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/GettyImages-1485364132-1152x648-1789756447.jpg",
+        "previewUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/GettyImages-1485364132-1152x648-1789756447.jpg",
+        "downloadUrl": "https://arstechnica.com/science/2026/09/t-rex-teeth-indicate-it-ran-as-warm-as-an-elephant/",
+        "source": {
+          "providerId": "ars_technica_news",
+          "providerName": "Ars Technica Tech & Science Wire",
+          "resourceUrl": "https://arstechnica.com/science/2026/09/t-rex-teeth-indicate-it-ran-as-warm-as-an-elephant/"
+        },
+        "license": {
+          "type": "Editorial News Access",
+          "url": "https://arstechnica.com/science/2026/09/t-rex-teeth-indicate-it-ran-as-warm-as-an-elephant/",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Condé Nast / Ars Technica",
+          "author": "Jacek Krywko",
+          "publishedAt": "Sun, 20 Sep 2026 09:00:11 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "ars-technica",
+            "cybersecurity",
+            "tech",
+            "science",
+            "computing"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "ars-aHR0cHM6Ly9hcnN0",
+        "title": "Learning another language may be one of the best ways to keep your brain healthy",
+        "category": "news",
+        "description": "Research suggests that bilingualism can offer cognitive benefits.",
+        "thumbnailUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/GettyImages-2181891613-1152x648.jpg",
+        "previewUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/GettyImages-2181891613-1152x648.jpg",
+        "downloadUrl": "https://arstechnica.com/science/2026/09/learning-another-language-may-be-one-of-the-best-ways-to-keep-your-brain-healthy/",
+        "source": {
+          "providerId": "ars_technica_news",
+          "providerName": "Ars Technica Tech & Science Wire",
+          "resourceUrl": "https://arstechnica.com/science/2026/09/learning-another-language-may-be-one-of-the-best-ways-to-keep-your-brain-healthy/"
+        },
+        "license": {
+          "type": "Editorial News Access",
+          "url": "https://arstechnica.com/science/2026/09/learning-another-language-may-be-one-of-the-best-ways-to-keep-your-brain-healthy/",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Condé Nast / Ars Technica",
+          "author": "Karen Stollznow, The Conversation",
+          "publishedAt": "Sat, 19 Sep 2026 11:10:43 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "ars-technica",
+            "cybersecurity",
+            "tech",
+            "science",
+            "computing"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "ars-aHR0cHM6Ly9hcnN0",
+        "title": "Rings around a tiny body have changed over the past decade",
+        "category": "news",
+        "description": "Chariklo is only about 250 km across, but it has two rings, and they're changing.",
+        "thumbnailUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/image-1-1152x648.png",
+        "previewUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/image-1-1152x648.png",
+        "downloadUrl": "https://arstechnica.com/science/2026/09/rings-around-a-tiny-body-have-changed-over-the-past-decade/",
+        "source": {
+          "providerId": "ars_technica_news",
+          "providerName": "Ars Technica Tech & Science Wire",
+          "resourceUrl": "https://arstechnica.com/science/2026/09/rings-around-a-tiny-body-have-changed-over-the-past-decade/"
+        },
+        "license": {
+          "type": "Editorial News Access",
+          "url": "https://arstechnica.com/science/2026/09/rings-around-a-tiny-body-have-changed-over-the-past-decade/",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Condé Nast / Ars Technica",
+          "author": "Jacek Krywko",
+          "publishedAt": "Sat, 19 Sep 2026 10:00:06 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "ars-technica",
+            "cybersecurity",
+            "tech",
+            "science",
+            "computing"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "ars-aHR0cHM6Ly9hcnN0",
+        "title": "AI hallucination of Chinese nuclear components almost led to US military attack",
+        "category": "news",
+        "description": "But the military's overall use of AI seems to be accelerating.",
+        "thumbnailUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/chinese-cargo-ship-ai-target-1152x648.jpg",
+        "previewUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/chinese-cargo-ship-ai-target-1152x648.jpg",
+        "downloadUrl": "https://arstechnica.com/ai/2026/09/report-us-almost-boarded-chinese-ship-over-hallucinated-ai-arms-report/",
+        "source": {
+          "providerId": "ars_technica_news",
+          "providerName": "Ars Technica Tech & Science Wire",
+          "resourceUrl": "https://arstechnica.com/ai/2026/09/report-us-almost-boarded-chinese-ship-over-hallucinated-ai-arms-report/"
+        },
+        "license": {
+          "type": "Editorial News Access",
+          "url": "https://arstechnica.com/ai/2026/09/report-us-almost-boarded-chinese-ship-over-hallucinated-ai-arms-report/",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Condé Nast / Ars Technica",
+          "author": "Kyle Orland",
+          "publishedAt": "Fri, 18 Sep 2026 20:26:33 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "ars-technica",
+            "cybersecurity",
+            "tech",
+            "science",
+            "computing"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "ars-aHR0cHM6Ly9hcnN0",
+        "title": "FAA tees up $875M AI tool to help manage air traffic congestion",
+        "category": "news",
+        "description": "FAA plans for AI tool to help manage DC air traffic before a nationwide rollout.",
+        "thumbnailUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/DCA-airport-1152x648.jpg",
+        "previewUrl": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/DCA-airport-1152x648.jpg",
+        "downloadUrl": "https://arstechnica.com/ai/2026/09/faa-tees-up-875m-ai-tool-to-help-manage-air-traffic-congestion/",
+        "source": {
+          "providerId": "ars_technica_news",
+          "providerName": "Ars Technica Tech & Science Wire",
+          "resourceUrl": "https://arstechnica.com/ai/2026/09/faa-tees-up-875m-ai-tool-to-help-manage-air-traffic-congestion/"
+        },
+        "license": {
+          "type": "Editorial News Access",
+          "url": "https://arstechnica.com/ai/2026/09/faa-tees-up-875m-ai-tool-to-help-manage-air-traffic-congestion/",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "Condé Nast / Ars Technica",
+          "author": "Jeremy Hsu",
+          "publishedAt": "Fri, 18 Sep 2026 19:20:50 +0000",
+          "isLiveNews": true,
+          "tags": [
+            "ars-technica",
+            "cybersecurity",
+            "tech",
+            "science",
+            "computing"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "tc-aHR0cHM6Ly90ZWNo",
+        "title": "A small but growing number of founders are betting on bringing people together offline",
+        "category": "news",
+        "description": "On the surface, a game console and a leathercraft school don't appear to have much in common. But both founders think there's money in fostering the kind of connection that technology has eroded over the last couple of decades.",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80",
+        "previewUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80",
+        "downloadUrl": "https://techcrunch.com/2026/09/20/a-small-but-growing-number-of-founders-are-betting-that-bringing-people-together-is-its-own-industry/",
+        "source": {
+          "providerId": "techcrunch_news",
+          "providerName": "TechCrunch",
+          "resourceUrl": "https://techcrunch.com/2026/09/20/a-small-but-growing-number-of-founders-are-betting-that-bringing-people-together-is-its-own-industry/"
+        },
+        "license": {
+          "type": "TechCrunch Editorial",
+          "url": "https://techcrunch.com/2026/09/20/a-small-but-growing-number-of-founders-are-betting-that-bringing-people-together-is-its-own-industry/",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "TechCrunch",
+          "author": "Connie Loizos",
+          "publishedAt": "Sun, 20 Sep 2026 15:00:00 +0000",
+          "isLiveNews": true
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "fda-recall-F-1465-2013",
+        "title": "Recall Alert: GRATED 2/25 GRANA PADANO; Lot Code: 313701A01; Pack Size: 2/25#; Net Pounds: 50; PACK DATE: 05/18/13; ITEM#DGP03; arthur schuman inc, 40 new",
+        "category": "news",
+        "description": "Reason: Grated Grana Padano Hard Italian Cheese was tested and found to be positive for Listeria monocytogenes.. Recalling Firm: Arthur Schuman Midwest LLC. Classification: Class I (Status: Terminated).",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1584483766114-2cea6facdf57?w=800&auto=format&fit=crop&q=80",
+        "previewUrl": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+        "downloadUrl": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+        "source": {
+          "providerId": "openfda_recalls",
+          "providerName": "openFDA Safety Recalls",
+          "resourceUrl": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://open.fda.gov/apis/open-government-data/",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "isLiveNews": true,
+          "recallNumber": "F-1465-2013",
+          "recallingFirm": "Arthur Schuman Midwest LLC",
+          "classification": "Class I",
+          "reportDate": "20130515",
+          "tags": [
+            "food-safety",
+            "recall",
+            "fda",
+            "public-health",
+            "alert"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "devto-4700104",
+        "title": "Architecting a Resilient DevSecOps Pipeline for Enterprise AI Agents",
+        "category": "news",
+        "description": "A four-stage DevSecOps CI/CD architecture for securing enterprise AI agents with GitHub Actions, secret scanning, AI-assisted review, Veracode SCA, and Pipeline SAST.",
+        "thumbnailUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fmiro.medium.com%2Fv2%2Fresize%3Afit%3A1400%2F1%2AzWubiPyAk5YCdtX9j1_mUA.png",
+        "previewUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fmiro.medium.com%2Fv2%2Fresize%3Afit%3A1400%2F1%2AzWubiPyAk5YCdtX9j1_mUA.png",
+        "downloadUrl": "https://dev.to/gde/architecting-a-resilient-devsecops-pipeline-for-enterprise-ai-agents-on4",
+        "source": {
+          "providerId": "devto_news",
+          "providerName": "Dev.to Tech News",
+          "resourceUrl": "https://dev.to/gde/architecting-a-resilient-devsecops-pipeline-for-enterprise-ai-agents-on4"
+        },
+        "license": {
+          "type": "Dev.to Community Access",
+          "url": "https://dev.to/gde/architecting-a-resilient-devsecops-pipeline-for-enterprise-ai-agents-on4",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "DEV Community",
+          "author": "Jitendra Gupta",
+          "publishedAt": "2026-09-20T13:44:05Z",
+          "isLiveNews": true,
+          "tags": "ai, devsecops, github, security"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "devto-4679179",
+        "title": "Congrats to the DEV Weekend Challenge: Dog Days Edition Winners!",
+        "category": "news",
+        "description": "The results are in for our DEV Weekend Challenge: Dog Days Edition! Thank you for your patience while...",
+        "thumbnailUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fkrehvaum6dypvyi3mixf.png",
+        "previewUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fkrehvaum6dypvyi3mixf.png",
+        "downloadUrl": "https://dev.to/devteam/congrats-to-the-dev-weekend-challenge-dog-days-edition-winners-300g",
+        "source": {
+          "providerId": "devto_news",
+          "providerName": "Dev.to Tech News",
+          "resourceUrl": "https://dev.to/devteam/congrats-to-the-dev-weekend-challenge-dog-days-edition-winners-300g"
+        },
+        "license": {
+          "type": "Dev.to Community Access",
+          "url": "https://dev.to/devteam/congrats-to-the-dev-weekend-challenge-dog-days-edition-winners-300g",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "DEV Community",
+          "author": "Jem",
+          "publishedAt": "2026-09-17T20:22:43Z",
+          "isLiveNews": true,
+          "tags": "devchallenge, weekendchallenge, hackathon, programming"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "devto-4701614",
+        "title": "Dart Enhanced Enums Are Secretly Factories: Unlocking Constructor Tearoffs",
+        "category": "news",
+        "description": "How combining Dart's Enhanced Enums with constructor tearoffs turns simple enum values into self-instantiating, type-safe polymorphic factories.",
+        "thumbnailUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F2k3pdkwhv7eywa1crtek.png",
+        "previewUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F2k3pdkwhv7eywa1crtek.png",
+        "downloadUrl": "https://dev.to/gde/dart-enhanced-enums-are-secretly-factories-unlocking-constructor-tearoffs-54n9",
+        "source": {
+          "providerId": "devto_news",
+          "providerName": "Dev.to Tech News",
+          "resourceUrl": "https://dev.to/gde/dart-enhanced-enums-are-secretly-factories-unlocking-constructor-tearoffs-54n9"
+        },
+        "license": {
+          "type": "Dev.to Community Access",
+          "url": "https://dev.to/gde/dart-enhanced-enums-are-secretly-factories-unlocking-constructor-tearoffs-54n9",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "DEV Community",
+          "author": "Randal L. Schwartz",
+          "publishedAt": "2026-09-20T20:03:10Z",
+          "isLiveNews": true,
+          "tags": "dart, flutter, architecture, programming"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "devto-4701713",
+        "title": "Share State Across Dart Isolates Without Losing Your Mind: Enter shared_map",
+        "category": "news",
+        "description": "How to bypass tedious SendPort/ReceivePort plumbing and share synchronized in-memory state across Dart Isolates using the zero-dependency shared_map package.",
+        "thumbnailUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ffw8le2p5j1fub3d43p3q.png",
+        "previewUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ffw8le2p5j1fub3d43p3q.png",
+        "downloadUrl": "https://dev.to/gde/share-state-across-dart-isolates-without-losing-your-mind-enter-sharedmap-221b",
+        "source": {
+          "providerId": "devto_news",
+          "providerName": "Dev.to Tech News",
+          "resourceUrl": "https://dev.to/gde/share-state-across-dart-isolates-without-losing-your-mind-enter-sharedmap-221b"
+        },
+        "license": {
+          "type": "Dev.to Community Access",
+          "url": "https://dev.to/gde/share-state-across-dart-isolates-without-losing-your-mind-enter-sharedmap-221b",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "DEV Community",
+          "author": "Randal L. Schwartz",
+          "publishedAt": "2026-09-20T20:43:19Z",
+          "isLiveNews": true,
+          "tags": "dart, flutter, architecture, concurrency"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "devto-4701590",
+        "title": "Stop Paying the build_runner Tax: Why I Refuse to Use Mockito in Modern Dart",
+        "category": "news",
+        "description": "Why code-generated mocks ruin developer velocity in modern Dart and Flutter, and how switching to mocktail restores true zero-friction TDD.",
+        "thumbnailUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fx204wt36b3p53pnf950f.png",
+        "previewUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fx204wt36b3p53pnf950f.png",
+        "downloadUrl": "https://dev.to/gde/stop-paying-the-buildrunner-tax-why-i-refuse-to-use-mockito-in-modern-dart-4cif",
+        "source": {
+          "providerId": "devto_news",
+          "providerName": "Dev.to Tech News",
+          "resourceUrl": "https://dev.to/gde/stop-paying-the-buildrunner-tax-why-i-refuse-to-use-mockito-in-modern-dart-4cif"
+        },
+        "license": {
+          "type": "Dev.to Community Access",
+          "url": "https://dev.to/gde/stop-paying-the-buildrunner-tax-why-i-refuse-to-use-mockito-in-modern-dart-4cif",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "DEV Community",
+          "author": "Randal L. Schwartz",
+          "publishedAt": "2026-09-20T19:48:39Z",
+          "isLiveNews": true,
+          "tags": "dart, flutter, testing, architecture"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "devto-4702095",
+        "title": "A 16-second clock drift falsely tripped my trading bot's kill switch. A postmortem.",
+        "category": "news",
+        "description": "My PC clock ran 16 seconds ahead of the exchange. Signature validation failed, a \"helpful\" fallback computed equity from a paper balance, and the bot declared a 58% drawdown. No orders were sent. Here is the chain of events and the two fixes.",
+        "thumbnailUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fh1l5xf073uexr79dibku.png",
+        "previewUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fh1l5xf073uexr79dibku.png",
+        "downloadUrl": "https://dev.to/wataru_suda_d295dab9cca4f/a-16-second-clock-drift-falsely-tripped-my-trading-bots-kill-switch-a-postmortem-4k2f",
+        "source": {
+          "providerId": "devto_news",
+          "providerName": "Dev.to Tech News",
+          "resourceUrl": "https://dev.to/wataru_suda_d295dab9cca4f/a-16-second-clock-drift-falsely-tripped-my-trading-bots-kill-switch-a-postmortem-4k2f"
+        },
+        "license": {
+          "type": "Dev.to Community Access",
+          "url": "https://dev.to/wataru_suda_d295dab9cca4f/a-16-second-clock-drift-falsely-tripped-my-trading-bots-kill-switch-a-postmortem-4k2f",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "DEV Community",
+          "author": "Wataru Suda",
+          "publishedAt": "2026-09-20T23:30:02Z",
+          "isLiveNews": true,
+          "tags": "python, debugging, api, postmortem"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "devto-4689759",
+        "title": "One Iceberg MCP Server, Seven Catalogs: What It Takes to Reach Each One",
+        "category": "news",
+        "description": "Step by step: one Python MCP server with four read-only Apache Iceberg tools, pointed at Polaris, BigLake, OneLake, Glue, S3 Tables and Horizon by changing one environment variable. All four tools work on all six. What changes per catalog is the login, the storage package, and one Azure credential that takes 553 seconds.",
+        "thumbnailUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Flakehouse-iceberg-2026%2Fmain%2Fpapers%2Ficeberg-mcp-seven-catalogs%2Fcover.5c69639b.jpg",
+        "previewUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Flakehouse-iceberg-2026%2Fmain%2Fpapers%2Ficeberg-mcp-seven-catalogs%2Fcover.5c69639b.jpg",
+        "downloadUrl": "https://dev.to/gde/one-iceberg-mcp-server-seven-catalogs-what-it-takes-to-reach-each-one-2605",
+        "source": {
+          "providerId": "devto_news",
+          "providerName": "Dev.to Tech News",
+          "resourceUrl": "https://dev.to/gde/one-iceberg-mcp-server-seven-catalogs-what-it-takes-to-reach-each-one-2605"
+        },
+        "license": {
+          "type": "Dev.to Community Access",
+          "url": "https://dev.to/gde/one-iceberg-mcp-server-seven-catalogs-what-it-takes-to-reach-each-one-2605",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "DEV Community",
+          "author": "xbill",
+          "publishedAt": "2026-09-20T20:30:58Z",
+          "isLiveNews": true,
+          "tags": "mcp, iceberg, python, dataengineering"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "devto-4516180",
+        "title": "What was your win this week?!",
+        "category": "news",
+        "description": "👋👋👋👋 Looking back on your week -- what was something you're proud of? All wins count -- big or small...",
+        "thumbnailUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fdgoho0zggcr56ntvbpvp.jpg",
+        "previewUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fdgoho0zggcr56ntvbpvp.jpg",
+        "downloadUrl": "https://dev.to/devteam/what-was-your-win-this-week-2hcb",
+        "source": {
+          "providerId": "devto_news",
+          "providerName": "Dev.to Tech News",
+          "resourceUrl": "https://dev.to/devteam/what-was-your-win-this-week-2hcb"
+        },
+        "license": {
+          "type": "Dev.to Community Access",
+          "url": "https://dev.to/devteam/what-was-your-win-this-week-2hcb",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "DEV Community",
+          "author": "Jess Lee",
+          "publishedAt": "2026-09-18T13:00:00Z",
+          "isLiveNews": true,
+          "tags": "weeklyretro"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "devto-4627685",
+        "title": "The Symmetry of State: Why Flutter Deserves context.value and context.state",
+        "category": "news",
+        "description": "Eliminating the widget builder tax, closure fatigue, and the context.watch trap in Flutter: how 1:1 symmetry between containers and BuildContext unlocks cleaner, faster reactive apps.",
+        "thumbnailUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fau9a487wkx7hj8p3vjnx.png",
+        "previewUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fau9a487wkx7hj8p3vjnx.png",
+        "downloadUrl": "https://dev.to/gde/the-symmetry-of-state-why-flutter-deserves-contextvalue-and-contextstate-4250",
+        "source": {
+          "providerId": "devto_news",
+          "providerName": "Dev.to Tech News",
+          "resourceUrl": "https://dev.to/gde/the-symmetry-of-state-why-flutter-deserves-contextvalue-and-contextstate-4250"
+        },
+        "license": {
+          "type": "Dev.to Community Access",
+          "url": "https://dev.to/gde/the-symmetry-of-state-why-flutter-deserves-contextvalue-and-contextstate-4250",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "DEV Community",
+          "author": "Randal L. Schwartz",
+          "publishedAt": "2026-09-11T01:51:14Z",
+          "isLiveNews": true,
+          "tags": "flutter, dart, architecture, programming"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "devto-4646163",
+        "title": "Build in the VM, Think on the Mac GPU: Debian 13 on Apple container With a Local Gemma 4",
+        "category": "news",
+        "description": "Apple's container CLI 1.4.1 cannot boot the official debian:13 image as a machine, because it has no /sbin/init. A small Dockerfile fixes that and gives you a persistent Debian 13 VM with systemd, your Mac user and your home folder. The VM has no GPU, so Ollama runs on macOS and the VM calls it at 192.168.64.1:8000. From inside Debian, gemma4:e2b answered at 45.2 tok/s, loaded 100% on the M3 GPU.",
+        "thumbnailUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Fapple-container-debian-tips%2Fmain%2Fdocs%2Farticle%2Fdevto-cover.9231382f.jpg",
+        "previewUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Fapple-container-debian-tips%2Fmain%2Fdocs%2Farticle%2Fdevto-cover.9231382f.jpg",
+        "downloadUrl": "https://dev.to/gde/build-in-the-vm-think-on-the-mac-gpu-debian-13-on-apple-container-with-a-local-gemma-4-2d8b",
+        "source": {
+          "providerId": "devto_news",
+          "providerName": "Dev.to Tech News",
+          "resourceUrl": "https://dev.to/gde/build-in-the-vm-think-on-the-mac-gpu-debian-13-on-apple-container-with-a-local-gemma-4-2d8b"
+        },
+        "license": {
+          "type": "Dev.to Community Access",
+          "url": "https://dev.to/gde/build-in-the-vm-think-on-the-mac-gpu-debian-13-on-apple-container-with-a-local-gemma-4-2d8b",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "DEV Community",
+          "author": "xbill",
+          "publishedAt": "2026-09-14T00:57:31Z",
+          "isLiveNews": true,
+          "tags": "debian, macos, ollama, linux"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "devto-4679687",
+        "title": "Serving Gemma 4 on an AMD MI300X: What $1.99 an Hour Buys",
+        "category": "news",
+        "description": "A step by step deployment of Gemma 4 E2B to a single AMD Instinct MI300X on AMD Developer Cloud, driven by Python MCP tools, and the throughput a 191.7 GiB card returns for its hourly rate.",
+        "thumbnailUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Fgemma4-dev%2Fmain%2Fgpu-vllm-mi300x-2b%2Fdevto-dollar-hour-cover.02475528.jpg",
+        "previewUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fxbill9%2Fgemma4-dev%2Fmain%2Fgpu-vllm-mi300x-2b%2Fdevto-dollar-hour-cover.02475528.jpg",
+        "downloadUrl": "https://dev.to/gde/serving-gemma-4-on-an-amd-mi300x-what-199-an-hour-buys-52h9",
+        "source": {
+          "providerId": "devto_news",
+          "providerName": "Dev.to Tech News",
+          "resourceUrl": "https://dev.to/gde/serving-gemma-4-on-an-amd-mi300x-what-199-an-hour-buys-52h9"
+        },
+        "license": {
+          "type": "Dev.to Community Access",
+          "url": "https://dev.to/gde/serving-gemma-4-on-an-amd-mi300x-what-199-an-hour-buys-52h9",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "DEV Community",
+          "author": "xbill",
+          "publishedAt": "2026-09-17T21:36:22Z",
+          "isLiveNews": true,
+          "tags": "amd, vllm, rocm, machinelearning"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "devto-4617605",
+        "title": "The Modern Pitch for BlocSignal: Why Engineering Leads Are Moving to Reactive Primitives",
+        "category": "news",
+        "description": "A comprehensive guide for tech leads, staff architects, and engineering managers evaluating BlocSignal: cutting through CISC ceremony, unlocking AI agent velocity, eliminating the code-gen tax, and mastering push-pull reactivity.",
+        "thumbnailUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fwq96uam3msbnwq922ymu.png",
+        "previewUrl": "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fwq96uam3msbnwq922ymu.png",
+        "downloadUrl": "https://dev.to/gde/the-modern-pitch-for-blocsignal-why-engineering-leads-are-moving-to-reactive-primitives-5d5h",
+        "source": {
+          "providerId": "devto_news",
+          "providerName": "Dev.to Tech News",
+          "resourceUrl": "https://dev.to/gde/the-modern-pitch-for-blocsignal-why-engineering-leads-are-moving-to-reactive-primitives-5d5h"
+        },
+        "license": {
+          "type": "Dev.to Community Access",
+          "url": "https://dev.to/gde/the-modern-pitch-for-blocsignal-why-engineering-leads-are-moving-to-reactive-primitives-5d5h",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "DEV Community",
+          "author": "Randal L. Schwartz",
+          "publishedAt": "2026-09-09T20:19:53Z",
+          "isLiveNews": true,
+          "tags": "flutter, dart, architecture, programming"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "snapi-39985",
+        "title": "Catalyst Campus for Technology and Innovation, in partnership with the BMC3I TAP Lab, Selects Focus Area Cohort Teams for Cohort 26.A",
+        "category": "news",
+        "description": "Catalyst Campus for Technology and Innovation, in partnership with the BMC3I TAP Lab, has selected the Focus Area Cohort Teams (FACTs) participating in Cohort 26.A. The selected teams represent innovative […]\nThe post Catalyst Campus for Technology and Innovation, in partnership with the BMC3I TAP Lab, Selects Focus Area Cohort Teams for Cohort 26.A appeared first on SpaceNews.",
+        "thumbnailUrl": "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/bmc3i-tap-lab-square.png?fit=1024%2C1024&ssl=1",
+        "previewUrl": "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/bmc3i-tap-lab-square.png?fit=1024%2C1024&ssl=1",
+        "downloadUrl": "https://spacenews.com/catalyst-campus-for-technology-and-innovation-in-partnership-with-the-bmc3i-tap-lab-selects-focus-area-cohort-teams-for-cohort-26-a/",
+        "source": {
+          "providerId": "spaceflight_news",
+          "providerName": "Spaceflight News (SpaceNews)",
+          "resourceUrl": "https://spacenews.com/catalyst-campus-for-technology-and-innovation-in-partnership-with-the-bmc3i-tap-lab-selects-focus-area-cohort-teams-for-cohort-26-a/"
+        },
+        "license": {
+          "type": "Open Access",
+          "url": "https://spacenews.com/catalyst-campus-for-technology-and-innovation-in-partnership-with-the-bmc3i-tap-lab-selects-focus-area-cohort-teams-for-cohort-26-a/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": false,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "SpaceNews",
+          "publishedAt": "2026-09-17T13:00:00Z",
+          "isLiveNews": true,
+          "authors": "Catalyst Campus"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "snapi-39895",
+        "title": "NASA’s Life-Saving Technology Where Cell Signals Can’t Go",
+        "category": "news",
+        "description": "Search and rescue technology developed in part by NASA saved five lives",
+        "thumbnailUrl": "https://www.nasa.gov/wp-content/uploads/2025/12/on-coast-guard-boat.png",
+        "previewUrl": "https://www.nasa.gov/wp-content/uploads/2025/12/on-coast-guard-boat.png",
+        "downloadUrl": "https://www.nasa.gov/technology/tech-transfer-spinoffs/nasas-life-saving-technology-where-cell-signals-cant-go/",
+        "source": {
+          "providerId": "spaceflight_news",
+          "providerName": "Spaceflight News (NASA)",
+          "resourceUrl": "https://www.nasa.gov/technology/tech-transfer-spinoffs/nasas-life-saving-technology-where-cell-signals-cant-go/"
+        },
+        "license": {
+          "type": "Open Access",
+          "url": "https://www.nasa.gov/technology/tech-transfer-spinoffs/nasas-life-saving-technology-where-cell-signals-cant-go/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": false,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "NASA",
+          "publishedAt": "2026-09-10T20:12:39Z",
+          "isLiveNews": true,
+          "authors": "NASA"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "snapi-39866",
+        "title": "NASA Calls for Proposals to Accelerate Lunar Surface Technologies",
+        "category": "news",
+        "description": "NASA is seeking proposals to advance the technology and infrastructure needed to explore the Moon and establish a Moon Base in the lunar South Pole region. Announced on Tuesday, Sept. 8, the solicitation targets capability gaps, including power generation, oxygen extraction, and producing materials on the Moon required for construction and operations. These technologies are […]",
+        "thumbnailUrl": "https://www.nasa.gov/wp-content/uploads/2026/09/lunar-enabling-infrastructure-06292026-1.png",
+        "previewUrl": "https://www.nasa.gov/wp-content/uploads/2026/09/lunar-enabling-infrastructure-06292026-1.png",
+        "downloadUrl": "https://www.nasa.gov/news-release/nasa-calls-for-proposals-to-accelerate-lunar-surface-technologies/",
+        "source": {
+          "providerId": "spaceflight_news",
+          "providerName": "Spaceflight News (NASA)",
+          "resourceUrl": "https://www.nasa.gov/news-release/nasa-calls-for-proposals-to-accelerate-lunar-surface-technologies/"
+        },
+        "license": {
+          "type": "Open Access",
+          "url": "https://www.nasa.gov/news-release/nasa-calls-for-proposals-to-accelerate-lunar-surface-technologies/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": false,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "NASA",
+          "publishedAt": "2026-09-08T20:16:16Z",
+          "isLiveNews": true,
+          "authors": "NASA"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "snapi-39817",
+        "title": "Galaxia Takes Next Step in Earth Observation with purchase of Simera Sense Hyperspectral Imager",
+        "category": "news",
+        "description": "Leuven, Belgium & Halifax, Canada – 3 September 2026 – European optical payload provider Simera Sense today announced that Canadian space technology company Galaxia has acquired a HyperScape100 hyperspectral imaging […]\nThe post Galaxia Takes Next Step in Earth Observation with purchase of Simera Sense Hyperspectral Imager appeared first on SpaceNews.",
+        "thumbnailUrl": "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/Orange-square-scaled.png?fit=1024%2C1024&ssl=1",
+        "previewUrl": "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/Orange-square-scaled.png?fit=1024%2C1024&ssl=1",
+        "downloadUrl": "https://spacenews.com/galaxia-takes-next-step-in-earth-observation-with-purchase-of-simera-sense-hyperspectral-imager/",
+        "source": {
+          "providerId": "spaceflight_news",
+          "providerName": "Spaceflight News (SpaceNews)",
+          "resourceUrl": "https://spacenews.com/galaxia-takes-next-step-in-earth-observation-with-purchase-of-simera-sense-hyperspectral-imager/"
+        },
+        "license": {
+          "type": "Open Access",
+          "url": "https://spacenews.com/galaxia-takes-next-step-in-earth-observation-with-purchase-of-simera-sense-hyperspectral-imager/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": false,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "SpaceNews",
+          "publishedAt": "2026-09-03T13:00:00Z",
+          "isLiveNews": true,
+          "authors": "Simera Sense"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "snapi-39807",
+        "title": "NASA Revamps Challenge Linking Community College Studies to Aerospace Careers",
+        "category": "news",
+        "description": "Community college students across the U.S. now have another opportunity to discover how their education can lead to fulfilling roles at the forefront of aerospace, science, engineering, and technology. The updated NASA Community College Aerospace Scholars (NCAS) student challenge invites students to learn about the agency and its missions, engage with NASA experts, and explore […]",
+        "thumbnailUrl": "https://images-assets.nasa.gov/image/iss072e838362/iss072e838362~large.jpg",
+        "previewUrl": "https://images-assets.nasa.gov/image/iss072e838362/iss072e838362~large.jpg",
+        "downloadUrl": "https://www.nasa.gov/learning-resources/linking-community-college-studies-to-aerospace-careers/",
+        "source": {
+          "providerId": "spaceflight_news",
+          "providerName": "Spaceflight News (NASA)",
+          "resourceUrl": "https://www.nasa.gov/learning-resources/linking-community-college-studies-to-aerospace-careers/"
+        },
+        "license": {
+          "type": "Open Access",
+          "url": "https://www.nasa.gov/learning-resources/linking-community-college-studies-to-aerospace-careers/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": false,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "NASA",
+          "publishedAt": "2026-09-02T19:01:05Z",
+          "isLiveNews": true,
+          "authors": "NASA"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "snapi-39724",
+        "title": "NASA Awards First Prize in Phase 2 of Agency’s LunaRecycle Challenge",
+        "category": "news",
+        "description": "NASA named a team from the Massachusetts Institute of Technology (MIT) as the first prize winner for Phase 2 of the agency’s LunaRecycle Challenge, which focused on developing solutions for reducing waste during missions to the Moon or deep space by recycling common materials, like fabrics, plastics, foam, and metals.  The Composites for Extraterrestrial Recycling By Engineering the Reuse and Upcycling of Zotek (CERBERUZ) team, comprised of undergraduate, graduate, and doctoral students at MIT, received a total of $775,000 in awards.   The technology grinds mixed trash into a fine powder, […]",
+        "thumbnailUrl": "https://www.nasa.gov/wp-content/uploads/2026/08/cerberuz-lunarecycle-winners.jpg",
+        "previewUrl": "https://www.nasa.gov/wp-content/uploads/2026/08/cerberuz-lunarecycle-winners.jpg",
+        "downloadUrl": "https://www.nasa.gov/directorates/stmd/prizes-challenges-crowdsourcing-program/centennial-challenges/nasa-awards-first-prize-in-phase-2-of-agencys-lunarecycle-challenge/",
+        "source": {
+          "providerId": "spaceflight_news",
+          "providerName": "Spaceflight News (NASA)",
+          "resourceUrl": "https://www.nasa.gov/directorates/stmd/prizes-challenges-crowdsourcing-program/centennial-challenges/nasa-awards-first-prize-in-phase-2-of-agencys-lunarecycle-challenge/"
+        },
+        "license": {
+          "type": "Open Access",
+          "url": "https://www.nasa.gov/directorates/stmd/prizes-challenges-crowdsourcing-program/centennial-challenges/nasa-awards-first-prize-in-phase-2-of-agencys-lunarecycle-challenge/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": false,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "NASA",
+          "publishedAt": "2026-08-28T20:30:52Z",
+          "isLiveNews": true,
+          "authors": "NASA"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "snapi-39709",
+        "title": "NASA Invites Media to Turkey Artemis Accords Signing Ceremony",
+        "category": "news",
+        "description": "Turkey will sign the Artemis Accords during a ceremony at 2:30 p.m. EDT Monday, Aug. 31, at NASA Headquarters in Washington, becoming the 71st country signatory. NASA Administrator Jared Isaacman will host Turkish Minister of Industry and Technology Mehmet Fatih Kacır for the ceremony, together with U.S. Department of State officials. This event is in person only. […]",
+        "thumbnailUrl": "https://www.nasa.gov/wp-content/uploads/2026/06/nasa-meatball-11-black-background.jpg",
+        "previewUrl": "https://www.nasa.gov/wp-content/uploads/2026/06/nasa-meatball-11-black-background.jpg",
+        "downloadUrl": "https://www.nasa.gov/news-release/nasa-invites-media-to-turkey-artemis-accords-signing-ceremony/",
+        "source": {
+          "providerId": "spaceflight_news",
+          "providerName": "Spaceflight News (NASA)",
+          "resourceUrl": "https://www.nasa.gov/news-release/nasa-invites-media-to-turkey-artemis-accords-signing-ceremony/"
+        },
+        "license": {
+          "type": "Open Access",
+          "url": "https://www.nasa.gov/news-release/nasa-invites-media-to-turkey-artemis-accords-signing-ceremony/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": false,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "NASA",
+          "publishedAt": "2026-08-27T18:42:38Z",
+          "isLiveNews": true,
+          "authors": "NASA"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "snapi-39649",
+        "title": "Spirit Electronics Adds Texas Instruments and Microchip Technology Space Grade Components to Online Store Ahead of SmallSat 2026",
+        "category": "news",
+        "description": "PHOENIX, AZ — August 24, 2026 — Spirit Electronics, a value‑added distributor of high‑reliability electronics focused on performance‑driven program requirements, announced that space‑grade and high‑reliability components from Texas Instruments and […]\nThe post Spirit Electronics Adds Texas Instruments and Microchip Technology Space Grade Components to Online Store Ahead of SmallSat 2026 appeared first on SpaceNews.",
+        "thumbnailUrl": "https://i0.wp.com/spacenews.com/wp-content/uploads/2025/02/Spirit-Electronics-logo.png?fit=860%2C860&ssl=1",
+        "previewUrl": "https://i0.wp.com/spacenews.com/wp-content/uploads/2025/02/Spirit-Electronics-logo.png?fit=860%2C860&ssl=1",
+        "downloadUrl": "https://spacenews.com/spirit-electronics-adds-texas-instruments-and-microchip-technology-space-grade-components-to-online-store-ahead-of-smallsat-2026/",
+        "source": {
+          "providerId": "spaceflight_news",
+          "providerName": "Spaceflight News (SpaceNews)",
+          "resourceUrl": "https://spacenews.com/spirit-electronics-adds-texas-instruments-and-microchip-technology-space-grade-components-to-online-store-ahead-of-smallsat-2026/"
+        },
+        "license": {
+          "type": "Open Access",
+          "url": "https://spacenews.com/spirit-electronics-adds-texas-instruments-and-microchip-technology-space-grade-components-to-online-store-ahead-of-smallsat-2026/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": false,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "SpaceNews",
+          "publishedAt": "2026-08-24T15:00:00Z",
+          "isLiveNews": true,
+          "authors": "Spirit.Electronics"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "snapi-39647",
+        "title": "The Fuel for the Next Generation of Cislunar Exploration? Technology and Talent.",
+        "category": "news",
+        "description": "After NASA astronauts landed on the moon in 1969, their achievement bore decades’ worth of fruit, including scientific discoveries and a strategic national security advantage. Now — with plans to […]\nThe post The Fuel for the Next Generation of Cislunar Exploration? Technology and Talent. appeared first on SpaceNews.",
+        "thumbnailUrl": "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/BAE_shaping-the-future.png?fit=1024%2C793&ssl=1",
+        "previewUrl": "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/BAE_shaping-the-future.png?fit=1024%2C793&ssl=1",
+        "downloadUrl": "https://spacenews.com/the-fuel-for-the-next-generation-of-cislunar-exploration-technology-and-talent/",
+        "source": {
+          "providerId": "spaceflight_news",
+          "providerName": "Spaceflight News (SpaceNews)",
+          "resourceUrl": "https://spacenews.com/the-fuel-for-the-next-generation-of-cislunar-exploration-technology-and-talent/"
+        },
+        "license": {
+          "type": "Open Access",
+          "url": "https://spacenews.com/the-fuel-for-the-next-generation-of-cislunar-exploration-technology-and-talent/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": false,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "SpaceNews",
+          "publishedAt": "2026-08-24T14:00:00Z",
+          "isLiveNews": true,
+          "authors": "Matt Alderton"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "snapi-39636",
+        "title": "Chinese radio-frequency intelligence startup StarRF closes new funding round",
+        "category": "news",
+        "description": "HELSINKI — A Chinese startup building a constellation to detect and geolocate radio-frequency emissions from orbit has closed a funding round as China’s commercial sector expands. Tianjin-based Xingkan Jiuzhou Technology, […]\nThe post Chinese radio-frequency intelligence startup StarRF closes new funding round appeared first on SpaceNews.",
+        "thumbnailUrl": "https://i0.wp.com/spacenews.com/wp-content/uploads/2023/09/Yaogan39-02-CZ2D-XSLC-17sept2023-ourspace1.jpg?fit=1024%2C681&ssl=1",
+        "previewUrl": "https://i0.wp.com/spacenews.com/wp-content/uploads/2023/09/Yaogan39-02-CZ2D-XSLC-17sept2023-ourspace1.jpg?fit=1024%2C681&ssl=1",
+        "downloadUrl": "https://spacenews.com/chinese-radio-frequency-intelligence-startup-starrf-closes-new-funding-round/",
+        "source": {
+          "providerId": "spaceflight_news",
+          "providerName": "Spaceflight News (SpaceNews)",
+          "resourceUrl": "https://spacenews.com/chinese-radio-frequency-intelligence-startup-starrf-closes-new-funding-round/"
+        },
+        "license": {
+          "type": "Open Access",
+          "url": "https://spacenews.com/chinese-radio-frequency-intelligence-startup-starrf-closes-new-funding-round/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": false,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "SpaceNews",
+          "publishedAt": "2026-08-21T20:08:59Z",
+          "isLiveNews": true,
+          "authors": "Andrew Jones"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "snapi-39614",
+        "title": "SmallSat 2026",
+        "category": "news",
+        "description": "SmallSat 2026 Join NASA in the Exhibit Hall (Booth # 635, 835, 641, and 940) for Storytelling by NASA experts. Full Agenda below. MONDAY, AUGUST 24, 9:00 – 10:00 AM WelcomeJose NunezBryceTech’s Smallsats by the Numbers: 2026Fletcher FranklinSupply Chain ObservationsBruce YostTechnology Shortfall Rudy de RoseeSPARCS Camera and Early Science ObservationsKaitlyn AshcroftJPL: SkyfallTim CanhamSWIFT LINK ReboostBo NaaszFlight […]",
+        "thumbnailUrl": "https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2023/01/nasa-logo-web-rgb.png",
+        "previewUrl": "https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2023/01/nasa-logo-web-rgb.png",
+        "downloadUrl": "https://science.nasa.gov/earth/smallsat-2026/",
+        "source": {
+          "providerId": "spaceflight_news",
+          "providerName": "Spaceflight News (NASA)",
+          "resourceUrl": "https://science.nasa.gov/earth/smallsat-2026/"
+        },
+        "license": {
+          "type": "Open Access",
+          "url": "https://science.nasa.gov/earth/smallsat-2026/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": false,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "NASA",
+          "publishedAt": "2026-08-20T20:05:41Z",
+          "isLiveNews": true,
+          "authors": "NASA"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "snapi-39508",
+        "title": "NASA Competition Invites Students to Help Imagine a Future Enabled by Lunar Technologies",
+        "category": "news",
+        "description": "NASA is asking U.S.-based collegiate teams to submit bold, original concepts to the 2027 edition of a student challenge focused on aerospace innovation that could help the agency envision a future on the Moon shaped by new technology.  The latest NASA Revolutionary Aerospace Systems Concepts – Academic Linkage (RASC-AL) competition invites student teams to explore new operations paradigms and advance the technologies needed to […]",
+        "thumbnailUrl": "https://www.nasa.gov/wp-content/uploads/2026/05/liveenable-im3-sustainabilitylogistics-withastros-1.png",
+        "previewUrl": "https://www.nasa.gov/wp-content/uploads/2026/05/liveenable-im3-sustainabilitylogistics-withastros-1.png",
+        "downloadUrl": "https://www.nasa.gov/directorates/stmd/prizes-challenges-crowdsourcing-program/nasa-competition-invites-students-to-help-imagine-a-future-enabled-by-lunar-technologies/",
+        "source": {
+          "providerId": "spaceflight_news",
+          "providerName": "Spaceflight News (NASA)",
+          "resourceUrl": "https://www.nasa.gov/directorates/stmd/prizes-challenges-crowdsourcing-program/nasa-competition-invites-students-to-help-imagine-a-future-enabled-by-lunar-technologies/"
+        },
+        "license": {
+          "type": "Open Access",
+          "url": "https://www.nasa.gov/directorates/stmd/prizes-challenges-crowdsourcing-program/nasa-competition-invites-students-to-help-imagine-a-future-enabled-by-lunar-technologies/",
+          "commercialAllowed": true,
+          "attributionRequired": true,
+          "modificationAllowed": false,
+          "verified": true
+        },
+        "attributes": {
+          "publisher": "NASA",
+          "publishedAt": "2026-08-14T20:00:38Z",
+          "isLiveNews": true,
+          "authors": "NASA"
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      }
+    ]
   }
 ]
