@@ -82,6 +82,7 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         'somafm_radio',
         'archive_grateful_dead',
         'archive_modular_synthesizers',
+        'archive_early_recorded_blues',
         'archive_delta_blues',
         'archive_78rpm_jazz',
         'apple_music',
@@ -183,9 +184,9 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'maps':
       return {
         category: 'maps',
-        primaryProviders: ['archive_historic_atlases', 'archive_usgs_topomaps', 'archive_david_rumsey_maps', 'nominatim', 'photon_maps', 'archive_historic_maps', 'wikivoyage', 'open_meteo_geocoding', 'open_meteo_elevation', 'usgs'],
+        primaryProviders: ['iss_current_location', 'archive_historic_atlases', 'archive_usgs_topomaps', 'archive_david_rumsey_maps', 'nominatim', 'photon_maps', 'archive_historic_maps', 'wikivoyage', 'open_meteo_geocoding', 'open_meteo_elevation', 'usgs'],
         fallbackProviders: [],
-        planSummary: 'Primary: Antique Cartography & World Atlases + USGS Topographic Quadrangle Maps + Antique Maps + OpenStreetMap Nominatim + Photon Komoot Engine.'
+        planSummary: 'Primary: WhereTheISS.at Live Space Station Telemetry + Antique Cartography & World Atlases + USGS Topographic Quadrangle Maps + OpenStreetMap Nominatim.'
       };
 
     case 'weather':
@@ -199,9 +200,9 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'art':
       return {
         category: 'art',
-        primaryProviders: ['archive_usda_pomology', 'archive_architectural_pattern_books', 'archive_tin_pan_alley', 'archive_auto_brochures', 'loc_digital_collections', 'archive_demoscene', 'archive_vintage_fashion', 'archive_sheet_music', 'archive_bthl_architecture', 'archive_vintage_posters', 'smk_art', 'smithsonian_open_access', 'artic', 'met_museum', 'cleveland_art', 'smk_images', 'vam_images', 'europeana_images', 'wellcome_images'],
+        primaryProviders: ['archive_world_war_posters', 'archive_usda_pomology', 'archive_architectural_pattern_books', 'archive_tin_pan_alley', 'archive_auto_brochures', 'loc_digital_collections', 'archive_demoscene', 'archive_vintage_fashion', 'archive_sheet_music', 'archive_bthl_architecture', 'archive_vintage_posters', 'smk_art', 'smithsonian_open_access', 'artic', 'met_museum', 'cleveland_art', 'smk_images', 'vam_images', 'europeana_images', 'wellcome_images'],
         fallbackProviders: [],
-        planSummary: 'Primary: USDA Botanical Watercolors & Pomology + Victorian Architectural Patterns + Tin Pan Alley + Classic Automotive Design + Smithsonian + AIC.'
+        planSummary: 'Primary: World War Vintage Propaganda Posters + USDA Pomology Watercolors + Victorian Architectural Patterns + Tin Pan Alley + Smithsonian + AIC.'
       };
 
     case 'datasets':
@@ -215,9 +216,9 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'code':
       return {
         category: 'code',
-        primaryProviders: ['archive_vintage_computer_magazines', 'archive_ham_radio_technical', 'archive_historic_software', 'arch_linux_pkgs', 'clojars_packages', 'nuget_packages', 'metacpan_perl', 'hex_pm', 'github', 'pub_dev', 'docker_hub', 'maven_central', 'pypi', 'rubygems', 'packagist', 'homebrew', 'crates_io', 'gitlab', 'cdnjs', 'npm', 'hn_code'],
+        primaryProviders: ['hackaday_hardware', 'phoronix_hardware', 'archive_vintage_computer_magazines', 'archive_ham_radio_technical', 'archive_historic_software', 'arch_linux_pkgs', 'clojars_packages', 'nuget_packages', 'metacpan_perl', 'hex_pm', 'github', 'pub_dev', 'docker_hub', 'maven_central', 'pypi', 'rubygems', 'packagist', 'homebrew', 'crates_io', 'gitlab', 'cdnjs', 'npm', 'hn_code'],
         fallbackProviders: [],
-        planSummary: 'Primary: Vintage Computer Code & Articles + Ham Radio Technical Manuals + Historical Software + Arch Linux + Clojars + NuGet + MetaCPAN + GitHub + Docker Hub.'
+        planSummary: 'Primary: Hackaday Open Hardware & Reverse Engineering + Phoronix Linux Benchmarks + Vintage Computer Code + Historic Software + Arch Linux + GitHub.'
       };
 
     case 'biodiversity':
@@ -229,7 +230,7 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
       };
 
     case 'knowledge': {
-      const primary = ['openfda_drugs', 'archive_aviation_history', 'archive_computer_history', 'wikipedia', 'wikidata', 'wikivoyage', 'wiktionary', 'dbpedia', 'wikisource', 'wikiquote'];
+      const primary = ['archive_historical_patent_diagrams', 'openfda_drugs', 'archive_aviation_history', 'archive_computer_history', 'wikipedia', 'wikidata', 'wikivoyage', 'wiktionary', 'dbpedia', 'wikisource', 'wikiquote'];
       const fallback: string[] = [];
       const hasGoogle = !!(getGoogleApiKey() && getGoogleSearchEngineId());
       if (hasGoogle) {
@@ -242,17 +243,17 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         primaryProviders: primary,
         fallbackProviders: fallback,
         planSummary: hasGoogle
-          ? 'Primary: Google Custom Search + openFDA Pharmaceutical Monographs + Aviation History + Computer History Museum + Wikipedia + Wikidata.'
-          : 'Primary: openFDA Drug Monographs + Aeronautics History Manuals + Computer History Museum + Wikipedia + Wikidata + DBpedia. Fallback: Google Custom Search.'
+          ? 'Primary: Google Custom Search + Historic US Patent Blueprints + openFDA Drug Monographs + Aviation History + Computer History Museum + Wikipedia.'
+          : 'Primary: Historic US Patent Blueprints + openFDA Drug Monographs + Aeronautics History Manuals + Wikipedia + Wikidata. Fallback: Google Custom Search.'
       };
     }
 
     case 'finance':
       return {
         category: 'finance',
-        primaryProviders: ['frankfurter', 'coingecko', 'exchange_rates'],
+        primaryProviders: ['coinpaprika_crypto', 'cnbc_markets', 'frankfurter', 'coingecko', 'exchange_rates'],
         fallbackProviders: [],
-        planSummary: 'Primary: Frankfurter / European Central Bank Exchange Rates + CoinGecko Digital Assets + Open Exchange Rates FX Matrix.'
+        planSummary: 'Primary: CoinPaprika Crypto Index + CNBC Financial Markets + Frankfurter / ECB Rates + CoinGecko Digital Assets + Open Exchange Rates.'
       };
 
     case 'food':
@@ -266,9 +267,9 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'games':
       return {
         category: 'games',
-        primaryProviders: ['archive_video_game_design', 'archive_wargame_simulations', 'archive_vintage_boardgames', 'archive_msdos_games', 'archive_arcade_games', 'pokeapi', 'scryfall', 'yugioh', 'freetogame', 'dnd5e_srd', 'archive_pcgames', 'open5e_rpg', 'opentdb'],
+        primaryProviders: ['eurogamer_feed', 'rockpapershotgun_feed', 'archive_video_game_design', 'archive_wargame_simulations', 'archive_vintage_boardgames', 'archive_msdos_games', 'archive_arcade_games', 'pokeapi', 'scryfall', 'yugioh', 'freetogame', 'dnd5e_srd', 'archive_pcgames', 'open5e_rpg', 'opentdb'],
         fallbackProviders: [],
-        planSummary: 'Primary: Video Game Design Documents & Source Archives + Tabletop Simulation Manuals + Vintage Board Games + MS-DOS Games + Coin-Op Arcade + PokéAPI + Scryfall MTG.'
+        planSummary: 'Primary: Eurogamer News + Rock Paper Shotgun PC & Indie Analysis + Video Game Design Documents + Tabletop Simulation Manuals + MS-DOS Games + PokéAPI.'
       };
 
     case 'nasa': {
@@ -347,6 +348,17 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
 
     case 'news': {
       const primary = [
+        'cbs_news',
+        'abc_news',
+        'time_magazine',
+        'independent_news',
+        'cnbc_markets',
+        'politico_wire',
+        'wired_tech',
+        'mit_tech_review',
+        'sciencedaily_wire',
+        'nature_journal_news',
+        'biorxiv_preprints',
         'google_news',
         'bbc_world_news',
         'the_guardian_news',
@@ -373,13 +385,33 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
         category: 'news',
         primaryProviders: primary,
         fallbackProviders: fallback,
-        planSummary: 'Real-Time Global News Wire: Google News + BBC World + The Guardian + Al Jazeera + Deutsche Welle + France 24 + Ars Technica + The Register + NASA + openFDA Recalls.'
+        planSummary: 'Real-Time Global News Wire: CBS + ABC + TIME + The Independent + CNBC + Politico + WIRED + MIT Tech Review + ScienceDaily + Nature + Google News.'
       };
     }
 
     case 'all':
     default: {
       const allPrimary = [
+        'cbs_news',
+        'abc_news',
+        'time_magazine',
+        'independent_news',
+        'cnbc_markets',
+        'politico_wire',
+        'wired_tech',
+        'mit_tech_review',
+        'sciencedaily_wire',
+        'nature_journal_news',
+        'biorxiv_preprints',
+        'hackaday_hardware',
+        'phoronix_hardware',
+        'eurogamer_feed',
+        'rockpapershotgun_feed',
+        'iss_current_location',
+        'coinpaprika_crypto',
+        'archive_historical_patent_diagrams',
+        'archive_early_recorded_blues',
+        'archive_world_war_posters',
         'google_news',
         'bbc_world_news',
         'dw_news',
@@ -572,6 +604,16 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
       const isNewsQuery = /\b(news|breaking|latest|today|war|election|president|minister|conflict|crisis|update|press|politics|market|headline|economy)\b/i.test(queryStr);
       if (isNewsQuery) {
         allPrimary.unshift(
+          'cbs_news',
+          'abc_news',
+          'time_magazine',
+          'independent_news',
+          'cnbc_markets',
+          'politico_wire',
+          'wired_tech',
+          'mit_tech_review',
+          'sciencedaily_wire',
+          'nature_journal_news',
           'google_news',
           'bbc_world_news',
           'dw_news',
