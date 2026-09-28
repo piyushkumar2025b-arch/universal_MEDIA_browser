@@ -67,9 +67,11 @@ export const ReliableMediaImage: React.FC<ReliableMediaImageProps> = ({
     }
 
     // Step 2: Use guaranteed high-resolution verified content photograph
-    setErrorStep(2);
-    const fallback = getContentPhoto(alt, category);
-    setCurrentSrc(fallback);
+    if (errorStep < 2) {
+      setErrorStep(2);
+      const fallback = getContentPhoto(alt, category);
+      setCurrentSrc(fallback);
+    }
   };
 
   const handleLoad = () => {

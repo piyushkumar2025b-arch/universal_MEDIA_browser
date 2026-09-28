@@ -219,25 +219,27 @@ export default function App() {
     await executeHttpSearch(currentFilters);
   }, [pageSize, executeHttpSearch]);
 
-  // Debounced search trigger
+  // Execute search when filters are committed (on Enter, category select, or pagination)
   useEffect(() => {
-    const timer = setTimeout(() => {
-      runSearch(filters);
-    }, 200);
-    return () => clearTimeout(timer);
+    runSearch(filters);
   }, [filters, runSearch]);
 
-  // Filter updates
-  const handleQueryChange = (query: string) => {
-    setFilters((prev) => ({ ...prev, query, page: 1 }));
+  // Committed search handlers (Only searches on Enter / explicit submit)
+  const handleCommitSearch = (newQuery: string) => {
+    setFilters((prev) => ({ ...prev, query: newQuery, page: 1 }));
     setPage(1);
     if (activeView !== 'discover') {
       setActiveView('discover');
     }
   };
 
-  const handleCategoryChange = (category: ResourceCategory) => {
-    setFilters((prev) => ({ ...prev, category, page: 1 }));
+  const handleCategoryChange = (category: ResourceCategory, queryToSearch?: string) => {
+    setFilters((prev) => ({
+      ...prev,
+      category,
+      query: queryToSearch !== undefined ? queryToSearch : prev.query,
+      page: 1
+    }));
     setPage(1);
     if (activeView !== 'discover') {
       setActiveView('discover');
@@ -353,7 +355,7 @@ export default function App() {
             {/* Clean Unboxed Search & Inline Categories */}
             <PersonalSearch
               query={filters.query}
-              onQueryChange={handleQueryChange}
+              onCommitSearch={handleCommitSearch}
               selectedCategory={filters.category}
               onCategoryChange={handleCategoryChange}
               onToggleFilters={() => setIsFilterOpen(!isFilterOpen)}
