@@ -392,25 +392,26 @@ export interface SearchResponse {
  * Sends requests directly to backend API Gateway (POST /api/v1/search).
  * Catches 401/403, 429, 5xx with specific recovery handlers to guarantee zero crashes.
  */
-export async function searchResources(filters: SearchFilters): Promise<SearchResponse> {
+export async function searchResources(filters: SearchFilters, signal?: AbortSignal): Promise<SearchResponse> {
   const startTime = performance.now();
   const trimmedQuery = (filters.query || '').trim();
 
-  // If query is empty and no specific category selected, return empty cleanly
-  if (!trimmedQuery) {
-    const userOwned = getUserOwnedResources();
-    return {
-      results: userOwned,
-      totalCount: userOwned.length,
-      executionTimeMs: 0,
-      categoryCounts: computeCategoryCounts(userOwned),
-      sourceSummary: userOwned.length > 0 ? 'User Content Vault' : 'No query specified',
-      providerErrors: [],
-      page: 1,
-      pageSize: filters.pageSize || 24,
-      totalPages: 1
-    };
-  }
+  // If query is empty, provide a curated domain query for the category so the gallery always showcases rich media
+  const effectiveQuery = trimmedQuery || (
+    filters.category === 'videos' ? 'cinema' :
+    filters.category === 'art' ? 'masterpiece' :
+    filters.category === 'images' ? 'nature' :
+    filters.category === 'music' ? 'ambient' :
+    filters.category === 'papers' ? 'science' :
+    filters.category === 'nasa' ? 'universe' :
+    filters.category === 'news' ? 'world' :
+    filters.category === 'biodiversity' ? 'wildlife' :
+    filters.category === 'maps' ? 'cartography' :
+    filters.category === 'books' ? 'literature' :
+    filters.category === 'code' ? 'algorithm' :
+    filters.category === 'finance' ? 'market' :
+    'curated'
+  );
 
   try {
     const res = await fetch('/api/v1/search', {
@@ -420,10 +421,11 @@ export async function searchResources(filters: SearchFilters): Promise<SearchRes
       },
       body: JSON.stringify({
         ...filters,
+        query: effectiveQuery,
         page: filters.page || 1,
-        pageSize: filters.pageSize || 24
+        pageSize: filters.pageSize || 36
       }),
-      signal: AbortSignal.timeout(25000)
+      signal: signal || AbortSignal.timeout(25000)
     });
 
     // Specific Catch Block: Gateway HTTP Status Evaluation
@@ -531,6 +533,21 @@ export async function searchResources(filters: SearchFilters): Promise<SearchRes
       cachedCount: data.cachedCount
     };
   } catch (err: any) {
+    // If request was cancelled by the user typing a new search or hitting Enter, return cleanly
+    if (err?.name === 'AbortError' || signal?.aborted) {
+      return {
+        results: [],
+        totalCount: 0,
+        executionTimeMs: 0,
+        categoryCounts: computeCategoryCounts([]),
+        sourceSummary: 'Search Cancelled',
+        providerErrors: [],
+        page: filters.page || 1,
+        pageSize: filters.pageSize || 36,
+        totalPages: 1
+      };
+    }
+
     // Specific catch block for network failures or client timeouts
     const errorDetails = classifyNetworkOrTimeoutError(err, 'api_gateway');
     recordClientProviderError(errorDetails);
@@ -545,7 +562,7 @@ export async function searchResources(filters: SearchFilters): Promise<SearchRes
       sourceSummary: 'Network Error',
       providerErrors: [errorDetails.diagnosticFeedback],
       page: 1,
-      pageSize: filters.pageSize || 24,
+      pageSize: filters.pageSize || 36,
       totalPages: 1
     };
   }

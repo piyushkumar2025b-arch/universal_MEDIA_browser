@@ -29,7 +29,10 @@ interface VideoSourceInfo {
 export function parseVideoSource(resource: ResourceItem): VideoSourceInfo {
   // 1. Explicit attributes embedUrl (PeerTube, YouTube, Vimeo, Internet Archive, DailyMotion)
   if (resource.attributes?.embedUrl) {
-    const raw = String(resource.attributes.embedUrl).trim();
+    let raw = String(resource.attributes.embedUrl).trim();
+    if (typeof window !== 'undefined' && window.location.protocol === 'https:' && raw.startsWith('http://')) {
+      raw = raw.replace(/^http:\/\//i, 'https://');
+    }
     if (raw.startsWith('http') || raw.startsWith('//')) {
       return {
         type: 'embed',
@@ -48,9 +51,10 @@ export function parseVideoSource(resource: ResourceItem): VideoSourceInfo {
 
   const rawUrl = (resource.previewUrl || resource.downloadUrl || resource.source?.resourceUrl || '').trim();
   const resourceUrl = (resource.source?.resourceUrl || '').trim();
+  const combinedUrls = `${rawUrl} ${resourceUrl}`;
 
   // 3. YouTube URL matching
-  const ytMatch = (rawUrl + ' ' + resourceUrl).match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/i);
+  const ytMatch = combinedUrls.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/i);
   if (ytMatch && ytMatch[1]) {
     return {
       type: 'embed',
@@ -59,7 +63,7 @@ export function parseVideoSource(resource: ResourceItem): VideoSourceInfo {
   }
 
   // 4. Vimeo URL matching
-  const vimeoMatch = (rawUrl + ' ' + resourceUrl).match(/(?:vimeo\.com\/(?:video\/)?|player\.vimeo\.com\/video\/)(\d+)/i);
+  const vimeoMatch = combinedUrls.match(/(?:vimeo\.com\/(?:video\/)?|player\.vimeo\.com\/video\/)(\d+)/i);
   if (vimeoMatch && vimeoMatch[1]) {
     return {
       type: 'embed',
@@ -81,6 +85,9 @@ export function parseVideoSource(resource: ResourceItem): VideoSourceInfo {
     } else if (!embed.includes('/videos/embed/') && resourceUrl.includes('/videos/watch/')) {
       embed = resourceUrl.replace('/videos/watch/', '/videos/embed/');
     }
+    if (typeof window !== 'undefined' && window.location.protocol === 'https:' && embed.startsWith('http://')) {
+      embed = embed.replace(/^http:\/\//i, 'https://');
+    }
     if (embed.startsWith('http') && embed.includes('/videos/embed/')) {
       return {
         type: 'embed',
@@ -90,7 +97,7 @@ export function parseVideoSource(resource: ResourceItem): VideoSourceInfo {
   }
 
   // 6. Dailymotion URL matching
-  const dmMatch = (rawUrl + ' ' + resourceUrl).match(/(?:dailymotion\.com\/video\/|dai\.ly\/)([a-zA-Z0-9]+)/i);
+  const dmMatch = combinedUrls.match(/(?:dailymotion\.com\/video\/|dai\.ly\/)([a-zA-Z0-9]+)/i);
   if (dmMatch && dmMatch[1]) {
     return {
       type: 'embed',
@@ -98,9 +105,10 @@ export function parseVideoSource(resource: ResourceItem): VideoSourceInfo {
     };
   }
 
-  // 7. Internet Archive video matching
-  const iaMatch = (rawUrl + ' ' + resourceUrl).match(/archive\.org\/(?:details|embed)\/([a-zA-Z0-9._-]+)/i);
-  const iaId = resource.attributes?.iaId || (iaMatch ? iaMatch[1] : null);
+  // 7. Internet Archive video matching (via archive.org URL or iaId parameter)
+  const iaMatch = combinedUrls.match(/archive\.org\/(?:details|embed)\/([a-zA-Z0-9._-]+)/i);
+  const iaParamMatch = combinedUrls.match(/iaId=([a-zA-Z0-9._-]+)/i);
+  const iaId = resource.attributes?.iaId || (iaMatch ? iaMatch[1] : (iaParamMatch ? iaParamMatch[1] : null));
   if (iaId) {
     return {
       type: 'embed',
@@ -110,9 +118,13 @@ export function parseVideoSource(resource: ResourceItem): VideoSourceInfo {
 
   // 8. Generic URL with /embed/
   if (rawUrl.includes('/embed/') || rawUrl.includes('/embed?')) {
+    let embed = rawUrl;
+    if (typeof window !== 'undefined' && window.location.protocol === 'https:' && embed.startsWith('http://')) {
+      embed = embed.replace(/^http:\/\//i, 'https://');
+    }
     return {
       type: 'embed',
-      embedUrl: rawUrl
+      embedUrl: embed
     };
   }
 

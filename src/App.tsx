@@ -84,9 +84,7 @@ export default function App() {
   const [userOwnedList] = useState<ResourceItem[]>(() => getUserOwnedResources());
   const [isLoading, setIsLoading] = useState(true);
 
-  // Pagination State
-  const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(36);
+  // Pagination & Results State
   const [totalPages, setTotalPages] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
 
@@ -99,7 +97,8 @@ export default function App() {
   // Web3 Wallet
   const { isConnected: isWalletConnected, address: walletAddress } = useWeb3Wallet();
 
-  // Cancel ref for WS searches
+  // Search Abort Controller ref for in-flight cancellation
+  const searchAbortControllerRef = useRef<AbortController | null>(null);
   const cancelWsRef = useRef<(() => void) | null>(null);
 
   // Library & Persistence State (loaded from localStorage)
@@ -151,104 +150,87 @@ export default function App() {
     } catch {}
   }, [downloadHistory]);
 
-  // HTTP search fallback
-  const executeHttpSearch = useCallback(async (currentFilters: SearchFilters) => {
+  // Stable HTTP search execution
+  const executeHttpSearch = useCallback(async (currentFilters: SearchFilters, signal?: AbortSignal) => {
     try {
-      const resp = await searchResources({
-        ...currentFilters,
-        page: currentFilters.page ?? page,
-        pageSize: currentFilters.pageSize ?? pageSize
-      });
+      const resp = await searchResources(currentFilters, signal);
+      if (signal?.aborted) return;
       setResults(resp.results || []);
-      setPage(resp.page || 1);
-      setPageSize(resp.pageSize || 36);
       setTotalPages(resp.totalPages || 1);
       setTotalCount(resp.totalCount || (resp.results ? resp.results.length : 0));
     } catch (err: any) {
+      if (err?.name === 'AbortError' || signal?.aborted) return;
       console.error('Search query execution error:', err);
       setResults([]);
     } finally {
-      setIsLoading(false);
+      if (!signal?.aborted) {
+        setIsLoading(false);
+      }
     }
-  }, [page, pageSize]);
+  }, []);
 
-  // Execute Search with WebSocket Streaming & HTTP Fallback
+  // Execute Search: Aborts any in-flight requests to eliminate race conditions
   const runSearch = useCallback(async (currentFilters: SearchFilters) => {
     setIsLoading(true);
+
+    if (searchAbortControllerRef.current) {
+      searchAbortControllerRef.current.abort();
+    }
+    const abortController = new AbortController();
+    searchAbortControllerRef.current = abortController;
 
     if (cancelWsRef.current) {
       cancelWsRef.current();
       cancelWsRef.current = null;
     }
 
-    if (wsClient.getStatus() === 'connected') {
-      let accumulated: ResourceItem[] = [];
-      const seen = new Set<string>();
-
-      cancelWsRef.current = wsClient.searchStream(currentFilters, {
-        onStart: () => {
-          setResults([]);
-        },
-        onProviderResults: (data) => {
-          if (data.items && data.items.length > 0) {
-            const fresh = data.items.filter((item) => {
-              if (seen.has(item.id)) return false;
-              seen.add(item.id);
-              return true;
-            });
-            accumulated = rankClientResults([...accumulated, ...fresh], currentFilters.query);
-            setResults([...accumulated]);
-            setIsLoading(false);
-          }
-        },
-        onComplete: (data) => {
-          accumulated = rankClientResults(accumulated, currentFilters.query);
-          setResults([...accumulated]);
-          setIsLoading(false);
-          setTotalCount(accumulated.length);
-          setTotalPages(Math.max(1, Math.ceil(accumulated.length / pageSize)));
-        },
-        onError: async (err) => {
-          console.warn('WS fallback to HTTP search:', err);
-          await executeHttpSearch(currentFilters);
-        }
-      });
-      return;
-    }
-
-    await executeHttpSearch(currentFilters);
-  }, [pageSize, executeHttpSearch]);
+    await executeHttpSearch(currentFilters, abortController.signal);
+  }, [executeHttpSearch]);
 
   // Execute search when filters are committed (on Enter, category select, or pagination)
   useEffect(() => {
     runSearch(filters);
+    return () => {
+      if (searchAbortControllerRef.current) {
+        searchAbortControllerRef.current.abort();
+      }
+    };
   }, [filters, runSearch]);
 
   // Committed search handlers (Only searches on Enter / explicit submit)
   const handleCommitSearch = (newQuery: string) => {
-    setFilters((prev) => ({ ...prev, query: newQuery, page: 1 }));
-    setPage(1);
+    const trimmed = newQuery.trim();
     if (activeView !== 'discover') {
       setActiveView('discover');
     }
+    setFilters((prev) => {
+      if (prev.query.trim() === trimmed && prev.page === 1) {
+        return prev;
+      }
+      return { ...prev, query: trimmed, page: 1 };
+    });
   };
 
   const handleCategoryChange = (category: ResourceCategory, queryToSearch?: string) => {
-    setFilters((prev) => ({
-      ...prev,
-      category,
-      query: queryToSearch !== undefined ? queryToSearch : prev.query,
-      page: 1
-    }));
-    setPage(1);
+    const nextQuery = queryToSearch !== undefined ? queryToSearch.trim() : filters.query.trim();
     if (activeView !== 'discover') {
       setActiveView('discover');
     }
+    setFilters((prev) => {
+      if (prev.category === category && prev.query.trim() === nextQuery && prev.page === 1) {
+        return prev;
+      }
+      return {
+        ...prev,
+        category,
+        query: nextQuery,
+        page: 1
+      };
+    });
   };
 
   const handleUpdateFilter = (key: keyof SearchFilters, value: any) => {
     setFilters((prev) => ({ ...prev, [key]: value, page: 1 }));
-    setPage(1);
   };
 
   const handleResetFilters = () => {
@@ -262,12 +244,13 @@ export default function App() {
       page: 1,
       pageSize: 36
     });
-    setPage(1);
   };
 
   const handlePageChange = (newPage: number) => {
-    setPage(newPage);
-    setFilters((prev) => ({ ...prev, page: newPage }));
+    setFilters((prev) => {
+      if (prev.page === newPage) return prev;
+      return { ...prev, page: newPage };
+    });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -492,13 +475,13 @@ export default function App() {
             {activeView === 'discover' && totalPages > 1 && (
               <div className={`mt-14 pt-6 border-t flex items-center justify-between text-xs ${currentThemeDef.borderClass} ${currentThemeDef.mutedTextClass}`}>
                 <span>
-                  Page {page} of {totalPages}
+                  Page {filters.page || 1} of {totalPages}
                 </span>
 
                 <div className="flex items-center gap-6">
                   <button
-                    onClick={() => handlePageChange(page - 1)}
-                    disabled={page <= 1}
+                    onClick={() => handlePageChange((filters.page || 1) - 1)}
+                    disabled={(filters.page || 1) <= 1}
                     className={`flex items-center gap-1 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition-colors ${
                       isDark ? 'text-neutral-300 hover:text-white' : 'text-neutral-600 hover:text-neutral-900'
                     }`}
@@ -508,8 +491,8 @@ export default function App() {
                   </button>
 
                   <button
-                    onClick={() => handlePageChange(page + 1)}
-                    disabled={page >= totalPages}
+                    onClick={() => handlePageChange((filters.page || 1) + 1)}
+                    disabled={(filters.page || 1) >= totalPages}
                     className={`flex items-center gap-1 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition-colors ${
                       isDark ? 'text-neutral-300 hover:text-white' : 'text-neutral-600 hover:text-neutral-900'
                     }`}

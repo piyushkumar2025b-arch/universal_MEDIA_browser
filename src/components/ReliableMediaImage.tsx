@@ -19,12 +19,32 @@ interface ReliableMediaImageProps {
   lqip?: string;
 }
 
+// Minimal, elegant inline SVG fallback guaranteed to render offline or under restrictive network firewalls
+const INLINE_FALLBACK_SVG = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" fill="none">
+    <rect width="800" height="600" fill="#18181b"/>
+    <circle cx="400" cy="270" r="44" fill="#27272a"/>
+    <path d="M375 270h50M400 245v50" stroke="#52525b" stroke-width="3" stroke-linecap="round"/>
+    <rect x="330" y="340" width="140" height="12" rx="6" fill="#27272a"/>
+  </svg>`
+)}`;
+
 function normalizeImageUrl(url: string | undefined, category: string, alt: string): string {
-  if (!url || typeof url !== 'string' || url.trim() === '') {
+  if (!url || typeof url !== 'string') {
     return getContentPhoto(alt, category);
   }
 
   const trimmed = url.trim();
+  if (
+    trimmed === '' || 
+    trimmed === 'null' || 
+    trimmed === 'undefined' || 
+    trimmed === 'false' || 
+    trimmed === '[object Object]' || 
+    trimmed.length < 5
+  ) {
+    return getContentPhoto(alt, category);
+  }
 
   // If running on HTTPS and image is HTTP, route through proxy to prevent browser mixed content block
   if (typeof window !== 'undefined' && window.location.protocol === 'https:' && trimmed.startsWith('http://')) {
@@ -48,7 +68,7 @@ export const ReliableMediaImage: React.FC<ReliableMediaImageProps> = ({
 }) => {
   const initialUrl = normalizeImageUrl(src || lqip, category, alt);
   const [currentSrc, setCurrentSrc] = useState(initialUrl);
-  const [errorStep, setErrorStep] = useState(0); // 0 = initial, 1 = proxy attempted, 2 = verified fallback
+  const [errorStep, setErrorStep] = useState(0); // 0 = initial, 1 = proxy attempted, 2 = verified fallback, 3 = inline svg
   const [isLoaded, setIsLoaded] = useState(() => (src ? globalLoadedImages.has(src) : false));
 
   useEffect(() => {
@@ -71,6 +91,13 @@ export const ReliableMediaImage: React.FC<ReliableMediaImageProps> = ({
       setErrorStep(2);
       const fallback = getContentPhoto(alt, category);
       setCurrentSrc(fallback);
+      return;
+    }
+
+    // Step 3: Ultimate guarantee - inline SVG data URL that never fails
+    if (errorStep < 3) {
+      setErrorStep(3);
+      setCurrentSrc(INLINE_FALLBACK_SVG);
     }
   };
 
