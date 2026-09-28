@@ -7,7 +7,8 @@ import {
   FolderHeart,
   Globe,
   Radio,
-  ShieldCheck
+  ShieldCheck,
+  Wallet
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -19,6 +20,9 @@ interface NavbarProps {
   onOpenDownloads?: () => void;
   onOpenTelemetry: () => void;
   onOpenGoogleSearch?: () => void;
+  onOpenWallet?: () => void;
+  isWalletConnected?: boolean;
+  walletAddress?: string | null;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -29,7 +33,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenLibrary,
   onOpenDownloads,
   onOpenTelemetry,
-  onOpenGoogleSearch
+  onOpenGoogleSearch,
+  onOpenWallet,
+  isWalletConnected = false,
+  walletAddress
 }) => {
   return (
     <header className="sticky top-0 z-30 w-full border-b border-neutral-200/80 bg-white/95 backdrop-blur-md">
@@ -125,6 +132,30 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Activity className="h-3.5 w-3.5 text-neutral-500" />
             <span className="hidden md:inline">Gateway Health</span>
           </button>
+
+          {/* Web3 / MetaMask Wallet Status & Connect Button */}
+          {onOpenWallet && (
+            <button
+              id="btn-open-wallet"
+              onClick={onOpenWallet}
+              title={isWalletConnected && walletAddress ? `Connected: ${walletAddress}` : 'Connect MetaMask / Web3 Wallet'}
+              className={`flex items-center gap-1.5 sm:gap-2 rounded-lg border px-2.5 sm:px-3 py-1.5 text-xs font-medium transition-all ${
+                isWalletConnected
+                  ? 'border-emerald-300 bg-emerald-50/80 text-emerald-800 hover:bg-emerald-100/70'
+                  : 'border-neutral-200 bg-white text-neutral-700 hover:border-neutral-300 hover:bg-neutral-50'
+              }`}
+            >
+              <Wallet className={`h-4 w-4 ${isWalletConnected ? 'text-emerald-600' : 'text-amber-500'}`} />
+              <span className="hidden sm:inline">
+                {isWalletConnected && walletAddress
+                  ? `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`
+                  : 'Web3 Wallet'}
+              </span>
+              {isWalletConnected && (
+                <span className="h-2 w-2 rounded-full bg-emerald-500"></span>
+              )}
+            </button>
+          )}
 
           {/* Dedicated Downloads Button */}
           <button

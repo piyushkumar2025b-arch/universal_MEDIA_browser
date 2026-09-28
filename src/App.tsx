@@ -52,6 +52,8 @@ import { AdminTelemetryModal } from './components/AdminTelemetryModal';
 import { SourceAggregatorBar } from './components/SourceAggregatorBar';
 import { GoogleSearchModal } from './components/GoogleSearchModal';
 import { NasaSpaceSection } from './components/NasaSpaceSection';
+import { WalletModal } from './components/WalletModal';
+import { useWeb3Wallet } from './services/web3Wallet';
 import { rankClientResults } from './utils/searchRelevance';
 
 const DEFAULT_COLLECTIONS: Collection[] = [
@@ -153,6 +155,10 @@ export default function App() {
   const [libraryInitialTab, setLibraryInitialTab] = useState<'favorites' | 'collections' | 'user' | 'downloads' | 'recent'>('favorites');
   const [isTelemetryOpen, setIsTelemetryOpen] = useState(false);
   const [isGoogleSearchOpen, setIsGoogleSearchOpen] = useState(false);
+  const [isWalletOpen, setIsWalletOpen] = useState(false);
+
+  // Web3 Wallet state
+  const { isConnected: isWalletConnected, address: walletAddress } = useWeb3Wallet();
 
   // Selection & Detail Modal State
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
@@ -577,6 +583,9 @@ export default function App() {
         }}
         onOpenTelemetry={() => setIsTelemetryOpen(true)}
         onOpenGoogleSearch={() => setIsGoogleSearchOpen(true)}
+        onOpenWallet={() => setIsWalletOpen(true)}
+        isWalletConnected={isWalletConnected}
+        walletAddress={walletAddress}
       />
 
       {/* Hero Universal Search Experience */}
@@ -1112,6 +1121,14 @@ export default function App() {
         onClose={() => setIsGoogleSearchOpen(false)}
         cx="30821318e53074c88"
         initialQuery={filters.query}
+      />
+
+      {/* Web3 & MetaMask Wallet Modal */}
+      <WalletModal
+        isOpen={isWalletOpen}
+        onClose={() => setIsWalletOpen(false)}
+        favoritesCount={favorites.length}
+        collectionsCount={collections.length}
       />
 
       {/* Footer */}

@@ -10,9 +10,11 @@ import {
   Folder, 
   Eye, 
   UploadCloud, 
-  UserCheck 
+  UserCheck,
+  ShieldCheck
 } from 'lucide-react';
 import { ResourceItem, Collection, DownloadHistoryItem, ResourceCategory } from '../types/resource';
+import { web3Wallet } from '../services/web3Wallet';
 
 interface LibraryDrawerProps {
   isOpen: boolean;
@@ -600,11 +602,31 @@ export const LibraryDrawer: React.FC<LibraryDrawerProps> = ({
 
                 {activeCollection && (
                   <div className="pt-2">
-                    <div className="p-3 rounded-xl bg-neutral-50 border border-neutral-200/80 mb-3">
-                      <h4 className="text-sm font-bold text-neutral-900">{activeCollection.name}</h4>
-                      {activeCollection.description && (
-                        <p className="text-xs text-neutral-500 mt-0.5">{activeCollection.description}</p>
-                      )}
+                    <div className="p-3 rounded-xl bg-neutral-50 border border-neutral-200/80 mb-3 flex items-start justify-between gap-3">
+                      <div>
+                        <h4 className="text-sm font-bold text-neutral-900">{activeCollection.name}</h4>
+                        {activeCollection.description && (
+                          <p className="text-xs text-neutral-500 mt-0.5">{activeCollection.description}</p>
+                        )}
+                      </div>
+                      <button
+                        onClick={() => {
+                          const items = [...favorites, ...userOwnedResources].filter((f) => activeCollection.resourceIds.includes(f.id));
+                          const manifestJson = web3Wallet.exportCollectionManifest(activeCollection.name, items);
+                          const blob = new Blob([manifestJson], { type: 'application/json' });
+                          const url = URL.createObjectURL(blob);
+                          const a = document.createElement('a');
+                          a.href = url;
+                          a.download = `${activeCollection.name.toLowerCase().replace(/\s+/g, '_')}_manifest.json`;
+                          a.click();
+                          URL.revokeObjectURL(url);
+                        }}
+                        title="Export Web3 decentralized JSON metadata manifest"
+                        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-neutral-200 bg-white text-[11px] font-medium text-neutral-700 hover:bg-neutral-100 cursor-pointer shrink-0 transition-colors shadow-2xs"
+                      >
+                        <ShieldCheck className="h-3.5 w-3.5 text-teal-600" />
+                        <span>Web3 Manifest</span>
+                      </button>
                     </div>
 
                     <div className="space-y-2">
