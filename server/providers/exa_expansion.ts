@@ -985,7 +985,7 @@ export async function queryVarietyFilmWire(query: string): Promise<ResourceItem[
     return parseRssFeedItems(xml, query, ['cinema', 'film', 'movie', 'entertainment', 'hollywood', 'television', 'all'], {
       providerId: 'variety_film_wire',
       providerName: 'Variety Film & Entertainment Wire',
-      category: 'videos',
+      category: 'news',
       defaultThumbnail: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&auto=format&fit=crop&q=80',
       descriptionFallback: 'Hollywood box office telemetry, film festival dispatches, theatrical releases, and studio business analysis from Variety.',
       licenseName: 'Penske Media Corporation Editorial',

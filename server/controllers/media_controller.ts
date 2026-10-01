@@ -262,13 +262,38 @@ export class MediaController {
         targetUrl = MediaController.iaVideoCache.get(iaId)!;
       } else {
         try {
-          const metaRes = await safeFetch(`https://archive.org/metadata/${encodeURIComponent(iaId)}/files`, {
-            signal: AbortSignal.timeout(5000)
+          let files: any[] = [];
+          // Fast check: lightweight /files endpoint
+          let metaRes = await safeFetch(`https://archive.org/metadata/${encodeURIComponent(iaId)}/files`, {
+            signal: AbortSignal.timeout(3500)
           });
           if (metaRes.ok) {
             const data: any = await metaRes.json();
-            const files = Array.isArray(data.result) ? data.result : [];
+            if (Array.isArray(data.result)) files = data.result;
+            else if (Array.isArray(data.files)) files = data.files;
+          }
+
+          // Fallback check: standard metadata endpoint
+          if (!files.length) {
+            metaRes = await safeFetch(`https://archive.org/metadata/${encodeURIComponent(iaId)}`, {
+              signal: AbortSignal.timeout(3500)
+            });
+            if (metaRes.ok) {
+              const data: any = await metaRes.json();
+              if (Array.isArray(data.files)) files = data.files;
+              else if (Array.isArray(data.result)) files = data.result;
+            }
+          }
+
+          if (files.length) {
+            // Prioritize web-optimized h.264 / 512kb progressive mp4 files for near-instant streaming start
             const videoFile = files.find((f: any) =>
+              typeof f.name === 'string' &&
+              f.name.toLowerCase().endsWith('.mp4') &&
+              !f.name.includes('_thumb') &&
+              !f.name.includes('_spectrogram') &&
+              (f.name.toLowerCase().includes('512kb') || (typeof f.format === 'string' && /512kb|h\.264/i.test(f.format)))
+            ) || files.find((f: any) =>
               typeof f.name === 'string' &&
               f.name.toLowerCase().endsWith('.mp4') &&
               !f.name.includes('_thumb') &&
@@ -286,6 +311,7 @@ export class MediaController {
               /mp4|h\.264|video/i.test(f.format) &&
               typeof f.name === 'string'
             );
+
             if (videoFile?.name) {
               targetUrl = `https://archive.org/download/${encodeURIComponent(iaId)}/${encodeURIComponent(videoFile.name)}`;
               if (MediaController.iaVideoCache.size >= MediaController.MAX_IA_CACHE) {

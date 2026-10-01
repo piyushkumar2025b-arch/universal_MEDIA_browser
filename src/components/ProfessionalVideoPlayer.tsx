@@ -105,18 +105,33 @@ export function parseVideoSource(resource: ResourceItem): VideoSourceInfo {
     };
   }
 
-  // 7. Internet Archive video matching (via archive.org URL or iaId parameter)
-  const iaMatch = combinedUrls.match(/archive\.org\/(?:details|embed)\/([a-zA-Z0-9._-]+)/i);
+  // 7. Direct video stream file (.mp4, .webm, .ogv, .m4v, or internal video-stream proxy)
+  if (rawUrl.startsWith('/api/v1/video-stream') || /\.(mp4|webm|ogv|m4v)(\?.*)?$/i.test(rawUrl)) {
+    let streamUrl = rawUrl;
+    if (typeof window !== 'undefined' && window.location.protocol === 'https:' && streamUrl.startsWith('http://')) {
+      streamUrl = `/api/v1/media-tunnel?url=${encodeURIComponent(streamUrl)}&type=video`;
+    }
+    return {
+      type: 'direct',
+      streamUrl
+    };
+  }
+
+  // 8. Internet Archive video matching (via archive.org URL or iaId parameter)
+  // Instead of loading slow, heavy 15MB iframe embeds, route to high-speed byte-range proxy
+  // which streams directly to native HTML5 video with instant playback startup!
+  const iaMatch = combinedUrls.match(/archive\.org\/(?:details|download|embed)\/([a-zA-Z0-9._-]+)/i);
   const iaParamMatch = combinedUrls.match(/iaId=([a-zA-Z0-9._-]+)/i);
   const iaId = resource.attributes?.iaId || (iaMatch ? iaMatch[1] : (iaParamMatch ? iaParamMatch[1] : null));
   if (iaId) {
     return {
-      type: 'embed',
+      type: 'direct',
+      streamUrl: `/api/v1/video-stream?iaId=${encodeURIComponent(String(iaId))}`,
       embedUrl: `https://archive.org/embed/${encodeURIComponent(String(iaId))}`
     };
   }
 
-  // 8. Generic URL with /embed/
+  // 9. Generic URL with /embed/
   if (rawUrl.includes('/embed/') || rawUrl.includes('/embed?')) {
     let embed = rawUrl;
     if (typeof window !== 'undefined' && window.location.protocol === 'https:' && embed.startsWith('http://')) {
@@ -128,7 +143,7 @@ export function parseVideoSource(resource: ResourceItem): VideoSourceInfo {
     };
   }
 
-  // 9. Pure Poster / Image URLs (such as TVMaze Broadcast or News Preview)
+  // 10. Pure Poster / Image URLs (such as TVMaze Broadcast or News Preview)
   if (/\.(jpe?g|png|webp|gif|avif)(\?.*)?$/i.test(rawUrl)) {
     return {
       type: 'broadcast',
@@ -136,7 +151,7 @@ export function parseVideoSource(resource: ResourceItem): VideoSourceInfo {
     };
   }
 
-  // 10. Direct video stream file (.mp4, .webm, .ogv, .m4v, or internal tunnel stream)
+  // 11. Fallback to direct video stream file (.mp4, .webm, .ogv, .m4v, or internal tunnel stream)
   let streamUrl = rawUrl;
   if (typeof window !== 'undefined' && window.location.protocol === 'https:' && streamUrl.startsWith('http://')) {
     streamUrl = `/api/v1/media-tunnel?url=${encodeURIComponent(streamUrl)}&type=video`;
@@ -167,8 +182,48 @@ export const ProfessionalVideoPlayer: React.FC<ProfessionalVideoPlayerProps> = (
     setIsLoading(true);
   }, [resource]);
 
+  // For iframe embeds, dismiss loading overlay after 1.5s so slow tracking scripts don't stall UI
+  useEffect(() => {
+    if (videoInfo.type === 'embed') {
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [videoInfo]);
+
   const handleDirectVideoError = () => {
-    // If native stream failed, try media tunnel proxy once
+    // If direct stream fails, check if we have an embed fallback URL (e.g. Archive.org or provider embed)
+    if (videoInfo.embedUrl) {
+      setVideoInfo({
+        type: 'embed',
+        embedUrl: videoInfo.embedUrl
+      });
+      setIsLoading(true);
+      return;
+    }
+
+    if (resource.attributes?.embedUrl) {
+      setVideoInfo({
+        type: 'embed',
+        embedUrl: String(resource.attributes.embedUrl)
+      });
+      setIsLoading(true);
+      return;
+    }
+
+    const iaMatch = (resource.previewUrl || resource.source?.resourceUrl || resource.downloadUrl || '').match(/archive\.org\/(?:details|download|embed)\/([a-zA-Z0-9._-]+)/i);
+    const iaId = resource.attributes?.iaId || (iaMatch ? iaMatch[1] : null);
+    if (iaId) {
+      setVideoInfo({
+        type: 'embed',
+        embedUrl: `https://archive.org/embed/${encodeURIComponent(String(iaId))}`
+      });
+      setIsLoading(true);
+      return;
+    }
+
+    // Try media tunnel proxy once if direct external link failed
     if (!hasAttemptedTunnel && videoInfo.streamUrl && !videoInfo.streamUrl.startsWith('/api/')) {
       setHasAttemptedTunnel(true);
       const originalUrl = resource.previewUrl || resource.downloadUrl || resource.source?.resourceUrl || '';
@@ -177,17 +232,9 @@ export const ProfessionalVideoPlayer: React.FC<ProfessionalVideoPlayerProps> = (
           type: 'direct',
           streamUrl: `/api/v1/media-tunnel?url=${encodeURIComponent(originalUrl)}&type=video`
         });
+        setIsLoading(true);
         return;
       }
-    }
-
-    // If tunnel also failed, check if we have any fallback embed URL
-    if (resource.attributes?.embedUrl) {
-      setVideoInfo({
-        type: 'embed',
-        embedUrl: String(resource.attributes.embedUrl)
-      });
-      return;
     }
 
     setHasDirectStreamError(true);
@@ -216,8 +263,8 @@ export const ProfessionalVideoPlayer: React.FC<ProfessionalVideoPlayerProps> = (
           className="w-full h-full border-0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
           allowFullScreen
-          referrerPolicy="no-referrer"
-          sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-presentation"
+          referrerPolicy="origin-when-cross-origin"
+          loading="eager"
           onLoad={() => setIsLoading(false)}
         />
       </div>
@@ -341,9 +388,12 @@ export const ProfessionalVideoPlayer: React.FC<ProfessionalVideoPlayerProps> = (
           controls
           autoPlay={autoPlay}
           playsInline
+          preload="metadata"
           onError={handleDirectVideoError}
+          onLoadedMetadata={handleVideoLoaded}
           onLoadedData={handleVideoLoaded}
           onCanPlay={handleVideoLoaded}
+          onPlaying={handleVideoLoaded}
           className="w-full h-full object-contain"
         >
           Your browser does not support HTML5 video playback.

@@ -72,9 +72,38 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'videos':
       return {
         category: 'videos',
-        primaryProviders: ['variety_film_wire', 'archive_pre_code_cinema', 'archive_classic_western_movies', 'archive_classic_horror', 'archive_silent_comedy', 'archive_early_cgi', 'archive_drive_in_intermissions', 'archive_classic_sci_fi_movies', 'archive_film_noir', 'archive_speedruns', 'archive_animation_shorts', 'archive_movie_trailers', 'archive_open_movies', 'archive_prelinger_films', 'archive_newsreels', 'archive_silent_films', 'archive_computer_chronicles', 'archive_animation_classics', 'archive_tv_commercials', 'youtube_video', 'dailymotion_video', 'vimeo_video', 'peertube_video', 'archive_feature_films', 'archive_cartoons', 'archive_prelinger', 'tvmaze_video', 'wikimedia_video', 'internet_archive_video', 'nasa_video'],
+        primaryProviders: [
+          'youtube_video',
+          'internet_archive_video',
+          'archive_feature_films',
+          'archive_animation_classics',
+          'vimeo_video',
+          'peertube_video',
+          'dailymotion_video',
+          'archive_pre_code_cinema',
+          'archive_classic_western_movies',
+          'archive_classic_horror',
+          'archive_classic_sci_fi_movies',
+          'archive_film_noir',
+          'archive_cartoons',
+          'archive_silent_films',
+          'archive_open_movies',
+          'archive_animation_shorts',
+          'archive_movie_trailers',
+          'archive_prelinger_films',
+          'archive_newsreels',
+          'archive_tv_commercials',
+          'wikimedia_video',
+          'nasa_video',
+          'tvmaze_video',
+          'archive_early_cgi',
+          'archive_drive_in_intermissions',
+          'archive_speedruns',
+          'archive_silent_comedy',
+          'archive_computer_chronicles'
+        ],
         fallbackProviders: ['pexels_video', 'pixabay_video'],
-        planSummary: 'Primary: Variety Hollywood Wire + Pre-Code Hollywood Cinema + Classic Western Cinema + Gothic Horror + Silent Slapstick + SIGGRAPH CGI + Sci-Fi + Film Noir + Prelinger + YouTube.'
+        planSummary: 'Primary: YouTube + Internet Archive Open Cinema + Vimeo + PeerTube + Dailymotion + Classic Animations + NASA Footage + Silent Films.'
       };
 
     case 'music': {
