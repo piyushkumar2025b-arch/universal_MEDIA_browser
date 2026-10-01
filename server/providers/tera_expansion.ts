@@ -245,7 +245,7 @@ export async function queryOpenFdaDrugs(query: string): Promise<ResourceItem[]> 
       const active = cleanText(item.active_ingredient?.[0] || substance || '').slice(0, 160);
       const id = item.set_id || item.id || `fda-${Math.random().toString(36).slice(2, 8)}`;
       const infoUrl = `https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=${encodeURIComponent(brand || rawQ)}`;
-      const pillImage = 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&auto=format&fit=crop&q=80';
+      const pillImage = undefined;
 
       items.push(
         buildResourceItem({
@@ -311,7 +311,7 @@ export async function queryOpenFdaDevices(query: string): Promise<ResourceItem[]
       const decisionDate = item.decision_date || '';
       const specialty = item.advisory_committee_description || item.openfda?.medical_specialty_description || 'General Medical';
       const infoUrl = `https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=${kNumber}`;
-      const deviceImg = 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&auto=format&fit=crop&q=80';
+      const deviceImg = undefined;
 
       items.push(
         buildResourceItem({
@@ -376,7 +376,7 @@ export async function queryOpenFdaRecalls(query: string): Promise<ResourceItem[]
       const status = item.status || 'Active';
       const recallNum = item.recall_number || `recall-${Math.random().toString(36).slice(2, 8)}`;
       const infoUrl = `https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts`;
-      const foodSafetyImg = 'https://images.unsplash.com/photo-1584483766114-2cea6facdf57?w=800&auto=format&fit=crop&q=80';
+      const foodSafetyImg = undefined;
 
       items.push(
         buildResourceItem({
@@ -455,7 +455,7 @@ export async function queryNoaaWeatherAlerts(query: string): Promise<ResourceIte
         if (!fullTxt.includes(filterQ)) continue;
       }
 
-      const stormImg = 'https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=800&auto=format&fit=crop&q=80';
+      const stormImg = undefined;
 
       items.push(
         buildResourceItem({
@@ -531,7 +531,7 @@ export async function querySomaFmRadio(query: string): Promise<ResourceItem[]> {
 
       const streamUrl = `https://ice1.somafm.com/${ch.id}-128-mp3`;
       const webUrl = `https://somafm.com/${ch.id}/`;
-      const img = ch.largeimage || ch.image || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop&q=80';
+      const img = ch.largeimage || ch.image || undefined;
 
       items.push(
         buildResourceItem({
@@ -608,7 +608,7 @@ export async function queryDwNews(query: string): Promise<ResourceItem[]> {
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -683,7 +683,7 @@ export async function queryFrance24News(query: string): Promise<ResourceItem[]> 
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -761,7 +761,7 @@ export async function queryArsTechnicaNews(query: string): Promise<ResourceItem[
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -840,7 +840,7 @@ export async function queryTheRegisterNews(query: string): Promise<ResourceItem[
         continue;
       }
 
-      const thumb = 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=80';
+      const thumb = undefined;
 
       items.push(
         buildResourceItem({
@@ -916,7 +916,7 @@ export async function queryNasaBreakingNews(query: string): Promise<ResourceItem
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({

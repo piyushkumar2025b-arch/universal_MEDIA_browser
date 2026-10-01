@@ -55,7 +55,7 @@ function parseRssFeedItems(
     providerId: string;
     providerName: string;
     category: ResourceCategory;
-    defaultThumbnail: string;
+    defaultThumbnail?: string;
     descriptionFallback: string;
     licenseName: string;
     publisher: string;
@@ -98,7 +98,7 @@ function parseRssFeedItems(
       }
     }
 
-    const thumb = extractThumbnail(block) || config.defaultThumbnail;
+    const thumb = extractThumbnail(block) || undefined;
 
     items.push(
       buildResourceItem({
@@ -107,7 +107,7 @@ function parseRssFeedItems(
         description: desc || config.descriptionFallback,
         resourceUrl: link,
         downloadUrl: link,
-        previewUrl: thumb,
+        previewUrl: thumb || link,
         thumbnailUrl: thumb,
         category: config.category,
         providerId: config.providerId,
@@ -158,7 +158,7 @@ export async function queryLaTimesWorldNews(query: string): Promise<ResourceItem
       providerId: 'latimes_world_news',
       providerName: 'Los Angeles Times World Wire',
       category: 'news',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'National and international reporting and investigative journalism from the Los Angeles Times.',
       licenseName: 'LA Times Editorial',
       publisher: 'Los Angeles Times Communications LLC',
@@ -197,7 +197,7 @@ export async function queryWsjWorldWire(query: string): Promise<ResourceItem[]> 
       providerId: 'wsj_world_wire',
       providerName: 'Wall Street Journal World Wire',
       category: 'news',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Global geopolitics, international relations, and macro markets from The Wall Street Journal.',
       licenseName: 'Dow Jones & Company Editorial',
       publisher: 'Dow Jones & Company',
@@ -236,7 +236,7 @@ export async function queryYahooFinanceMarkets(query: string): Promise<ResourceI
       providerId: 'yahoo_finance_markets',
       providerName: 'Yahoo Finance Market Wire',
       category: 'finance',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Real-time equity market intelligence, macroeconomic analysis, and corporate earnings wire from Yahoo Finance.',
       licenseName: 'Yahoo Finance Editorial Access',
       publisher: 'Yahoo Inc.',
@@ -294,7 +294,7 @@ export async function queryTheVergeTech(query: string): Promise<ResourceItem[]> 
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -358,7 +358,7 @@ export async function queryEngadgetTech(query: string): Promise<ResourceItem[]> 
       providerId: 'engadget_tech',
       providerName: 'Engadget Hardware Wire',
       category: 'code',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Reviews, teardowns, mobile devices, and consumer hardware dispatches from Engadget.',
       licenseName: 'Engadget / Yahoo Editorial',
       publisher: 'Yahoo Inc.',
@@ -397,7 +397,7 @@ export async function queryTechradarHardware(query: string): Promise<ResourceIte
       providerId: 'techradar_hardware',
       providerName: 'TechRadar Hardware Wire',
       category: 'code',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Hardware benchmarks, PC computing architectures, components, and technical evaluations from TechRadar.',
       licenseName: 'Future Publishing Editorial',
       publisher: 'Future US, Inc.',
@@ -454,7 +454,7 @@ export async function queryPolygonGaming(query: string): Promise<ResourceItem[]>
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -518,7 +518,7 @@ export async function queryPcGamerHardware(query: string): Promise<ResourceItem[
       providerId: 'pcgamer_hardware',
       providerName: 'PC Gamer Hardware & Rig Wire',
       category: 'games',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'PC gaming hardware teardowns, GPU benchmarks, modding communities, and release coverage from PC Gamer.',
       licenseName: 'Future US Editorial',
       publisher: 'Future US, Inc.',
@@ -557,7 +557,7 @@ export async function querySpaceNewsAerospace(query: string): Promise<ResourceIt
       providerId: 'spacenews_aerospace',
       providerName: 'SpaceNews Aerospace Wire',
       category: 'nasa',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1517976487507-5b3b4b45f912?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Global aerospace industry analysis, commercial satellite launches, military spaceflight, and orbital programs from SpaceNews.',
       licenseName: 'Multiverse Media SpaceNews Access',
       publisher: 'SpaceNews / Multiverse Media Group',
@@ -596,7 +596,7 @@ export async function queryUniverseTodayAstronomy(query: string): Promise<Resour
       providerId: 'universetoday_astronomy',
       providerName: 'Universe Today Cosmos Wire',
       category: 'nasa',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Astrophysical breakthroughs, exoplanetary surveys, space exploration, and cosmology from Universe Today.',
       licenseName: 'Universe Today Open Editorial',
       publisher: 'Universe Today Media Inc.',
@@ -635,7 +635,7 @@ export async function queryPhysorgPhysics(query: string): Promise<ResourceItem[]
       providerId: 'physorg_physics',
       providerName: 'Phys.org Physical Sciences Wire',
       category: 'papers',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Condensed matter physics, quantum computing breakthroughs, nanotechnology, and fundamental physical science from Phys.org.',
       licenseName: 'Science X Network Editorial',
       publisher: 'Science X Network',
@@ -674,7 +674,7 @@ export async function queryMedicalXpressHealth(query: string): Promise<ResourceI
       providerId: 'medicalxpress_health',
       providerName: 'Medical Xpress Clinical Wire',
       category: 'datasets',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Clinical trial outcomes, immunology discoveries, neuroscience breakthroughs, and epidemiology reports from Medical Xpress.',
       licenseName: 'Science X Network Medical Editorial',
       publisher: 'Science X Network',
@@ -713,7 +713,7 @@ export async function queryEffDigitalRights(query: string): Promise<ResourceItem
       providerId: 'eff_digital_rights',
       providerName: 'EFF Digital Rights Wire',
       category: 'knowledge',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Digital civil liberties, encryption policy, surveillance defense, and open cyberspace legal advocacy from the Electronic Frontier Foundation.',
       licenseName: 'Creative Commons Attribution 3.0 United States',
       publisher: 'Electronic Frontier Foundation',
@@ -752,7 +752,7 @@ export async function queryBellingcatOsint(query: string): Promise<ResourceItem[
       providerId: 'bellingcat_osint',
       providerName: 'Bellingcat OSINT Wire',
       category: 'news',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Pioneering open source investigations, satellite imagery geolocation, conflict verification, and digital forensic analyses from Bellingcat.',
       licenseName: 'Creative Commons Attribution-NonCommercial 4.0',
       publisher: 'Stichting Bellingcat',
@@ -791,7 +791,7 @@ export async function queryPropublicaInvestigations(query: string): Promise<Reso
       providerId: 'propublica_investigations',
       providerName: 'ProPublica Investigative Wire',
       category: 'news',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Deep public interest investigative reporting exposing abuses of power and betrayal of public trust from Pulitzer-winning ProPublica.',
       licenseName: 'ProPublica Creative Commons Non-Commercial',
       publisher: 'Pro Publica Inc.',
@@ -830,7 +830,7 @@ export async function queryTheInterceptDispatches(query: string): Promise<Resour
       providerId: 'theintercept_dispatches',
       providerName: 'The Intercept Geopolitical Wire',
       category: 'news',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'National security reporting, foreign policy dispatches, government surveillance analyses, and civil liberties reporting from The Intercept.',
       licenseName: 'First Look Media / The Intercept Editorial',
       publisher: 'The Intercept Media, Inc.',
@@ -869,7 +869,7 @@ export async function queryCointelegraphCrypto(query: string): Promise<ResourceI
       providerId: 'cointelegraph_crypto',
       providerName: 'Cointelegraph Crypto Wire',
       category: 'finance',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Cryptocurrency markets, decentralized finance protocols, Web3 ecosystems, and blockchain analytics from Cointelegraph.',
       licenseName: 'Cointelegraph Editorial Access',
       publisher: 'Cointelegraph Media',
@@ -908,7 +908,7 @@ export async function queryCoinDeskMarkets(query: string): Promise<ResourceItem[
       providerId: 'coindesk_markets',
       providerName: 'CoinDesk Protocol Wire',
       category: 'finance',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1622979135225-d2ba269bc1df?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Authoritative reporting on digital assets, institutional cryptocurrency indices, macro token economics, and ledger architectures from CoinDesk.',
       licenseName: 'CoinDesk Media Inc. Editorial',
       publisher: 'CoinDesk Inc.',
@@ -947,7 +947,7 @@ export async function queryCnetTechReviews(query: string): Promise<ResourceItem[
       providerId: 'cnet_tech_reviews',
       providerName: 'CNET Technology Wire',
       category: 'code',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Product evaluations, smart technology innovations, consumer computing, and appliance testing from CNET.',
       licenseName: 'CNET Media Group Editorial',
       publisher: 'CNET Media Group',
@@ -986,7 +986,7 @@ export async function queryVarietyFilmWire(query: string): Promise<ResourceItem[
       providerId: 'variety_film_wire',
       providerName: 'Variety Film & Entertainment Wire',
       category: 'news',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Hollywood box office telemetry, film festival dispatches, theatrical releases, and studio business analysis from Variety.',
       licenseName: 'Penske Media Corporation Editorial',
       publisher: 'Variety Media, LLC / PMC',
@@ -1025,7 +1025,7 @@ export async function queryRollingStoneMusicWire(query: string): Promise<Resourc
       providerId: 'rollingstone_music_wire',
       providerName: 'Rolling Stone Music Wire',
       category: 'music',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Discography reviews, live concert reporting, artist interviews, and musical culture dispatches from Rolling Stone.',
       licenseName: 'Rolling Stone, LLC / PMC Editorial',
       publisher: 'Rolling Stone, LLC',
@@ -1064,7 +1064,7 @@ export async function queryDefenseNewsGlobal(query: string): Promise<ResourceIte
       providerId: 'defensenews_global',
       providerName: 'Defense News Global Wire',
       category: 'news',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Global defense acquisition, strategic procurement, defense budgets, and international security analysis from Defense News.',
       licenseName: 'Sightline Media Group Editorial',
       publisher: 'Sightline Media Group',
@@ -1103,7 +1103,7 @@ export async function querySmithsonianMagHeritage(query: string): Promise<Resour
       providerId: 'smithsonian_mag_heritage',
       providerName: 'Smithsonian Magazine Wire',
       category: 'art',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Deep explorations into world archaeology, natural history, human ingenuity, and artifact preservation from the Smithsonian Institution.',
       licenseName: 'Smithsonian Institution Editorial Access',
       publisher: 'Smithsonian Magazine / Smithsonian Institution',
@@ -1142,7 +1142,7 @@ export async function queryScienceDailyEarthClimate(query: string): Promise<Reso
       providerId: 'scidaily_earth_climate',
       providerName: 'ScienceDaily Climate Wire',
       category: 'weather',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Atmospheric modeling, paleoclimatology, ocean circulation, and ecological biodiversity studies from ScienceDaily.',
       licenseName: 'ScienceDaily Open Research Reporting',
       publisher: 'ScienceDaily, LLC',
@@ -1181,7 +1181,7 @@ export async function queryBillboardChartNews(query: string): Promise<ResourceIt
       providerId: 'billboard_chart_news',
       providerName: 'Billboard Music Industry Wire',
       category: 'music',
-      defaultThumbnail: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&auto=format&fit=crop&q=80',
+      
       descriptionFallback: 'Official Billboard Hot 100 tracking, album charts, music industry economics, and release news.',
       licenseName: 'Billboard Media / PMC Editorial',
       publisher: 'Billboard Media, LLC',

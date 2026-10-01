@@ -90,27 +90,6 @@ export class DownloadService {
       }
     }
 
-    // If candidate URLs failed, fall back to category photo fallback
-    const fallbackPhoto = mediaProxyService.resolveFallbackPhotoUrl(rawFilename || 'asset', 'images');
-    try {
-      const fallbackResp = await safeFetch(fallbackPhoto, {
-        headers: UPSTREAM_HEADERS,
-        signal: AbortSignal.timeout(10000)
-      });
-      if (fallbackResp.ok) {
-        const arrayBuffer = await fallbackResp.arrayBuffer();
-        const buffer = Buffer.from(arrayBuffer);
-        const sha256 = crypto.createHash('sha256').update(buffer).digest('hex');
-        return {
-          buffer,
-          contentType: fallbackResp.headers.get('content-type') || 'image/jpeg',
-          filename: sanitizeSafeFilename(rawFilename, 'resource'),
-          sha256,
-          sizeBytes: buffer.length
-        };
-      }
-    } catch {}
-
     throw lastError || new Error('Failed to retrieve asset from upstream source');
   }
 
@@ -140,16 +119,6 @@ export class DownloadService {
       } catch (err: any) {
         lastError = err;
       }
-    }
-
-    // Ultimate fallback to verified content photo
-    const fallbackPhoto = mediaProxyService.resolveFallbackPhotoUrl(targetUrl, 'images');
-    const fallbackResp = await safeFetch(fallbackPhoto, {
-      headers: UPSTREAM_HEADERS,
-      signal: AbortSignal.timeout(10000)
-    });
-    if (fallbackResp.ok) {
-      return fallbackResp;
     }
 
     throw lastError || new Error('Upstream source was unreachable');

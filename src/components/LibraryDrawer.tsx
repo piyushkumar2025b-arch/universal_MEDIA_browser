@@ -107,7 +107,7 @@ export const LibraryDrawer: React.FC<LibraryDrawerProps> = ({
         title: file.name.replace(/\.[^/.]+$/, ''),
         description: `User-uploaded ${file.type || 'file'} (${(file.size / 1024 / 1024).toFixed(2)} MB)`,
         category: detectedCategory,
-        thumbnailUrl: file.type.startsWith('image/') ? dataUrl : 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80',
+        thumbnailUrl: file.type.startsWith('image/') ? dataUrl : undefined,
         previewUrl: dataUrl,
         downloadUrl: dataUrl,
         source: {

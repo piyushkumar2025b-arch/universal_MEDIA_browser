@@ -15,15 +15,6 @@ export class MediaController {
     const queryCategory = (req.query.category as string) || 'images';
 
     if (!targetUrl || !isSafePublicUrl(targetUrl)) {
-      const fallbackUrl = mediaProxyService.resolveFallbackPhotoUrl(queryTitle, queryCategory);
-      const fallbackResult = await mediaProxyService.fetchAndCacheMedia(fallbackUrl);
-      if (fallbackResult) {
-        res.setHeader('Content-Type', fallbackResult.contentType);
-        res.setHeader('Cache-Control', `public, max-age=${APP_CONFIG.mediaProxy.browserCacheSeconds}, immutable`);
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.send(fallbackResult.data);
-        return;
-      }
       res.status(400).send('Invalid or forbidden image URL');
       return;
     }
@@ -37,14 +28,8 @@ export class MediaController {
 
     let result = await mediaProxyService.fetchAndCacheMedia(targetUrl);
 
-    // If upstream blocked request or returned error, fallback to verified content photograph
     if (!result) {
-      const fallbackUrl = mediaProxyService.resolveFallbackPhotoUrl(queryTitle || targetUrl, queryCategory);
-      result = await mediaProxyService.fetchAndCacheMedia(fallbackUrl);
-    }
-
-    if (!result) {
-      res.status(502).send('Failed to proxy media asset');
+      res.status(404).send('Image asset not found or unavailable');
       return;
     }
 
@@ -65,20 +50,7 @@ export class MediaController {
    * GET /api/v1/content-photo
    */
   public async getContentPhoto(req: Request, res: Response): Promise<void> {
-    const query = (req.query.q as string) || (req.query.title as string) || '';
-    const category = (req.query.category as string) || 'images';
-    const photoUrl = mediaProxyService.resolveFallbackPhotoUrl(query, category);
-
-    const media = await mediaProxyService.fetchAndCacheMedia(photoUrl);
-    if (media) {
-      res.setHeader('Content-Type', media.contentType);
-      res.setHeader('Cache-Control', `public, max-age=${APP_CONFIG.mediaProxy.browserCacheSeconds}, immutable`);
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.send(media.data);
-      return;
-    }
-
-    res.redirect(photoUrl);
+    res.status(404).send('Content photo generation disabled; real media only');
   }
 
   /**
@@ -512,16 +484,6 @@ export class MediaController {
     }
 
     if (!targetUrl || !isSafePublicUrl(targetUrl)) {
-      if (mediaType === 'image') {
-        const fallbackUrl = mediaProxyService.resolveFallbackPhotoUrl(queryTitle, queryCategory);
-        const fallbackResult = await mediaProxyService.fetchAndCacheMedia(fallbackUrl);
-        if (fallbackResult) {
-          res.setHeader('Content-Type', fallbackResult.contentType);
-          res.setHeader('Cache-Control', 'public, max-age=86400, immutable');
-          res.send(fallbackResult.data);
-          return;
-        }
-      }
       res.status(400).send('Invalid or restricted target URL');
       return;
     }
@@ -617,18 +579,6 @@ export class MediaController {
     }
 
     if (!upstreamRes || (!upstreamRes.ok && upstreamRes.status !== 206)) {
-      // Fallback strategies based on media type
-      if (mediaType === 'image') {
-        const fallbackUrl = mediaProxyService.resolveFallbackPhotoUrl(queryTitle || targetUrl, queryCategory);
-        const fallbackResult = await mediaProxyService.fetchAndCacheMedia(fallbackUrl);
-        if (fallbackResult) {
-          res.setHeader('Content-Type', fallbackResult.contentType);
-          res.setHeader('Cache-Control', 'public, max-age=86400, immutable');
-          res.send(fallbackResult.data);
-          return;
-        }
-      }
-
       if (targetUrl) {
         return res.redirect(targetUrl);
       }

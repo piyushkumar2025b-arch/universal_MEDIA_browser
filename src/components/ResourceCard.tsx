@@ -8,12 +8,19 @@ import {
   Play, 
   Pause, 
   Heart, 
-  Music,
-  Loader2
+  Music, 
+  Loader2,
+  FileText,
+  Code2,
+  Database,
+  BookOpen,
+  Newspaper,
+  Compass
 } from 'lucide-react';
 import { ResourceItem } from '../types/resource';
 import { ReliableMediaImage } from './ReliableMediaImage';
 import { ThemeId, THEMES } from '../types/theme';
+import { isRealImage } from '../utils/contentPhotos';
 
 interface ResourceCardProps {
   resource: ResourceItem;
@@ -97,20 +104,33 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
 
   const providerName = resource.source?.providerName || 'Open Archive';
 
+  // Strict check: only real, verified image URLs should render as photos
+  const realImgUrl = isRealImage(resource.thumbnailUrl)
+    ? resource.thumbnailUrl
+    : (resource.category === 'images' || resource.category === 'art' || resource.category === 'nasa') && isRealImage(resource.previewUrl)
+      ? resource.previewUrl
+      : null;
+
+  const isPaper = resource.category === 'papers';
+  const isCode = resource.category === 'code';
+  const isDataset = resource.category === 'datasets' || resource.category === 'finance';
+  const isAudio = resource.category === 'music' || resource.category === 'audio';
+  const isMap = resource.category === 'maps';
+
   return (
     <article
       id={`resource-card-${resource.id}`}
       onClick={() => onOpenPreview(resource)}
       className="group relative flex flex-col cursor-pointer transition-all duration-200"
     >
-      {/* Media Visual Container (Border-free, Maximum Preference to VIEW) */}
+      {/* Media Visual Container */}
       <div className={`relative w-full overflow-hidden rounded-xl aspect-[4/3] ${themeDef.cardBgClass}`}>
-        {/* Visual Render by Category */}
-        {(resource.category === 'music' || resource.category === 'audio') ? (
+        {/* 1. AUDIO / MUSIC PLAYER */}
+        {isAudio ? (
           <div className="relative h-full w-full bg-neutral-900 text-white flex flex-col justify-between p-4">
-            {resource.thumbnailUrl && (
+            {realImgUrl && (
               <img
-                src={resource.thumbnailUrl}
+                src={realImgUrl}
                 alt={resource.title}
                 className="absolute inset-0 h-full w-full object-cover opacity-40 blur-xs scale-105"
                 referrerPolicy="no-referrer"
@@ -140,14 +160,112 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
               {resource.attributes?.album || providerName}
             </div>
           </div>
-        ) : (
+        ) : isPaper ? (
+          /* 2. AUTHENTIC SCHOLARLY RESEARCH PAPER CARD (Never fake photos) */
+          <div className={`relative h-full w-full p-4 sm:p-5 flex flex-col justify-between rounded-xl select-none border transition-colors ${
+            isDark 
+              ? 'bg-gradient-to-br from-neutral-900 via-neutral-900 to-neutral-950 border-neutral-800' 
+              : 'bg-gradient-to-br from-neutral-50 via-white to-neutral-100/80 border-neutral-200/80 shadow-xs'
+          }`}>
+            {/* Academic Journal / Provider Badge */}
+            <div className="flex items-center justify-between gap-2">
+              <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                <FileText className="h-3 w-3 shrink-0" />
+                <span className="truncate max-w-[140px]">{resource.attributes?.journal || providerName}</span>
+              </span>
+              <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400">
+                {resource.attributes?.year || (resource.attributes?.publishedAt ? new Date(resource.attributes.publishedAt).getFullYear() : 'PDF')}
+              </span>
+            </div>
+
+            {/* Paper Title & Authors */}
+            <div className="my-auto space-y-1.5 py-1">
+              <h4 className={`font-serif font-medium text-xs sm:text-sm leading-snug line-clamp-3 ${
+                isDark ? 'text-neutral-100' : 'text-neutral-900'
+              }`}>
+                {resource.title}
+              </h4>
+              {resource.creator?.name && (
+                <p className="text-[11px] text-neutral-500 dark:text-neutral-400 truncate">
+                  {resource.creator.name}
+                </p>
+              )}
+            </div>
+
+            {/* Document Metadata Footer */}
+            <div className="flex items-center justify-between pt-1.5 border-t border-neutral-200/60 dark:border-neutral-800 text-[10px] text-neutral-500 dark:text-neutral-400">
+              <span className="font-mono truncate max-w-[150px]">
+                {resource.attributes?.doi ? `DOI: ${resource.attributes.doi}` : 'Peer-Reviewed Manuscript'}
+              </span>
+              <span className="font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-1.5 py-0.5 rounded text-[9px]">
+                OPEN ACCESS
+              </span>
+            </div>
+          </div>
+        ) : isCode ? (
+          /* 3. AUTHENTIC TERMINAL / CODE REPO CARD (Never fake photos) */
+          <div className="relative h-full w-full bg-[#0d1117] text-neutral-200 p-4 sm:p-5 flex flex-col justify-between border border-neutral-800 rounded-xl font-mono select-none">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+              </div>
+              <span className="text-[10px] text-neutral-400 uppercase tracking-wider font-semibold">
+                {resource.attributes?.language || providerName}
+              </span>
+            </div>
+
+            <div className="my-auto space-y-1 py-1">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-white truncate">
+                <Code2 className="h-3.5 w-3.5 text-blue-400 shrink-0" />
+                <span className="truncate">{resource.title}</span>
+              </div>
+              <p className="text-[11px] text-neutral-400 line-clamp-2 font-sans">
+                {resource.description || 'Open source software codebase and repository assets.'}
+              </p>
+            </div>
+
+            <div className="flex items-center justify-between text-[10px] text-neutral-400 pt-1 border-t border-neutral-800">
+              <span className="truncate">{providerName}</span>
+              <span className="text-blue-400 font-semibold">{resource.license?.type || 'Open Source'}</span>
+            </div>
+          </div>
+        ) : isDataset ? (
+          /* 4. AUTHENTIC DATASET CARD */
+          <div className={`relative h-full w-full p-4 sm:p-5 flex flex-col justify-between rounded-xl select-none border ${
+            isDark ? 'bg-neutral-900 border-neutral-800 text-neutral-100' : 'bg-neutral-50/80 border-neutral-200 text-neutral-900'
+          }`}>
+            <div className="flex items-center justify-between">
+              <span className="inline-flex items-center gap-1 text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
+                <Database className="h-3 w-3 shrink-0" />
+                <span>Dataset</span>
+              </span>
+              <span className="text-[10px] font-mono text-neutral-500 uppercase">
+                {resource.attributes?.format || 'DATA'}
+              </span>
+            </div>
+            <div className="my-auto py-1">
+              <h4 className="font-semibold text-xs sm:text-sm line-clamp-2">
+                {resource.title}
+              </h4>
+              <p className="text-[11px] text-neutral-500 dark:text-neutral-400 line-clamp-2 mt-1">
+                {resource.description || 'Structured data table and telemetry records.'}
+              </p>
+            </div>
+            <div className="flex items-center justify-between pt-1 border-t border-neutral-200 dark:border-neutral-800 text-[10px] text-neutral-500">
+              <span className="truncate">{providerName}</span>
+              <span className="font-mono">Open Data</span>
+            </div>
+          </div>
+        ) : realImgUrl ? (
+          /* 5. GENUINE IMAGE / VIDEO / FINE ART PHOTO */
           <>
             <ReliableMediaImage
-              src={resource.thumbnailUrl || resource.previewUrl}
+              src={realImgUrl}
               alt={resource.title}
               providerName={providerName}
               category={resource.category}
-              lqip={resource.attributes?.lqip}
               priority={priority}
               className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
             />
@@ -161,6 +279,32 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
               </div>
             )}
           </>
+        ) : (
+          /* 6. AUTHENTIC DOCUMENT / EDITORIAL FALLBACK (Never fake photos) */
+          <div className={`relative h-full w-full p-4 flex flex-col justify-between rounded-xl select-none border ${
+            isDark ? 'bg-neutral-900 border-neutral-800 text-neutral-200' : 'bg-neutral-50 border-neutral-200 text-neutral-900'
+          }`}>
+            <div className="flex items-center justify-between text-xs">
+              <span className="uppercase text-[10px] font-semibold tracking-wider px-2 py-0.5 rounded bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">
+                {resource.category}
+              </span>
+              <span className="truncate max-w-[130px] text-[10px] text-neutral-500">{providerName}</span>
+            </div>
+            <div className="my-auto py-1">
+              <h4 className="font-medium text-xs sm:text-sm line-clamp-2">
+                {resource.title}
+              </h4>
+              {resource.description && (
+                <p className="text-[11px] text-neutral-500 dark:text-neutral-400 line-clamp-2 mt-1">
+                  {resource.description}
+                </p>
+              )}
+            </div>
+            <div className="flex items-center justify-between text-[10px] text-neutral-500 pt-1 border-t border-neutral-200 dark:border-neutral-800">
+              <span>{resource.license?.type || 'Open Archive'}</span>
+              <span className="capitalize">{resource.category}</span>
+            </div>
+          </div>
         )}
 
         {/* Quiet top-right favorite heart button (visible on hover or if favorited) */}

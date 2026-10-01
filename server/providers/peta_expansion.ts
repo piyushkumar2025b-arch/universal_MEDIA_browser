@@ -255,7 +255,7 @@ export async function queryCbsNews(query: string): Promise<ResourceItem[]> {
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -331,7 +331,7 @@ export async function queryAbcNews(query: string): Promise<ResourceItem[]> {
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -407,7 +407,7 @@ export async function queryTimeMagazine(query: string): Promise<ResourceItem[]> 
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -483,7 +483,7 @@ export async function queryIndependentNews(query: string): Promise<ResourceItem[
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -559,7 +559,7 @@ export async function queryCnbcMarkets(query: string): Promise<ResourceItem[]> {
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -635,7 +635,7 @@ export async function queryPoliticoWire(query: string): Promise<ResourceItem[]> 
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -711,7 +711,7 @@ export async function queryWiredTech(query: string): Promise<ResourceItem[]> {
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -787,7 +787,7 @@ export async function queryMitTechReview(query: string): Promise<ResourceItem[]>
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -863,7 +863,7 @@ export async function queryScienceDailyWire(query: string): Promise<ResourceItem
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -939,7 +939,7 @@ export async function queryNatureJournalNews(query: string): Promise<ResourceIte
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1518152006812-edab29b069ac?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -1017,7 +1017,7 @@ export async function queryBiorxivPreprints(query: string): Promise<ResourceItem
         continue;
       }
 
-      const thumb = 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=800&auto=format&fit=crop&q=80';
+      const thumb = undefined;
 
       items.push(
         buildResourceItem({
@@ -1095,7 +1095,7 @@ export async function queryHackadayHardware(query: string): Promise<ResourceItem
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -1171,7 +1171,7 @@ export async function queryPhoronixHardware(query: string): Promise<ResourceItem
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -1246,7 +1246,7 @@ export async function queryEurogamerFeed(query: string): Promise<ResourceItem[]>
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -1321,7 +1321,7 @@ export async function queryRockPaperShotgunFeed(query: string): Promise<Resource
         continue;
       }
 
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       items.push(
         buildResourceItem({
@@ -1381,7 +1381,7 @@ export async function queryIssCurrentLocation(query: string): Promise<ResourceIt
     const visibility = data.visibility || 'daylight';
     const timeStr = new Date(data.timestamp * 1000).toUTCString();
 
-    const thumb = 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop&q=80';
+    const thumb = undefined;
     const mapUrl = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=4/${lat}/${lon}`;
 
     return [
@@ -1445,7 +1445,7 @@ export async function queryCoinPaprikaCrypto(query: string): Promise<ResourceIte
       const rank = coin.rank || 'N/A';
       const isActive = coin.is_active ? 'Active Trading' : 'Inactive';
       const coinUrl = `https://coinpaprika.com/coin/${coin.id}/`;
-      const thumb = 'https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=800&auto=format&fit=crop&q=80';
+      const thumb = undefined;
 
       return buildResourceItem({
         id: `cp-${coin.id}`,

@@ -159,7 +159,7 @@ export async function queryGoogleNews(query: string): Promise<ResourceItem[]> {
 
       if (!fullTitle || !link) continue;
 
-      const fallbackPhoto = 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&auto=format&fit=crop&q=80';
+      const fallbackPhoto = undefined;
 
       items.push(
         buildResourceItem({
@@ -225,7 +225,7 @@ export async function queryBbcWorldNews(query: string): Promise<ResourceItem[]> 
       const link = (rawLink?.[1] || rawLink?.[2] || '').trim();
       const desc = cleanText(rawDesc?.[1] || rawDesc?.[2] || '');
       const pubDate = (rawDate?.[1] || rawDate?.[2] || '').trim();
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       if (!title || !link) continue;
       if (lowerQ && !title.toLowerCase().includes(lowerQ) && !desc.toLowerCase().includes(lowerQ) && lowerQ !== 'news') {
@@ -272,7 +272,7 @@ export async function queryBbcWorldNews(query: string): Promise<ResourceItem[]> 
         const link = (rawLink?.[1] || rawLink?.[2] || '').trim();
         const desc = cleanText(rawDesc?.[1] || rawDesc?.[2] || '');
         const pubDate = (rawDate?.[1] || rawDate?.[2] || '').trim();
-        const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&auto=format&fit=crop&q=80';
+        const thumb = extractThumbnail(block) || undefined;
         if (title && link) {
           items.push(
             buildResourceItem({
@@ -335,7 +335,7 @@ export async function queryTheGuardianNews(query: string): Promise<ResourceItem[
       const link = (rawLink?.[1] || rawLink?.[2] || '').trim();
       const desc = cleanText(rawDesc?.[1] || rawDesc?.[2] || '');
       const pubDate = (rawDate?.[1] || rawDate?.[2] || '').trim();
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       if (!title || !link) continue;
       if (lowerQ && !title.toLowerCase().includes(lowerQ) && !desc.toLowerCase().includes(lowerQ) && lowerQ !== 'news') {
@@ -382,7 +382,7 @@ export async function queryTheGuardianNews(query: string): Promise<ResourceItem[
         const link = (rawLink?.[1] || rawLink?.[2] || '').trim();
         const desc = cleanText(rawDesc?.[1] || rawDesc?.[2] || '');
         const pubDate = (rawDate?.[1] || rawDate?.[2] || '').trim();
-        const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800&auto=format&fit=crop&q=80';
+        const thumb = extractThumbnail(block) || undefined;
         if (title && link) {
           items.push(
             buildResourceItem({
@@ -441,7 +441,7 @@ export async function queryNprNews(query: string): Promise<ResourceItem[]> {
       const link = (rawLink?.[1] || rawLink?.[2] || '').trim();
       const desc = cleanText(rawDesc?.[1] || rawDesc?.[2] || '');
       const pubDate = (rawDate?.[1] || rawDate?.[2] || '').trim();
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       if (!title || !link) continue;
       if (lowerQ && !title.toLowerCase().includes(lowerQ) && !desc.toLowerCase().includes(lowerQ) && lowerQ !== 'news') {
@@ -488,7 +488,7 @@ export async function queryNprNews(query: string): Promise<ResourceItem[]> {
         const link = (rawLink?.[1] || rawLink?.[2] || '').trim();
         const desc = cleanText(rawDesc?.[1] || rawDesc?.[2] || '');
         const pubDate = (rawDate?.[1] || rawDate?.[2] || '').trim();
-        const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?w=800&auto=format&fit=crop&q=80';
+        const thumb = extractThumbnail(block) || undefined;
         if (title && link) {
           items.push(
             buildResourceItem({
@@ -547,7 +547,7 @@ export async function queryAlJazeeraNews(query: string): Promise<ResourceItem[]>
       const link = (rawLink?.[1] || rawLink?.[2] || '').trim();
       const desc = cleanText(rawDesc?.[1] || rawDesc?.[2] || '');
       const pubDate = (rawDate?.[1] || rawDate?.[2] || '').trim();
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       if (!title || !link) continue;
       if (lowerQ && !title.toLowerCase().includes(lowerQ) && !desc.toLowerCase().includes(lowerQ) && lowerQ !== 'news') {
@@ -594,7 +594,7 @@ export async function queryAlJazeeraNews(query: string): Promise<ResourceItem[]>
         const link = (rawLink?.[1] || rawLink?.[2] || '').trim();
         const desc = cleanText(rawDesc?.[1] || rawDesc?.[2] || '');
         const pubDate = (rawDate?.[1] || rawDate?.[2] || '').trim();
-        const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&auto=format&fit=crop&q=80';
+        const thumb = extractThumbnail(block) || undefined;
         if (title && link) {
           items.push(
             buildResourceItem({
@@ -646,7 +646,7 @@ export async function queryHackerNewsLive(query: string): Promise<ResourceItem[]
       if (!h.title) continue;
       const targetUrl = h.url || `https://news.ycombinator.com/item?id=${h.objectID}`;
       const title = cleanText(h.title);
-      const fallbackPhoto = 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80';
+      const fallbackPhoto = undefined;
 
       items.push(
         buildResourceItem({
@@ -716,7 +716,7 @@ export async function queryTechCrunchNews(query: string): Promise<ResourceItem[]
       const desc = cleanText(rawDesc?.[1] || rawDesc?.[2] || '');
       const pubDate = (rawDate?.[1] || rawDate?.[2] || '').trim();
       const author = cleanText(rawCreator?.[1] || rawCreator?.[2] || 'TechCrunch Staff');
-      const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80';
+      const thumb = extractThumbnail(block) || undefined;
 
       if (!title || !link) continue;
       if (lowerQ && !title.toLowerCase().includes(lowerQ) && !desc.toLowerCase().includes(lowerQ) && lowerQ !== 'news') {
@@ -763,7 +763,7 @@ export async function queryTechCrunchNews(query: string): Promise<ResourceItem[]
         const link = (rawLink?.[1] || rawLink?.[2] || '').trim();
         const desc = cleanText(rawDesc?.[1] || rawDesc?.[2] || '');
         const pubDate = (rawDate?.[1] || rawDate?.[2] || '').trim();
-        const thumb = extractThumbnail(block) || 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80';
+        const thumb = extractThumbnail(block) || undefined;
         if (title && link) {
           items.push(
             buildResourceItem({
@@ -814,7 +814,7 @@ export async function querySpaceflightNews(query: string): Promise<ResourceItem[
     for (const r of results) {
       if (!r.title || !r.url) continue;
 
-      const photo = r.image_url || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop&q=80';
+      const photo = r.image_url || undefined;
 
       items.push(
         buildResourceItem({
@@ -873,7 +873,7 @@ export async function queryWikinewsOpen(query: string): Promise<ResourceItem[]> 
       if (!s.title) continue;
       const articleUrl = `https://en.wikinews.org/wiki/${encodeURIComponent(s.title.replace(/ /g, '_'))}`;
       const snippet = cleanText(s.snippet);
-      const fallbackPhoto = 'https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800&auto=format&fit=crop&q=80';
+      const fallbackPhoto = undefined;
 
       items.push(
         buildResourceItem({
@@ -933,7 +933,7 @@ export async function queryDevtoNews(query: string): Promise<ResourceItem[]> {
     for (const a of list) {
       if (!a.title || !a.url) continue;
 
-      const photo = a.social_image || a.cover_image || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80';
+      const photo = a.social_image || a.cover_image || undefined;
 
       items.push(
         buildResourceItem({

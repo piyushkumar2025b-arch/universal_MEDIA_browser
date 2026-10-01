@@ -14,10 +14,11 @@ import {
   Share2,
   ChevronDown,
   ChevronUp,
-  Play
+  Play,
+  FileText,
+  Code2
 } from 'lucide-react';
 import { ResourceItem, Collection } from '../types/resource';
-import { getContentPhoto } from '../utils/contentPhotos';
 import { getAssetExtension } from '../utils/downloadEngine';
 import { sanitizeSafeLink } from '../utils/sanitizeUrl';
 import { ProfessionalVideoPlayer } from './ProfessionalVideoPlayer';
@@ -155,8 +156,99 @@ export const ResourceDetailModal: React.FC<ResourceDetailModalProps> = ({
                       )}
                     </div>
                   </div>
+                ) : resource.category === 'papers' ? (
+                  /* Scholarly Paper Presentation Header (Never fake stock photos) */
+                  <div className="relative h-full w-full bg-gradient-to-br from-neutral-950 via-neutral-900 to-black text-white flex flex-col justify-between p-6 sm:p-8 select-none">
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-blue-500/20 text-blue-400 text-xs font-semibold tracking-wider uppercase border border-blue-500/30">
+                        <FileText className="h-3.5 w-3.5" />
+                        <span>{resource.attributes?.journal || providerName}</span>
+                      </span>
+                      <span className="text-xs font-mono text-neutral-400">
+                        {resource.attributes?.year || 'Open Access'}
+                      </span>
+                    </div>
+
+                    <div className="max-w-2xl space-y-2.5 my-auto py-2">
+                      <h2 className="font-serif text-lg sm:text-2xl font-bold leading-snug text-white line-clamp-3">
+                        {resource.title}
+                      </h2>
+                      {creatorName && (
+                        <p className="text-xs sm:text-sm text-neutral-300">
+                          Authors: {creatorName}
+                        </p>
+                      )}
+                      {resource.attributes?.doi && (
+                        <p className="text-xs font-mono text-neutral-400">
+                          DOI: {resource.attributes.doi}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-3 pt-2">
+                      {resourceUrl && (
+                        <a
+                          href={resourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-neutral-100 text-neutral-900 font-semibold text-xs shadow-md transition-transform active:scale-95"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          <span>Read Full Manuscript on {providerName}</span>
+                        </a>
+                      )}
+                      {(resource.downloadUrl || resource.attributes?.pdfUrl) && (
+                        <button
+                          type="button"
+                          onClick={() => onStartDownload(resource)}
+                          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-neutral-800 hover:bg-neutral-700 text-white font-medium text-xs border border-neutral-700 transition-colors cursor-pointer"
+                        >
+                          <Download className="h-4 w-4" />
+                          <span>Download PDF</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ) : resource.category === 'code' ? (
+                  /* Code Repository Presentation Panel */
+                  <div className="relative h-full w-full bg-[#0d1117] text-white flex flex-col justify-between p-6 sm:p-8 font-mono border border-neutral-800 select-none">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                        <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                        <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                      </div>
+                      <span className="text-xs text-neutral-400 uppercase tracking-wider">
+                        {resource.attributes?.language || providerName}
+                      </span>
+                    </div>
+
+                    <div className="space-y-2 my-auto py-2">
+                      <div className="flex items-center gap-2 text-lg sm:text-xl font-bold text-white">
+                        <Code2 className="h-5 w-5 text-blue-400 shrink-0" />
+                        <span className="truncate">{resource.title}</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-neutral-400 font-sans max-w-xl line-clamp-3">
+                        {resource.description || 'Open source software codebase and repository assets.'}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      {resourceUrl && (
+                        <a
+                          href={resourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-neutral-100 text-neutral-900 font-semibold text-xs shadow-md transition-transform active:scale-95 font-sans"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          <span>View on {providerName}</span>
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 ) : (
-                  /* Fine Art / Photography / Visual Image Viewer with Guaranteed Fallback */
+                  /* Fine Art / Photography / Visual Image Viewer */
                   <ReliableMediaImage
                     src={previewSource}
                     alt={resource.title}

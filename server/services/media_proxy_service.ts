@@ -13,67 +13,6 @@ export class MediaProxyService {
   private mediaProxyCache = new Map<string, CachedMediaEntry>();
   private inFlightFetches = new Map<string, Promise<CachedMediaEntry | null>>();
 
-  private readonly FALLBACK_CONTENT_PHOTOS: Record<string, string[]> = {
-    textiles: [
-      'https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&auto=format&fit=crop&q=80'
-    ],
-    art: [
-      'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=800&auto=format&fit=crop&q=80'
-    ],
-    nature: [
-      'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop&q=80'
-    ],
-    ocean: [
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&auto=format&fit=crop&q=80'
-    ],
-    space: [
-      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=800&auto=format&fit=crop&q=80'
-    ],
-    technology: [
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80'
-    ],
-    books: [
-      'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=800&auto=format&fit=crop&q=80'
-    ]
-  };
-
-  /**
-   * Resolves a category- and subject-matched verified fallback photograph URL.
-   */
-  public resolveFallbackPhotoUrl(title: string, category: string): string {
-    const q = (title || '').toLowerCase();
-    if (q.includes('tassel') || q.includes('textile') || q.includes('fabric') || q.includes('craft')) {
-      const list = this.FALLBACK_CONTENT_PHOTOS.textiles;
-      return list[Math.abs(title.length) % list.length];
-    }
-    if (q.includes('ocean') || q.includes('sea') || q.includes('marine')) {
-      const list = this.FALLBACK_CONTENT_PHOTOS.ocean;
-      return list[Math.abs(title.length) % list.length];
-    }
-    if (q.includes('space') || q.includes('galaxy') || q.includes('planet') || q.includes('nasa')) {
-      const list = this.FALLBACK_CONTENT_PHOTOS.space;
-      return list[Math.abs(title.length) % list.length];
-    }
-    const cat = (category || 'images').toLowerCase();
-    const list = this.FALLBACK_CONTENT_PHOTOS[cat] || (cat === 'art' ? this.FALLBACK_CONTENT_PHOTOS.art : this.FALLBACK_CONTENT_PHOTOS.nature);
-    return list[Math.abs(title.length) % list.length];
-  }
-
   /**
    * Fetches an image from upstream or memory cache, with in-flight request coalescing.
    */
