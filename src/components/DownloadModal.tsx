@@ -11,9 +11,13 @@ import {
   Database,
   ShieldCheck,
   Zap,
-  Layers
+  Layers,
+  Code2,
+  Music,
+  BookOpen
 } from 'lucide-react';
 import { ResourceItem } from '../types/resource';
+import { isRealImage } from '../utils/contentPhotos';
 import { 
   downloadResourceAsset, 
   downloadMetadataRecord, 
@@ -143,15 +147,21 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
 
         {/* Resource Preview Summary */}
         <div className="my-4 rounded-xl bg-neutral-50 border border-neutral-200/80 p-3.5 flex items-center gap-3">
-          {primaryItem?.thumbnailUrl ? (
+          {primaryItem?.thumbnailUrl && isRealImage(primaryItem.thumbnailUrl) ? (
             <img 
               src={primaryItem.thumbnailUrl} 
               alt={primaryItem.title} 
               className="h-12 w-12 rounded-lg object-cover shrink-0 border border-neutral-200" 
+              onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />
           ) : (
-            <div className="h-12 w-12 rounded-lg bg-neutral-200 flex items-center justify-center shrink-0 text-neutral-600">
-              <Package className="h-6 w-6" />
+            <div className="h-12 w-12 rounded-lg bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center shrink-0 text-neutral-600 dark:text-neutral-300">
+              {primaryItem?.category === 'papers' ? <FileText className="h-6 w-6 text-blue-500" /> :
+               primaryItem?.category === 'code' ? <Code2 className="h-6 w-6 text-emerald-500" /> :
+               primaryItem?.category === 'music' || primaryItem?.category === 'audio' ? <Music className="h-6 w-6 text-purple-500" /> :
+               primaryItem?.category === 'datasets' ? <Database className="h-6 w-6 text-amber-500" /> :
+               primaryItem?.category === 'books' ? <BookOpen className="h-6 w-6 text-orange-500" /> :
+               <Package className="h-6 w-6" />}
             </div>
           )}
           <div className="min-w-0 flex-1">

@@ -673,7 +673,7 @@ export async function queryMedicalXpressHealth(query: string): Promise<ResourceI
     return parseRssFeedItems(xml, query, ['medical', 'health', 'medicine', 'clinical', 'disease', 'pharma', 'all'], {
       providerId: 'medicalxpress_health',
       providerName: 'Medical Xpress Clinical Wire',
-      category: 'datasets',
+      category: 'news',
       
       descriptionFallback: 'Clinical trial outcomes, immunology discoveries, neuroscience breakthroughs, and epidemiology reports from Medical Xpress.',
       licenseName: 'Science X Network Medical Editorial',

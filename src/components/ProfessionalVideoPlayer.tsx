@@ -12,6 +12,7 @@ import {
   Tv
 } from 'lucide-react';
 import { ResourceItem } from '../types/resource';
+import { isRealImage } from '../utils/contentPhotos';
 
 interface ProfessionalVideoPlayerProps {
   resource: ResourceItem;
@@ -276,7 +277,7 @@ export const ProfessionalVideoPlayer: React.FC<ProfessionalVideoPlayerProps> = (
     const watchLink = resource.downloadUrl || resource.source?.resourceUrl || resource.previewUrl;
     return (
       <div className={`relative w-full h-full bg-neutral-950 overflow-hidden flex items-center justify-center text-white p-6 ${className}`}>
-        {videoInfo.posterUrl && (
+        {videoInfo.posterUrl && isRealImage(videoInfo.posterUrl) && (
           <img
             src={videoInfo.posterUrl}
             alt={resource.title}
@@ -328,7 +329,7 @@ export const ProfessionalVideoPlayer: React.FC<ProfessionalVideoPlayerProps> = (
       {hasDirectStreamError ? (
         /* Clean, Unobtrusive Fallback Card (Never an ugly error message) */
         <div className="relative w-full h-full flex flex-col items-center justify-center p-6 text-white text-center bg-neutral-950">
-          {resource.thumbnailUrl && (
+          {resource.thumbnailUrl && isRealImage(resource.thumbnailUrl) && (
             <img
               src={resource.thumbnailUrl}
               alt={resource.title}

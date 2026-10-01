@@ -199,9 +199,9 @@ export function generateSearchPlan(filters: SearchFilters): SearchPlan {
     case 'papers':
       return {
         category: 'papers',
-        primaryProviders: ['physorg_physics', 'medicalxpress_health', 'openalex', 'nasa_ntrs', 'inspire_hep', 'hal_open_science', 'ncbi_pmc', 'europe_pmc', 'crossref', 'arxiv', 'pubmed', 'zenodo', 'plos', 'doaj'],
-        fallbackProviders: [],
-        planSummary: 'Primary: Phys.org Physical Sciences + Medical Xpress Clinical Wire + OpenAlex + NASA NTRS + PubMed Central + INSPIRE-HEP + HAL Open Science + arXiv.'
+        primaryProviders: ['openalex', 'arxiv', 'pubmed', 'crossref', 'europe_pmc', 'ncbi_pmc', 'inspire_hep', 'hal_open_science', 'nasa_ntrs', 'plos', 'doaj', 'zenodo'],
+        fallbackProviders: ['physorg_physics', 'medicalxpress_health'],
+        planSummary: 'Primary: OpenAlex + arXiv + PubMed + Crossref + Europe PMC + PubMed Central (NIH) + INSPIRE-HEP + HAL Open Science.'
       };
 
     case 'books':

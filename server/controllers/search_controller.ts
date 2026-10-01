@@ -117,7 +117,7 @@ export class SearchController {
    */
   public async searchLegacyGet(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const q = sanitizeQueryString(req.query.q);
+      const q = sanitizeQueryString(req.query.q ?? req.query.query);
       const category = normalizeCategory(typeof req.query.category === 'string' ? req.query.category : undefined);
       const rawQuality = typeof req.query.quality === 'string' ? req.query.quality : 'Any';
       const quality = ALLOWED_QUALITY.has(rawQuality) ? rawQuality : 'Any';
@@ -127,6 +127,9 @@ export class SearchController {
       const rawSortBy = typeof req.query.sortBy === 'string' ? req.query.sortBy : 'relevance';
       const sortBy = (ALLOWED_SORT_BY.has(rawSortBy) ? rawSortBy : 'relevance') as any;
       const nasaSubCategory = typeof req.query.nasaSubCategory === 'string' ? req.query.nasaSubCategory : undefined;
+      const page = Math.min(1000, Math.max(1, Number(req.query.page) || 1));
+      const pageSize = Math.min(APP_CONFIG.search.maxPageSize, Math.max(6, Number(req.query.pageSize) || APP_CONFIG.search.defaultPageSize));
+      const continuous = req.query.continuous !== 'false';
 
       const filters: SearchFilters = {
         category,
@@ -135,10 +138,14 @@ export class SearchController {
         license,
         format,
         sortBy,
+        page,
+        pageSize,
+        continuous,
         nasaSubCategory: nasaSubCategory as any
       };
 
-      const result = await searchService.search(filters);
+      const result = await searchService.search(filters, page, pageSize, continuous);
+      res.setHeader('Cache-Control', 'public, max-age=30, stale-while-revalidate=300');
       res.json(result);
     } catch (err: any) {
       console.error('SearchController Error in searchLegacyGet:', err);

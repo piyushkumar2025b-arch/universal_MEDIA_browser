@@ -6,7 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { ResourceCategory } from '../types/resource';
 import { isRealImage } from '../utils/contentPhotos';
-import { ImageOff } from 'lucide-react';
+import { ImageOff, FileText, Code2, Music, Database, BookOpen, Newspaper } from 'lucide-react';
 
 export const globalLoadedImages = new Set<string>();
 
@@ -46,6 +46,7 @@ export const ReliableMediaImage: React.FC<ReliableMediaImageProps> = ({
   alt,
   className = '',
   priority = false,
+  category,
   lqip
 }) => {
   const initialUrl = normalizeImageUrl(src || lqip);
@@ -82,6 +83,55 @@ export const ReliableMediaImage: React.FC<ReliableMediaImageProps> = ({
   };
 
   if (!currentSrc || hasError) {
+    if (category === 'papers') {
+      return (
+        <div className={`w-full h-full flex flex-col items-center justify-center bg-blue-950/20 text-blue-400 p-4 ${className}`}>
+          <FileText className="h-6 w-6 mb-1 opacity-80" />
+          <span className="text-[11px] font-medium opacity-80 text-center line-clamp-1">{alt || 'Research Document'}</span>
+        </div>
+      );
+    }
+    if (category === 'code') {
+      return (
+        <div className={`w-full h-full flex flex-col items-center justify-center bg-emerald-950/20 text-emerald-400 p-4 ${className}`}>
+          <Code2 className="h-6 w-6 mb-1 opacity-80" />
+          <span className="text-[11px] font-medium opacity-80 text-center line-clamp-1">{alt || 'Code Repository'}</span>
+        </div>
+      );
+    }
+    if (category === 'music' || category === 'audio') {
+      return (
+        <div className={`w-full h-full flex flex-col items-center justify-center bg-purple-950/20 text-purple-400 p-4 ${className}`}>
+          <Music className="h-6 w-6 mb-1 opacity-80" />
+          <span className="text-[11px] font-medium opacity-80 text-center line-clamp-1">{alt || 'Audio Track'}</span>
+        </div>
+      );
+    }
+    if (category === 'datasets' || category === 'finance') {
+      return (
+        <div className={`w-full h-full flex flex-col items-center justify-center bg-amber-950/20 text-amber-400 p-4 ${className}`}>
+          <Database className="h-6 w-6 mb-1 opacity-80" />
+          <span className="text-[11px] font-medium opacity-80 text-center line-clamp-1">{alt || 'Open Dataset'}</span>
+        </div>
+      );
+    }
+    if (category === 'books') {
+      return (
+        <div className={`w-full h-full flex flex-col items-center justify-center bg-orange-950/20 text-orange-400 p-4 ${className}`}>
+          <BookOpen className="h-6 w-6 mb-1 opacity-80" />
+          <span className="text-[11px] font-medium opacity-80 text-center line-clamp-1">{alt || 'Book / Archive'}</span>
+        </div>
+      );
+    }
+    if (category === 'news') {
+      return (
+        <div className={`w-full h-full flex flex-col items-center justify-center bg-neutral-900/40 text-neutral-400 p-4 ${className}`}>
+          <Newspaper className="h-6 w-6 mb-1 opacity-80" />
+          <span className="text-[11px] font-medium opacity-80 text-center line-clamp-1">{alt || 'News Wire'}</span>
+        </div>
+      );
+    }
+
     return (
       <div className={`w-full h-full flex flex-col items-center justify-center bg-neutral-900/40 text-neutral-500 p-4 ${className}`}>
         <ImageOff className="h-6 w-6 mb-1.5 opacity-40" />

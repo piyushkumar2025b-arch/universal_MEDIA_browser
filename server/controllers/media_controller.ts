@@ -75,26 +75,41 @@ export class MediaController {
         targetUrl = MediaController.iaAudioCache.get(iaId)!;
       } else {
         try {
-          const metaRes = await safeFetch(`https://archive.org/metadata/${encodeURIComponent(iaId)}/files`, {
-            signal: AbortSignal.timeout(5000)
+          let files: any[] = [];
+          let metaRes = await safeFetch(`https://archive.org/metadata/${encodeURIComponent(iaId)}/files`, {
+            signal: AbortSignal.timeout(3500)
           });
           if (metaRes.ok) {
             const data: any = await metaRes.json();
-            const files = Array.isArray(data.result) ? data.result : [];
-            const audioFile = files.find((f: any) =>
-              typeof f.name === 'string' &&
-              (f.name.toLowerCase().endsWith('.mp3') || f.name.toLowerCase().endsWith('.m4a') || f.name.toLowerCase().endsWith('.ogg') || f.name.toLowerCase().endsWith('.flac') || f.name.toLowerCase().endsWith('.wav')) &&
-              !f.name.includes('_thumb') &&
-              !f.name.includes('_spectrogram')
-            ) || files.find((f: any) => typeof f.format === 'string' && /mp3|audio|ogg|flac|wav/i.test(f.format) && typeof f.name === 'string');
-            if (audioFile?.name) {
-              targetUrl = `https://archive.org/download/${encodeURIComponent(iaId)}/${encodeURIComponent(audioFile.name)}`;
-              if (MediaController.iaAudioCache.size >= MediaController.MAX_IA_CACHE) {
-                const oldest = MediaController.iaAudioCache.keys().next().value;
-                if (oldest) MediaController.iaAudioCache.delete(oldest);
-              }
-              MediaController.iaAudioCache.set(iaId, targetUrl);
+            if (Array.isArray(data.result)) files = data.result;
+            else if (Array.isArray(data.files)) files = data.files;
+          }
+
+          if (!files.length) {
+            metaRes = await safeFetch(`https://archive.org/metadata/${encodeURIComponent(iaId)}`, {
+              signal: AbortSignal.timeout(4000)
+            });
+            if (metaRes.ok) {
+              const data: any = await metaRes.json();
+              if (Array.isArray(data.files)) files = data.files;
+              else if (Array.isArray(data.result)) files = data.result;
             }
+          }
+
+          const audioFile = files.find((f: any) =>
+            typeof f.name === 'string' &&
+            (f.name.toLowerCase().endsWith('.mp3') || f.name.toLowerCase().endsWith('.m4a') || f.name.toLowerCase().endsWith('.ogg') || f.name.toLowerCase().endsWith('.flac') || f.name.toLowerCase().endsWith('.wav')) &&
+            !f.name.includes('_thumb') &&
+            !f.name.includes('_spectrogram')
+          ) || files.find((f: any) => typeof f.format === 'string' && /mp3|audio|ogg|flac|wav/i.test(f.format) && typeof f.name === 'string');
+
+          if (audioFile?.name) {
+            targetUrl = `https://archive.org/download/${encodeURIComponent(iaId)}/${encodeURIComponent(audioFile.name)}`;
+            if (MediaController.iaAudioCache.size >= MediaController.MAX_IA_CACHE) {
+              const oldest = MediaController.iaAudioCache.keys().next().value;
+              if (oldest) MediaController.iaAudioCache.delete(oldest);
+            }
+            MediaController.iaAudioCache.set(iaId, targetUrl);
           }
         } catch {
           // fallback to direct download URL or embed
@@ -449,32 +464,46 @@ export class MediaController {
         targetUrl = MediaController.iaVideoCache.get(iaId)!;
       } else {
         try {
-          const metaRes = await safeFetch(`https://archive.org/metadata/${encodeURIComponent(iaId)}/files`, {
-            signal: AbortSignal.timeout(5000)
+          let files: any[] = [];
+          let metaRes = await safeFetch(`https://archive.org/metadata/${encodeURIComponent(iaId)}/files`, {
+            signal: AbortSignal.timeout(3500)
           });
           if (metaRes.ok) {
             const data: any = await metaRes.json();
-            const files = Array.isArray(data.result) ? data.result : [];
-            if (mediaType === 'video') {
-              const vf = files.find((f: any) =>
-                typeof f.name === 'string' &&
-                (f.name.endsWith('.mp4') || f.name.endsWith('.webm') || f.name.endsWith('.ogv')) &&
-                !f.name.includes('_thumb')
-              );
-              if (vf?.name) {
-                targetUrl = `https://archive.org/download/${encodeURIComponent(iaId)}/${encodeURIComponent(vf.name)}`;
-                MediaController.iaVideoCache.set(iaId, targetUrl);
-              }
-            } else {
-              const af = files.find((f: any) =>
-                typeof f.name === 'string' &&
-                (f.name.endsWith('.mp3') || f.name.endsWith('.m4a') || f.name.endsWith('.ogg') || f.name.endsWith('.flac') || f.name.endsWith('.wav')) &&
-                !f.name.includes('_thumb') && !f.name.includes('_spectrogram')
-              );
-              if (af?.name) {
-                targetUrl = `https://archive.org/download/${encodeURIComponent(iaId)}/${encodeURIComponent(af.name)}`;
-                MediaController.iaAudioCache.set(iaId, targetUrl);
-              }
+            if (Array.isArray(data.result)) files = data.result;
+            else if (Array.isArray(data.files)) files = data.files;
+          }
+
+          if (!files.length) {
+            metaRes = await safeFetch(`https://archive.org/metadata/${encodeURIComponent(iaId)}`, {
+              signal: AbortSignal.timeout(4000)
+            });
+            if (metaRes.ok) {
+              const data: any = await metaRes.json();
+              if (Array.isArray(data.files)) files = data.files;
+              else if (Array.isArray(data.result)) files = data.result;
+            }
+          }
+
+          if (mediaType === 'video') {
+            const vf = files.find((f: any) =>
+              typeof f.name === 'string' &&
+              (f.name.endsWith('.mp4') || f.name.endsWith('.webm') || f.name.endsWith('.ogv')) &&
+              !f.name.includes('_thumb')
+            );
+            if (vf?.name) {
+              targetUrl = `https://archive.org/download/${encodeURIComponent(iaId)}/${encodeURIComponent(vf.name)}`;
+              MediaController.iaVideoCache.set(iaId, targetUrl);
+            }
+          } else {
+            const af = files.find((f: any) =>
+              typeof f.name === 'string' &&
+              (f.name.endsWith('.mp3') || f.name.endsWith('.m4a') || f.name.endsWith('.ogg') || f.name.endsWith('.flac') || f.name.endsWith('.wav')) &&
+              !f.name.includes('_thumb') && !f.name.includes('_spectrogram')
+            );
+            if (af?.name) {
+              targetUrl = `https://archive.org/download/${encodeURIComponent(iaId)}/${encodeURIComponent(af.name)}`;
+              MediaController.iaAudioCache.set(iaId, targetUrl);
             }
           }
         } catch {

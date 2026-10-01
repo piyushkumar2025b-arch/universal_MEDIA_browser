@@ -11,10 +11,54 @@ import {
   Eye, 
   UploadCloud, 
   UserCheck,
-  ShieldCheck
+  ShieldCheck,
+  FileText,
+  Code2,
+  Music,
+  Database,
+  BookOpen,
+  Newspaper,
+  Package
 } from 'lucide-react';
 import { ResourceItem, Collection, DownloadHistoryItem, ResourceCategory } from '../types/resource';
 import { web3Wallet } from '../services/web3Wallet';
+import { isRealImage } from '../utils/contentPhotos';
+
+const LibraryItemThumb: React.FC<{ item: ResourceItem; sizeClass?: string; roundedClass?: string }> = ({
+  item,
+  sizeClass = 'h-12 w-12',
+  roundedClass = 'rounded-lg'
+}) => {
+  const [imgErr, setImgErr] = useState(false);
+  const realUrl = isRealImage(item.thumbnailUrl)
+    ? item.thumbnailUrl
+    : (item.category === 'images' || item.category === 'art') && isRealImage(item.previewUrl)
+      ? item.previewUrl
+      : null;
+
+  if (realUrl && !imgErr) {
+    return (
+      <img
+        src={realUrl}
+        alt={item.title}
+        className={`${sizeClass} ${roundedClass} object-cover bg-neutral-100 shrink-0`}
+        onError={() => setImgErr(true)}
+      />
+    );
+  }
+
+  return (
+    <div className={`${sizeClass} ${roundedClass} bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center shrink-0 text-neutral-500`}>
+      {item.category === 'papers' ? <FileText className="h-5 w-5 text-blue-500" /> :
+       item.category === 'code' ? <Code2 className="h-5 w-5 text-emerald-500" /> :
+       item.category === 'music' || item.category === 'audio' ? <Music className="h-5 w-5 text-purple-500" /> :
+       item.category === 'datasets' || item.category === 'finance' ? <Database className="h-5 w-5 text-amber-500" /> :
+       item.category === 'books' ? <BookOpen className="h-5 w-5 text-orange-500" /> :
+       item.category === 'news' ? <Newspaper className="h-5 w-5 text-neutral-500" /> :
+       <Package className="h-5 w-5 text-neutral-400" />}
+    </div>
+  );
+};
 
 interface LibraryDrawerProps {
   isOpen: boolean;
@@ -406,11 +450,7 @@ export const LibraryDrawer: React.FC<LibraryDrawerProps> = ({
                           className="flex items-center gap-3 cursor-pointer overflow-hidden flex-1"
                           onClick={() => onSelectResource(item)}
                         >
-                          <img
-                            src={item.thumbnailUrl || item.previewUrl}
-                            alt={item.title}
-                            className="h-12 w-12 rounded-lg object-cover bg-neutral-100 shrink-0"
-                          />
+                          <LibraryItemThumb item={item} />
                           <div className="overflow-hidden">
                             <h4 className="text-xs font-semibold text-neutral-900 truncate">
                               {item.title}
@@ -480,11 +520,7 @@ export const LibraryDrawer: React.FC<LibraryDrawerProps> = ({
                             className="flex items-center gap-3 cursor-pointer overflow-hidden flex-1"
                             onClick={() => onSelectResource(item)}
                           >
-                            <img
-                              src={item.thumbnailUrl || item.previewUrl}
-                              alt={item.title}
-                              className="h-12 w-12 rounded-lg object-cover bg-neutral-100 shrink-0"
-                            />
+                            <LibraryItemThumb item={item} />
                             <div className="overflow-hidden">
                               <h4 className="text-xs font-semibold text-neutral-900 truncate">
                                 {item.title}
@@ -647,11 +683,7 @@ export const LibraryDrawer: React.FC<LibraryDrawerProps> = ({
                                 className="flex items-center gap-2.5 flex-1 overflow-hidden cursor-pointer"
                                 onClick={() => onSelectResource(item)}
                               >
-                                <img
-                                  src={item.thumbnailUrl || item.previewUrl}
-                                  alt={item.title}
-                                  className="h-9 w-9 rounded-md object-cover"
-                                />
+                                <LibraryItemThumb item={item} sizeClass="h-9 w-9" roundedClass="rounded-md" />
                                 <span className="text-xs font-medium text-neutral-800 truncate">
                                   {item.title}
                                 </span>

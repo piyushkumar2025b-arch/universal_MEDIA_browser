@@ -24,13 +24,13 @@ export class DownloadService {
   public getOptimizedStreamUrl(targetUrl: string): string {
     if (!targetUrl) return '';
 
-    // If Wikimedia Commons original master is over 50MB (like Starry Night 700MB),
-    // provide high-resolution 2560px thumb which is ~2MB and instant to download
-    if (targetUrl.includes('upload.wikimedia.org/wikipedia/commons/') && !targetUrl.includes('/thumb/')) {
+    // If Wikimedia Commons original master is an uncompressed gigantic TIFF/TIF file,
+    // provide high-resolution 2560px thumb which is web-compatible and instant to download
+    if (targetUrl.includes('upload.wikimedia.org/wikipedia/commons/') && !targetUrl.includes('/thumb/') && /\.(tiff?)$/i.test(targetUrl)) {
       const match = targetUrl.match(/upload\.wikimedia\.org\/wikipedia\/commons\/([a-z0-9]+\/[a-z0-9]+\/)([^/]+)$/i);
       if (match) {
         const [, path, filename] = match;
-        return `https://upload.wikimedia.org/wikipedia/commons/thumb/${path}${filename}/2560px-${filename}`;
+        return `https://upload.wikimedia.org/wikipedia/commons/thumb/${path}${filename}/2560px-${filename}.jpg`;
       }
     }
 
@@ -46,10 +46,10 @@ export class DownloadService {
     }
 
     const candidateUrls = [
-      this.getOptimizedStreamUrl(url),
       url,
+      this.getOptimizedStreamUrl(url),
       fallbackUrl,
-    ].filter((u): u is string => Boolean(u && isSafePublicUrl(u)));
+    ].filter((u, i, arr): u is string => Boolean(u && isSafePublicUrl(u) && arr.indexOf(u) === i));
 
     let lastError: any = null;
 
@@ -98,10 +98,10 @@ export class DownloadService {
    */
   public async getUpstreamStream(targetUrl: string, fallbackUrl?: string): Promise<Response> {
     const candidateUrls = [
-      this.getOptimizedStreamUrl(targetUrl),
       targetUrl,
+      this.getOptimizedStreamUrl(targetUrl),
       fallbackUrl
-    ].filter((u): u is string => Boolean(u && isSafePublicUrl(u)));
+    ].filter((u, i, arr): u is string => Boolean(u && isSafePublicUrl(u) && arr.indexOf(u) === i));
 
     let lastError: any = null;
 
