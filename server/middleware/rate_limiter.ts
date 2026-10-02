@@ -26,12 +26,10 @@ setInterval(() => {
 }, 60000);
 
 function sanitizeClientIp(req: Request): string {
-  const forwarded = req.headers['x-forwarded-for'];
-  if (typeof forwarded === 'string') {
-    const first = forwarded.split(',')[0].trim();
-    if (first && first.length <= 45) return first;
-  }
-  return req.socket.remoteAddress || '127.0.0.1';
+  // Use Express's validated req.ip (governed by app.set('trust proxy'))
+  // This prevents malicious clients from spoofing client IP via crafted X-Forwarded-For headers
+  const ip = req.ip || req.socket.remoteAddress || '127.0.0.1';
+  return ip.replace(/^::ffff:/, '');
 }
 
 export function rateLimiterMiddleware(req: Request, res: Response, next: NextFunction): void {

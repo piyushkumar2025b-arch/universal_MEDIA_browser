@@ -22,18 +22,20 @@ export function securityHeadersMiddleware(req: Request, res: Response, next: Nex
   res.setHeader(
     'Content-Security-Policy',
     [
-      "default-src * 'self' data: blob:",
-      "script-src * 'self' 'unsafe-inline' 'unsafe-eval' blob:",
-      "style-src * 'self' 'unsafe-inline' https: http:",
-      "font-src * 'self' data: https: http:",
-      "img-src * 'self' data: blob: https: http:",
-      "media-src * 'self' data: blob: https: http:",
-      "connect-src * 'self' https: http: data: blob: wss: ws:",
-      "frame-src * 'self' blob: data: https: http:",
-      "child-src * 'self' blob: data: https: http:",
-      "object-src * 'self' blob: data: https: http:",
-      "worker-src * 'self' blob: data:",
-      "frame-ancestors 'self' https://*.google.com https://*.ai.studio https://ai.studio *"
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' https: blob:",
+      "style-src 'self' 'unsafe-inline' https:",
+      "font-src 'self' data: https:",
+      "img-src 'self' data: blob: https:",
+      "media-src 'self' data: blob: https:",
+      "connect-src 'self' https: wss: ws:",
+      "frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com https://player.vimeo.com https://geo.dailymotion.com https://archive.org https://yewtu.be https://piped.video blob: https:",
+      "child-src 'self' blob: https:",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "worker-src 'self' blob:",
+      "frame-ancestors 'self' https://*.google.com https://*.ai.studio https://ai.studio https://*.run.app"
     ].join('; ')
   );
 

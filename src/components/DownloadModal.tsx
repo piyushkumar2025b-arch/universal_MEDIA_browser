@@ -215,9 +215,9 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
             >
               <ShieldCheck className={`h-4 w-4 mt-0.5 shrink-0 ${selectedFormat === 'proxy' ? 'text-emerald-400' : 'text-neutral-500'}`} />
               <div>
-                <span className="text-xs font-bold block">Verified Gateway Stream</span>
+                <span className="text-xs font-bold block">Gateway Stream Proxy</span>
                 <span className={`text-[11px] block mt-0.5 ${selectedFormat === 'proxy' ? 'text-neutral-300' : 'text-neutral-500'}`}>
-                  SHA-256 verified streaming proxy
+                  High-throughput gateway with CORS bypass
                 </span>
               </div>
             </button>

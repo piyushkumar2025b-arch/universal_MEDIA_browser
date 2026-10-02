@@ -7,22 +7,57 @@ export interface DownloadOptions {
   onProgress?: (progressPercent: number, statusText: string) => void;
 }
 
+export interface AssetUrlResult {
+  url: string;
+  fallbackUrl?: string;
+  isDirectDownloadable: boolean;
+}
+
 /**
  * Returns the best downloadable binary or asset URL for a given item.
+ * Strictly separates authentic binary files from web pages and low-res thumbnails.
  */
-export function getBestAssetUrl(item: ResourceItem): { url: string; fallbackUrl?: string } {
-  const primaryCandidates = [
-    item.downloadUrl,
-    item.attributes?.pdfUrl,
-    item.previewUrl,
-    item.thumbnailUrl,
-    item.source?.resourceUrl
-  ].filter((u): u is string => Boolean(u && typeof u === 'string' && u.startsWith('http')));
+export function getBestAssetUrl(item: ResourceItem): AssetUrlResult {
+  const isDirectImage = (u?: string | null) => Boolean(u && /\.(jpe?g|png|webp|avif|gif|svg|tiff?)(\?.*)?$/i.test(u));
+  const isDirectMedia = (u?: string | null) => Boolean(u && /\.(mp3|mp4|webm|wav|ogg|flac|m4a|zip|gz|tar|csv|json|pdf|epub)(\?.*)?$/i.test(u));
 
-  const url = primaryCandidates[0] || '';
-  const fallbackUrl = primaryCandidates[1] || primaryCandidates[2] || undefined;
+  // 1. Explicit direct download URL or PDF
+  if (item.downloadUrl && item.downloadUrl.startsWith('http')) {
+    return {
+      url: item.downloadUrl,
+      fallbackUrl: item.attributes?.pdfUrl || undefined,
+      isDirectDownloadable: true
+    };
+  }
 
-  return { url, fallbackUrl };
+  if (item.attributes?.pdfUrl && item.attributes.pdfUrl.startsWith('http')) {
+    return {
+      url: item.attributes.pdfUrl,
+      fallbackUrl: undefined,
+      isDirectDownloadable: true
+    };
+  }
+
+  // 2. Direct full-resolution preview ONLY if it is an actual media binary file (not HTML or low-res thumbnail)
+  if (item.previewUrl && item.previewUrl.startsWith('http') && (isDirectImage(item.previewUrl) || isDirectMedia(item.previewUrl))) {
+    return {
+      url: item.previewUrl,
+      fallbackUrl: undefined,
+      isDirectDownloadable: true
+    };
+  }
+
+  // 3. No direct binary download exists (e.g. paper manuscript page, code repo, or online dataset record)
+  // Low-resolution thumbnails are NEVER masqueraded as original downloads.
+  const externalSourceUrl = (item.source?.resourceUrl && item.source.resourceUrl.startsWith('http'))
+    ? item.source.resourceUrl
+    : (item.previewUrl && item.previewUrl.startsWith('http')) ? item.previewUrl : '';
+
+  return {
+    url: externalSourceUrl,
+    fallbackUrl: undefined,
+    isDirectDownloadable: false
+  };
 }
 
 /**
@@ -128,11 +163,13 @@ export async function downloadResourceAsset(
   item: ResourceItem, 
   options: DownloadOptions = {}
 ): Promise<{ success: boolean; method: string }> {
-  const { url: targetUrl, fallbackUrl } = getBestAssetUrl(item);
+  const assetInfo = getBestAssetUrl(item);
+  const targetUrl = assetInfo.url;
+  const fallbackUrl = assetInfo.fallbackUrl;
   const filename = getSanitizedFilename(item);
 
-  if (!targetUrl) {
-    // If no target URL, download rich metadata snapshot
+  // If no direct downloadable binary asset exists, download structured metadata
+  if (!targetUrl || !assetInfo.isDirectDownloadable) {
     downloadMetadataRecord(item);
     return { success: true, method: 'metadata_fallback' };
   }
@@ -140,15 +177,30 @@ export async function downloadResourceAsset(
   // Strategy 1: Gateway streaming proxy
   if (options.mode !== 'direct') {
     try {
-      options.onProgress?.(30, 'Streaming through verified download gateway...');
+      options.onProgress?.(25, 'Connecting to download gateway...');
       const proxyUrl = `/api/download-proxy?url=${encodeURIComponent(targetUrl)}&filename=${encodeURIComponent(filename)}${fallbackUrl ? `&fallback=${encodeURIComponent(fallbackUrl)}` : ''}`;
       
-      // Test fetch head or stream directly via invisible anchor
-      triggerBrowserDownload(proxyUrl, filename);
-      options.onProgress?.(100, 'Download dispatched successfully!');
+      options.onProgress?.(50, 'Streaming verified asset...');
+      const proxyResp = await fetch(proxyUrl);
+      if (!proxyResp.ok) {
+        throw new Error(`Download gateway returned HTTP ${proxyResp.status}`);
+      }
+
+      const contentType = proxyResp.headers.get('content-type') || '';
+      if (contentType.includes('application/json')) {
+        throw new Error('Remote provider returned an error message instead of file binary');
+      }
+
+      const blob = await proxyResp.blob();
+      if (blob.size === 0) {
+        throw new Error('Downloaded asset is empty (0 bytes)');
+      }
+
+      triggerBrowserDownload(blob, filename);
+      options.onProgress?.(100, 'Download complete!');
       return { success: true, method: 'gateway_proxy' };
-    } catch (err) {
-      console.warn('[downloadEngine] Gateway proxy failed, attempting direct tier...', err);
+    } catch (err: any) {
+      console.warn('[downloadEngine] Gateway proxy failed, attempting direct tier...', err?.message || err);
     }
   }
 
@@ -157,13 +209,20 @@ export async function downloadResourceAsset(
     options.onProgress?.(60, 'Fetching direct resource stream...');
     const resp = await fetch(targetUrl, { mode: 'cors' });
     if (resp.ok) {
+      const contentType = resp.headers.get('content-type') || '';
+      if (contentType.includes('application/json') || contentType.includes('text/html')) {
+        throw new Error('Direct target returned HTML or JSON instead of an asset file');
+      }
       const blob = await resp.blob();
+      if (blob.size === 0) {
+        throw new Error('Direct stream returned 0 bytes');
+      }
       triggerBrowserDownload(blob, filename);
       options.onProgress?.(100, 'Download complete via direct stream!');
       return { success: true, method: 'direct_blob' };
     }
-  } catch (err) {
-    console.warn('[downloadEngine] Direct fetch failed (likely CORS), attempting canvas or link fallback...', err);
+  } catch (err: any) {
+    console.warn('[downloadEngine] Direct fetch failed (likely CORS), attempting canvas or link fallback...', err?.message || err);
   }
 
   // Strategy 3: Canvas capture for image categories

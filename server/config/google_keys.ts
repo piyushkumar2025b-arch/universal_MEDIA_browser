@@ -3,12 +3,10 @@
  * Ensures fallback to user-provided keys if not explicitly defined in container environment.
  */
 
-export const GOOGLE_CONFIG = {
-  // Provided user API key configured for YouTube Data API v3 & Google Books
-  DEFAULT_API_KEY: 'AIzaSyA-zrYkTBm-3lC8mmNRMGFxkmC5P9Pz65w',
-  // Provided Google Programmable Search Engine CX
-  DEFAULT_CX: '30821318e53074c88'
-};
+/**
+ * Centralized Google API credentials resolver for YouTube, Google Books, and Google Search.
+ * Strictly reads from environment variables without hardcoded fallbacks in source code.
+ */
 
 export function getGoogleApiKey(): string {
   return (
@@ -16,7 +14,7 @@ export function getGoogleApiKey(): string {
     process.env.GOOGLE_SEARCH_API_KEY ||
     process.env.YOUTUBE_API_KEY ||
     process.env.GOOGLE_BOOKS_API_KEY ||
-    GOOGLE_CONFIG.DEFAULT_API_KEY
+    ''
   );
 }
 
@@ -33,6 +31,7 @@ export function getGoogleSearchEngineId(): string {
     process.env.GOOGLE_SEARCH_ENGINE_ID ||
     process.env.GOOGLE_CSE_ID ||
     process.env.GOOGLE_CUSTOM_SEARCH_CX ||
-    GOOGLE_CONFIG.DEFAULT_CX
+    ''
   );
 }
+

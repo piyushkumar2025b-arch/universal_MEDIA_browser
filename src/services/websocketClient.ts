@@ -108,6 +108,11 @@ export class WebSocketClient {
       this.ws.onclose = () => {
         this.stopPing();
         this.setStatus('disconnected');
+        // Clear all pending search callbacks on connection loss to prevent memory leaks
+        for (const [id, cbs] of this.activeSearchCallbacks.entries()) {
+          cbs.onError?.('WebSocket connection lost');
+        }
+        this.activeSearchCallbacks.clear();
         this.scheduleReconnect();
       };
 
@@ -274,8 +279,24 @@ export class WebSocketClient {
       setTimeout(() => clearInterval(checkTimer), 2000);
     }
 
+    // Guard against indefinite pending search callback leaks with a 30s timeout
+    const timeoutTimer = setTimeout(() => {
+      if (this.activeSearchCallbacks.has(searchId)) {
+        callbacks.onError?.('Search stream timed out');
+        this.activeSearchCallbacks.delete(searchId);
+      }
+    }, 30000);
+
     return () => {
-      this.activeSearchCallbacks.delete(searchId);
+      clearTimeout(timeoutTimer);
+      if (this.activeSearchCallbacks.has(searchId)) {
+        this.activeSearchCallbacks.delete(searchId);
+        if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+          try {
+            this.ws.send(JSON.stringify({ type: 'CANCEL_SEARCH', searchId }));
+          } catch {}
+        }
+      }
     };
   }
 }

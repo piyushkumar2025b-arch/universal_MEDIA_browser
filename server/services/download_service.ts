@@ -65,16 +65,53 @@ export class DownloadService {
           continue;
         }
 
-        const arrayBuffer = await upstream.arrayBuffer();
-        const buffer = Buffer.from(arrayBuffer);
+        // Check Content-Length header upfront if provided by upstream
+        const contentLengthHeader = upstream.headers.get('content-length');
+        if (contentLengthHeader) {
+          const expectedBytes = parseInt(contentLengthHeader, 10);
+          if (!isNaN(expectedBytes) && expectedBytes > APP_CONFIG.download.maxSizeBytes) {
+            const err = new Error(`File size (${Math.round(expectedBytes / (1024 * 1024))}MB) exceeds maximum permitted limit (${Math.round(APP_CONFIG.download.maxSizeBytes / (1024 * 1024))}MB)`) as any;
+            err.statusCode = 413;
+            throw err;
+          }
+        }
 
-        if (buffer.length > APP_CONFIG.download.maxSizeBytes) {
-          const err = new Error('File size exceeds maximum permitted download limit') as any;
-          err.statusCode = 413;
+        // Stream the response with a hard byte counter and compute SHA-256 on the fly
+        if (!upstream.body) {
+          const err = new Error('Upstream source returned empty body') as any;
+          err.statusCode = 502;
           throw err;
         }
 
-        const sha256 = crypto.createHash('sha256').update(buffer).digest('hex');
+        const reader = upstream.body.getReader();
+        const chunks: Uint8Array[] = [];
+        let totalBytes = 0;
+        const hash = crypto.createHash('sha256');
+
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            if (value) {
+              totalBytes += value.length;
+              if (totalBytes > APP_CONFIG.download.maxSizeBytes) {
+                reader.cancel().catch(() => {});
+                const err = new Error(`Download exceeded maximum permitted size of ${Math.round(APP_CONFIG.download.maxSizeBytes / (1024 * 1024))}MB`) as any;
+                err.statusCode = 413;
+                throw err;
+              }
+              chunks.push(value);
+              hash.update(value);
+            }
+          }
+        } finally {
+          try {
+            reader.releaseLock();
+          } catch {}
+        }
+
+        const buffer = Buffer.concat(chunks);
+        const sha256 = hash.digest('hex');
         const contentType = upstream.headers.get('content-type') || 'application/octet-stream';
         const cleanFilename = sanitizeSafeFilename(rawFilename, 'resource');
 
@@ -113,6 +150,15 @@ export class DownloadService {
         });
 
         if (upstream.ok) {
+          const contentLengthHeader = upstream.headers.get('content-length');
+          if (contentLengthHeader) {
+            const expectedBytes = parseInt(contentLengthHeader, 10);
+            if (!isNaN(expectedBytes) && expectedBytes > APP_CONFIG.download.maxSizeBytes) {
+              const err = new Error('File size exceeds maximum permitted download limit') as any;
+              err.statusCode = 413;
+              throw err;
+            }
+          }
           return upstream;
         }
         lastError = new Error(`Upstream source returned HTTP ${upstream.status}`);

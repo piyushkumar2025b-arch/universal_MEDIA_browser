@@ -50,7 +50,7 @@ export class MediaController {
    * GET /api/v1/content-photo
    */
   public async getContentPhoto(req: Request, res: Response): Promise<void> {
-    res.status(404).send('Content photo generation disabled; real media only');
+    res.json({ ok: true, photoUrl: null, message: 'Content photo generation disabled; authentic real media only' });
   }
 
   /**
@@ -684,7 +684,14 @@ export class MediaController {
     const videoId = req.query.id as string;
     const provider = (req.query.provider as string) || 'youtube';
     const mirror = (req.query.mirror as string) || 'nocookie';
-    const title = (req.query.title as string) || 'Video Player';
+    const rawTitle = (req.query.title as string) || 'Video Player';
+    const title = rawTitle
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;')
+      .slice(0, 200);
 
     if (!videoId || !/^[a-zA-Z0-9_-]{3,64}$/.test(videoId)) {
       res.status(400).send('Invalid video identifier');

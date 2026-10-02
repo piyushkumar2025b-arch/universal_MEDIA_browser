@@ -10,6 +10,13 @@ import { ResourceItem } from '../src/types/resource';
 interface ClientConnection extends WebSocket {
   isAlive: boolean;
   clientId: string;
+  ip: string;
+  commandCount: number;
+  commandResetTime: number;
+  benchmarkCount: number;
+  benchmarkResetTime: number;
+  activeSearches: Set<string>;
+  searchAbortControllers: Map<string, AbortController>;
 }
 
 export class WebSocketHub {
@@ -30,7 +37,8 @@ export class WebSocketHub {
     this.wss = new WebSocketServer({
       server,
       path: '/ws',
-      clientTracking: true
+      clientTracking: true,
+      maxPayload: 64 * 1024 // 64 KB max payload to prevent memory exhaustion
     });
 
     console.log('[URMIL Gateway] WebSocket Server mounted at /ws');
@@ -39,6 +47,13 @@ export class WebSocketHub {
       const client = ws as ClientConnection;
       client.isAlive = true;
       client.clientId = Math.random().toString(36).substring(2, 11);
+      client.ip = (req.socket.remoteAddress || '127.0.0.1').replace(/^::ffff:/, '');
+      client.commandCount = 0;
+      client.commandResetTime = Date.now() + 60000;
+      client.benchmarkCount = 0;
+      client.benchmarkResetTime = Date.now() + 300000;
+      client.activeSearches = new Set();
+      client.searchAbortControllers = new Map();
 
       client.on('pong', () => {
         client.isAlive = true;
@@ -55,8 +70,26 @@ export class WebSocketHub {
 
       client.on('message', async (data: string | Buffer) => {
         try {
+          if (typeof data !== 'string' && !Buffer.isBuffer(data)) {
+            return;
+          }
+          if (data.length > 64 * 1024) {
+            this.sendToClient(client, {
+              type: 'ERROR',
+              error: 'Payload size exceeds 64KB limit'
+            });
+            return;
+          }
+
           const raw = data.toString();
           const message = JSON.parse(raw);
+          if (!message || typeof message !== 'object') {
+            this.sendToClient(client, {
+              type: 'ERROR',
+              error: 'Message payload must be a JSON object'
+            });
+            return;
+          }
           await this.handleClientMessage(client, message);
         } catch (err: any) {
           this.sendToClient(client, {
@@ -71,7 +104,12 @@ export class WebSocketHub {
       });
 
       client.on('close', () => {
-        // Handled cleanly
+        // Clean up in-flight search abort controllers on connection loss
+        for (const ctrl of client.searchAbortControllers.values()) {
+          ctrl.abort();
+        }
+        client.searchAbortControllers.clear();
+        client.activeSearches.clear();
       });
     });
 
@@ -90,7 +128,23 @@ export class WebSocketHub {
   }
 
   private async handleClientMessage(client: ClientConnection, msg: any): Promise<void> {
-    const type = msg.type || '';
+    const type = typeof msg.type === 'string' ? msg.type.trim() : '';
+
+    // Per-socket command rate limiter (max 60 commands/min)
+    const now = Date.now();
+    if (now > client.commandResetTime) {
+      client.commandCount = 1;
+      client.commandResetTime = now + 60000;
+    } else {
+      client.commandCount++;
+      if (client.commandCount > 60) {
+        this.sendToClient(client, {
+          type: 'ERROR',
+          error: 'Rate limit exceeded: maximum 60 commands per minute on WebSocket.'
+        });
+        return;
+      }
+    }
 
     switch (type) {
       case 'PING': {
@@ -102,14 +156,28 @@ export class WebSocketHub {
         break;
       }
 
+      case 'CANCEL_SEARCH': {
+        const searchId = typeof msg.searchId === 'string' ? msg.searchId : '';
+        if (searchId && client.searchAbortControllers.has(searchId)) {
+          client.searchAbortControllers.get(searchId)?.abort();
+          client.searchAbortControllers.delete(searchId);
+          client.activeSearches.delete(searchId);
+          this.sendToClient(client, {
+            type: 'SEARCH_CANCELLED',
+            searchId
+          });
+        }
+        break;
+      }
+
       case 'SEARCH': {
         await this.handleStreamingSearch(client, msg);
         break;
       }
 
       case 'TEST_PROVIDER': {
-        const providerId = msg.providerId;
-        const query = msg.query || 'space';
+        const providerId = typeof msg.providerId === 'string' ? msg.providerId.slice(0, 80) : '';
+        const query = typeof msg.query === 'string' ? msg.query.slice(0, 100) : 'space';
         if (!providerId) {
           this.sendToClient(client, { type: 'ERROR', error: 'Missing providerId' });
           return;
@@ -124,6 +192,20 @@ export class WebSocketHub {
       }
 
       case 'BENCHMARK': {
+        // Strict benchmark rate limiter (max 3 per 5 minutes per client)
+        if (now > client.benchmarkResetTime) {
+          client.benchmarkCount = 1;
+          client.benchmarkResetTime = now + 300000;
+        } else {
+          client.benchmarkCount++;
+          if (client.benchmarkCount > 3) {
+            this.sendToClient(client, {
+              type: 'ERROR',
+              error: 'Benchmark rate limit exceeded: maximum 3 benchmarks per 5 minutes.'
+            });
+            return;
+          }
+        }
         await this.handleStreamingBenchmark(client, msg);
         break;
       }
@@ -151,10 +233,10 @@ export class WebSocketHub {
    * Emits results progressively as each provider answers!
    */
   private async handleStreamingSearch(client: ClientConnection, msg: any): Promise<void> {
-    const searchId = msg.searchId || Math.random().toString(36).substring(2, 10);
-    const query = String(msg.query || '').trim();
+    const searchId = typeof msg.searchId === 'string' && msg.searchId.length <= 64 ? msg.searchId : Math.random().toString(36).substring(2, 10);
+    const query = String(msg.query || '').trim().slice(0, 300);
     const category = normalizeCategory(msg.category || 'all');
-    const limit = typeof msg.limit === 'number' ? Math.min(msg.limit, 100) : 40;
+    const limit = typeof msg.limit === 'number' ? Math.max(1, Math.min(msg.limit, 60)) : 40;
     const nasaSubCategory = msg.nasaSubCategory;
 
     if (!query) {
@@ -166,107 +248,134 @@ export class WebSocketHub {
       return;
     }
 
-    // Generate search plan
-    const plan = generateSearchPlan({
-      query,
-      category,
-      license: ['all'],
-      quality: 'Any',
-      format: 'all',
-      sortBy: 'relevance',
-      nasaSubCategory
-    });
-
-    // Select targeted providers
-    let targetProviders: string[] = [];
-    if (Array.isArray(msg.providers) && msg.providers.length > 0) {
-      targetProviders = msg.providers.filter((p: string) => Boolean(PROVIDER_DISPATCH_MAP[p]));
-    } else {
-      const candidates = [...plan.primaryProviders, ...plan.fallbackProviders];
-      targetProviders = Array.from(new Set(candidates)).filter(p => Boolean(PROVIDER_DISPATCH_MAP[p]));
+    // Limit maximum concurrent active searches per socket connection (max 2)
+    if (client.activeSearches.size >= 2) {
+      this.sendToClient(client, {
+        type: 'SEARCH_ERROR',
+        searchId,
+        error: 'Maximum concurrent search limit reached (2 active searches). Please wait or cancel pending searches.'
+      });
+      return;
     }
 
-    // Limit maximum concurrent providers to prevent saturation
-    const activeProviders = targetProviders.slice(0, 24);
-    const startTime = Date.now();
-    let completedCount = 0;
-    let totalItemsEmitted = 0;
+    const abortController = new AbortController();
+    client.activeSearches.add(searchId);
+    client.searchAbortControllers.set(searchId, abortController);
 
-    // Send initial start handshake
-    this.sendToClient(client, {
-      type: 'SEARCH_START',
-      searchId,
-      query,
-      category,
-      planSummary: plan.planSummary,
-      totalProviders: activeProviders.length,
-      providerIds: activeProviders
-    });
+    try {
+      // Generate search plan
+      const plan = generateSearchPlan({
+        query,
+        category,
+        license: ['all'],
+        quality: 'Any',
+        format: 'all',
+        sortBy: 'relevance',
+        nasaSubCategory
+      });
 
-    // Broadcast real-time activity event to other connected users
-    this.broadcastExcept(client, {
-      type: 'LIVE_QUERY_BROADCAST',
-      query: query.substring(0, 30),
-      category,
-      providerCount: activeProviders.length,
-      timestamp: Date.now()
-    });
-
-    // Execute all providers concurrently and stream responses asynchronously
-    const promises = activeProviders.map(async (providerId) => {
-      const pStart = Date.now();
-      try {
-        const items = await resilientPool.executeProvider(
-          providerId,
-          query,
-          (q) => PROVIDER_DISPATCH_MAP[providerId](q),
-          4500
-        );
-
-        const latency = Date.now() - pStart;
-        completedCount++;
-        totalItemsEmitted += items.length;
-
-        // Stream this provider's batch of results immediately to the client
-        this.sendToClient(client, {
-          type: 'PROVIDER_RESULTS',
-          searchId,
-          providerId,
-          items,
-          count: items.length,
-          latencyMs: latency,
-          completedProviders: completedCount,
-          totalProviders: activeProviders.length,
-          percent: Math.round((completedCount / activeProviders.length) * 100)
-        });
-      } catch (err: any) {
-        completedCount++;
-        this.sendToClient(client, {
-          type: 'PROVIDER_ERROR',
-          searchId,
-          providerId,
-          error: err.message || 'Provider execution failed',
-          completedProviders: completedCount,
-          totalProviders: activeProviders.length,
-          percent: Math.round((completedCount / activeProviders.length) * 100)
-        });
+      // Select targeted providers
+      let targetProviders: string[] = [];
+      if (Array.isArray(msg.providers) && msg.providers.length > 0) {
+        targetProviders = msg.providers.filter((p: string) => Boolean(PROVIDER_DISPATCH_MAP[p]));
+      } else {
+        const candidates = [...plan.primaryProviders, ...plan.fallbackProviders];
+        targetProviders = Array.from(new Set(candidates)).filter(p => Boolean(PROVIDER_DISPATCH_MAP[p]));
       }
-    });
 
-    await Promise.allSettled(promises);
+      // Limit maximum concurrent providers to prevent saturation (bounded to 16)
+      const activeProviders = targetProviders.slice(0, 16);
+      const startTime = Date.now();
+      let completedCount = 0;
+      let totalItemsEmitted = 0;
 
-    // Send completion event
-    const duration = Date.now() - startTime;
-    this.sendToClient(client, {
-      type: 'SEARCH_COMPLETE',
-      searchId,
-      query,
-      category,
-      totalItems: totalItemsEmitted,
-      durationMs: duration,
-      completedProviders: completedCount,
-      totalProviders: activeProviders.length
-    });
+      // Send initial start handshake
+      this.sendToClient(client, {
+        type: 'SEARCH_START',
+        searchId,
+        query,
+        category,
+        planSummary: plan.planSummary,
+        totalProviders: activeProviders.length,
+        providerIds: activeProviders
+      });
+
+      // Broadcast real-time activity event to other connected users
+      this.broadcastExcept(client, {
+        type: 'LIVE_QUERY_BROADCAST',
+        query: query.substring(0, 30),
+        category,
+        providerCount: activeProviders.length,
+        timestamp: Date.now()
+      });
+
+      // Execute all providers concurrently and stream responses asynchronously
+      const promises = activeProviders.map(async (providerId) => {
+        if (abortController.signal.aborted) return;
+        const pStart = Date.now();
+        try {
+          const items = await resilientPool.executeProvider(
+            providerId,
+            query,
+            (q) => PROVIDER_DISPATCH_MAP[providerId](q),
+            4000
+          );
+
+          if (abortController.signal.aborted) return;
+
+          const latency = Date.now() - pStart;
+          completedCount++;
+          totalItemsEmitted += items.length;
+
+          // Stream this provider's batch of results immediately to the client
+          this.sendToClient(client, {
+            type: 'PROVIDER_RESULTS',
+            searchId,
+            providerId,
+            items,
+            count: items.length,
+            latencyMs: latency,
+            completedProviders: completedCount,
+            totalProviders: activeProviders.length,
+            percent: Math.round((completedCount / activeProviders.length) * 100)
+          });
+        } catch (err: any) {
+          if (abortController.signal.aborted) return;
+          completedCount++;
+          this.sendToClient(client, {
+            type: 'PROVIDER_ERROR',
+            searchId,
+            providerId,
+            error: err.message || 'Provider execution failed',
+            completedProviders: completedCount,
+            totalProviders: activeProviders.length,
+            percent: Math.round((completedCount / activeProviders.length) * 100)
+          });
+        }
+      });
+
+      await Promise.allSettled(promises);
+
+      if (abortController.signal.aborted) {
+        return;
+      }
+
+      // Send completion event
+      const duration = Date.now() - startTime;
+      this.sendToClient(client, {
+        type: 'SEARCH_COMPLETE',
+        searchId,
+        query,
+        category,
+        totalItems: totalItemsEmitted,
+        durationMs: duration,
+        completedProviders: completedCount,
+        totalProviders: activeProviders.length
+      });
+    } finally {
+      client.activeSearches.delete(searchId);
+      client.searchAbortControllers.delete(searchId);
+    }
   }
 
   /**
