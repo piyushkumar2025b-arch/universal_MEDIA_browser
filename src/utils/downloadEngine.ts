@@ -1,6 +1,17 @@
 import JSZip from 'jszip';
 import { ResourceItem } from '../types/resource';
 
+export type DownloadStatus = 'confirmed' | 'dispatched' | 'failed';
+
+export interface DownloadResult {
+  success: boolean;
+  status: DownloadStatus;
+  method: string;
+}
+
+export const MAX_BATCH_ITEMS = 50;
+export const MAX_BATCH_BYTES = 250 * 1024 * 1024; // 250 MB
+
 export interface DownloadOptions {
   mode?: 'proxy' | 'direct' | 'metadata' | 'citation';
   fallbackToDirectWindow?: boolean;
@@ -128,6 +139,9 @@ export function getSanitizedFilename(item: ResourceItem, extension?: string): st
  * Triggers a native browser file download from a Blob or URL.
  */
 export function triggerBrowserDownload(urlOrBlob: string | Blob, filename: string): void {
+  if (typeof document === 'undefined') {
+    return;
+  }
   const a = document.createElement('a');
   let objectUrl: string | null = null;
 
@@ -162,7 +176,7 @@ export function triggerBrowserDownload(urlOrBlob: string | Blob, filename: strin
 export async function downloadResourceAsset(
   item: ResourceItem, 
   options: DownloadOptions = {}
-): Promise<{ success: boolean; method: string }> {
+): Promise<DownloadResult> {
   const assetInfo = getBestAssetUrl(item);
   const targetUrl = assetInfo.url;
   const fallbackUrl = assetInfo.fallbackUrl;
@@ -171,7 +185,7 @@ export async function downloadResourceAsset(
   // If no direct downloadable binary asset exists, download structured metadata
   if (!targetUrl || !assetInfo.isDirectDownloadable) {
     downloadMetadataRecord(item);
-    return { success: true, method: 'metadata_fallback' };
+    return { success: true, status: 'confirmed', method: 'metadata_fallback' };
   }
 
   // Strategy 1: Gateway streaming proxy
@@ -180,15 +194,17 @@ export async function downloadResourceAsset(
       options.onProgress?.(25, 'Connecting to download gateway...');
       const proxyUrl = `/api/download-proxy?url=${encodeURIComponent(targetUrl)}&filename=${encodeURIComponent(filename)}${fallbackUrl ? `&fallback=${encodeURIComponent(fallbackUrl)}` : ''}`;
       
-      options.onProgress?.(50, 'Streaming verified asset...');
+      // BUG-008: Accurate progress wording without false cryptographic claims on streaming path
+      options.onProgress?.(50, 'Streaming asset via gateway...');
       const proxyResp = await fetch(proxyUrl);
       if (!proxyResp.ok) {
         throw new Error(`Download gateway returned HTTP ${proxyResp.status}`);
       }
 
       const contentType = proxyResp.headers.get('content-type') || '';
-      if (contentType.includes('application/json')) {
-        throw new Error('Remote provider returned an error message instead of file binary');
+      // BUG-009: Reject HTML error documents received by the client
+      if (contentType.includes('application/json') || contentType.includes('text/html')) {
+        throw new Error('Remote provider returned an error message or HTML document instead of file binary');
       }
 
       const blob = await proxyResp.blob();
@@ -198,7 +214,7 @@ export async function downloadResourceAsset(
 
       triggerBrowserDownload(blob, filename);
       options.onProgress?.(100, 'Download complete!');
-      return { success: true, method: 'gateway_proxy' };
+      return { success: true, status: 'confirmed', method: 'gateway_proxy' };
     } catch (err: any) {
       console.warn('[downloadEngine] Gateway proxy failed, attempting direct tier...', err?.message || err);
     }
@@ -219,7 +235,7 @@ export async function downloadResourceAsset(
       }
       triggerBrowserDownload(blob, filename);
       options.onProgress?.(100, 'Download complete via direct stream!');
-      return { success: true, method: 'direct_blob' };
+      return { success: true, status: 'confirmed', method: 'direct_blob' };
     }
   } catch (err: any) {
     console.warn('[downloadEngine] Direct fetch failed (likely CORS), attempting canvas or link fallback...', err?.message || err);
@@ -228,7 +244,7 @@ export async function downloadResourceAsset(
   // Strategy 3: Canvas capture for image categories
   if (['images', 'art', 'biodiversity'].includes(item.category) && (item.previewUrl || item.thumbnailUrl)) {
     try {
-      options.onProgress?.(80, 'Capturing verified high-resolution render...');
+      options.onProgress?.(80, 'Capturing high-resolution image render...');
       const img = new Image();
       img.crossOrigin = 'anonymous';
       const imgSrc = item.previewUrl || item.thumbnailUrl || targetUrl;
@@ -257,15 +273,16 @@ export async function downloadResourceAsset(
       if (blob) {
         triggerBrowserDownload(blob, filename);
         options.onProgress?.(100, 'Render captured and downloaded!');
-        return { success: true, method: 'canvas_export' };
+        return { success: true, status: 'confirmed', method: 'canvas_export' };
       }
     } catch {}
   }
 
-  // Strategy 4: Guaranteed fallback - direct window open or anchor
+  // Strategy 4: Fallback - direct browser navigation / anchor
+  // BUG-010: Return status 'dispatched' rather than claiming verified/confirmed success
   options.onProgress?.(100, 'Opening source file link directly...');
   triggerBrowserDownload(targetUrl, filename);
-  return { success: true, method: 'direct_anchor' };
+  return { success: true, status: 'dispatched', method: 'direct_anchor' };
 }
 
 /**
@@ -343,14 +360,20 @@ BibTeX:
 }
 
 /**
- * Downloads multiple items as an organized, attributed ZIP archive.
+ * Downloads multiple items as an organized, attributed ZIP archive with aggregate memory caps.
  */
 export async function downloadBatchZip(
   items: ResourceItem[],
   onProgress?: (progressPercent: number, statusText: string) => void
 ): Promise<void> {
-  const zip = new JSZip();
   const total = items.length;
+  // BUG-012: Enforce item count limit to prevent browser memory crashes
+  if (total > MAX_BATCH_ITEMS) {
+    throw new Error(`Batch export exceeds maximum limit of ${MAX_BATCH_ITEMS} items at a time (requested ${total}). Please reduce selection.`);
+  }
+
+  const zip = new JSZip();
+  let cumulativeBytes = 0;
 
   onProgress?.(5, `Preparing batch archive for ${total} items...`);
 
@@ -386,10 +409,18 @@ Total Assets: ${total}
         const resp = await fetch(proxyUrl);
         if (resp.ok) {
           const blob = await resp.blob();
+          // BUG-012: Enforce cumulative byte limit across the batch
+          cumulativeBytes += blob.size;
+          if (cumulativeBytes > MAX_BATCH_BYTES) {
+            throw new Error(`Batch export exceeded maximum allowable total size of ${Math.round(MAX_BATCH_BYTES / (1024 * 1024))}MB (reached ${Math.round(cumulativeBytes / (1024 * 1024))}MB). Please download items individually.`);
+          }
           assetsFolder?.file(filename, blob);
           continue;
         }
-      } catch (err) {
+      } catch (err: any) {
+        if (err.message && err.message.includes('exceeded maximum allowable total size')) {
+          throw err;
+        }
         console.warn(`[downloadBatchZip] Could not fetch ${item.title}, adding metadata stub`, err);
       }
     }

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { mediaProxyService } from '../services/media_proxy_service';
 import { APP_CONFIG } from '../config/app_config';
-import { isSafePublicUrl, safeFetch } from '../utils/security';
+import { isSafePublicUrl, isSafePublicUrlAsync, safeFetch } from '../utils/security';
 
 export class MediaController {
   /**
@@ -14,7 +14,7 @@ export class MediaController {
     const queryTitle = (req.query.title as string) || '';
     const queryCategory = (req.query.category as string) || 'images';
 
-    if (!targetUrl || !isSafePublicUrl(targetUrl)) {
+    if (!targetUrl || !(await isSafePublicUrlAsync(targetUrl))) {
       res.status(400).send('Invalid or forbidden image URL');
       return;
     }
@@ -122,7 +122,7 @@ export class MediaController {
       }
     }
 
-    if (!targetUrl || !isSafePublicUrl(targetUrl)) {
+    if (!targetUrl || !(await isSafePublicUrlAsync(targetUrl))) {
       res.status(400).send('Missing, invalid, or forbidden audio URL');
       return;
     }
@@ -318,7 +318,7 @@ export class MediaController {
       }
     }
 
-    if (!targetUrl || !isSafePublicUrl(targetUrl)) {
+    if (!targetUrl || !(await isSafePublicUrlAsync(targetUrl))) {
       res.status(400).send('Missing, invalid, or forbidden video URL');
       return;
     }
@@ -512,7 +512,7 @@ export class MediaController {
       }
     }
 
-    if (!targetUrl || !isSafePublicUrl(targetUrl)) {
+    if (!targetUrl || !(await isSafePublicUrlAsync(targetUrl))) {
       res.status(400).send('Invalid or restricted target URL');
       return;
     }

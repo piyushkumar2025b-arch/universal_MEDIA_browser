@@ -72,31 +72,51 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
           a.href = URL.createObjectURL(blob);
           a.download = `URMIL_Collection_${resources.length}_Items.json`;
           a.click();
+          onRecordDownload(resources);
+          setDownloadSuccess(true);
+          setStatusMessage('Metadata collection downloaded!');
         } else {
           await downloadBatchZip(resources, (pct, status) => {
             setProgressPercent(pct);
             setStatusMessage(status);
           });
+          onRecordDownload(resources);
+          setDownloadSuccess(true);
+          setStatusMessage('Batch ZIP archive downloaded!');
         }
       } else {
         if (mode === 'citation') {
           downloadAttributionCitation(primaryItem);
+          onRecordDownload(resources);
+          setDownloadSuccess(true);
+          setStatusMessage('Citation downloaded!');
         } else if (mode === 'metadata') {
           downloadMetadataRecord(primaryItem);
+          onRecordDownload(resources);
+          setDownloadSuccess(true);
+          setStatusMessage('Metadata record downloaded!');
         } else {
-          await downloadResourceAsset(primaryItem, {
+          const result = await downloadResourceAsset(primaryItem, {
             mode: mode === 'proxy' ? 'proxy' : 'direct',
             onProgress: (pct, msg) => {
               setProgressPercent(pct);
               setStatusMessage(msg);
             }
           });
+
+          // BUG-010: Only record in history if transfer is confirmed
+          if (result.status === 'confirmed') {
+            onRecordDownload(resources);
+            setDownloadSuccess(true);
+            setStatusMessage('Download completed successfully!');
+          } else {
+            // Unobservable browser navigation dispatched
+            setDownloadSuccess(true);
+            setStatusMessage('Download link dispatched to browser');
+          }
         }
       }
 
-      onRecordDownload(resources);
-      setDownloadSuccess(true);
-      setStatusMessage('Download started successfully!');
       setTimeout(() => {
         onClose();
       }, 1200);

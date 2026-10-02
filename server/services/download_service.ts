@@ -65,6 +65,13 @@ export class DownloadService {
           continue;
         }
 
+        const rawContentType = upstream.headers.get('content-type') || '';
+        if (rawContentType.toLowerCase().includes('text/html') || rawContentType.toLowerCase().includes('application/xhtml+xml')) {
+          const err = new Error('Upstream source returned an HTML web page instead of binary media file') as any;
+          err.statusCode = 415;
+          throw err;
+        }
+
         // Check Content-Length header upfront if provided by upstream
         const contentLengthHeader = upstream.headers.get('content-length');
         if (contentLengthHeader) {
@@ -150,6 +157,14 @@ export class DownloadService {
         });
 
         if (upstream.ok) {
+          const rawContentType = upstream.headers.get('content-type') || '';
+          if (rawContentType.toLowerCase().includes('text/html') || rawContentType.toLowerCase().includes('application/xhtml+xml')) {
+            const htmlErr = new Error('Upstream source returned an HTML document instead of binary media asset') as any;
+            htmlErr.statusCode = 415;
+            lastError = htmlErr;
+            continue;
+          }
+
           const contentLengthHeader = upstream.headers.get('content-length');
           if (contentLengthHeader) {
             const expectedBytes = parseInt(contentLengthHeader, 10);

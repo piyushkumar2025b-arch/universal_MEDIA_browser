@@ -23,7 +23,7 @@ export function securityHeadersMiddleware(req: Request, res: Response, next: Nex
     'Content-Security-Policy',
     [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https: blob:",
+      "script-src 'self' 'unsafe-inline' blob:",
       "style-src 'self' 'unsafe-inline' https:",
       "font-src 'self' data: https:",
       "img-src 'self' data: blob: https:",

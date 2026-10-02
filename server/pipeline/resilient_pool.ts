@@ -82,13 +82,14 @@ class ResilientProviderPool {
 
   /**
    * Resilient execute: coalesces duplicate in-flight requests, respects circuit breaker,
-   * enforces timeout, and records health statistics.
+   * enforces timeout, and actively aborts underlying network requests on timeout.
    */
   public async executeProvider(
     providerId: string,
     query: string,
-    queryFn: (q: string) => Promise<ResourceItem[]>,
-    timeoutMs = 8000
+    queryFn: (q: string, signal?: AbortSignal) => Promise<ResourceItem[]>,
+    timeoutMs = 8000,
+    parentSignal?: AbortSignal
   ): Promise<ResourceItem[]> {
     if (this.isCircuitOpen(providerId)) {
       // Fast bypass when circuit is open
@@ -102,25 +103,41 @@ class ResilientProviderPool {
       return existingFlight;
     }
 
+    const abortController = new AbortController();
+    if (parentSignal) {
+      if (parentSignal.aborted) {
+        abortController.abort();
+      } else {
+        parentSignal.addEventListener('abort', () => abortController.abort(), { once: true });
+      }
+    }
+
     const promise = (async () => {
       const start = Date.now();
+      let timer: NodeJS.Timeout | null = null;
       try {
         const timeoutPromise = new Promise<never>((_, reject) => {
-          const timer = setTimeout(() => {
+          timer = setTimeout(() => {
+            // BUG-003: Actively abort the underlying network fetch!
+            abortController.abort();
             reject(new Error(`The operation was aborted due to timeout (${timeoutMs}ms)`));
           }, timeoutMs);
-          // Unref timer if available in Node environment to avoid hanging event loop
-          if (typeof timer.unref === 'function') timer.unref();
         });
 
-        const items = await Promise.race([queryFn(query), timeoutPromise]);
+        const items = await Promise.race([
+          queryFn(query, abortController.signal),
+          timeoutPromise
+        ]);
         const latency = Date.now() - start;
         this.recordSuccess(providerId, latency);
         return items;
       } catch (err: any) {
+        // Ensure underlying request is aborted
+        abortController.abort();
         this.recordFailure(providerId, err.message || 'Unknown provider error');
         throw err;
       } finally {
+        if (timer) clearTimeout(timer);
         this.inFlightMap.delete(flightKey);
       }
     })();
@@ -137,7 +154,7 @@ class ResilientProviderPool {
   public async executeFederation(
     providerIds: string[],
     query: string,
-    dispatchMap: Record<string, (q: string) => Promise<ResourceItem[]>>,
+    dispatchMap: Record<string, (q: string, signal?: AbortSignal) => Promise<ResourceItem[]>>,
     options: PoolExecutionOptions = {}
   ): Promise<{ results: ResourceItem[]; errors: string[] }> {
     const { 
@@ -175,6 +192,7 @@ class ResilientProviderPool {
     let index = 0;
     const startTime = Date.now();
     const respondedProviders = new Set<string>();
+    const federationAbortController = new AbortController();
 
     let triggerEarlyQuorum: (() => void) | null = null;
     const earlyQuorumPromise = new Promise<void>((resolve) => {
@@ -187,7 +205,7 @@ class ResilientProviderPool {
       if (!fn) return;
 
       try {
-        const items = await this.executeProvider(pid, query, fn, timeoutMs);
+        const items = await this.executeProvider(pid, query, fn, timeoutMs, federationAbortController.signal);
         if (Array.isArray(items) && items.length > 0) {
           respondedProviders.add(pid);
           if (!hasYieldedEarly) {
@@ -236,6 +254,10 @@ class ResilientProviderPool {
     const deadlinePromise = new Promise<void>((resolve) => {
       const timer = setTimeout(() => {
         isTerminated = true;
+        // If no background handler is set, abort all remaining pending fetches to free resources
+        if (!onBackgroundResult) {
+          federationAbortController.abort();
+        }
         resolve();
       }, overallDeadlineMs);
       if (typeof timer.unref === 'function') timer.unref();

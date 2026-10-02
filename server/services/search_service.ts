@@ -7,32 +7,100 @@ import { normalizeCategory } from '../normalizer';
 
 export class SearchService {
   private inFlightSearches = new Map<string, Promise<RouteExecutionResult>>();
+
+  // BUG-002: Bounded global background harvest queue and concurrency controls
+  private static MAX_ACTIVE_BACKGROUND_HARVESTS = 4;
+  private static MAX_QUEUED_BACKGROUND_HARVESTS = 25;
+  private static HARVEST_JOB_TIMEOUT_MS = 15000;
+
+  private harvestQueue: Array<{
+    query: string;
+    category: ResourceCategory;
+    filters: SearchFilters;
+    key: string;
+    enqueuedAt: number;
+  }> = [];
+  private queuedJobKeys = new Set<string>();
+  private activeHarvestJobs = new Set<string>();
+
   /**
    * Triggers a non-blocking background harvest job to crawl deeper pages
-   * and append fresh resources to the cache.
+   * and append fresh resources to the cache with strict global concurrency bounds.
    */
   public triggerBackgroundHarvest(query: string, category: ResourceCategory, filters: SearchFilters): void {
-    if (!query || resourceCache.isBackgroundJobActive(query, category)) return;
-    resourceCache.setBackgroundJob(query, category, true);
+    if (!query) return;
+    const key = `${category}::${query.trim().toLowerCase()}`;
 
-    // Run asynchronously
-    (async () => {
-      try {
-        const deepFilters: SearchFilters = {
-          ...filters,
-          query
-        };
+    // Deduplicate against active and already queued jobs
+    if (this.activeHarvestJobs.has(key) || this.queuedJobKeys.has(key) || resourceCache.isBackgroundJobActive(query, category)) {
+      return;
+    }
 
-        const deepResult = await executeRealSearch(deepFilters);
-        if (deepResult && deepResult.results.length > 0) {
-          resourceCache.append(query, category, deepResult.results);
-        }
-      } catch (err: any) {
-        console.warn(`[SearchService] Background harvest notice for "${query}" (${category}):`, err?.message);
-      } finally {
-        resourceCache.setBackgroundJob(query, category, false);
+    // Enforce global queue length cap
+    if (this.harvestQueue.length >= SearchService.MAX_QUEUED_BACKGROUND_HARVESTS) {
+      console.warn(`[SearchService] Background harvest queue full (${this.harvestQueue.length} jobs). Shedding harvest for "${query}" (${category}).`);
+      return;
+    }
+
+    this.queuedJobKeys.add(key);
+    this.harvestQueue.push({
+      query,
+      category,
+      filters,
+      key,
+      enqueuedAt: Date.now()
+    });
+
+    this.processBackgroundQueue();
+  }
+
+  /**
+   * Processes queued background harvest jobs respecting the global concurrency ceiling.
+   */
+  private processBackgroundQueue(): void {
+    while (
+      this.activeHarvestJobs.size < SearchService.MAX_ACTIVE_BACKGROUND_HARVESTS &&
+      this.harvestQueue.length > 0
+    ) {
+      const job = this.harvestQueue.shift();
+      if (!job) break;
+
+      this.queuedJobKeys.delete(job.key);
+
+      // Discard stale jobs that waited too long in queue
+      if (Date.now() - job.enqueuedAt > 20000) {
+        continue;
       }
-    })();
+
+      this.activeHarvestJobs.add(job.key);
+      resourceCache.setBackgroundJob(job.query, job.category, true);
+
+      (async () => {
+        const abortCtrl = new AbortController();
+        const timeout = setTimeout(() => abortCtrl.abort(), SearchService.HARVEST_JOB_TIMEOUT_MS);
+        if (typeof timeout.unref === 'function') timeout.unref();
+
+        try {
+          const deepFilters: SearchFilters = {
+            ...job.filters,
+            query: job.query
+          };
+
+          const deepResult = await executeRealSearch(deepFilters);
+          if (deepResult && deepResult.results.length > 0) {
+            resourceCache.append(job.query, job.category, deepResult.results);
+          }
+        } catch (err: any) {
+          console.warn(`[SearchService] Background harvest notice for "${job.query}" (${job.category}):`, err?.message);
+        } finally {
+          clearTimeout(timeout);
+          this.activeHarvestJobs.delete(job.key);
+          resourceCache.setBackgroundJob(job.query, job.category, false);
+          // Kick the queue for next awaiting job
+          this.processBackgroundQueue();
+        }
+      })();
+    }
   }
 
   /**

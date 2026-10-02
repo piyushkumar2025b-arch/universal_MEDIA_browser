@@ -1,8 +1,9 @@
+import dns from 'dns';
 import { APP_CONFIG } from '../config/app_config';
 
 /**
- * Security validation utilities to protect against SSRF, header injection,
- * and malicious parameter tampering.
+ * Security validation utilities to protect against SSRF, DNS-rebinding,
+ * header injection, and malicious parameter tampering.
  */
 
 // Private & reserved IP range patterns
@@ -44,9 +45,59 @@ const BLOCKED_INTERNAL_PORTS = new Set([
 ]);
 
 /**
- * Validates that a target URL is safe to fetch from the server.
- * Blocks non-HTTP/HTTPS protocols, localhosts, private IPs, cloud metadata,
- * dangerous ports, and auth credentials.
+ * Checks whether an IP address belongs to private, loopback, link-local,
+ * multicast, carrier-grade NAT, or reserved networks.
+ */
+export function isPrivateIpAddress(ip: string): boolean {
+  if (!ip || typeof ip !== 'string') return true;
+  let cleanIp = ip.trim().toLowerCase();
+
+  // Strip IPv6 brackets if present
+  if (cleanIp.startsWith('[') && cleanIp.endsWith(']')) {
+    cleanIp = cleanIp.slice(1, -1);
+  }
+
+  // Handle IPv4-mapped IPv6 addresses (e.g. ::ffff:127.0.0.1 or ::ffff:7f00:1)
+  if (cleanIp.startsWith('::ffff:')) {
+    cleanIp = cleanIp.substring(7);
+  }
+
+  // Check IPv4 ranges
+  const ipv4Parts = cleanIp.split('.');
+  if (ipv4Parts.length === 4 && ipv4Parts.every(p => /^\d+$/.test(p) && Number(p) >= 0 && Number(p) <= 255)) {
+    const [b0, b1] = ipv4Parts.map(Number);
+    if (b0 === 0) return true; // 0.0.0.0/8
+    if (b0 === 10) return true; // 10.0.0.0/8 Private
+    if (b0 === 127) return true; // 127.0.0.0/8 Loopback
+    if (b0 === 169 && b1 === 254) return true; // 169.254.0.0/16 Link-local / Cloud metadata
+    if (b0 === 172 && b1 >= 16 && b1 <= 31) return true; // 172.16.0.0/12 Private
+    if (b0 === 192 && b1 === 168) return true; // 192.168.0.0/16 Private
+    if (b0 === 100 && b1 >= 64 && b1 <= 127) return true; // 100.64.0.0/10 CG-NAT
+    if (b0 === 192 && b1 === 0) return true; // 192.0.0.0/24 & 192.0.2.0/24 TEST-NET-1
+    if (b0 === 198 && (b1 === 18 || b1 === 19)) return true; // 198.18.0.0/15
+    if (b0 === 198 && b1 === 51) return true; // 198.51.100.0/24 TEST-NET-2
+    if (b0 === 203 && b1 === 0) return true; // 203.0.113.0/24 TEST-NET-3
+    if (b0 >= 224 && b0 <= 239) return true; // 224.0.0.0/4 Multicast
+    if (b0 >= 240) return true; // 240.0.0.0/4 Reserved
+    return false;
+  }
+
+  // Check IPv6 ranges
+  if (cleanIp.includes(':')) {
+    if (cleanIp === '::' || cleanIp === '::1') return true; // Unspecified or Loopback
+    if (cleanIp.startsWith('fe80:')) return true; // Link-local
+    if (cleanIp.startsWith('fc00:') || cleanIp.startsWith('fd00:')) return true; // Unique local
+    if (cleanIp.startsWith('ff00:') || cleanIp.startsWith('ff02:')) return true; // Multicast
+    if (cleanIp.startsWith('2001:db8:')) return true; // Documentation
+    return false;
+  }
+
+  return false;
+}
+
+/**
+ * Synchronously validates that a target URL has a safe syntax, valid protocol,
+ * authorized port, and no obvious private IP strings.
  */
 export function isSafePublicUrl(targetUrl?: string): boolean {
   if (!targetUrl || typeof targetUrl !== 'string') return false;
@@ -113,9 +164,68 @@ export function isSafePublicUrl(targetUrl?: string): boolean {
       return false;
     }
 
+    // If literal IP address, verify using IP checker
+    if (isPrivateIpAddress(hostname)) {
+      return false;
+    }
+
     // Must have a valid standard public hostname or domain
     return true;
   } catch {
+    return false;
+  }
+}
+
+// In-memory DNS validation cache to prevent latency amplification on valid upstream services
+const dnsValidationCache = new Map<string, { isSafe: boolean; expiresAt: number }>();
+
+/**
+ * Resolves the hostname via DNS and verifies that NONE of the resolved IP addresses
+ * are private, loopback, link-local, multicast, or metadata endpoints.
+ * Defends against DNS-rebinding attacks.
+ */
+export async function isSafePublicUrlAsync(targetUrl?: string): Promise<boolean> {
+  if (!isSafePublicUrl(targetUrl)) {
+    return false;
+  }
+
+  try {
+    const parsed = new URL(targetUrl!.trim());
+    let hostname = parsed.hostname.toLowerCase().trim();
+    if (hostname.startsWith('[') && hostname.endsWith(']')) {
+      hostname = hostname.slice(1, -1);
+    }
+
+    // If it's a literal IP
+    if (/^\d{1,3}(\.\d{1,3}){3}$/.test(hostname) || hostname.includes(':')) {
+      return !isPrivateIpAddress(hostname);
+    }
+
+    const now = Date.now();
+    const cached = dnsValidationCache.get(hostname);
+    if (cached && cached.expiresAt > now) {
+      return cached.isSafe;
+    }
+
+    // Resolve all IPv4 and IPv6 addresses for the hostname
+    const records = await dns.promises.lookup(hostname, { all: true });
+    if (!records || records.length === 0) {
+      dnsValidationCache.set(hostname, { isSafe: false, expiresAt: now + 15000 });
+      return false;
+    }
+
+    // If ANY resolved IP address is private, reject destination
+    for (const record of records) {
+      if (isPrivateIpAddress(record.address)) {
+        dnsValidationCache.set(hostname, { isSafe: false, expiresAt: now + 15000 });
+        return false;
+      }
+    }
+
+    dnsValidationCache.set(hostname, { isSafe: true, expiresAt: now + 30000 });
+    return true;
+  } catch {
+    // DNS resolution failure
     return false;
   }
 }
@@ -142,7 +252,7 @@ export function sanitizeSafeFilename(rawFilename?: string, fallback = 'download'
 
 /**
  * Safe fetch wrapper with manual redirect following to prevent SSRF redirect bypasses.
- * Enforces destination validation on every hop.
+ * Enforces destination DNS and IP validation on every hop.
  */
 export async function safeFetch(
   initialUrl: string,
@@ -152,8 +262,9 @@ export async function safeFetch(
   const maxRedirects = options.maxRedirects ?? 5;
 
   for (let i = 0; i <= maxRedirects; i++) {
-    if (!isSafePublicUrl(currentUrl)) {
-      throw new Error(`SSRF Validation Failed: Destination is not an authorized public URL (${currentUrl})`);
+    const isSafe = await isSafePublicUrlAsync(currentUrl);
+    if (!isSafe) {
+      throw new Error(`SSRF Validation Failed: Destination is not an authorized public URL or resolved to a private/internal IP (${currentUrl})`);
     }
 
     const fetchOptions: RequestInit = {

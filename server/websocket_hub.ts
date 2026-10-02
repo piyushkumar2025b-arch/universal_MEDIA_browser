@@ -19,10 +19,54 @@ interface ClientConnection extends WebSocket {
   searchAbortControllers: Map<string, AbortController>;
 }
 
+function isAllowedWebSocketOrigin(origin: string | undefined, hostHeader: string | undefined): boolean {
+  if (!origin) {
+    // Direct or local non-browser test clients allowed
+    return true;
+  }
+  try {
+    const parsed = new URL(origin);
+    const host = parsed.host.toLowerCase();
+    const hostname = parsed.hostname.toLowerCase();
+
+    // Allow localhost and local loopback
+    if (hostname === 'localhost' || hostname === '127.0.0.1') return true;
+
+    // Match Host header
+    if (hostHeader && (host === hostHeader.toLowerCase() || hostname === hostHeader.split(':')[0].toLowerCase())) {
+      return true;
+    }
+
+    // Allow Cloud Run / AI Studio preview domains
+    if (
+      hostname.endsWith('.run.app') ||
+      hostname.endsWith('.ai.studio') ||
+      hostname === 'ai.studio' ||
+      hostname.endsWith('.google.com')
+    ) {
+      return true;
+    }
+
+    return false;
+  } catch {
+    return false;
+  }
+}
+
 export class WebSocketHub {
   private static instance: WebSocketHub;
   private wss: WebSocketServer | null = null;
   private heartbeatInterval: NodeJS.Timeout | null = null;
+
+  // BUG-006: IP-level abuse control & connection caps
+  private static ipConnections = new Map<string, number>();
+  private static ipCommands = new Map<string, { count: number; resetTime: number }>();
+  private static ipActiveSearches = new Map<string, number>();
+
+  private static MAX_CONNECTIONS_PER_IP = 10;
+  private static MAX_GLOBAL_CONNECTIONS = 150;
+  private static MAX_COMMANDS_PER_IP_MIN = 120;
+  private static MAX_SEARCHES_PER_IP = 4;
 
   public static getInstance(): WebSocketHub {
     if (!WebSocketHub.instance) {
@@ -38,16 +82,52 @@ export class WebSocketHub {
       server,
       path: '/ws',
       clientTracking: true,
-      maxPayload: 64 * 1024 // 64 KB max payload to prevent memory exhaustion
+      maxPayload: 64 * 1024, // 64 KB max payload to prevent memory exhaustion
+      verifyClient: (info, cb) => {
+        // BUG-005: Validate Origin before upgrade handshake completes
+        const origin = info.origin || info.req.headers.origin;
+        const host = info.req.headers.host;
+        if (!isAllowedWebSocketOrigin(origin, host)) {
+          console.warn(`[URMIL WS] verifyClient blocked unauthorized Origin: ${origin}`);
+          cb(false, 403, 'Forbidden: Invalid or unauthorized Origin');
+          return;
+        }
+        cb(true);
+      }
     });
 
     console.log('[URMIL Gateway] WebSocket Server mounted at /ws');
 
     this.wss.on('connection', (ws: WebSocket, req) => {
+      // BUG-005: Validate Origin to prevent cross-site WebSocket hijacking
+      const originHeader = req.headers.origin;
+      const hostHeader = req.headers.host;
+      if (!isAllowedWebSocketOrigin(originHeader, hostHeader)) {
+        console.warn(`[URMIL WS] Rejected unauthorized WebSocket Origin: ${originHeader}`);
+        ws.close(1008, 'Forbidden: Invalid or unauthorized Origin');
+        return;
+      }
+
+      // BUG-006: Check global connection capacity
+      const currentGlobal = this.wss?.clients.size || 0;
+      if (currentGlobal > WebSocketHub.MAX_GLOBAL_CONNECTIONS) {
+        ws.close(1008, 'Server connection capacity reached');
+        return;
+      }
+
+      const clientIp = (req.socket.remoteAddress || '127.0.0.1').replace(/^::ffff:/, '');
+      const currentIpConns = (WebSocketHub.ipConnections.get(clientIp) || 0) + 1;
+      if (currentIpConns > WebSocketHub.MAX_CONNECTIONS_PER_IP) {
+        console.warn(`[URMIL WS] Rate limit exceeded: too many connections from IP ${clientIp}`);
+        ws.close(1008, 'Rate limit exceeded: too many connections from this IP');
+        return;
+      }
+      WebSocketHub.ipConnections.set(clientIp, currentIpConns);
+
       const client = ws as ClientConnection;
       client.isAlive = true;
       client.clientId = Math.random().toString(36).substring(2, 11);
-      client.ip = (req.socket.remoteAddress || '127.0.0.1').replace(/^::ffff:/, '');
+      client.ip = clientIp;
       client.commandCount = 0;
       client.commandResetTime = Date.now() + 60000;
       client.benchmarkCount = 0;
@@ -104,6 +184,23 @@ export class WebSocketHub {
       });
 
       client.on('close', () => {
+        // Decrement IP connection tracker
+        const count = WebSocketHub.ipConnections.get(client.ip) || 1;
+        if (count <= 1) {
+          WebSocketHub.ipConnections.delete(client.ip);
+        } else {
+          WebSocketHub.ipConnections.set(client.ip, count - 1);
+        }
+
+        // Release IP active searches
+        const currentSearches = WebSocketHub.ipActiveSearches.get(client.ip) || 0;
+        const remainingSearches = Math.max(0, currentSearches - client.activeSearches.size);
+        if (remainingSearches === 0) {
+          WebSocketHub.ipActiveSearches.delete(client.ip);
+        } else {
+          WebSocketHub.ipActiveSearches.set(client.ip, remainingSearches);
+        }
+
         // Clean up in-flight search abort controllers on connection loss
         for (const ctrl of client.searchAbortControllers.values()) {
           ctrl.abort();
@@ -145,6 +242,23 @@ export class WebSocketHub {
         return;
       }
     }
+
+    // BUG-006: IP-wide command rate limiter
+    const ipRecord = WebSocketHub.ipCommands.get(client.ip) || { count: 0, resetTime: now + 60000 };
+    if (now > ipRecord.resetTime) {
+      ipRecord.count = 1;
+      ipRecord.resetTime = now + 60000;
+    } else {
+      ipRecord.count++;
+      if (ipRecord.count > WebSocketHub.MAX_COMMANDS_PER_IP_MIN) {
+        this.sendToClient(client, {
+          type: 'ERROR',
+          error: 'Rate limit exceeded: too many commands per minute from your IP address.'
+        });
+        return;
+      }
+    }
+    WebSocketHub.ipCommands.set(client.ip, ipRecord);
 
     switch (type) {
       case 'PING': {
@@ -258,6 +372,18 @@ export class WebSocketHub {
       return;
     }
 
+    // BUG-006: Limit concurrent searches across all connections from this IP (max 4)
+    const currentIpSearches = WebSocketHub.ipActiveSearches.get(client.ip) || 0;
+    if (currentIpSearches >= WebSocketHub.MAX_SEARCHES_PER_IP) {
+      this.sendToClient(client, {
+        type: 'SEARCH_ERROR',
+        searchId,
+        error: 'IP search concurrency limit reached (4 active searches across all sockets). Please wait.'
+      });
+      return;
+    }
+    WebSocketHub.ipActiveSearches.set(client.ip, currentIpSearches + 1);
+
     const abortController = new AbortController();
     client.activeSearches.add(searchId);
     client.searchAbortControllers.set(searchId, abortController);
@@ -300,10 +426,9 @@ export class WebSocketHub {
         providerIds: activeProviders
       });
 
-      // Broadcast real-time activity event to other connected users
+      // BUG-007: Broadcast anonymized activity stats to other connected users (NO raw query text)
       this.broadcastExcept(client, {
-        type: 'LIVE_QUERY_BROADCAST',
-        query: query.substring(0, 30),
+        type: 'LIVE_ACTIVITY_STATS',
         category,
         providerCount: activeProviders.length,
         timestamp: Date.now()
@@ -317,8 +442,9 @@ export class WebSocketHub {
           const items = await resilientPool.executeProvider(
             providerId,
             query,
-            (q) => PROVIDER_DISPATCH_MAP[providerId](q),
-            4000
+            (q, sig) => PROVIDER_DISPATCH_MAP[providerId](q),
+            4000,
+            abortController.signal
           );
 
           if (abortController.signal.aborted) return;
@@ -375,6 +501,12 @@ export class WebSocketHub {
     } finally {
       client.activeSearches.delete(searchId);
       client.searchAbortControllers.delete(searchId);
+      const activeIpSearches = WebSocketHub.ipActiveSearches.get(client.ip) || 1;
+      if (activeIpSearches <= 1) {
+        WebSocketHub.ipActiveSearches.delete(client.ip);
+      } else {
+        WebSocketHub.ipActiveSearches.set(client.ip, activeIpSearches - 1);
+      }
     }
   }
 
