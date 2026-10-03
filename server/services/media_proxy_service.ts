@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 import { APP_CONFIG } from '../config/app_config';
-import { isSafePublicUrl, safeFetch } from '../utils/security';
+import { isSafePublicUrl, isSafePublicUrlAsync, safeFetch } from '../utils/security';
 
 export interface CachedMediaEntry {
   data: Buffer;
@@ -17,7 +17,7 @@ export class MediaProxyService {
    * Fetches an image from upstream or memory cache, with in-flight request coalescing.
    */
   public async fetchAndCacheMedia(targetUrl: string): Promise<CachedMediaEntry | null> {
-    if (!isSafePublicUrl(targetUrl)) {
+    if (!targetUrl || !(await isSafePublicUrlAsync(targetUrl))) {
       return null;
     }
 
