@@ -2,8 +2,8 @@
   {
     "query": "science",
     "category": "all",
-    "timestamp": 1791046714162,
-    "deepPagesFetched": 734,
+    "timestamp": 1791047429421,
+    "deepPagesFetched": 778,
     "items": [
       {
         "id": "film-SciFi_Horror",
@@ -201349,8 +201349,8 @@
   {
     "query": "test_burst_query_1",
     "category": "all",
-    "timestamp": 1791047264764,
-    "deepPagesFetched": 25,
+    "timestamp": 1791047688709,
+    "deepPagesFetched": 33,
     "items": [
       {
         "id": "bbc-aHR0cHM6Ly93d3cu",
@@ -210985,6 +210985,1232 @@
           "resourceReachable": true,
           "integrityVerified": false
         }
+      },
+      {
+        "id": "peertube-a94d6961-79c8-476c-83da-61342a56216f",
+        "title": "RADIOACTIVE FALLOUT ATOMIC BOMB TEST FILM 72182",
+        "category": "videos",
+        "description": "This 1950s Civil Defense film describes the fallout produced by a fission atomic bomb from a surface burst. Nuclear fallout, or simply fallout, is the residual radioactive material propelled into the upper atmosphere following a nuclear blast or a...",
+        "thumbnailUrl": "https://peertube.dngr.us/lazy-static/thumbnails/5867aafa-b31d-4b03-9a58-909361cb0272.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/mUyoKnkLRTQz6Wjy8ZU5U8",
+        "downloadUrl": "https://peertube.dngr.us/videos/watch/a94d6961-79c8-476c-83da-61342a56216f",
+        "creator": {
+          "name": "Historical Archive",
+          "organization": "historical"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://peertube.dngr.us/videos/watch/a94d6961-79c8-476c-83da-61342a56216f",
+          "externalId": "a94d6961-79c8-476c-83da-61342a56216f"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/mUyoKnkLRTQz6Wjy8ZU5U8",
+          "duration": "6m 46s",
+          "year": 2015,
+          "tags": [
+            "Civil Defense",
+            "Nuclear Fallout",
+            "Periscope Film",
+            "Radioactive Decay (Dimension)",
+            "Stock Footage"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "peertube-3aea1535-b161-4e05-a90f-50c211603c3c",
+        "title": "Sony Cyber-shot DSC-RX100 V: 24 fps Eye AF test by DPReview.com",
+        "category": "videos",
+        "description": "A first look at the Sony RX100 V's ability to continuously track and focus on an eye at a blazing fast 24 fps burst rate. These burst rates are so fast it's easy to keep an AF point over a moving subject, but if you're shooting a human subject, yo...",
+        "thumbnailUrl": "https://video.marcorennmaus.de/lazy-static/thumbnails/851d3e66-afd1-4175-b539-a8fbdf066953.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/8gX6HtYQAcPg2jnV1v53vS",
+        "downloadUrl": "https://video.marcorennmaus.de/videos/watch/3aea1535-b161-4e05-a90f-50c211603c3c",
+        "creator": {
+          "name": "dp_review",
+          "organization": "dp_review"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://video.marcorennmaus.de/videos/watch/3aea1535-b161-4e05-a90f-50c211603c3c",
+          "externalId": "3aea1535-b161-4e05-a90f-50c211603c3c"
+        },
+        "license": {
+          "type": "Creative Commons / Open Federated Media",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": false
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/8gX6HtYQAcPg2jnV1v53vS",
+          "duration": "0m 11s",
+          "year": 2023,
+          "tags": [
+            "digital camera",
+            "digital photography",
+            "digital photography review",
+            "dpreview",
+            "photography"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "peertube-0e4eb08e-aaba-49b3-b305-33f5987a4306",
+        "title": "god tier cum supplements test week 1",
+        "category": "videos",
+        "description": "week 1 is just normal water, 3 bottles of water a day. \r\nweek 2 will be L-Arginine. \r\n\r\nim not uploading these on the days i recorded them just incase the whole experiment was a bust",
+        "thumbnailUrl": "https://www.pony.tube/lazy-static/thumbnails/0e40eaa2-9e39-4a78-82cd-4444bd392655.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/2Ltiuc2v2ugah5Ku2nztvh",
+        "downloadUrl": "https://www.pony.tube/videos/watch/0e4eb08e-aaba-49b3-b305-33f5987a4306",
+        "creator": {
+          "name": "CumPony",
+          "organization": "cumpony"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://www.pony.tube/videos/watch/0e4eb08e-aaba-49b3-b305-33f5987a4306",
+          "externalId": "0e4eb08e-aaba-49b3-b305-33f5987a4306"
+        },
+        "license": {
+          "type": "Creative Commons / Open Federated Media",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": false
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/2Ltiuc2v2ugah5Ku2nztvh",
+          "duration": "1m 59s",
+          "year": 2025,
+          "tags": []
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "peertube-67279acd-fae3-4a6c-9b34-3302a17c1f06",
+        "title": "Reclaim Arcade: K4900 Cap Kit Test",
+        "category": "videos",
+        "description": "Tim and Jim test the K4900 cap kit and the chassis has vertical collapse, so this was a bust.",
+        "thumbnailUrl": "https://bava.tv/lazy-static/thumbnails/e51bed14-9e38-40f1-bc92-dd049cbda3a5.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/dJNzj25Erzq8VRaAsbBogQ",
+        "downloadUrl": "https://bava.tv/videos/watch/67279acd-fae3-4a6c-9b34-3302a17c1f06",
+        "creator": {
+          "name": "thebava",
+          "organization": "jgroom"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://bava.tv/videos/watch/67279acd-fae3-4a6c-9b34-3302a17c1f06",
+          "externalId": "67279acd-fae3-4a6c-9b34-3302a17c1f06"
+        },
+        "license": {
+          "type": "Creative Commons / Open Federated Media",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": false
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/dJNzj25Erzq8VRaAsbBogQ",
+          "duration": "40m 40s",
+          "year": 2021,
+          "tags": [
+            "cap_kit",
+            "reclaimarcade"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "peertube-60af06e5-9c90-4118-ae57-637a797eeb90",
+        "title": "Particle Info node test",
+        "category": "videos",
+        "description": "Test render of cycles shaders using the Particle Info node to control shading properties over the particle lifetime.",
+        "thumbnailUrl": "https://video.blender.org/lazy-static/thumbnails/60af06e5-9c90-4118-ae57-637a797eeb90.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/cWsvDDgqM7qf8i3cndEbNL",
+        "downloadUrl": "https://video.blender.org/videos/watch/60af06e5-9c90-4118-ae57-637a797eeb90",
+        "creator": {
+          "name": "Blender Developers",
+          "organization": "blenderdevelopers"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://video.blender.org/videos/watch/60af06e5-9c90-4118-ae57-637a797eeb90",
+          "externalId": "60af06e5-9c90-4118-ae57-637a797eeb90"
+        },
+        "license": {
+          "type": "Creative Commons / Open Federated Media",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": false
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/cWsvDDgqM7qf8i3cndEbNL",
+          "duration": "0m 8s",
+          "year": 2019,
+          "tags": [
+            "test"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "peertube-cc8e8424-11db-485d-9854-1560c12da68a",
+        "title": "test",
+        "category": "videos",
+        "thumbnailUrl": "https://tube.kh-berlin.de/static/thumbnails/bbe4f87a-2158-4c82-b30d-b890d8c026c4.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/cc8e8424-11db-485d-9854-1560c12da68a",
+        "downloadUrl": "https://tube.kh-berlin.de/videos/watch/cc8e8424-11db-485d-9854-1560c12da68a",
+        "creator": {
+          "name": "Grundlagen: Intro zu Digitalen Medien",
+          "organization": "gl_intro_digitale_medien"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://tube.kh-berlin.de/videos/watch/cc8e8424-11db-485d-9854-1560c12da68a",
+          "externalId": "cc8e8424-11db-485d-9854-1560c12da68a"
+        },
+        "license": {
+          "type": "Creative Commons / Open Federated Media",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": false
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/cc8e8424-11db-485d-9854-1560c12da68a",
+          "duration": "0m 4s",
+          "year": 2020,
+          "tags": []
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "peertube-2f0f2957-3dcb-404b-a7df-7df69ee1d85f",
+        "title": "test",
+        "category": "videos",
+        "description": "cat plus boop.mp3 from mastodon",
+        "thumbnailUrl": "https://tube.otter.sh/lazy-static/thumbnails/80fb8975-86db-4b09-9fd1-8396e15173e3.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/6P3scYAf9ZqpY3nynh6ara",
+        "downloadUrl": "https://tube.otter.sh/videos/watch/2f0f2957-3dcb-404b-a7df-7df69ee1d85f",
+        "creator": {
+          "name": "Default ottpossum channel",
+          "organization": "bdb09400-5868-4f03-b65f-3ce099cee238"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://tube.otter.sh/videos/watch/2f0f2957-3dcb-404b-a7df-7df69ee1d85f",
+          "externalId": "2f0f2957-3dcb-404b-a7df-7df69ee1d85f"
+        },
+        "license": {
+          "type": "Creative Commons / Open Federated Media",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": false
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/6P3scYAf9ZqpY3nynh6ara",
+          "duration": "0m 4s",
+          "year": 2018,
+          "tags": [
+            "cat",
+            "shitpost"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "peertube-ab7c67e9-0e08-4dd3-ad7c-013a55a78864",
+        "title": "test",
+        "category": "videos",
+        "thumbnailUrl": "https://peertube.tv/lazy-static/thumbnails/47edee09-f092-4a92-8581-b353d14f5aab.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/nbcs6WV7bhpKpWyi9WmTuy",
+        "downloadUrl": "https://peertube.tv/videos/watch/ab7c67e9-0e08-4dd3-ad7c-013a55a78864",
+        "creator": {
+          "name": "lamp",
+          "organization": "test"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://peertube.tv/videos/watch/ab7c67e9-0e08-4dd3-ad7c-013a55a78864",
+          "externalId": "ab7c67e9-0e08-4dd3-ad7c-013a55a78864"
+        },
+        "license": {
+          "type": "Creative Commons / Open Federated Media",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": false
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/nbcs6WV7bhpKpWyi9WmTuy",
+          "duration": "4m 17s",
+          "year": 2023,
+          "tags": []
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "peertube-0bb163ed-2ca2-4b34-a587-fe4a63ba5873",
+        "title": "test",
+        "category": "videos",
+        "description": "test",
+        "thumbnailUrl": "https://peertube.desmu.fr/lazy-static/thumbnails/04eb998f-6450-4458-aaf3-fb4e13c3281d.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/2rKfR2n99JXNTLTpCYTw5t",
+        "downloadUrl": "https://peertube.desmu.fr/videos/watch/0bb163ed-2ca2-4b34-a587-fe4a63ba5873",
+        "creator": {
+          "name": "Georges la Saucisse",
+          "organization": "georgeslasaucisse"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://peertube.desmu.fr/videos/watch/0bb163ed-2ca2-4b34-a587-fe4a63ba5873",
+          "externalId": "0bb163ed-2ca2-4b34-a587-fe4a63ba5873"
+        },
+        "license": {
+          "type": "Attribution - Non Commercial - Share Alike",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": false
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/2rKfR2n99JXNTLTpCYTw5t",
+          "duration": "0m 10s",
+          "year": 2021,
+          "tags": []
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "peertube-ad9d9f50-df5b-4555-9860-81ac0938c403",
+        "title": "test",
+        "category": "videos",
+        "description": "ust: https://youtu.be/rEeaFAMM9W4",
+        "thumbnailUrl": "https://onair.sbs/lazy-static/thumbnails/0c024732-bd90-4a5b-b68d-a6aef2f6269f.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/nrs9LsVuFdc2e97RJqKpiV",
+        "downloadUrl": "https://onair.sbs/videos/watch/ad9d9f50-df5b-4555-9860-81ac0938c403",
+        "creator": {
+          "name": "Main naes channel",
+          "organization": "naes_channel"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://onair.sbs/videos/watch/ad9d9f50-df5b-4555-9860-81ac0938c403",
+          "externalId": "ad9d9f50-df5b-4555-9860-81ac0938c403"
+        },
+        "license": {
+          "type": "Creative Commons / Open Federated Media",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": false
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/nrs9LsVuFdc2e97RJqKpiV",
+          "duration": "3m 54s",
+          "year": 2025,
+          "tags": []
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "peertube-5affa42c-63f5-44f6-a8de-dd11ee25f905",
+        "title": "Test",
+        "category": "videos",
+        "description": "Test upload",
+        "thumbnailUrl": "https://tube.xy-space.de/lazy-static/thumbnails/2747cb56-b099-4e71-81a2-8abc16f24a8b.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/ceJV3y7awyhTLaF2SgTcDP",
+        "downloadUrl": "https://tube.xy-space.de/videos/watch/5affa42c-63f5-44f6-a8de-dd11ee25f905",
+        "creator": {
+          "name": "The Bongmaster",
+          "organization": "bongmaster_channel"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://tube.xy-space.de/videos/watch/5affa42c-63f5-44f6-a8de-dd11ee25f905",
+          "externalId": "5affa42c-63f5-44f6-a8de-dd11ee25f905"
+        },
+        "license": {
+          "type": "Creative Commons / Open Federated Media",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": false
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/ceJV3y7awyhTLaF2SgTcDP",
+          "duration": "0m 5s",
+          "year": 2022,
+          "tags": []
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "peertube-703e7b16-f6b3-42c0-b030-5d95cac9d577",
+        "title": "test",
+        "category": "videos",
+        "thumbnailUrl": "https://toobnix.org/lazy-static/thumbnails/f8a0bb1b-5569-42c4-8759-e3f22436befe.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/eRUiCMDRTXUxHBJxVvXJtH",
+        "downloadUrl": "https://toobnix.org/videos/watch/703e7b16-f6b3-42c0-b030-5d95cac9d577",
+        "creator": {
+          "name": "sl",
+          "organization": "sl_channel"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://toobnix.org/videos/watch/703e7b16-f6b3-42c0-b030-5d95cac9d577",
+          "externalId": "703e7b16-f6b3-42c0-b030-5d95cac9d577"
+        },
+        "license": {
+          "type": "Creative Commons / Open Federated Media",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": false
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/eRUiCMDRTXUxHBJxVvXJtH",
+          "duration": "0m 8s",
+          "year": 2023,
+          "tags": []
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "peertube-c45b3350-1286-461a-aefd-4ec2b323dc6b",
+        "title": "test",
+        "category": "videos",
+        "description": "just testing",
+        "thumbnailUrl": "https://video.hardlimit.com/lazy-static/thumbnails/1d6b4fe7-4f54-4c45-af63-92d165a93040.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/qfjAwVbdM7Y6wFt6DxBZoB",
+        "downloadUrl": "https://video.hardlimit.com/videos/watch/c45b3350-1286-461a-aefd-4ec2b323dc6b",
+        "creator": {
+          "name": "yoge67855 channel",
+          "organization": "yoge67855_channel"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://video.hardlimit.com/videos/watch/c45b3350-1286-461a-aefd-4ec2b323dc6b",
+          "externalId": "c45b3350-1286-461a-aefd-4ec2b323dc6b"
+        },
+        "license": {
+          "type": "Creative Commons / Open Federated Media",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": false
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/qfjAwVbdM7Y6wFt6DxBZoB",
+          "duration": "0m 10s",
+          "year": 2021,
+          "tags": []
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "peertube-4c0c5603-4efe-4bd3-8ab9-45d7c2d649da",
+        "title": "Test",
+        "category": "videos",
+        "thumbnailUrl": "https://tube-maternelle.apps.education.fr/lazy-static/thumbnails/43ebfa47-7f67-444c-977d-36272e298789.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/aoEuSzrPdfSpSCGCF37KHm",
+        "downloadUrl": "https://tube-maternelle.apps.education.fr/videos/watch/4c0c5603-4efe-4bd3-8ab9-45d7c2d649da",
+        "creator": {
+          "name": "Main couturier_pierre channel",
+          "organization": "couturier_pierre_channel"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://tube-maternelle.apps.education.fr/videos/watch/4c0c5603-4efe-4bd3-8ab9-45d7c2d649da",
+          "externalId": "4c0c5603-4efe-4bd3-8ab9-45d7c2d649da"
+        },
+        "license": {
+          "type": "Creative Commons / Open Federated Media",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": false
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/aoEuSzrPdfSpSCGCF37KHm",
+          "duration": "1m 48s",
+          "year": 2023,
+          "tags": []
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "peertube-f40f695d-ce1c-49e0-bb00-4002b98a7c78",
+        "title": "Live Test Peertube",
+        "category": "videos",
+        "description": "TEST",
+        "thumbnailUrl": "https://peertube.linuxrocks.online/lazy-static/thumbnails/de4ffde9-d068-42ef-9ef4-e4ec7a4819c2.jpg",
+        "previewUrl": "https://search.joinpeertube.org/videos/embed/w8YSgR3rgxfvLu3BuQm48o",
+        "downloadUrl": "https://peertube.linuxrocks.online/videos/watch/f40f695d-ce1c-49e0-bb00-4002b98a7c78",
+        "creator": {
+          "name": "SimpleB",
+          "organization": "simpleb"
+        },
+        "source": {
+          "providerId": "peertube_video",
+          "providerName": "PeerTube Federated Open Video",
+          "resourceUrl": "https://peertube.linuxrocks.online/videos/watch/f40f695d-ce1c-49e0-bb00-4002b98a7c78",
+          "externalId": "f40f695d-ce1c-49e0-bb00-4002b98a7c78"
+        },
+        "license": {
+          "type": "Creative Commons / Open Federated Media",
+          "url": "https://joinpeertube.org",
+          "commercialAllowed": false,
+          "attributionRequired": true,
+          "verified": false
+        },
+        "attributes": {
+          "format": "mp4/webm",
+          "quality": "HD / Federated",
+          "embedUrl": "https://search.joinpeertube.org/videos/embed/w8YSgR3rgxfvLu3BuQm48o",
+          "duration": "2m 0s",
+          "year": 2021,
+          "tags": []
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "bthl-w.b.mckayvol11945",
+        "title": "Building Construction Vol 1",
+        "category": "art",
+        "description": "184 p, ill, 22 x 28.5 cm...",
+        "thumbnailUrl": "https://archive.org/services/img/W.B.McKayVol11945",
+        "previewUrl": "https://archive.org/details/W.B.McKayVol11945",
+        "downloadUrl": "https://archive.org/details/W.B.McKayVol11945",
+        "creator": {
+          "name": "W. B. Mc Kay"
+        },
+        "source": {
+          "providerId": "archive_bthl_architecture",
+          "providerName": "Building Technology Heritage Library",
+          "resourceUrl": "https://archive.org/details/W.B.McKayVol11945",
+          "externalId": "W.B.McKayVol11945"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "year": 1945,
+          "architect": "W. B. Mc Kay",
+          "format": "Architectural Catalog (PDF/EPUB)",
+          "thumbnail": "https://archive.org/services/img/W.B.McKayVol11945",
+          "tags": [
+            "architecture",
+            "blueprints",
+            "building-heritage",
+            "historic-design",
+            "trade-catalog"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "bthl-thewaverlyheatingsupplyco1926completewaverlycat0001",
+        "title": "1926 complete waverly catalog: stoves, ranges, furnaces, boilers, repairs",
+        "category": "art",
+        "description": "168 p. ; ill. ; 32 cm. ; trade catalog...",
+        "thumbnailUrl": "https://archive.org/services/img/TheWaverlyHeatingSupplyCo1926CompleteWaverlyCat0001",
+        "previewUrl": "https://archive.org/details/TheWaverlyHeatingSupplyCo1926CompleteWaverlyCat0001",
+        "downloadUrl": "https://archive.org/details/TheWaverlyHeatingSupplyCo1926CompleteWaverlyCat0001",
+        "creator": {
+          "name": "The Waverly Heating Supply Co."
+        },
+        "source": {
+          "providerId": "archive_bthl_architecture",
+          "providerName": "Building Technology Heritage Library",
+          "resourceUrl": "https://archive.org/details/TheWaverlyHeatingSupplyCo1926CompleteWaverlyCat0001",
+          "externalId": "TheWaverlyHeatingSupplyCo1926CompleteWaverlyCat0001"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "year": 1926,
+          "architect": "The Waverly Heating Supply Co.",
+          "format": "Architectural Catalog (PDF/EPUB)",
+          "thumbnail": "https://archive.org/services/img/TheWaverlyHeatingSupplyCo1926CompleteWaverlyCat0001",
+          "tags": [
+            "architecture",
+            "blueprints",
+            "building-heritage",
+            "historic-design",
+            "trade-catalog"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "bthl-completecatalogue1905",
+        "title": "Complete catalogue 1905",
+        "category": "art",
+        "description": "494 p. ; ill. ; 26 cm. ; trade catalog...",
+        "thumbnailUrl": "https://archive.org/services/img/CompleteCatalogue1905",
+        "previewUrl": "https://archive.org/details/CompleteCatalogue1905",
+        "downloadUrl": "https://archive.org/details/CompleteCatalogue1905",
+        "creator": {
+          "name": "Roach & Musser Sash and Door Co."
+        },
+        "source": {
+          "providerId": "archive_bthl_architecture",
+          "providerName": "Building Technology Heritage Library",
+          "resourceUrl": "https://archive.org/details/CompleteCatalogue1905",
+          "externalId": "CompleteCatalogue1905"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "year": 1905,
+          "architect": "Roach & Musser Sash and Door Co.",
+          "format": "Architectural Catalog (PDF/EPUB)",
+          "thumbnail": "https://archive.org/services/img/CompleteCatalogue1905",
+          "tags": [
+            "architecture",
+            "blueprints",
+            "building-heritage",
+            "historic-design",
+            "trade-catalog"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "bthl-herbertchiversartisticcityhouses0001",
+        "title": "Artistic city houses, no. 43",
+        "category": "art",
+        "description": "32 p. ; ill., plans ; 21 cm. ; trade catalog...",
+        "thumbnailUrl": "https://archive.org/services/img/HerbertChiversArtisticcityhouses0001",
+        "previewUrl": "https://archive.org/details/HerbertChiversArtisticcityhouses0001",
+        "downloadUrl": "https://archive.org/details/HerbertChiversArtisticcityhouses0001",
+        "creator": {
+          "name": "Herbert Chivers"
+        },
+        "source": {
+          "providerId": "archive_bthl_architecture",
+          "providerName": "Building Technology Heritage Library",
+          "resourceUrl": "https://archive.org/details/HerbertChiversArtisticcityhouses0001",
+          "externalId": "HerbertChiversArtisticcityhouses0001"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "year": 1890,
+          "architect": "Herbert Chivers",
+          "format": "Architectural Catalog (PDF/EPUB)",
+          "thumbnail": "https://archive.org/services/img/HerbertChiversArtisticcityhouses0001",
+          "tags": [
+            "architecture",
+            "blueprints",
+            "building-heritage",
+            "historic-design",
+            "trade-catalog"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "bthl-w.b.mckayvol.31944",
+        "title": "Building Construction Vol 3",
+        "category": "art",
+        "description": "162 p, ill, 22 x 28.5 cm...",
+        "thumbnailUrl": "https://archive.org/services/img/W.B.McKayVol.31944",
+        "previewUrl": "https://archive.org/details/W.B.McKayVol.31944",
+        "downloadUrl": "https://archive.org/details/W.B.McKayVol.31944",
+        "creator": {
+          "name": "W. B. McKay"
+        },
+        "source": {
+          "providerId": "archive_bthl_architecture",
+          "providerName": "Building Technology Heritage Library",
+          "resourceUrl": "https://archive.org/details/W.B.McKayVol.31944",
+          "externalId": "W.B.McKayVol.31944"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "year": 1944,
+          "architect": "W. B. McKay",
+          "format": "Architectural Catalog (PDF/EPUB)",
+          "thumbnail": "https://archive.org/services/img/W.B.McKayVol.31944",
+          "tags": [
+            "architecture",
+            "blueprints",
+            "building-heritage",
+            "historic-design",
+            "trade-catalog"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "bthl-homebuilderscatalogplansofalltypesofsmallhomes",
+        "title": "Home Builders Catalog: plans of all types of small homes",
+        "category": "art",
+        "description": "618 p. ; ill. ; 28 cm. ; trade catalog This is the second half of this 1058 page catalog. the first half is also on the Internet Archive as a separate listing....",
+        "thumbnailUrl": "https://archive.org/services/img/HomeBuildersCatalogPlansOfAllTypesOfSmallHomes",
+        "previewUrl": "https://archive.org/details/HomeBuildersCatalogPlansOfAllTypesOfSmallHomes",
+        "downloadUrl": "https://archive.org/details/HomeBuildersCatalogPlansOfAllTypesOfSmallHomes",
+        "creator": {
+          "name": "1928 Home Builders Catalog Co."
+        },
+        "source": {
+          "providerId": "archive_bthl_architecture",
+          "providerName": "Building Technology Heritage Library",
+          "resourceUrl": "https://archive.org/details/HomeBuildersCatalogPlansOfAllTypesOfSmallHomes",
+          "externalId": "HomeBuildersCatalogPlansOfAllTypesOfSmallHomes"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "year": 1928,
+          "architect": "1928 Home Builders Catalog Co.",
+          "format": "Architectural Catalog (PDF/EPUB)",
+          "thumbnail": "https://archive.org/services/img/HomeBuildersCatalogPlansOfAllTypesOfSmallHomes",
+          "tags": [
+            "architecture",
+            "blueprints",
+            "building-heritage",
+            "historic-design",
+            "trade-catalog"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "bthl-colormixingguideforartistspaintersdecoratorsprintingpressmenshow",
+        "title": "Color mixing guide for artists, painters, decorators, printing pressmen, show card writers, sign painters, color mixers, give color mixtures by parts.",
+        "category": "art",
+        "description": "71 -., ill., 17 cm, trade catalog...",
+        "thumbnailUrl": "https://archive.org/services/img/ColorMixingGuideForArtistsPaintersDecoratorsPrintingPressmenShow",
+        "previewUrl": "https://archive.org/details/ColorMixingGuideForArtistsPaintersDecoratorsPrintingPressmenShow",
+        "downloadUrl": "https://archive.org/details/ColorMixingGuideForArtistsPaintersDecoratorsPrintingPressmenShow",
+        "creator": {
+          "name": "King, John L."
+        },
+        "source": {
+          "providerId": "archive_bthl_architecture",
+          "providerName": "Building Technology Heritage Library",
+          "resourceUrl": "https://archive.org/details/ColorMixingGuideForArtistsPaintersDecoratorsPrintingPressmenShow",
+          "externalId": "ColorMixingGuideForArtistsPaintersDecoratorsPrintingPressmenShow"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "year": 1923,
+          "architect": "King, John L.",
+          "format": "Architectural Catalog (PDF/EPUB)",
+          "thumbnail": "https://archive.org/services/img/ColorMixingGuideForArtistsPaintersDecoratorsPrintingPressmenShow",
+          "tags": [
+            "architecture",
+            "blueprints",
+            "building-heritage",
+            "historic-design",
+            "trade-catalog"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "bthl-thebookofbeautifulhomes",
+        "title": "The book of beautiful homes.",
+        "category": "art",
+        "description": "132 p., ill., plans, 28 cm, trade catalog...",
+        "thumbnailUrl": "https://archive.org/services/img/TheBookOfBeautifulHomes",
+        "previewUrl": "https://archive.org/details/TheBookOfBeautifulHomes",
+        "downloadUrl": "https://archive.org/details/TheBookOfBeautifulHomes",
+        "creator": {
+          "name": "Andrew C. Borzner"
+        },
+        "source": {
+          "providerId": "archive_bthl_architecture",
+          "providerName": "Building Technology Heritage Library",
+          "resourceUrl": "https://archive.org/details/TheBookOfBeautifulHomes",
+          "externalId": "TheBookOfBeautifulHomes"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "year": 1932,
+          "architect": "Andrew C. Borzner",
+          "format": "Architectural Catalog (PDF/EPUB)",
+          "thumbnail": "https://archive.org/services/img/TheBookOfBeautifulHomes",
+          "tags": [
+            "architecture",
+            "blueprints",
+            "building-heritage",
+            "historic-design",
+            "trade-catalog"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "bthl-excelsiorfrescostencils",
+        "title": "Excelsior fresco stencils.",
+        "category": "art",
+        "description": "1 v. (unpaged), ill., 24 cm, trade catalog...",
+        "thumbnailUrl": "https://archive.org/services/img/ExcelsiorFrescoStencils",
+        "previewUrl": "https://archive.org/details/ExcelsiorFrescoStencils",
+        "downloadUrl": "https://archive.org/details/ExcelsiorFrescoStencils",
+        "creator": {
+          "name": "Geo. E. Watson Co."
+        },
+        "source": {
+          "providerId": "archive_bthl_architecture",
+          "providerName": "Building Technology Heritage Library",
+          "resourceUrl": "https://archive.org/details/ExcelsiorFrescoStencils",
+          "externalId": "ExcelsiorFrescoStencils"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "year": 1924,
+          "architect": "Geo. E. Watson Co.",
+          "format": "Architectural Catalog (PDF/EPUB)",
+          "thumbnail": "https://archive.org/services/img/ExcelsiorFrescoStencils",
+          "tags": [
+            "architecture",
+            "blueprints",
+            "building-heritage",
+            "historic-design",
+            "trade-catalog"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "bthl-modernhomes00sear",
+        "title": "Modern homes",
+        "category": "art",
+        "description": "116 p. : 19 x 26 cm...",
+        "thumbnailUrl": "https://archive.org/services/img/modernhomes00sear",
+        "previewUrl": "https://archive.org/details/modernhomes00sear",
+        "downloadUrl": "https://archive.org/details/modernhomes00sear",
+        "creator": {
+          "name": "Sears, Roebuck and Company"
+        },
+        "source": {
+          "providerId": "archive_bthl_architecture",
+          "providerName": "Building Technology Heritage Library",
+          "resourceUrl": "https://archive.org/details/modernhomes00sear",
+          "externalId": "modernhomes00sear"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "year": 1911,
+          "architect": "Sears, Roebuck and Company",
+          "format": "Architectural Catalog (PDF/EPUB)",
+          "thumbnail": "https://archive.org/services/img/modernhomes00sear",
+          "tags": [
+            "architecture",
+            "blueprints",
+            "building-heritage",
+            "historic-design",
+            "trade-catalog"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "nasa-eonet-eonet_25002",
+        "title": "Wildfire in Kazakhstan 1032535 [Wildfires]",
+        "category": "datasets",
+        "description": "NASA Earth Observatory real-time planetary event. Category: Wildfires. Latest Coordinate Observation: [73.692531867058,50.402964157271] on 2026-10-01T19:00:00Z. Tracked by NASA Goddard Space Flight Center.",
+        "thumbnailUrl": "https://eonet.gsfc.nasa.gov/images/eonet_logo_header.png",
+        "previewUrl": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25002",
+        "downloadUrl": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25002",
+        "creator": {
+          "name": "NASA Goddard Space Flight Center"
+        },
+        "source": {
+          "providerId": "nasa_eonet",
+          "providerName": "NASA Earth Observatory (EONET)",
+          "resourceUrl": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25002",
+          "externalId": "EONET_25002"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://www.nasa.gov/multimedia/guidelines/index.html",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "region": "[73.692531867058,50.402964157271]",
+          "coordinates": [
+            50.402964157271,
+            73.692531867058
+          ],
+          "tags": [
+            "nasa",
+            "eonet",
+            "earth-science",
+            "wildfires",
+            "satellites",
+            "geography",
+            "wildfires"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "nasa-eonet-eonet_25001",
+        "title": "Flood in Malaysia 1104207 [Floods]",
+        "category": "datasets",
+        "description": "NASA Earth Observatory real-time planetary event. Category: Floods. Latest Coordinate Observation: [[[116.0823267,5.898481554954956],[116.08453695560033,5.898535813684453],[116.08674188650133,5.898698459158911],[116.08893618083131,5.898969099551137],[116.09111455234306,5.899347082864721],[116.0932717531488,5.899831498504752],[116.09540258636281,5.900421179471524],[116.09750191862126,5.9011147051719375],[116.09956469244888,5.901910404841836],[116.1015859384428,5.902806361571018],[116.1035607872444,5.903800416921246],[116.10548448126995,5.904890176126115],[116.10735238617205,5.906073013860247],[116.10916000200416,5.907346080563936],[116.11090297406142,5.908706309307986],[116.11257710337148,5.910150423182211],[116.1141783568102,5.911674943189797],[116.11570287681779,5.913276196628514],[116.117146990692,5.914950325938576],[116.11850721943605,5.916693297995837],[116.11978028613974,5.918500913827947],[116.12096312387388,5.9203688187300365],[116.12205288307875,5.922292512755587],[116.12304693842898,5.924267361557196],[116.12394289515817,5.926288607551124],[116.12473859482806,5.92835138137873],[116.12543212052847,5.930450713637187],[116.12602180149524,5.932581546851205],[116.12650621713527,5.934738747656932],[116.12688420044886,5.936917119168678],[116.12715484084109,5.93911141349867],[116.12731748631555,5.941316344399667],[116.12737174504504,5.9435266],[116.12731748631555,5.945736855600335],[116.12715484084109,5.947941786501332],[116.12688420044886,5.9501360808313235],[116.12650621713527,5.952314452343069],[116.12602180149524,5.954471653148796],[116.12543212052847,5.956602486362814],[116.12473859482806,5.958701818621272],[116.12394289515817,5.960764592448878],[116.12304693842898,5.962785838442805],[116.12205288307875,5.964760687244414],[116.12096312387388,5.966684381269965],[116.11978028613974,5.968552286172054],[116.11850721943605,5.970359902004164],[116.117146990692,5.9721028740614255],[116.11570287681779,5.973777003371487],[116.1141783568102,5.975378256810204],[116.11257710337148,5.9769027768177905],[116.11090297406142,5.978346890692015],[116.10916000200416,5.979707119436065],[116.10735238617205,5.980980186139754],[116.10548448126995,5.982163023873886],[116.1035607872444,5.983252783078755],[116.1015859384428,5.984246838428984],[116.09956469244888,5.985142795158166],[116.09750191862126,5.985938494828064],[116.09540258636281,5.986632020528478],[116.0932717531488,5.987221701495249],[116.09111455234306,5.98770611713528],[116.08893618083131,5.988084100448864],[116.08674188650133,5.98835474084109],[116.08453695560033,5.988517386315548],[116.0823267,5.988571645045045],[116.08011644439966,5.988517386315548],[116.07791151349866,5.98835474084109],[116.07571721916868,5.988084100448864],[116.07353884765693,5.98770611713528],[116.0713816468512,5.987221701495249],[116.06925081363718,5.986632020528478],[116.06715148137873,5.985938494828064],[116.06508870755111,5.985142795158166],[116.0630674615572,5.984246838428984],[116.06109261275559,5.983252783078755],[116.05916891873004,5.982163023873886],[116.05730101382794,5.980980186139754],[116.05549339799583,5.979707119436065],[116.05375042593857,5.978346890692015],[116.05207629662851,5.9769027768177905],[116.05047504318979,5.975378256810204],[116.0489505231822,5.973777003371487],[116.04750640930799,5.9721028740614255],[116.04614618056394,5.970359902004164],[116.04487311386025,5.968552286172054],[116.04369027612611,5.966684381269965],[116.04260051692124,5.964760687244414],[116.041606461571,5.962785838442805],[116.04071050484183,5.960764592448878],[116.03991480517193,5.958701818621272],[116.03922127947152,5.956602486362814],[116.03863159850475,5.954471653148796],[116.03814718286472,5.952314452343069],[116.03776919955114,5.9501360808313235],[116.0374985591589,5.947941786501332],[116.03733591368444,5.945736855600335],[116.03728165495495,5.9435266],[116.03733591368444,5.941316344399667],[116.0374985591589,5.93911141349867],[116.03776919955114,5.936917119168678],[116.03814718286472,5.934738747656932],[116.03863159850475,5.932581546851205],[116.03922127947152,5.930450713637187],[116.03991480517193,5.92835138137873],[116.04071050484183,5.926288607551124],[116.041606461571,5.924267361557196],[116.04260051692124,5.922292512755587],[116.04369027612611,5.9203688187300365],[116.04487311386025,5.918500913827947],[116.04614618056394,5.916693297995837],[116.04750640930799,5.914950325938576],[116.0489505231822,5.913276196628514],[116.05047504318979,5.911674943189797],[116.05207629662851,5.910150423182211],[116.05375042593857,5.908706309307986],[116.05549339799583,5.907346080563936],[116.05730101382794,5.906073013860247],[116.05916891873004,5.904890176126115],[116.06109261275559,5.903800416921246],[116.0630674615572,5.902806361571018],[116.06508870755111,5.901910404841836],[116.06715148137873,5.9011147051719375],[116.06925081363718,5.900421179471524],[116.0713816468512,5.899831498504752],[116.07353884765693,5.899347082864721],[116.07571721916868,5.898969099551137],[116.07791151349866,5.898698459158911],[116.08011644439966,5.898535813684453],[116.0823267,5.898481554954956]]] on 2026-09-30T20:00:00Z. Tracked by NASA Goddard Space Flight Center.",
+        "thumbnailUrl": "https://eonet.gsfc.nasa.gov/images/eonet_logo_header.png",
+        "previewUrl": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25001",
+        "downloadUrl": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25001",
+        "creator": {
+          "name": "NASA Goddard Space Flight Center"
+        },
+        "source": {
+          "providerId": "nasa_eonet",
+          "providerName": "NASA Earth Observatory (EONET)",
+          "resourceUrl": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25001",
+          "externalId": "EONET_25001"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://www.nasa.gov/multimedia/guidelines/index.html",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "region": "[[[116.0823267,5.898481554954956],[116.08453695560033,5.898535813684453],[116.08674188650133,5.898698459158911],[116.08893618083131,5.898969099551137],[116.09111455234306,5.899347082864721],[116.0932717531488,5.899831498504752],[116.09540258636281,5.900421179471524],[116.09750191862126,5.9011147051719375],[116.09956469244888,5.901910404841836],[116.1015859384428,5.902806361571018],[116.1035607872444,5.903800416921246],[116.10548448126995,5.904890176126115],[116.10735238617205,5.906073013860247],[116.10916000200416,5.907346080563936],[116.11090297406142,5.908706309307986],[116.11257710337148,5.910150423182211],[116.1141783568102,5.911674943189797],[116.11570287681779,5.913276196628514],[116.117146990692,5.914950325938576],[116.11850721943605,5.916693297995837],[116.11978028613974,5.918500913827947],[116.12096312387388,5.9203688187300365],[116.12205288307875,5.922292512755587],[116.12304693842898,5.924267361557196],[116.12394289515817,5.926288607551124],[116.12473859482806,5.92835138137873],[116.12543212052847,5.930450713637187],[116.12602180149524,5.932581546851205],[116.12650621713527,5.934738747656932],[116.12688420044886,5.936917119168678],[116.12715484084109,5.93911141349867],[116.12731748631555,5.941316344399667],[116.12737174504504,5.9435266],[116.12731748631555,5.945736855600335],[116.12715484084109,5.947941786501332],[116.12688420044886,5.9501360808313235],[116.12650621713527,5.952314452343069],[116.12602180149524,5.954471653148796],[116.12543212052847,5.956602486362814],[116.12473859482806,5.958701818621272],[116.12394289515817,5.960764592448878],[116.12304693842898,5.962785838442805],[116.12205288307875,5.964760687244414],[116.12096312387388,5.966684381269965],[116.11978028613974,5.968552286172054],[116.11850721943605,5.970359902004164],[116.117146990692,5.9721028740614255],[116.11570287681779,5.973777003371487],[116.1141783568102,5.975378256810204],[116.11257710337148,5.9769027768177905],[116.11090297406142,5.978346890692015],[116.10916000200416,5.979707119436065],[116.10735238617205,5.980980186139754],[116.10548448126995,5.982163023873886],[116.1035607872444,5.983252783078755],[116.1015859384428,5.984246838428984],[116.09956469244888,5.985142795158166],[116.09750191862126,5.985938494828064],[116.09540258636281,5.986632020528478],[116.0932717531488,5.987221701495249],[116.09111455234306,5.98770611713528],[116.08893618083131,5.988084100448864],[116.08674188650133,5.98835474084109],[116.08453695560033,5.988517386315548],[116.0823267,5.988571645045045],[116.08011644439966,5.988517386315548],[116.07791151349866,5.98835474084109],[116.07571721916868,5.988084100448864],[116.07353884765693,5.98770611713528],[116.0713816468512,5.987221701495249],[116.06925081363718,5.986632020528478],[116.06715148137873,5.985938494828064],[116.06508870755111,5.985142795158166],[116.0630674615572,5.984246838428984],[116.06109261275559,5.983252783078755],[116.05916891873004,5.982163023873886],[116.05730101382794,5.980980186139754],[116.05549339799583,5.979707119436065],[116.05375042593857,5.978346890692015],[116.05207629662851,5.9769027768177905],[116.05047504318979,5.975378256810204],[116.0489505231822,5.973777003371487],[116.04750640930799,5.9721028740614255],[116.04614618056394,5.970359902004164],[116.04487311386025,5.968552286172054],[116.04369027612611,5.966684381269965],[116.04260051692124,5.964760687244414],[116.041606461571,5.962785838442805],[116.04071050484183,5.960764592448878],[116.03991480517193,5.958701818621272],[116.03922127947152,5.956602486362814],[116.03863159850475,5.954471653148796],[116.03814718286472,5.952314452343069],[116.03776919955114,5.9501360808313235],[116.0374985591589,5.947941786501332],[116.03733591368444,5.945736855600335],[116.03728165495495,5.9435266],[116.03733591368444,5.941316344399667],[116.0374985591589,5.93911141349867],[116.03776919955114,5.936917119168678],[116.03814718286472,5.934738747656932],[116.03863159850475,5.932581546851205],[116.03922127947152,5.930450713637187],[116.03991480517193,5.92835138137873],[116.04071050484183,5.926288607551124],[116.041606461571,5.924267361557196],[116.04260051692124,5.922292512755587],[116.04369027612611,5.9203688187300365],[116.04487311386025,5.918500913827947],[116.04614618056394,5.916693297995837],[116.04750640930799,5.914950325938576],[116.0489505231822,5.913276196628514],[116.05047504318979,5.911674943189797],[116.05207629662851,5.910150423182211],[116.05375042593857,5.908706309307986],[116.05549339799583,5.907346080563936],[116.05730101382794,5.906073013860247],[116.05916891873004,5.904890176126115],[116.06109261275559,5.903800416921246],[116.0630674615572,5.902806361571018],[116.06508870755111,5.901910404841836],[116.06715148137873,5.9011147051719375],[116.06925081363718,5.900421179471524],[116.0713816468512,5.899831498504752],[116.07353884765693,5.899347082864721],[116.07571721916868,5.898969099551137],[116.07791151349866,5.898698459158911],[116.08011644439966,5.898535813684453],[116.0823267,5.898481554954956]]]",
+          "tags": [
+            "nasa",
+            "eonet",
+            "earth-science",
+            "wildfires",
+            "satellites",
+            "geography",
+            "floods"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "nasa-eonet-eonet_25003",
+        "title": "Wildfire in Brazil 1032540 [Wildfires]",
+        "category": "datasets",
+        "description": "NASA Earth Observatory real-time planetary event. Category: Wildfires. Latest Coordinate Observation: [-44.25879134537,-11.255682151339] on 2026-09-29T19:00:00Z. Tracked by NASA Goddard Space Flight Center.",
+        "thumbnailUrl": "https://eonet.gsfc.nasa.gov/images/eonet_logo_header.png",
+        "previewUrl": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25003",
+        "downloadUrl": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25003",
+        "creator": {
+          "name": "NASA Goddard Space Flight Center"
+        },
+        "source": {
+          "providerId": "nasa_eonet",
+          "providerName": "NASA Earth Observatory (EONET)",
+          "resourceUrl": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25003",
+          "externalId": "EONET_25003"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://www.nasa.gov/multimedia/guidelines/index.html",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "region": "[-44.25879134537,-11.255682151339]",
+          "coordinates": [
+            -11.255682151339,
+            -44.25879134537
+          ],
+          "tags": [
+            "nasa",
+            "eonet",
+            "earth-science",
+            "wildfires",
+            "satellites",
+            "geography",
+            "wildfires"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
+      },
+      {
+        "id": "nasa-eonet-eonet_25004",
+        "title": "Wildfire in Australia 1032544 [Wildfires]",
+        "category": "datasets",
+        "description": "NASA Earth Observatory real-time planetary event. Category: Wildfires. Latest Coordinate Observation: [123.25494478409,-17.18552499811] on 2026-09-28T19:00:00Z. Tracked by NASA Goddard Space Flight Center.",
+        "thumbnailUrl": "https://eonet.gsfc.nasa.gov/images/eonet_logo_header.png",
+        "previewUrl": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25004",
+        "downloadUrl": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25004",
+        "creator": {
+          "name": "NASA Goddard Space Flight Center"
+        },
+        "source": {
+          "providerId": "nasa_eonet",
+          "providerName": "NASA Earth Observatory (EONET)",
+          "resourceUrl": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25004",
+          "externalId": "EONET_25004"
+        },
+        "license": {
+          "type": "Public Domain / CC0",
+          "url": "https://www.nasa.gov/multimedia/guidelines/index.html",
+          "commercialAllowed": true,
+          "attributionRequired": false,
+          "modificationAllowed": true,
+          "verified": true
+        },
+        "attributes": {
+          "region": "[123.25494478409,-17.18552499811]",
+          "coordinates": [
+            -17.18552499811,
+            123.25494478409
+          ],
+          "tags": [
+            "nasa",
+            "eonet",
+            "earth-science",
+            "wildfires",
+            "satellites",
+            "geography",
+            "wildfires"
+          ]
+        },
+        "verification": {
+          "metadataVerified": true,
+          "resourceReachable": true,
+          "integrityVerified": false
+        }
       }
     ]
   },
@@ -213632,2675 +214858,5 @@
     "timestamp": 1791047341902,
     "deepPagesFetched": 1,
     "items": []
-  },
-  {
-    "query": "",
-    "category": "all",
-    "timestamp": 1791047303728,
-    "deepPagesFetched": 2,
-    "items": [
-      {
-        "id": "fontsource-42dot-sans",
-        "title": "42dot Sans Typeface (sans-serif)",
-        "category": "images",
-        "description": "Open-source typography font family '42dot Sans'. Category: sans-serif. Available weights: [300, 400, 500, 600, 700, 800]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/42dot-sans",
-        "downloadUrl": "https://fontsource.org/fonts/42dot-sans",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/42dot-sans",
-          "externalId": "42dot-sans"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "42dot Sans",
-          "fontCategory": "sans-serif",
-          "weights": "300, 400, 500, 600, 700, 800",
-          "styles": [
-            "normal"
-          ],
-          "subsets": [
-            "korean",
-            "latin"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "sans-serif",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-abeezee",
-        "title": "ABeeZee Typeface (sans-serif)",
-        "category": "images",
-        "description": "Open-source typography font family 'ABeeZee'. Category: sans-serif. Available weights: [400]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/abeezee",
-        "downloadUrl": "https://fontsource.org/fonts/abeezee",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/abeezee",
-          "externalId": "abeezee"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "ABeeZee",
-          "fontCategory": "sans-serif",
-          "weights": "400",
-          "styles": [
-            "italic",
-            "normal"
-          ],
-          "subsets": [
-            "latin",
-            "latin-ext"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "sans-serif",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-erebia_christi_remixes-24540",
-        "title": "erebia christi remixes",
-        "category": "music",
-        "description": "erebia christi was originally composed and performed by sothiac – pat moonchy (voice and synth art); lucky liguori (guitar and gongs) – and released in may of 2017. all the music was then remixed by pat moonchy. the original cover art was b...",
-        "thumbnailUrl": "https://archive.org/services/img/erebia_christi_remixes-24540",
-        "previewUrl": "/api/v1/audio-stream?iaId=erebia_christi_remixes-24540",
-        "downloadUrl": "https://archive.org/details/erebia_christi_remixes-24540",
-        "creator": {
-          "name": "pat moonchy"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/erebia_christi_remixes-24540",
-          "externalId": "erebia_christi_remixes-24540"
-        },
-        "license": {
-          "type": "Creative Commons BY",
-          "url": "https://creativecommons.org/licenses/by/4.0/",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2017,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=erebia_christi_remixes-24540",
-          "thumbnail": "https://archive.org/services/img/erebia_christi_remixes-24540"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-abel",
-        "title": "Abel Typeface (sans-serif)",
-        "category": "images",
-        "description": "Open-source typography font family 'Abel'. Category: sans-serif. Available weights: [400]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/abel",
-        "downloadUrl": "https://fontsource.org/fonts/abel",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/abel",
-          "externalId": "abel"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "Abel",
-          "fontCategory": "sans-serif",
-          "weights": "400",
-          "styles": [
-            "normal"
-          ],
-          "subsets": [
-            "latin"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "sans-serif",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-abhaya-libre",
-        "title": "Abhaya Libre Typeface (serif)",
-        "category": "images",
-        "description": "Open-source typography font family 'Abhaya Libre'. Category: serif. Available weights: [400, 500, 600, 700, 800]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/abhaya-libre",
-        "downloadUrl": "https://fontsource.org/fonts/abhaya-libre",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/abhaya-libre",
-          "externalId": "abhaya-libre"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "Abhaya Libre",
-          "fontCategory": "serif",
-          "weights": "400, 500, 600, 700, 800",
-          "styles": [
-            "normal"
-          ],
-          "subsets": [
-            "latin",
-            "latin-ext",
-            "sinhala"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "serif",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-maime-7065",
-        "title": "maime",
-        "category": "music",
-        "description": "Original independent recording by alright lover published under Creative Commons on Free Music Archive.",
-        "thumbnailUrl": "https://archive.org/services/img/maime-7065",
-        "previewUrl": "/api/v1/audio-stream?iaId=maime-7065",
-        "downloadUrl": "https://archive.org/details/maime-7065",
-        "creator": {
-          "name": "alright lover"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/maime-7065",
-          "externalId": "maime-7065"
-        },
-        "license": {
-          "type": "Creative Commons BY",
-          "url": "https://creativecommons.org/licenses/by/4.0/",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2010,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=maime-7065",
-          "thumbnail": "https://archive.org/services/img/maime-7065"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-aboreto",
-        "title": "Aboreto Typeface (display)",
-        "category": "images",
-        "description": "Open-source typography font family 'Aboreto'. Category: display. Available weights: [400]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/aboreto",
-        "downloadUrl": "https://fontsource.org/fonts/aboreto",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/aboreto",
-          "externalId": "aboreto"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "Aboreto",
-          "fontCategory": "display",
-          "weights": "400",
-          "styles": [
-            "normal"
-          ],
-          "subsets": [
-            "latin",
-            "latin-ext"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "display",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-abril-fatface",
-        "title": "Abril Fatface Typeface (display)",
-        "category": "images",
-        "description": "Open-source typography font family 'Abril Fatface'. Category: display. Available weights: [400]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/abril-fatface",
-        "downloadUrl": "https://fontsource.org/fonts/abril-fatface",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/abril-fatface",
-          "externalId": "abril-fatface"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "Abril Fatface",
-          "fontCategory": "display",
-          "weights": "400",
-          "styles": [
-            "normal"
-          ],
-          "subsets": [
-            "latin",
-            "latin-ext"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "display",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-live_at_wfmu_on_spazzs_show_on_6242004-1016",
-        "title": "Live at WFMU on Spazz's Show on 6/24/2004",
-        "category": "music",
-        "description": "The 5678's perform live in-studio on Dave the Spazz's show. wfmu playlist/archive...",
-        "thumbnailUrl": "https://archive.org/services/img/Live_at_WFMU_on_Spazzs_Show_on_6242004-1016",
-        "previewUrl": "/api/v1/audio-stream?iaId=Live_at_WFMU_on_Spazzs_Show_on_6242004-1016",
-        "downloadUrl": "https://archive.org/details/Live_at_WFMU_on_Spazzs_Show_on_6242004-1016",
-        "creator": {
-          "name": "5678's, Afrirampo"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/Live_at_WFMU_on_Spazzs_Show_on_6242004-1016",
-          "externalId": "Live_at_WFMU_on_Spazzs_Show_on_6242004-1016"
-        },
-        "license": {
-          "type": "Creative Commons (CC-BY)",
-          "url": "http://freemusicarchive.org/FMA_License",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2004,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=Live_at_WFMU_on_Spazzs_Show_on_6242004-1016",
-          "thumbnail": "https://archive.org/services/img/Live_at_WFMU_on_Spazzs_Show_on_6242004-1016"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-abyssinica-sil",
-        "title": "Abyssinica SIL Typeface (serif)",
-        "category": "images",
-        "description": "Open-source typography font family 'Abyssinica SIL'. Category: serif. Available weights: [400]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/abyssinica-sil",
-        "downloadUrl": "https://fontsource.org/fonts/abyssinica-sil",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/abyssinica-sil",
-          "externalId": "abyssinica-sil"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "Abyssinica SIL",
-          "fontCategory": "serif",
-          "weights": "400",
-          "styles": [
-            "normal"
-          ],
-          "subsets": [
-            "ethiopic",
-            "latin",
-            "latin-ext"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "serif",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-aclonica",
-        "title": "Aclonica Typeface (sans-serif)",
-        "category": "images",
-        "description": "Open-source typography font family 'Aclonica'. Category: sans-serif. Available weights: [400]. Licensed under Apache-2.0.",
-        "previewUrl": "https://fontsource.org/fonts/aclonica",
-        "downloadUrl": "https://fontsource.org/fonts/aclonica",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/aclonica",
-          "externalId": "aclonica"
-        },
-        "license": {
-          "type": "Apache 2.0",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "Aclonica",
-          "fontCategory": "sans-serif",
-          "weights": "400",
-          "styles": [
-            "normal"
-          ],
-          "subsets": [
-            "latin",
-            "latin-ext"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "sans-serif",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-hopelessness-21707",
-        "title": "Hopelessness",
-        "category": "music",
-        "description": "From UK, Daniel James Dolby is a composer for Film, Television and Games, specialising in Scores, Incidental Music, and Sound Manipulation.   \"During 2015, I composed a number of pieces for a feature film called Broken. Hopelessness is a co...",
-        "thumbnailUrl": "https://archive.org/services/img/Hopelessness-21707",
-        "previewUrl": "/api/v1/audio-stream?iaId=Hopelessness-21707",
-        "downloadUrl": "https://archive.org/details/Hopelessness-21707",
-        "creator": {
-          "name": "Daniel James Dolby"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/Hopelessness-21707",
-          "externalId": "Hopelessness-21707"
-        },
-        "license": {
-          "type": "Creative Commons BY",
-          "url": "https://creativecommons.org/licenses/by/4.0/",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2016,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=Hopelessness-21707",
-          "thumbnail": "https://archive.org/services/img/Hopelessness-21707"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-acme",
-        "title": "Acme Typeface (sans-serif)",
-        "category": "images",
-        "description": "Open-source typography font family 'Acme'. Category: sans-serif. Available weights: [400]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/acme",
-        "downloadUrl": "https://fontsource.org/fonts/acme",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/acme",
-          "externalId": "acme"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "Acme",
-          "fontCategory": "sans-serif",
-          "weights": "400",
-          "styles": [
-            "normal"
-          ],
-          "subsets": [
-            "latin"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "sans-serif",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-actor",
-        "title": "Actor Typeface (sans-serif)",
-        "category": "images",
-        "description": "Open-source typography font family 'Actor'. Category: sans-serif. Available weights: [400]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/actor",
-        "downloadUrl": "https://fontsource.org/fonts/actor",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/actor",
-          "externalId": "actor"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "Actor",
-          "fontCategory": "sans-serif",
-          "weights": "400",
-          "styles": [
-            "normal"
-          ],
-          "subsets": [
-            "latin"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "sans-serif",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-how_to_prosper_in_the_coming_bad_years-3293",
-        "title": "How to Prosper in the Coming Bad Years",
-        "category": "music",
-        "description": "Original independent recording by Hank published under Creative Commons on Free Music Archive.",
-        "thumbnailUrl": "https://archive.org/services/img/How_to_Prosper_in_the_Coming_Bad_Years-3293",
-        "previewUrl": "/api/v1/audio-stream?iaId=How_to_Prosper_in_the_Coming_Bad_Years-3293",
-        "downloadUrl": "https://archive.org/details/How_to_Prosper_in_the_Coming_Bad_Years-3293",
-        "creator": {
-          "name": "Hank"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/How_to_Prosper_in_the_Coming_Bad_Years-3293",
-          "externalId": "How_to_Prosper_in_the_Coming_Bad_Years-3293"
-        },
-        "license": {
-          "type": "Creative Commons BY",
-          "url": "http://creativecommons.org/licenses/by/3.0/",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2009,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=How_to_Prosper_in_the_Coming_Bad_Years-3293",
-          "thumbnail": "https://archive.org/services/img/How_to_Prosper_in_the_Coming_Bad_Years-3293"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-adamina",
-        "title": "Adamina Typeface (serif)",
-        "category": "images",
-        "description": "Open-source typography font family 'Adamina'. Category: serif. Available weights: [400]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/adamina",
-        "downloadUrl": "https://fontsource.org/fonts/adamina",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/adamina",
-          "externalId": "adamina"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "Adamina",
-          "fontCategory": "serif",
-          "weights": "400",
-          "styles": [
-            "normal"
-          ],
-          "subsets": [
-            "latin"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "serif",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-adlam-display",
-        "title": "ADLaM Display Typeface (display)",
-        "category": "images",
-        "description": "Open-source typography font family 'ADLaM Display'. Category: display. Available weights: [400]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/adlam-display",
-        "downloadUrl": "https://fontsource.org/fonts/adlam-display",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/adlam-display",
-          "externalId": "adlam-display"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "ADLaM Display",
-          "fontCategory": "display",
-          "weights": "400",
-          "styles": [
-            "normal"
-          ],
-          "subsets": [
-            "adlam",
-            "latin",
-            "latin-ext"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "display",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-having_nothing_then_giving_it_away-21853",
-        "title": "Having Nothing Then Giving It Away",
-        "category": "music",
-        "description": "Having Nothing Then Giving it Away (2008) One of the earliest pieces of solo gonk I have.  A guitar and a Dictaphone/pause button woggle.  Nowt else. The Child Tells a Lie (2009) Obsession with Alan Pease’ disgraced book on Body Language le...",
-        "thumbnailUrl": "https://archive.org/services/img/Having_Nothing_Then_Giving_It_Away-21853",
-        "previewUrl": "/api/v1/audio-stream?iaId=Having_Nothing_Then_Giving_It_Away-21853",
-        "downloadUrl": "https://archive.org/details/Having_Nothing_Then_Giving_It_Away-21853",
-        "creator": {
-          "name": "Posset"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/Having_Nothing_Then_Giving_It_Away-21853",
-          "externalId": "Having_Nothing_Then_Giving_It_Away-21853"
-        },
-        "license": {
-          "type": "Creative Commons BY",
-          "url": "https://creativecommons.org/licenses/by/4.0/",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2016,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=Having_Nothing_Then_Giving_It_Away-21853",
-          "thumbnail": "https://archive.org/services/img/Having_Nothing_Then_Giving_It_Away-21853"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-advent-pro",
-        "title": "Advent Pro Typeface (sans-serif)",
-        "category": "images",
-        "description": "Open-source typography font family 'Advent Pro'. Category: sans-serif. Available weights: [100, 200, 300, 400, 500, 600, 700, 800, 900]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/advent-pro",
-        "downloadUrl": "https://fontsource.org/fonts/advent-pro",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/advent-pro",
-          "externalId": "advent-pro"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "Advent Pro",
-          "fontCategory": "sans-serif",
-          "weights": "100, 200, 300, 400, 500, 600, 700, 800, 900",
-          "styles": [
-            "italic",
-            "normal"
-          ],
-          "subsets": [
-            "cyrillic",
-            "cyrillic-ext",
-            "greek",
-            "latin",
-            "latin-ext"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "sans-serif",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-adwaita-mono",
-        "title": "Adwaita Mono Typeface (monospace)",
-        "category": "images",
-        "description": "Open-source typography font family 'Adwaita Mono'. Category: monospace. Available weights: [400, 700]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/adwaita-mono",
-        "downloadUrl": "https://fontsource.org/fonts/adwaita-mono",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/adwaita-mono",
-          "externalId": "adwaita-mono"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "Adwaita Mono",
-          "fontCategory": "monospace",
-          "weights": "400, 700",
-          "styles": [
-            "normal",
-            "italic"
-          ],
-          "subsets": [
-            "latin"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "monospace",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "ia-blues-csr027",
-        "title": "Edith Frost - Demos [csr027] [Historic Delta Blues 78 RPM]",
-        "category": "audio",
-        "description": "Pioneering early 20th century American acoustic blues recording from original 78 RPM shellac discs. Features bottleneck slide guitar, field hollers, and Mississippi Delta roots music.",
-        "thumbnailUrl": "https://archive.org/services/img/csr027",
-        "previewUrl": "https://archive.org/details/csr027",
-        "downloadUrl": "https://archive.org/download/csr027/csr027.mp3",
-        "creator": {
-          "name": "Edith Frost"
-        },
-        "source": {
-          "providerId": "archive_early_recorded_blues",
-          "providerName": "Early Acoustic Delta & Country Blues Vault",
-          "resourceUrl": "https://archive.org/details/csr027",
-          "externalId": "csr027"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://archive.org/details/georgeblood",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "format": "mp3",
-          "isStreamable": true,
-          "year": 2004,
-          "tags": [
-            "delta-blues",
-            "acoustic-blues",
-            "78rpm",
-            "country-blues",
-            "slide-guitar",
-            "american-roots"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-adwaita-sans",
-        "title": "Adwaita Sans Typeface (sans-serif)",
-        "category": "images",
-        "description": "Open-source typography font family 'Adwaita Sans'. Category: sans-serif. Available weights: [100, 200, 300, 400, 500, 600, 700, 800, 900]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/adwaita-sans",
-        "downloadUrl": "https://fontsource.org/fonts/adwaita-sans",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/adwaita-sans",
-          "externalId": "adwaita-sans"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "Adwaita Sans",
-          "fontCategory": "sans-serif",
-          "weights": "100, 200, 300, 400, 500, 600, 700, 800, 900",
-          "styles": [
-            "normal",
-            "italic"
-          ],
-          "subsets": [
-            "latin"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "sans-serif",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fontsource-afacad",
-        "title": "Afacad Typeface (sans-serif)",
-        "category": "images",
-        "description": "Open-source typography font family 'Afacad'. Category: sans-serif. Available weights: [400, 500, 600, 700]. Licensed under OFL-1.1.",
-        "previewUrl": "https://fontsource.org/fonts/afacad",
-        "downloadUrl": "https://fontsource.org/fonts/afacad",
-        "creator": {
-          "name": "Open Font Community"
-        },
-        "source": {
-          "providerId": "fontsource",
-          "providerName": "Fontsource Typography Registry",
-          "resourceUrl": "https://fontsource.org/fonts/afacad",
-          "externalId": "afacad"
-        },
-        "license": {
-          "type": "OFL",
-          "url": "https://scripts.sil.org/OFL",
-          "commercialAllowed": true,
-          "attributionRequired": true,
-          "verified": true
-        },
-        "attributes": {
-          "fontFamily": "Afacad",
-          "fontCategory": "sans-serif",
-          "weights": "400, 500, 600, 700",
-          "styles": [
-            "italic",
-            "normal"
-          ],
-          "subsets": [
-            "cyrillic-ext",
-            "latin",
-            "latin-ext",
-            "math",
-            "symbols",
-            "vietnamese"
-          ],
-          "tags": [
-            "font",
-            "typography",
-            "webfont",
-            "sans-serif",
-            "design"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "ia-blues-blind_blake_police_dog_blues",
-        "title": "Police Dog Blues [Historic Delta Blues 78 RPM]",
-        "category": "audio",
-        "description": "Pioneering early 20th century American acoustic blues recording from original 78 RPM shellac discs. Features bottleneck slide guitar, field hollers, and Mississippi Delta roots music.",
-        "thumbnailUrl": "https://archive.org/services/img/blind_blake_police_dog_blues",
-        "previewUrl": "https://archive.org/details/blind_blake_police_dog_blues",
-        "downloadUrl": "https://archive.org/download/blind_blake_police_dog_blues/blind_blake_police_dog_blues.mp3",
-        "creator": {
-          "name": "Blind Blake"
-        },
-        "source": {
-          "providerId": "archive_early_recorded_blues",
-          "providerName": "Early Acoustic Delta & Country Blues Vault",
-          "resourceUrl": "https://archive.org/details/blind_blake_police_dog_blues",
-          "externalId": "blind_blake_police_dog_blues"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://archive.org/details/georgeblood",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "format": "mp3",
-          "isStreamable": true,
-          "tags": [
-            "delta-blues",
-            "acoustic-blues",
-            "78rpm",
-            "country-blues",
-            "slide-guitar",
-            "american-roots"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "ia-blues-Podcast8.24SatanicImageryAndConspiraciesInOurModernWorld",
-        "title": "Podcast 8.24 Satanic Imagery And Conspiracies In Modern Culture [Historic Delta Blues 78 RPM]",
-        "category": "audio",
-        "description": "Pioneering early 20th century American acoustic blues recording from original 78 RPM shellac discs. Features bottleneck slide guitar, field hollers, and Mississippi Delta roots music.",
-        "thumbnailUrl": "https://archive.org/services/img/Podcast8.24SatanicImageryAndConspiraciesInOurModernWorld",
-        "previewUrl": "https://archive.org/details/Podcast8.24SatanicImageryAndConspiraciesInOurModernWorld",
-        "downloadUrl": "https://archive.org/download/Podcast8.24SatanicImageryAndConspiraciesInOurModernWorld/Podcast8.24SatanicImageryAndConspiraciesInOurModernWorld.mp3",
-        "creator": {
-          "name": "Philip A. Harland"
-        },
-        "source": {
-          "providerId": "archive_early_recorded_blues",
-          "providerName": "Early Acoustic Delta & Country Blues Vault",
-          "resourceUrl": "https://archive.org/details/Podcast8.24SatanicImageryAndConspiraciesInOurModernWorld",
-          "externalId": "Podcast8.24SatanicImageryAndConspiraciesInOurModernWorld"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://archive.org/details/georgeblood",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "format": "mp3",
-          "isStreamable": true,
-          "year": 2015,
-          "tags": [
-            "delta-blues",
-            "acoustic-blues",
-            "78rpm",
-            "country-blues",
-            "slide-guitar",
-            "american-roots"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "ia-blues-Blind_Willie_Mctell-Statesboro",
-        "title": "Statesboro Blues [Historic Delta Blues 78 RPM]",
-        "category": "audio",
-        "description": "Pioneering early 20th century American acoustic blues recording from original 78 RPM shellac discs. Features bottleneck slide guitar, field hollers, and Mississippi Delta roots music.",
-        "thumbnailUrl": "https://archive.org/services/img/Blind_Willie_Mctell-Statesboro",
-        "previewUrl": "https://archive.org/details/Blind_Willie_Mctell-Statesboro",
-        "downloadUrl": "https://archive.org/download/Blind_Willie_Mctell-Statesboro/Blind_Willie_Mctell-Statesboro.mp3",
-        "creator": {
-          "name": "Blind Willie Mctell"
-        },
-        "source": {
-          "providerId": "archive_early_recorded_blues",
-          "providerName": "Early Acoustic Delta & Country Blues Vault",
-          "resourceUrl": "https://archive.org/details/Blind_Willie_Mctell-Statesboro",
-          "externalId": "Blind_Willie_Mctell-Statesboro"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://archive.org/details/georgeblood",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "format": "mp3",
-          "isStreamable": true,
-          "year": 0,
-          "tags": [
-            "delta-blues",
-            "acoustic-blues",
-            "78rpm",
-            "country-blues",
-            "slide-guitar",
-            "american-roots"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "ia-blues-SLANKFullAlbumVirus",
-        "title": "SLANK Full Album “Virus” (2001) [Historic Delta Blues 78 RPM]",
-        "category": "audio",
-        "description": "Pioneering early 20th century American acoustic blues recording from original 78 RPM shellac discs. Features bottleneck slide guitar, field hollers, and Mississippi Delta roots music.",
-        "thumbnailUrl": "https://archive.org/services/img/SLANKFullAlbumVirus",
-        "previewUrl": "https://archive.org/details/SLANKFullAlbumVirus",
-        "downloadUrl": "https://archive.org/download/SLANKFullAlbumVirus/SLANKFullAlbumVirus.mp3",
-        "creator": {
-          "name": "JMercia Studio"
-        },
-        "source": {
-          "providerId": "archive_early_recorded_blues",
-          "providerName": "Early Acoustic Delta & Country Blues Vault",
-          "resourceUrl": "https://archive.org/details/SLANKFullAlbumVirus",
-          "externalId": "SLANKFullAlbumVirus"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://archive.org/details/georgeblood",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "format": "mp3",
-          "isStreamable": true,
-          "year": 2019,
-          "tags": [
-            "delta-blues",
-            "acoustic-blues",
-            "78rpm",
-            "country-blues",
-            "slide-guitar",
-            "american-roots"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "ia-blues-Bo_Carter-Corrine",
-        "title": "Corrine Corrina [Historic Delta Blues 78 RPM]",
-        "category": "audio",
-        "description": "Pioneering early 20th century American acoustic blues recording from original 78 RPM shellac discs. Features bottleneck slide guitar, field hollers, and Mississippi Delta roots music.",
-        "thumbnailUrl": "https://archive.org/services/img/Bo_Carter-Corrine",
-        "previewUrl": "https://archive.org/details/Bo_Carter-Corrine",
-        "downloadUrl": "https://archive.org/download/Bo_Carter-Corrine/Bo_Carter-Corrine.mp3",
-        "creator": {
-          "name": "Bo Carter"
-        },
-        "source": {
-          "providerId": "archive_early_recorded_blues",
-          "providerName": "Early Acoustic Delta & Country Blues Vault",
-          "resourceUrl": "https://archive.org/details/Bo_Carter-Corrine",
-          "externalId": "Bo_Carter-Corrine"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://archive.org/details/georgeblood",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "format": "mp3",
-          "isStreamable": true,
-          "tags": [
-            "delta-blues",
-            "acoustic-blues",
-            "78rpm",
-            "country-blues",
-            "slide-guitar",
-            "american-roots"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "ia-blues-DarkWasTheNightColdWasTheGround-BlindWillieJohnson",
-        "title": "Dark Was the Night, Cold Was the Ground - Blind Willie Johnson [Historic Delta Blues 78 RPM]",
-        "category": "audio",
-        "description": "Pioneering early 20th century American acoustic blues recording from original 78 RPM shellac discs. Features bottleneck slide guitar, field hollers, and Mississippi Delta roots music.",
-        "thumbnailUrl": "https://archive.org/services/img/DarkWasTheNightColdWasTheGround-BlindWillieJohnson",
-        "previewUrl": "https://archive.org/details/DarkWasTheNightColdWasTheGround-BlindWillieJohnson",
-        "downloadUrl": "https://archive.org/download/DarkWasTheNightColdWasTheGround-BlindWillieJohnson/DarkWasTheNightColdWasTheGround-BlindWillieJohnson.mp3",
-        "creator": {
-          "name": "Blind Willie Johnson"
-        },
-        "source": {
-          "providerId": "archive_early_recorded_blues",
-          "providerName": "Early Acoustic Delta & Country Blues Vault",
-          "resourceUrl": "https://archive.org/details/DarkWasTheNightColdWasTheGround-BlindWillieJohnson",
-          "externalId": "DarkWasTheNightColdWasTheGround-BlindWillieJohnson"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://archive.org/details/georgeblood",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "format": "mp3",
-          "isStreamable": true,
-          "tags": [
-            "delta-blues",
-            "acoustic-blues",
-            "78rpm",
-            "country-blues",
-            "slide-guitar",
-            "american-roots"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "ia-blues-03-country-blues",
-        "title": "Gérard De Smaele - CORNFIELDS - American Folk Songs & Banjo Tunes [Historic Delta Blues 78 RPM]",
-        "category": "audio",
-        "description": "Pioneering early 20th century American acoustic blues recording from original 78 RPM shellac discs. Features bottleneck slide guitar, field hollers, and Mississippi Delta roots music.",
-        "thumbnailUrl": "https://archive.org/services/img/03-country-blues",
-        "previewUrl": "https://archive.org/details/03-country-blues",
-        "downloadUrl": "https://archive.org/download/03-country-blues/03-country-blues.mp3",
-        "creator": {
-          "name": "Gérard De Smaele"
-        },
-        "source": {
-          "providerId": "archive_early_recorded_blues",
-          "providerName": "Early Acoustic Delta & Country Blues Vault",
-          "resourceUrl": "https://archive.org/details/03-country-blues",
-          "externalId": "03-country-blues"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://archive.org/details/georgeblood",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "format": "mp3",
-          "isStreamable": true,
-          "year": 2003,
-          "tags": [
-            "delta-blues",
-            "acoustic-blues",
-            "78rpm",
-            "country-blues",
-            "slide-guitar",
-            "american-roots"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "ia-blues-bigroadbluesradio",
-        "title": "Big Road Blues Radio [Historic Delta Blues 78 RPM]",
-        "category": "audio",
-        "description": "Pioneering early 20th century American acoustic blues recording from original 78 RPM shellac discs. Features bottleneck slide guitar, field hollers, and Mississippi Delta roots music.",
-        "thumbnailUrl": "https://archive.org/services/img/bigroadbluesradio",
-        "previewUrl": "https://archive.org/details/bigroadbluesradio",
-        "downloadUrl": "https://archive.org/download/bigroadbluesradio/bigroadbluesradio.mp3",
-        "creator": {
-          "name": "Jeff Harris"
-        },
-        "source": {
-          "providerId": "archive_early_recorded_blues",
-          "providerName": "Early Acoustic Delta & Country Blues Vault",
-          "resourceUrl": "https://archive.org/details/bigroadbluesradio",
-          "externalId": "bigroadbluesradio"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://archive.org/details/georgeblood",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "format": "mp3",
-          "isStreamable": true,
-          "year": 2018,
-          "tags": [
-            "delta-blues",
-            "acoustic-blues",
-            "78rpm",
-            "country-blues",
-            "slide-guitar",
-            "american-roots"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "ia-blues-HowUWantDone",
-        "title": "How You Want It Done [Historic Delta Blues 78 RPM]",
-        "category": "audio",
-        "description": "Pioneering early 20th century American acoustic blues recording from original 78 RPM shellac discs. Features bottleneck slide guitar, field hollers, and Mississippi Delta roots music.",
-        "thumbnailUrl": "https://archive.org/services/img/HowUWantDone",
-        "previewUrl": "https://archive.org/details/HowUWantDone",
-        "downloadUrl": "https://archive.org/download/HowUWantDone/HowUWantDone.mp3",
-        "creator": {
-          "name": "Big Bill"
-        },
-        "source": {
-          "providerId": "archive_early_recorded_blues",
-          "providerName": "Early Acoustic Delta & Country Blues Vault",
-          "resourceUrl": "https://archive.org/details/HowUWantDone",
-          "externalId": "HowUWantDone"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://archive.org/details/georgeblood",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "format": "mp3",
-          "isStreamable": true,
-          "tags": [
-            "delta-blues",
-            "acoustic-blues",
-            "78rpm",
-            "country-blues",
-            "slide-guitar",
-            "american-roots"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "ia-blues-Blind_Blake-You_Gonna_Quit",
-        "title": "You're Gonna Quit Me Blues [Historic Delta Blues 78 RPM]",
-        "category": "audio",
-        "description": "Pioneering early 20th century American acoustic blues recording from original 78 RPM shellac discs. Features bottleneck slide guitar, field hollers, and Mississippi Delta roots music.",
-        "thumbnailUrl": "https://archive.org/services/img/Blind_Blake-You_Gonna_Quit",
-        "previewUrl": "https://archive.org/details/Blind_Blake-You_Gonna_Quit",
-        "downloadUrl": "https://archive.org/download/Blind_Blake-You_Gonna_Quit/Blind_Blake-You_Gonna_Quit.mp3",
-        "creator": {
-          "name": "Blind Blake"
-        },
-        "source": {
-          "providerId": "archive_early_recorded_blues",
-          "providerName": "Early Acoustic Delta & Country Blues Vault",
-          "resourceUrl": "https://archive.org/details/Blind_Blake-You_Gonna_Quit",
-          "externalId": "Blind_Blake-You_Gonna_Quit"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://archive.org/details/georgeblood",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "format": "mp3",
-          "isStreamable": true,
-          "tags": [
-            "delta-blues",
-            "acoustic-blues",
-            "78rpm",
-            "country-blues",
-            "slide-guitar",
-            "american-roots"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "ia-blues-mr_duke_keys",
-        "title": "Mr Duke - I Can't Find My Keys (emp037) [Historic Delta Blues 78 RPM]",
-        "category": "audio",
-        "description": "Pioneering early 20th century American acoustic blues recording from original 78 RPM shellac discs. Features bottleneck slide guitar, field hollers, and Mississippi Delta roots music.",
-        "thumbnailUrl": "https://archive.org/services/img/mr_duke_keys",
-        "previewUrl": "https://archive.org/details/mr_duke_keys",
-        "downloadUrl": "https://archive.org/download/mr_duke_keys/mr_duke_keys.mp3",
-        "creator": {
-          "name": "Delta Blues Pioneer"
-        },
-        "source": {
-          "providerId": "archive_early_recorded_blues",
-          "providerName": "Early Acoustic Delta & Country Blues Vault",
-          "resourceUrl": "https://archive.org/details/mr_duke_keys",
-          "externalId": "mr_duke_keys"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://archive.org/details/georgeblood",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "format": "mp3",
-          "isStreamable": true,
-          "tags": [
-            "delta-blues",
-            "acoustic-blues",
-            "78rpm",
-            "country-blues",
-            "slide-guitar",
-            "american-roots"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "ia-blues-SR0005RCBC",
-        "title": "Wicked Women [Historic Delta Blues 78 RPM]",
-        "category": "audio",
-        "description": "Pioneering early 20th century American acoustic blues recording from original 78 RPM shellac discs. Features bottleneck slide guitar, field hollers, and Mississippi Delta roots music.",
-        "thumbnailUrl": "https://archive.org/services/img/SR0005RCBC",
-        "previewUrl": "https://archive.org/details/SR0005RCBC",
-        "downloadUrl": "https://archive.org/download/SR0005RCBC/SR0005RCBC.mp3",
-        "creator": {
-          "name": "Rebel Country Blues Child"
-        },
-        "source": {
-          "providerId": "archive_early_recorded_blues",
-          "providerName": "Early Acoustic Delta & Country Blues Vault",
-          "resourceUrl": "https://archive.org/details/SR0005RCBC",
-          "externalId": "SR0005RCBC"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://archive.org/details/georgeblood",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "format": "mp3",
-          "isStreamable": true,
-          "tags": [
-            "delta-blues",
-            "acoustic-blues",
-            "78rpm",
-            "country-blues",
-            "slide-guitar",
-            "american-roots"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "ia-blues-SonHouseMyBlackMamaPart1",
-        "title": "\"My Black Mama\" (Part 1) [Historic Delta Blues 78 RPM]",
-        "category": "audio",
-        "description": "Pioneering early 20th century American acoustic blues recording from original 78 RPM shellac discs. Features bottleneck slide guitar, field hollers, and Mississippi Delta roots music.",
-        "thumbnailUrl": "https://archive.org/services/img/SonHouseMyBlackMamaPart1",
-        "previewUrl": "https://archive.org/details/SonHouseMyBlackMamaPart1",
-        "downloadUrl": "https://archive.org/download/SonHouseMyBlackMamaPart1/SonHouseMyBlackMamaPart1.mp3",
-        "creator": {
-          "name": "Son House"
-        },
-        "source": {
-          "providerId": "archive_early_recorded_blues",
-          "providerName": "Early Acoustic Delta & Country Blues Vault",
-          "resourceUrl": "https://archive.org/details/SonHouseMyBlackMamaPart1",
-          "externalId": "SonHouseMyBlackMamaPart1"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://archive.org/details/georgeblood",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "format": "mp3",
-          "isStreamable": true,
-          "tags": [
-            "delta-blues",
-            "acoustic-blues",
-            "78rpm",
-            "country-blues",
-            "slide-guitar",
-            "american-roots"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-live__coco66_on_june_11_2011_anti-nuke_day-9359",
-        "title": "live @ Coco66 on 6/11/11 (anti-nuke day)",
-        "category": "music",
-        "description": "Live at Coco66 on June 11, 2011 in Brooklyn.   This was Darius's trial by fire into the world of Winter's Womb  Sharing the bill with the following bands: Den Sven Fanan Multitudes Stats Ahleuchatistas  ...",
-        "thumbnailUrl": "https://archive.org/services/img/live__Coco66_on_June_11_2011_anti-nuke_day-9359",
-        "previewUrl": "/api/v1/audio-stream?iaId=live__Coco66_on_June_11_2011_anti-nuke_day-9359",
-        "downloadUrl": "https://archive.org/details/live__Coco66_on_June_11_2011_anti-nuke_day-9359",
-        "creator": {
-          "name": "Winter's Womb"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/live__Coco66_on_June_11_2011_anti-nuke_day-9359",
-          "externalId": "live__Coco66_on_June_11_2011_anti-nuke_day-9359"
-        },
-        "license": {
-          "type": "Creative Commons BY-NC-SA",
-          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/us/",
-          "commercialAllowed": false,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2011,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=live__Coco66_on_June_11_2011_anti-nuke_day-9359",
-          "thumbnail": "https://archive.org/services/img/live__Coco66_on_June_11_2011_anti-nuke_day-9359"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-live_at_dcac_3401-8285",
-        "title": "live at DCAC 3/4/01",
-        "category": "music",
-        "description": "Trance And The Arcade live at DCAC (District Of Columbia Art Center) on March 4, 2001.   ...",
-        "thumbnailUrl": "https://archive.org/services/img/live_at_DCAC_3401-8285",
-        "previewUrl": "/api/v1/audio-stream?iaId=live_at_DCAC_3401-8285",
-        "downloadUrl": "https://archive.org/details/live_at_DCAC_3401-8285",
-        "creator": {
-          "name": "Trance And The Arcade"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/live_at_DCAC_3401-8285",
-          "externalId": "live_at_DCAC_3401-8285"
-        },
-        "license": {
-          "type": "Creative Commons BY-NC-SA",
-          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/us/",
-          "commercialAllowed": false,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2001,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=live_at_DCAC_3401-8285",
-          "thumbnail": "https://archive.org/services/img/live_at_DCAC_3401-8285"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-live_at_goodbye_blue_monday_82312-12364",
-        "title": "live at Goodbye Blue Monday 8/23/12",
-        "category": "music",
-        "description": "Chuck Bettis and Joe Merolla duo debuted at Goodbye Blue Monday on August 23, 2012.  Both play in Silver Process , which re-imagines soundtracks to films.    ...",
-        "thumbnailUrl": "https://archive.org/services/img/live_at_Goodbye_Blue_Monday_82312-12364",
-        "previewUrl": "/api/v1/audio-stream?iaId=live_at_Goodbye_Blue_Monday_82312-12364",
-        "downloadUrl": "https://archive.org/details/live_at_Goodbye_Blue_Monday_82312-12364",
-        "creator": {
-          "name": "Chuck Bettis & Joe Merolla"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/live_at_Goodbye_Blue_Monday_82312-12364",
-          "externalId": "live_at_Goodbye_Blue_Monday_82312-12364"
-        },
-        "license": {
-          "type": "Creative Commons BY-NC-SA",
-          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/us/",
-          "commercialAllowed": false,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2012,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=live_at_Goodbye_Blue_Monday_82312-12364",
-          "thumbnail": "https://archive.org/services/img/live_at_Goodbye_Blue_Monday_82312-12364"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-hard_limits-9087",
-        "title": "Hard Limits",
-        "category": "music",
-        "description": "After the noisy hiss hell of \"Say It Like It Feels\" Rotor Perdition (SD, French, 30) chose to explore the poppier, more melodic potentials of his formula (one overdriven synth). He told us \"Hard Limits\" was heavily influenced by his non-iro...",
-        "thumbnailUrl": "https://archive.org/services/img/Hard_Limits-9087",
-        "previewUrl": "/api/v1/audio-stream?iaId=Hard_Limits-9087",
-        "downloadUrl": "https://archive.org/details/Hard_Limits-9087",
-        "creator": {
-          "name": "Rotor Perdition"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/Hard_Limits-9087",
-          "externalId": "Hard_Limits-9087"
-        },
-        "license": {
-          "type": "Creative Commons BY-NC-SA",
-          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/us/",
-          "commercialAllowed": false,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2011,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=Hard_Limits-9087",
-          "thumbnail": "https://archive.org/services/img/Hard_Limits-9087"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-het_tuig_aanpakken-8369",
-        "title": "Het Tuig Aanpakken",
-        "category": "music",
-        "description": "DIY superherroes super robber, roaming rabecca and she-man putting highly danceable and noisy attack and -defense strategies to prepare u for your own missions. ' a blend of electronic & bended devices, samples, drums, bass, synth guitar an...",
-        "thumbnailUrl": "https://archive.org/services/img/Het_Tuig_Aanpakken-8369",
-        "previewUrl": "/api/v1/audio-stream?iaId=Het_Tuig_Aanpakken-8369",
-        "downloadUrl": "https://archive.org/details/Het_Tuig_Aanpakken-8369",
-        "creator": {
-          "name": "Redtheplaneeet!!!, Redtheplaneeet"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/Het_Tuig_Aanpakken-8369",
-          "externalId": "Het_Tuig_Aanpakken-8369"
-        },
-        "license": {
-          "type": "Creative Commons BY-NC",
-          "url": "http://creativecommons.org/licenses/by-nc-nd/3.0/",
-          "commercialAllowed": false,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2011,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=Het_Tuig_Aanpakken-8369",
-          "thumbnail": "https://archive.org/services/img/Het_Tuig_Aanpakken-8369"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-hardcore_beach_crimes-5716",
-        "title": "Hardcore Beach Crimes",
-        "category": "music",
-        "description": "Original independent recording by Narwhalz (of sound) published under Creative Commons on Free Music Archive.",
-        "thumbnailUrl": "https://archive.org/services/img/Hardcore_Beach_Crimes-5716",
-        "previewUrl": "/api/v1/audio-stream?iaId=Hardcore_Beach_Crimes-5716",
-        "downloadUrl": "https://archive.org/details/Hardcore_Beach_Crimes-5716",
-        "creator": {
-          "name": "Narwhalz (of sound)"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/Hardcore_Beach_Crimes-5716",
-          "externalId": "Hardcore_Beach_Crimes-5716"
-        },
-        "license": {
-          "type": "Creative Commons BY-NC-SA",
-          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/us/",
-          "commercialAllowed": false,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2009,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=Hardcore_Beach_Crimes-5716",
-          "thumbnail": "https://archive.org/services/img/Hardcore_Beach_Crimes-5716"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-happy_birthday_beyonce-9992",
-        "title": "Happy Birthday Beyonce",
-        "category": "music",
-        "description": "On the occasion of her 30th birthday, we pass on a Bon Anniversaire to Beyonce Knowles, and wish her all the best of luck and happiness. Let's raise a glass to the next 30 years of soulful R & B.   By way of wishing her happy birthday, we t...",
-        "thumbnailUrl": "https://archive.org/services/img/Happy_Birthday_Beyonce-9992",
-        "previewUrl": "/api/v1/audio-stream?iaId=Happy_Birthday_Beyonce-9992",
-        "downloadUrl": "https://archive.org/details/Happy_Birthday_Beyonce-9992",
-        "creator": {
-          "name": "Phizmiz & KIllerwhale"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/Happy_Birthday_Beyonce-9992",
-          "externalId": "Happy_Birthday_Beyonce-9992"
-        },
-        "license": {
-          "type": "Creative Commons BY-NC-SA",
-          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/",
-          "commercialAllowed": false,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2011,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=Happy_Birthday_Beyonce-9992",
-          "thumbnail": "https://archive.org/services/img/Happy_Birthday_Beyonce-9992"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-hall_of_fame_1997-1717",
-        "title": "Hall of Fame (1997)",
-        "category": "music",
-        "description": "New York Citys Hall of Fame tread similar aesthetic waters as the psyche folk of Tower Recordings and the improvised partially composed music of the Dead C. Their debut is filled with primitive rhythms, droning violin, skipping records, unp...",
-        "thumbnailUrl": "https://archive.org/services/img/Hall_of_Fame_1997-1717",
-        "previewUrl": "/api/v1/audio-stream?iaId=Hall_of_Fame_1997-1717",
-        "downloadUrl": "https://archive.org/details/Hall_of_Fame_1997-1717",
-        "creator": {
-          "name": "Hall Of Fame"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/Hall_of_Fame_1997-1717",
-          "externalId": "Hall_of_Fame_1997-1717"
-        },
-        "license": {
-          "type": "Creative Commons BY-NC",
-          "url": "http://creativecommons.org/licenses/by-nc-nd/3.0/us/",
-          "commercialAllowed": false,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1997,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=Hall_of_Fame_1997-1717",
-          "thumbnail": "https://archive.org/services/img/Hall_of_Fame_1997-1717"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-heavensgate-10356",
-        "title": "Live at WFMU on Beastin' The Airwaves with Keili on October 23, 2011",
-        "category": "music",
-        "description": "Original independent recording by Heaven's Gate published under Creative Commons on Free Music Archive.",
-        "thumbnailUrl": "https://archive.org/services/img/HeavensGate-10356",
-        "previewUrl": "/api/v1/audio-stream?iaId=HeavensGate-10356",
-        "downloadUrl": "https://archive.org/details/HeavensGate-10356",
-        "creator": {
-          "name": "Heaven's Gate"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/HeavensGate-10356",
-          "externalId": "HeavensGate-10356"
-        },
-        "license": {
-          "type": "Creative Commons BY-NC",
-          "url": "http://creativecommons.org/licenses/by-nc-nd/3.0/us/",
-          "commercialAllowed": false,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2011,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=HeavensGate-10356",
-          "thumbnail": "https://archive.org/services/img/HeavensGate-10356"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "fma-harveymilk-1674",
-        "title": "Harvey Milk Live WFMU SXSW Showcase at Spiro's in Austin, TX on 3/14/2008",
-        "category": "music",
-        "description": "Harvey Milk are without a doubt one band I am obsessed with, and the funny thing is that most people I meet who are fans of them are also obsessed with them; it seems that there are few casual listeners to their music. Born in Athens, GA in...",
-        "thumbnailUrl": "https://archive.org/services/img/HarveyMilk-1674",
-        "previewUrl": "/api/v1/audio-stream?iaId=HarveyMilk-1674",
-        "downloadUrl": "https://archive.org/details/HarveyMilk-1674",
-        "creator": {
-          "name": "Harvey Milk"
-        },
-        "source": {
-          "providerId": "free_music_archive",
-          "providerName": "Free Music Archive (FMA)",
-          "resourceUrl": "https://archive.org/details/HarveyMilk-1674",
-          "externalId": "HarveyMilk-1674"
-        },
-        "license": {
-          "type": "Creative Commons BY-NC-SA",
-          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/",
-          "commercialAllowed": false,
-          "attributionRequired": true,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 2008,
-          "format": "Audio / MP3",
-          "collection": "Free Music Archive",
-          "streamingProxyUrl": "/api/v1/audio-stream?iaId=HarveyMilk-1674",
-          "thumbnail": "https://archive.org/services/img/HarveyMilk-1674"
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-calendarofdinner00neiluoft",
-        "title": "A calendar of dinners, with 615 recipes",
-        "category": "food",
-        "description": "Includes index,The story of Crisco (p. 9-21)...",
-        "thumbnailUrl": "https://archive.org/services/img/calendarofdinner00neiluoft",
-        "previewUrl": "https://archive.org/details/calendarofdinner00neiluoft",
-        "downloadUrl": "https://archive.org/details/calendarofdinner00neiluoft",
-        "creator": {
-          "name": "Neil, Marion Harris"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/calendarofdinner00neiluoft",
-          "externalId": "calendarofdinner00neiluoft"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1922,
-          "author": "Neil, Marion Harris",
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/calendarofdinner00neiluoft",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-whatmrsfisherkno00fishrich",
-        "title": "What Mrs. Fisher knows about old southern cooking, soups, pickles, preserves, etc. ..",
-        "category": "food",
-        "description": "72 p. 19 cm...",
-        "thumbnailUrl": "https://archive.org/services/img/whatmrsfisherkno00fishrich",
-        "previewUrl": "https://archive.org/details/whatmrsfisherkno00fishrich",
-        "downloadUrl": "https://archive.org/details/whatmrsfisherkno00fishrich",
-        "creator": {
-          "name": "Fisher, Abby"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/whatmrsfisherkno00fishrich",
-          "externalId": "whatmrsfisherkno00fishrich"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1881,
-          "author": "Fisher, Abby",
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/whatmrsfisherkno00fishrich",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-americwomanscook00delirich",
-        "title": "The American woman's cook book",
-        "category": "food",
-        "description": "vi, 816 p. : 21 cm,\"From the Delineator cook book, edited by Delineator Institute, Mildred Maddocks Bentley, director.\",Includes index...",
-        "thumbnailUrl": "https://archive.org/services/img/americwomanscook00delirich",
-        "previewUrl": "https://archive.org/details/americwomanscook00delirich",
-        "downloadUrl": "https://archive.org/details/americwomanscook00delirich",
-        "creator": {
-          "name": "Delineator Home Institute. Delineator cook book, Berolzheimer, Ruth"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/americwomanscook00delirich",
-          "externalId": "americwomanscook00delirich"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1939,
-          "author": [
-            "Delineator Home Institute. Delineator cook book",
-            "Berolzheimer, Ruth"
-          ],
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/americwomanscook00delirich",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-thousandwaystopl00weav",
-        "title": "A thousand ways to please a husband with Bettina's best recipes",
-        "category": "food",
-        "description": "OCLC number: ocm00349841...",
-        "thumbnailUrl": "https://archive.org/services/img/thousandwaystopl00weav",
-        "previewUrl": "https://archive.org/details/thousandwaystopl00weav",
-        "downloadUrl": "https://archive.org/details/thousandwaystopl00weav",
-        "creator": {
-          "name": "Weaver, Louise Bennett, Le Cron, Helen Cowles, joint author"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/thousandwaystopl00weav",
-          "externalId": "thousandwaystopl00weav"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1917,
-          "author": [
-            "Weaver, Louise Bennett",
-            "Le Cron, Helen Cowles, joint author"
-          ],
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/thousandwaystopl00weav",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-cookingscholbost00farmrich",
-        "title": "The Boston cooking-school cook book",
-        "category": "food",
-        "description": "xl, 656 p. 20 cm,Includes index...",
-        "thumbnailUrl": "https://archive.org/services/img/cookingscholbost00farmrich",
-        "previewUrl": "https://archive.org/details/cookingscholbost00farmrich",
-        "downloadUrl": "https://archive.org/details/cookingscholbost00farmrich",
-        "creator": {
-          "name": "Farmer, Fannie Merritt, 1857-1915"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/cookingscholbost00farmrich",
-          "externalId": "cookingscholbost00farmrich"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1918,
-          "author": "Farmer, Fannie Merritt, 1857-1915",
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/cookingscholbost00farmrich",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-theartofcookery",
-        "title": "The Art Of Cookery",
-        "category": "food",
-        "description": "Written in 1747, Hannah Glasse's (1708–1770)  The Art of Cookery made Plain and Easy  represents one of the most important references for culinary practice in England and the American colonies during the latter half of the 18th century and ...",
-        "thumbnailUrl": "https://archive.org/services/img/TheArtOfCookery",
-        "previewUrl": "https://archive.org/details/TheArtOfCookery",
-        "downloadUrl": "https://archive.org/details/TheArtOfCookery",
-        "creator": {
-          "name": "Hannah Glasse"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/TheArtOfCookery",
-          "externalId": "TheArtOfCookery"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1747,
-          "author": "Hannah Glasse",
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/TheArtOfCookery",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-manualforarmycoo1917unit",
-        "title": "Manual for army cooks, 1916",
-        "category": "food",
-        "description": "270 p. :...",
-        "thumbnailUrl": "https://archive.org/services/img/manualforarmycoo1917unit",
-        "previewUrl": "https://archive.org/details/manualforarmycoo1917unit",
-        "downloadUrl": "https://archive.org/details/manualforarmycoo1917unit",
-        "creator": {
-          "name": "United States. War Dept"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/manualforarmycoo1917unit",
-          "externalId": "manualforarmycoo1917unit"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1917,
-          "author": "United States. War Dept",
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/manualforarmycoo1917unit",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-firelesscookbook00mitcrich",
-        "title": "The fireless cook book : a manual of the construction and use of appliances for cooking by retained heat : with 250 recipes",
-        "category": "food",
-        "description": "xii, 315 p. : 20 cm,Left blank for \"Additional recipes\": p. 277-296,Includes indexes...",
-        "thumbnailUrl": "https://archive.org/services/img/firelesscookbook00mitcrich",
-        "previewUrl": "https://archive.org/details/firelesscookbook00mitcrich",
-        "downloadUrl": "https://archive.org/details/firelesscookbook00mitcrich",
-        "creator": {
-          "name": "Mitchell, Margaret Johnes, b. 1869"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/firelesscookbook00mitcrich",
-          "externalId": "firelesscookbook00mitcrich"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1909,
-          "author": "Mitchell, Margaret Johnes, b. 1869",
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/firelesscookbook00mitcrich",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-cu31924003575432",
-        "title": "The art of German cooking and baking",
-        "category": "food",
-        "description": "The metadata below describe the original scanning. Follow the \"All Files: HTTP\" link in the \"View the book\" box to the left to find XML files that contain more metadata about the original images and the derived formats (OCR results, PDF etc...",
-        "thumbnailUrl": "https://archive.org/services/img/cu31924003575432",
-        "previewUrl": "https://archive.org/details/cu31924003575432",
-        "downloadUrl": "https://archive.org/details/cu31924003575432",
-        "creator": {
-          "name": "Meier, Lina Wachtelborn"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/cu31924003575432",
-          "externalId": "cu31924003575432"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1922,
-          "author": "Meier, Lina Wachtelborn",
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/cu31924003575432",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-fivecentmeals00amer",
-        "title": "Five cent meals ...",
-        "category": "food",
-        "description": "\"Part of the book Low cost cooking.\"...",
-        "thumbnailUrl": "https://archive.org/services/img/fivecentmeals00amer",
-        "previewUrl": "https://archive.org/details/fivecentmeals00amer",
-        "downloadUrl": "https://archive.org/details/fivecentmeals00amer",
-        "creator": {
-          "name": "American School of Home Economics"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/fivecentmeals00amer",
-          "externalId": "fivecentmeals00amer"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1914,
-          "author": "American School of Home Economics",
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/fivecentmeals00amer",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-cooksoracleconta00kitc",
-        "title": "The cook's oracle : containing receipts for plain cookery on the most economical plan for private families, also the art of composing the most simple, and most highly finished broths, gravies, soups, sauces, store sauces, and flavoring essences : the quantity of each article is accurately stated by weight and measure, the whole being the result of actual experiments instituted in the kitchen of a physician",
-        "category": "food",
-        "description": "Includes bibliographical references and index...",
-        "thumbnailUrl": "https://archive.org/services/img/cooksoracleconta00kitc",
-        "previewUrl": "https://archive.org/details/cooksoracleconta00kitc",
-        "downloadUrl": "https://archive.org/details/cooksoracleconta00kitc",
-        "creator": {
-          "name": "Kitchiner, William, 1775?-1827"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/cooksoracleconta00kitc",
-          "externalId": "cooksoracleconta00kitc"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1822,
-          "author": "Kitchiner, William, 1775?-1827",
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/cooksoracleconta00kitc",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-peoplescookbookb00tayl",
-        "title": "The people's cook book. Being a collection of nearly one thousand valuable cooking recipes ..",
-        "category": "food",
-        "description": "All about eggs. One hundred and fifty ways of cooking and serving eggs for breakfast, dinners, etc., as entrées, entremets, cakes, creams, and drinks, 78 pages at end...",
-        "thumbnailUrl": "https://archive.org/services/img/peoplescookbookb00tayl",
-        "previewUrl": "https://archive.org/details/peoplescookbookb00tayl",
-        "downloadUrl": "https://archive.org/details/peoplescookbookb00tayl",
-        "creator": {
-          "name": "Taylor, Jennie, Mrs., comp"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/peoplescookbookb00tayl",
-          "externalId": "peoplescookbookb00tayl"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1882,
-          "author": "Taylor, Jennie, Mrs., comp",
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/peoplescookbookb00tayl",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-oxfordsymposiumonfoodcookery",
-        "title": "Feasting and fasting : proceedings [of the Oxford Symposium on Food & Cookery]",
-        "category": "food",
-        "description": "Oxford Symposium on Food & Cookery, 1990 : feasting and fasting : proceedings...",
-        "thumbnailUrl": "https://archive.org/services/img/OxfordSymposiumOnFoodCookery",
-        "previewUrl": "https://archive.org/details/OxfordSymposiumOnFoodCookery",
-        "downloadUrl": "https://archive.org/details/OxfordSymposiumOnFoodCookery",
-        "creator": {
-          "name": "Oxford Symposium on Food and Cookery (1990), Walker, Harlan"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/OxfordSymposiumOnFoodCookery",
-          "externalId": "OxfordSymposiumOnFoodCookery"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1990,
-          "author": [
-            "Oxford Symposium on Food and Cookery (1990)",
-            "Walker, Harlan"
-          ],
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/OxfordSymposiumOnFoodCookery",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-more-with-less-cookbook",
-        "title": "More With Less Cookbook",
-        "category": "food",
-        "description": "\"The  More-with-Less Cookbook  is a  C ookbook  commissioned by Mennonite Central committee  in 1976 with the goal of \"helping Christians respond in a caring-sharing way in a world with limited food resources\"  and \"to challenge North Ameri...",
-        "thumbnailUrl": "https://archive.org/services/img/more-with-less-cookbook",
-        "previewUrl": "https://archive.org/details/more-with-less-cookbook",
-        "downloadUrl": "https://archive.org/details/more-with-less-cookbook",
-        "creator": {
-          "name": "Doris Janzen Longrace"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/more-with-less-cookbook",
-          "externalId": "more-with-less-cookbook"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1976,
-          "author": "Doris Janzen Longrace",
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/more-with-less-cookbook",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      },
-      {
-        "id": "cookbook-onethousandoneus00ewelrich",
-        "title": "One thousand and one useful recipes and valuable hints about cooking and housekeeping",
-        "category": "food",
-        "description": "192 p. : 23 cm,Issued by Ewell's X.L. Dairy Bottled Milk Company...",
-        "thumbnailUrl": "https://archive.org/services/img/onethousandoneus00ewelrich",
-        "previewUrl": "https://archive.org/details/onethousandoneus00ewelrich",
-        "downloadUrl": "https://archive.org/details/onethousandoneus00ewelrich",
-        "creator": {
-          "name": "Ewell's X.L. Dairy Bottled Milk Company"
-        },
-        "source": {
-          "providerId": "archive_historic_cookbooks",
-          "providerName": "Historic Cookbooks & Gastronomy Library",
-          "resourceUrl": "https://archive.org/details/onethousandoneus00ewelrich",
-          "externalId": "onethousandoneus00ewelrich"
-        },
-        "license": {
-          "type": "Public Domain / CC0",
-          "url": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "commercialAllowed": true,
-          "attributionRequired": false,
-          "modificationAllowed": true,
-          "verified": true
-        },
-        "attributes": {
-          "year": 1890,
-          "author": "Ewell's X.L. Dairy Bottled Milk Company",
-          "format": "Historic Book (PDF/EPUB)",
-          "thumbnail": "https://archive.org/services/img/onethousandoneus00ewelrich",
-          "tags": [
-            "cookbooks",
-            "recipes",
-            "culinary-history",
-            "gastronomy",
-            "food"
-          ]
-        },
-        "verification": {
-          "metadataVerified": true,
-          "resourceReachable": true,
-          "integrityVerified": false
-        }
-      }
-    ]
   }
 ]

@@ -164,13 +164,14 @@ export class WebSocketClient {
     const callbacks = searchId ? this.activeSearchCallbacks.get(searchId) : null;
 
     switch (msg.type) {
+      case 'LIVE_ACTIVITY_STATS':
       case 'LIVE_QUERY_BROADCAST': {
         this.activityListeners.forEach((fn) =>
           fn({
-            query: msg.query,
-            category: msg.category,
-            providerCount: msg.providerCount,
-            timestamp: msg.timestamp
+            query: msg.query || `${msg.category || 'Federated'} search`,
+            category: msg.category || 'all',
+            providerCount: msg.providerCount || 0,
+            timestamp: msg.timestamp || Date.now()
           })
         );
         break;
