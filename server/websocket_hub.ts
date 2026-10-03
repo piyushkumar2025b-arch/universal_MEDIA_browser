@@ -32,18 +32,20 @@ function isAllowedWebSocketOrigin(origin: string | undefined, hostHeader: string
     // Allow localhost and local loopback
     if (hostname === 'localhost' || hostname === '127.0.0.1') return true;
 
-    // Match Host header
-    if (hostHeader && (host === hostHeader.toLowerCase() || hostname === hostHeader.split(':')[0].toLowerCase())) {
-      return true;
+    // Match exact Host header (the legitimate application deployment origin)
+    if (hostHeader) {
+      const cleanHostHeader = hostHeader.toLowerCase().trim();
+      const hostHeaderWithoutPort = cleanHostHeader.split(':')[0];
+      if (host === cleanHostHeader || hostname === hostHeaderWithoutPort) {
+        return true;
+      }
     }
 
-    // Allow Cloud Run / AI Studio preview domains
-    if (
-      hostname.endsWith('.run.app') ||
-      hostname.endsWith('.ai.studio') ||
-      hostname === 'ai.studio' ||
-      hostname.endsWith('.google.com')
-    ) {
+    // BUG-003: Check explicit configurable allowlist, never trust arbitrary cloud namespaces
+    const configuredAllowlist = process.env.ALLOWED_ORIGINS
+      ? process.env.ALLOWED_ORIGINS.split(',').map(s => s.trim().toLowerCase()).filter(Boolean)
+      : [];
+    if (configuredAllowlist.some(allowed => allowed === origin.toLowerCase() || allowed === hostname)) {
       return true;
     }
 
@@ -63,10 +65,10 @@ export class WebSocketHub {
   private static ipCommands = new Map<string, { count: number; resetTime: number }>();
   private static ipActiveSearches = new Map<string, number>();
 
-  private static MAX_CONNECTIONS_PER_IP = 10;
-  private static MAX_GLOBAL_CONNECTIONS = 150;
-  private static MAX_COMMANDS_PER_IP_MIN = 120;
-  private static MAX_SEARCHES_PER_IP = 4;
+  private static MAX_CONNECTIONS_PER_IP = 50;
+  private static MAX_GLOBAL_CONNECTIONS = 250;
+  private static MAX_COMMANDS_PER_IP_MIN = 240;
+  private static MAX_SEARCHES_PER_IP = 8;
 
   public static getInstance(): WebSocketHub {
     if (!WebSocketHub.instance) {
@@ -123,6 +125,21 @@ export class WebSocketHub {
         return;
       }
       WebSocketHub.ipConnections.set(clientIp, currentIpConns);
+
+      let ipCleanedUp = false;
+      const releaseIpConnection = () => {
+        if (ipCleanedUp) return;
+        ipCleanedUp = true;
+        const count = WebSocketHub.ipConnections.get(clientIp) || 1;
+        if (count <= 1) {
+          WebSocketHub.ipConnections.delete(clientIp);
+        } else {
+          WebSocketHub.ipConnections.set(clientIp, count - 1);
+        }
+      };
+
+      ws.once('close', releaseIpConnection);
+      ws.once('error', releaseIpConnection);
 
       const client = ws as ClientConnection;
       client.isAlive = true;
@@ -185,12 +202,7 @@ export class WebSocketHub {
 
       client.on('close', () => {
         // Decrement IP connection tracker
-        const count = WebSocketHub.ipConnections.get(client.ip) || 1;
-        if (count <= 1) {
-          WebSocketHub.ipConnections.delete(client.ip);
-        } else {
-          WebSocketHub.ipConnections.set(client.ip, count - 1);
-        }
+        releaseIpConnection();
 
         // Release IP active searches
         const currentSearches = WebSocketHub.ipActiveSearches.get(client.ip) || 0;
@@ -223,6 +235,9 @@ export class WebSocketHub {
       });
     }, 30000);
   }
+
+  private static isBenchmarkActive = false;
+  private static lastBenchmarkTime = 0;
 
   private async handleClientMessage(client: ClientConnection, msg: any): Promise<void> {
     const type = typeof msg.type === 'string' ? msg.type.trim() : '';
@@ -290,6 +305,12 @@ export class WebSocketHub {
       }
 
       case 'TEST_PROVIDER': {
+        const token = msg.adminKey || msg.token;
+        const secretKey = process.env.ADMIN_KEY || process.env.SYSTEM_API_KEY;
+        if (process.env.NODE_ENV === 'production' && (!secretKey || token !== secretKey)) {
+          this.sendToClient(client, { type: 'ERROR', error: 'Unauthorized: Provider testing requires administrative authorization in production.' });
+          return;
+        }
         const providerId = typeof msg.providerId === 'string' ? msg.providerId.slice(0, 80) : '';
         const query = typeof msg.query === 'string' ? msg.query.slice(0, 100) : 'space';
         if (!providerId) {
@@ -306,6 +327,16 @@ export class WebSocketHub {
       }
 
       case 'BENCHMARK': {
+        const token = msg.adminKey || msg.token;
+        const secretKey = process.env.ADMIN_KEY || process.env.SYSTEM_API_KEY;
+        if (process.env.NODE_ENV === 'production' && (!secretKey || token !== secretKey)) {
+          this.sendToClient(client, { type: 'ERROR', error: 'Unauthorized: Benchmarking requires administrative authorization in production.' });
+          return;
+        }
+        if (WebSocketHub.isBenchmarkActive || (now - WebSocketHub.lastBenchmarkTime < 15000)) {
+          this.sendToClient(client, { type: 'ERROR', error: 'Server busy: A benchmark is currently executing or in cooldown. Limit 1 concurrent benchmark server-wide.' });
+          return;
+        }
         // Strict benchmark rate limiter (max 3 per 5 minutes per client)
         if (now > client.benchmarkResetTime) {
           client.benchmarkCount = 1;
@@ -320,7 +351,13 @@ export class WebSocketHub {
             return;
           }
         }
-        await this.handleStreamingBenchmark(client, msg);
+        WebSocketHub.isBenchmarkActive = true;
+        try {
+          await this.handleStreamingBenchmark(client, msg);
+        } finally {
+          WebSocketHub.isBenchmarkActive = false;
+          WebSocketHub.lastBenchmarkTime = Date.now();
+        }
         break;
       }
 
@@ -442,7 +479,7 @@ export class WebSocketHub {
           const items = await resilientPool.executeProvider(
             providerId,
             query,
-            (q, sig) => PROVIDER_DISPATCH_MAP[providerId](q),
+            (q) => PROVIDER_DISPATCH_MAP[providerId](q),
             4000,
             abortController.signal
           );

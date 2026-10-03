@@ -13,8 +13,8 @@ export const APP_CONFIG = Object.freeze({
   // Media Proxy
   mediaProxy: {
     maxEntries: 1000,
-    upstreamTimeoutMs: 6000,
-    wikimediaTimeoutMs: 8000,
+    upstreamTimeoutMs: 12000,
+    wikimediaTimeoutMs: 12000,
     browserCacheSeconds: 2592000, // 30 days
   },
 

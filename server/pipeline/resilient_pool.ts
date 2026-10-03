@@ -1,4 +1,5 @@
 import { ResourceItem } from '../../src/types/resource';
+import { activeSignalContext } from '../utils/async_context';
 
 export interface ProviderHealth {
   id: string;
@@ -18,12 +19,20 @@ export interface PoolExecutionOptions {
   fastYieldMinTimeMs?: number;
   overallDeadlineMs?: number;
   maxConcurrency?: number;
+  parentSignal?: AbortSignal;
   onBackgroundResult?: (items: ResourceItem[]) => void;
+}
+
+interface InFlightRecord {
+  promise: Promise<ResourceItem[]>;
+  abortController: AbortController;
+  consumers: Set<symbol>;
 }
 
 class ResilientProviderPool {
   private healthMap = new Map<string, ProviderHealth>();
-  private inFlightMap = new Map<string, Promise<ResourceItem[]>>();
+  // BUG-002: Track consumers per in-flight request for consumer-aware cancellation
+  private inFlightMap = new Map<string, InFlightRecord>();
   private circuitCooldownMs = 45000; // 45 seconds cooldown before half-open test
   private maxConsecutiveFailures = 3;
 
@@ -83,6 +92,8 @@ class ResilientProviderPool {
   /**
    * Resilient execute: coalesces duplicate in-flight requests, respects circuit breaker,
    * enforces timeout, and actively aborts underlying network requests on timeout.
+   * BUG-002: Employs consumer-aware cancellation so one cancelled caller does not cancel
+   * shared upstream work needed by another client.
    */
   public async executeProvider(
     providerId: string,
@@ -92,25 +103,64 @@ class ResilientProviderPool {
     parentSignal?: AbortSignal
   ): Promise<ResourceItem[]> {
     if (this.isCircuitOpen(providerId)) {
-      // Fast bypass when circuit is open
       return [];
     }
 
     const flightKey = `${providerId}:${query.trim().toLowerCase()}`;
+    const consumerId = Symbol();
     const existingFlight = this.inFlightMap.get(flightKey);
+
     if (existingFlight) {
-      // Coalesce request (thundering herd protection)
-      return existingFlight;
+      // Coalesce request with individual consumer registration
+      existingFlight.consumers.add(consumerId);
+
+      if (!parentSignal) {
+        return existingFlight.promise;
+      }
+
+      if (parentSignal.aborted) {
+        existingFlight.consumers.delete(consumerId);
+        if (existingFlight.consumers.size === 0) {
+          existingFlight.abortController.abort();
+        }
+        throw new Error('Caller aborted request');
+      }
+
+      return new Promise<ResourceItem[]>((resolve, reject) => {
+        let isSettled = false;
+        const onAbort = () => {
+          if (isSettled) return;
+          isSettled = true;
+          existingFlight.consumers.delete(consumerId);
+          // Only abort upstream if all consumers have unsubscribed
+          if (existingFlight.consumers.size === 0) {
+            existingFlight.abortController.abort();
+          }
+          reject(new Error('Operation cancelled by client'));
+        };
+
+        parentSignal.addEventListener('abort', onAbort, { once: true });
+
+        existingFlight.promise.then(
+          (items) => {
+            if (isSettled) return;
+            isSettled = true;
+            parentSignal.removeEventListener('abort', onAbort);
+            resolve(items);
+          },
+          (err) => {
+            if (isSettled) return;
+            isSettled = true;
+            parentSignal.removeEventListener('abort', onAbort);
+            reject(err);
+          }
+        );
+      });
     }
 
+    // New in-flight request
     const abortController = new AbortController();
-    if (parentSignal) {
-      if (parentSignal.aborted) {
-        abortController.abort();
-      } else {
-        parentSignal.addEventListener('abort', () => abortController.abort(), { once: true });
-      }
-    }
+    const consumers = new Set<symbol>([consumerId]);
 
     const promise = (async () => {
       const start = Date.now();
@@ -118,21 +168,23 @@ class ResilientProviderPool {
       try {
         const timeoutPromise = new Promise<never>((_, reject) => {
           timer = setTimeout(() => {
-            // BUG-003: Actively abort the underlying network fetch!
             abortController.abort();
             reject(new Error(`The operation was aborted due to timeout (${timeoutMs}ms)`));
           }, timeoutMs);
         });
 
-        const items = await Promise.race([
-          queryFn(query, abortController.signal),
-          timeoutPromise
-        ]);
+        // BUG-001: Propagate signal through activeSignalContext so fetch calls inherit it
+        const items = await activeSignalContext.run(abortController.signal, () =>
+          Promise.race([
+            queryFn(query, abortController.signal),
+            timeoutPromise
+          ])
+        );
+
         const latency = Date.now() - start;
         this.recordSuccess(providerId, latency);
         return items;
       } catch (err: any) {
-        // Ensure underlying request is aborted
         abortController.abort();
         this.recordFailure(providerId, err.message || 'Unknown provider error');
         throw err;
@@ -142,8 +194,54 @@ class ResilientProviderPool {
       }
     })();
 
-    this.inFlightMap.set(flightKey, promise);
-    return promise;
+    const flightRecord: InFlightRecord = {
+      promise,
+      abortController,
+      consumers
+    };
+    this.inFlightMap.set(flightKey, flightRecord);
+
+    if (!parentSignal) {
+      return promise;
+    }
+
+    if (parentSignal.aborted) {
+      consumers.delete(consumerId);
+      if (consumers.size === 0) {
+        abortController.abort();
+      }
+      throw new Error('Caller aborted request');
+    }
+
+    return new Promise<ResourceItem[]>((resolve, reject) => {
+      let isSettled = false;
+      const onAbort = () => {
+        if (isSettled) return;
+        isSettled = true;
+        consumers.delete(consumerId);
+        if (consumers.size === 0) {
+          abortController.abort();
+        }
+        reject(new Error('Operation cancelled by client'));
+      };
+
+      parentSignal.addEventListener('abort', onAbort, { once: true });
+
+      promise.then(
+        (items) => {
+          if (isSettled) return;
+          isSettled = true;
+          parentSignal.removeEventListener('abort', onAbort);
+          resolve(items);
+        },
+        (err) => {
+          if (isSettled) return;
+          isSettled = true;
+          parentSignal.removeEventListener('abort', onAbort);
+          reject(err);
+        }
+      );
+    });
   }
 
   /**
@@ -163,6 +261,7 @@ class ResilientProviderPool {
       fastQuorumCount,
       fastYieldMinTimeMs = 1200,
       maxConcurrency = 16,
+      parentSignal,
       onBackgroundResult
     } = options;
     const errors: string[] = [];
@@ -194,13 +293,22 @@ class ResilientProviderPool {
     const respondedProviders = new Set<string>();
     const federationAbortController = new AbortController();
 
+    // Hook parent signal to federation controller
+    if (parentSignal) {
+      if (parentSignal.aborted) {
+        federationAbortController.abort();
+      } else {
+        parentSignal.addEventListener('abort', () => federationAbortController.abort(), { once: true });
+      }
+    }
+
     let triggerEarlyQuorum: (() => void) | null = null;
     const earlyQuorumPromise = new Promise<void>((resolve) => {
       triggerEarlyQuorum = resolve;
     });
 
     const executeTask = async (pid: string) => {
-      if (isTerminated) return;
+      if (isTerminated || federationAbortController.signal.aborted) return;
       const fn = dispatchMap[pid];
       if (!fn) return;
 
@@ -240,7 +348,7 @@ class ResilientProviderPool {
     };
 
     const worker = async () => {
-      while (!isTerminated && index < sortedProviderIds.length) {
+      while (!isTerminated && !federationAbortController.signal.aborted && index < sortedProviderIds.length) {
         const currentIndex = index++;
         if (currentIndex < sortedProviderIds.length) {
           await executeTask(sortedProviderIds[currentIndex]);

@@ -176,13 +176,11 @@ export function isSafePublicUrl(targetUrl?: string): boolean {
   }
 }
 
-// In-memory DNS validation cache to prevent latency amplification on valid upstream services
-const dnsValidationCache = new Map<string, { isSafe: boolean; expiresAt: number }>();
-
 /**
  * Resolves the hostname via DNS and verifies that NONE of the resolved IP addresses
  * are private, loopback, link-local, multicast, or metadata endpoints.
- * Defends against DNS-rebinding attacks.
+ * Closes the time-of-check / time-of-use DNS rebinding window by verifying DNS immediately
+ * without reusing stale positive cache entries on arbitrary hosts.
  */
 export async function isSafePublicUrlAsync(targetUrl?: string): Promise<boolean> {
   if (!isSafePublicUrl(targetUrl)) {
@@ -201,28 +199,19 @@ export async function isSafePublicUrlAsync(targetUrl?: string): Promise<boolean>
       return !isPrivateIpAddress(hostname);
     }
 
-    const now = Date.now();
-    const cached = dnsValidationCache.get(hostname);
-    if (cached && cached.expiresAt > now) {
-      return cached.isSafe;
-    }
-
-    // Resolve all IPv4 and IPv6 addresses for the hostname
+    // Immediately resolve all IPv4 and IPv6 addresses for the hostname
     const records = await dns.promises.lookup(hostname, { all: true });
     if (!records || records.length === 0) {
-      dnsValidationCache.set(hostname, { isSafe: false, expiresAt: now + 15000 });
       return false;
     }
 
-    // If ANY resolved IP address is private, reject destination
+    // If ANY resolved IP address is private or reserved, reject destination immediately
     for (const record of records) {
       if (isPrivateIpAddress(record.address)) {
-        dnsValidationCache.set(hostname, { isSafe: false, expiresAt: now + 15000 });
         return false;
       }
     }
 
-    dnsValidationCache.set(hostname, { isSafe: true, expiresAt: now + 30000 });
     return true;
   } catch {
     // DNS resolution failure
