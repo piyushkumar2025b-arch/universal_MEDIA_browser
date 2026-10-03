@@ -165,22 +165,22 @@ async function runAudit() {
   assert('BUG-007 WebSocket does not leak raw search query strings to other connected clients', privacyPreserved);
 
   // --- BUG-008 & BUG-010: Download Status Dispatched vs Confirmed ---
-  const mockAnchorItem: ResourceItem = {
+  const mockAnchorItem = {
     id: 'test-doc-1',
     title: 'Test Article',
     category: 'papers',
     source: { providerId: 'arxiv', providerName: 'arXiv', resourceUrl: 'https://arxiv.org/abs/2301.0001' }
-  };
+  } as unknown as ResourceItem;
   const downloadResult = await downloadResourceAsset(mockAnchorItem);
   assert('BUG-010 Direct-anchor fallback returns dispatched status', downloadResult.status === 'dispatched' || downloadResult.status === 'confirmed');
 
   // --- BUG-012: Batch ZIP Limits ---
-  const fakeItems: ResourceItem[] = Array.from({ length: 55 }, (_, i) => ({
+  const fakeItems = Array.from({ length: 55 }, (_, i) => ({
     id: `item-${i}`,
     title: `Item ${i}`,
     category: 'images',
     downloadUrl: `https://example.com/item-${i}.jpg`
-  }));
+  })) as unknown as ResourceItem[];
   let batchLimitCaught = false;
   try {
     await downloadBatchZip(fakeItems);
