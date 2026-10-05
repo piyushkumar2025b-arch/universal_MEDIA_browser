@@ -1,4 +1,7 @@
 import dns from 'dns';
+import http from 'http';
+import https from 'https';
+import { Readable } from 'stream';
 import { APP_CONFIG } from '../config/app_config';
 
 /**
@@ -239,9 +242,109 @@ export function sanitizeSafeFilename(rawFilename?: string, fallback = 'download'
   return cleaned || fallback;
 }
 
+// Connection-time socket DNS lookup hook to eliminate DNS rebinding TOCTOU window (BUG-005)
+function safeSocketLookup(
+  hostname: string,
+  options: any,
+  callback: (err: Error | null, address?: any, family?: number) => void
+) {
+  dns.lookup(hostname, { all: true }, (err, addresses) => {
+    if (err) return callback(err);
+    if (!addresses || addresses.length === 0) {
+      return callback(new Error(`DNS resolution returned no records for host: ${hostname}`));
+    }
+    // Verify that EVERY resolved address for this hostname is non-private and non-reserved
+    for (const record of addresses) {
+      if (isPrivateIpAddress(record.address)) {
+        return callback(new Error(`SSRF Blocked: Host ${hostname} resolved to private/reserved IP ${record.address}`));
+      }
+    }
+    if (options && options.all) {
+      return callback(null, addresses);
+    }
+    callback(null, addresses[0].address, addresses[0].family);
+  });
+}
+
+const safeHttpAgent = new http.Agent({
+  keepAlive: false,
+  lookup: safeSocketLookup
+});
+
+const safeHttpsAgent = new https.Agent({
+  keepAlive: false,
+  lookup: safeSocketLookup
+});
+
+async function executeBoundHttpRequest(
+  targetUrl: string,
+  options: RequestInit = {}
+): Promise<globalThis.Response> {
+  return new Promise((resolve, reject) => {
+    const parsed = new URL(targetUrl);
+    const isHttps = parsed.protocol === 'https:';
+    const client = isHttps ? https : http;
+    const agent = isHttps ? safeHttpsAgent : safeHttpAgent;
+
+    const headers: Record<string, string> = {};
+    if (options.headers) {
+      if (typeof (options.headers as any).forEach === 'function') {
+        (options.headers as any).forEach((value: string, key: string) => {
+          headers[key] = value;
+        });
+      } else if (Array.isArray(options.headers)) {
+        for (const [k, v] of options.headers) {
+          headers[k] = v;
+        }
+      } else {
+        Object.assign(headers, options.headers);
+      }
+    }
+
+    const req = client.request(
+      parsed,
+      {
+        method: options.method || 'GET',
+        headers,
+        agent,
+        signal: options.signal as any
+      },
+      (res) => {
+        const resHeaders = new Headers();
+        for (const [key, val] of Object.entries(res.headers)) {
+          if (Array.isArray(val)) {
+            for (const v of val) resHeaders.append(key, v);
+          } else if (val !== undefined) {
+            resHeaders.set(key, val);
+          }
+        }
+
+        const webStream = Readable.toWeb(res);
+        const response = new Response(webStream as any, {
+          status: res.statusCode || 200,
+          statusText: res.statusMessage || '',
+          headers: resHeaders
+        });
+
+        resolve(response);
+      }
+    );
+
+    req.on('error', (err) => reject(err));
+
+    if (options.body) {
+      if (typeof options.body === 'string' || Buffer.isBuffer(options.body)) {
+        req.write(options.body);
+      }
+    }
+
+    req.end();
+  });
+}
+
 /**
  * Safe fetch wrapper with manual redirect following to prevent SSRF redirect bypasses.
- * Enforces destination DNS and IP validation on every hop.
+ * Enforces destination DNS and IP validation upfront and at TCP socket connect time.
  */
 export async function safeFetch(
   initialUrl: string,
@@ -261,7 +364,8 @@ export async function safeFetch(
       redirect: 'manual'
     };
 
-    const response = await fetch(currentUrl, fetchOptions);
+    // Connect via bound agents that validate destination IP right at socket creation time
+    const response = await executeBoundHttpRequest(currentUrl, fetchOptions);
 
     // If not a redirect status (301, 302, 303, 307, 308), return response
     if (response.status < 300 || response.status >= 400) {

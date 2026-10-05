@@ -5,6 +5,20 @@ import { resourceCache } from '../cache_store';
 import { APP_CONFIG } from '../config/app_config';
 import { normalizeCategory } from '../normalizer';
 
+export function buildSearchFingerprint(filters: SearchFilters): string {
+  const query = (filters.query || '').trim().toLowerCase();
+  const category = normalizeCategory(filters.category);
+  const licenses = Array.isArray(filters.license)
+    ? [...filters.license].map(l => l.trim().toLowerCase()).sort().join(',')
+    : '';
+  const quality = (filters.quality || 'Any').trim().toLowerCase();
+  const format = (filters.format || 'all').trim().toLowerCase();
+  const sortBy = (filters.sortBy || 'relevance').trim().toLowerCase();
+  const nasaSub = (filters.nasaSubCategory || '').trim().toLowerCase();
+
+  return `${category}::${query}::lic=[${licenses}]::q=[${quality}]::fmt=[${format}]::sort=[${sortBy}]::nasa=[${nasaSub}]`;
+}
+
 export class SearchService {
   private inFlightSearches = new Map<string, Promise<RouteExecutionResult>>();
 
@@ -86,7 +100,8 @@ export class SearchService {
             query: job.query
           };
 
-          const deepResult = await executeRealSearch(deepFilters);
+          // BUG-004: Pass abort signal to cancel in-flight provider operations on harvest timeout
+          const deepResult = await executeRealSearch(deepFilters, abortCtrl.signal);
           if (deepResult && deepResult.results.length > 0) {
             resourceCache.append(job.query, job.category, deepResult.results);
           }
@@ -112,12 +127,16 @@ export class SearchService {
     filters: SearchFilters,
     page = 1,
     pageSize = APP_CONFIG.search.defaultPageSize,
-    continuous = true
+    continuous = true,
+    signal?: AbortSignal
   ): Promise<SearchResultEnvelope> {
     const query = filters.query || '';
     const category = normalizeCategory(filters.category);
     filters.category = category;
-    const cachedEntry = resourceCache.get(query, category);
+
+    // BUG-003: Include full filter state in cache & in-flight keys
+    const flightKey = buildSearchFingerprint(filters);
+    const cachedEntry = resourceCache.get(query, category, filters);
 
     let allItems: ResourceItem[] = [];
     let executionTimeMs = 0;
@@ -130,17 +149,17 @@ export class SearchService {
       knowledge: 0, food: 0, games: 0, '3d': 0, nasa: 0, news: 0
     };
 
+    // BUG-010: Decouple cache freshness from page number so page 2+ refreshes expired cache as well
     const isCacheExpired = cachedEntry && (Date.now() - cachedEntry.timestamp > APP_CONFIG.search.cacheTtlMs);
-    const needsLiveSearch = !cachedEntry || cachedEntry.items.length === 0 || (page === 1 && isCacheExpired);
+    const needsLiveSearch = !cachedEntry || cachedEntry.items.length === 0 || isCacheExpired;
 
     if (needsLiveSearch) {
-      const flightKey = `${category}::${query.trim().toLowerCase()}`;
       let liveResult: RouteExecutionResult;
 
       if (this.inFlightSearches.has(flightKey)) {
         liveResult = await this.inFlightSearches.get(flightKey)!;
       } else {
-        const searchPromise = executeRealSearch(filters);
+        const searchPromise = executeRealSearch(filters, signal);
         this.inFlightSearches.set(flightKey, searchPromise);
         try {
           liveResult = await searchPromise;
@@ -155,7 +174,7 @@ export class SearchService {
       providerErrors = liveResult.providerErrors;
       categoryCounts = liveResult.categoryCounts;
 
-      const updated = resourceCache.set(query, category, liveResult.results);
+      const updated = resourceCache.set(query, category, liveResult.results, filters);
       allItems = updated.items;
 
       if (continuous) {

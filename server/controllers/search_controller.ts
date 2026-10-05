@@ -60,7 +60,10 @@ export class SearchController {
         nasaSubCategory: nasaSubCategory as any
       };
 
-      const result = await searchService.search(filters, page, pageSize, continuous);
+      const abortController = new AbortController();
+      req.on('close', () => abortController.abort());
+
+      const result = await searchService.search(filters, page, pageSize, continuous, abortController.signal);
       res.setHeader('Cache-Control', 'public, max-age=30, stale-while-revalidate=300');
       res.json(result);
     } catch (err: any) {
@@ -144,7 +147,10 @@ export class SearchController {
         nasaSubCategory: nasaSubCategory as any
       };
 
-      const result = await searchService.search(filters, page, pageSize, continuous);
+      const abortController = new AbortController();
+      req.on('close', () => abortController.abort());
+
+      const result = await searchService.search(filters, page, pageSize, continuous, abortController.signal);
       res.setHeader('Cache-Control', 'public, max-age=30, stale-while-revalidate=300');
       res.json(result);
     } catch (err: any) {

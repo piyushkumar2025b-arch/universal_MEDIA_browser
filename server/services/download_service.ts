@@ -9,6 +9,7 @@ export interface DownloadResult {
   filename: string;
   sha256: string;
   sizeBytes: number;
+  isVerified: boolean;
 }
 
 const UPSTREAM_HEADERS = Object.freeze({
@@ -39,8 +40,14 @@ export class DownloadService {
 
   /**
    * Downloads upstream resource and computes true cryptographic SHA-256 integrity hash.
+   * Verifies against expected checksum if supplied (BUG-006) and aligns TIFF/JPEG filenames (BUG-007).
    */
-  public async downloadAndVerify(url: string, rawFilename?: string, fallbackUrl?: string): Promise<DownloadResult> {
+  public async downloadAndVerify(
+    url: string,
+    rawFilename?: string,
+    fallbackUrl?: string,
+    expectedSha256?: string
+  ): Promise<DownloadResult> {
     if (!url || !isSafePublicUrl(url)) {
       throw new Error('Invalid or forbidden target URL for download');
     }
@@ -120,14 +127,32 @@ export class DownloadService {
         const buffer = Buffer.concat(chunks);
         const sha256 = hash.digest('hex');
         const contentType = upstream.headers.get('content-type') || 'application/octet-stream';
-        const cleanFilename = sanitizeSafeFilename(rawFilename, 'resource');
+        let cleanFilename = sanitizeSafeFilename(rawFilename, 'resource');
+
+        // BUG-007: If upstream resource was converted to JPEG thumb or response is JPEG while filename is TIFF, fix filename
+        if ((target.endsWith('.jpg') || target.includes('/thumb/') || contentType.toLowerCase().includes('image/jpeg')) && /\.(tiff?)$/i.test(cleanFilename)) {
+          cleanFilename = cleanFilename.replace(/\.(tiff?)$/i, '.jpg');
+        }
+
+        // BUG-006: Cryptographic verification against trusted expected digest
+        let isVerified = false;
+        if (expectedSha256 && typeof expectedSha256 === 'string' && expectedSha256.trim()) {
+          if (expectedSha256.trim().toLowerCase() === sha256.toLowerCase()) {
+            isVerified = true;
+          } else {
+            const mismatchErr = new Error(`Cryptographic checksum verification mismatch: expected ${expectedSha256.trim()} but received asset computed ${sha256}`) as any;
+            mismatchErr.statusCode = 409;
+            throw mismatchErr;
+          }
+        }
 
         return {
           buffer,
           contentType,
           filename: cleanFilename,
           sha256,
-          sizeBytes: buffer.length
+          sizeBytes: buffer.length,
+          isVerified
         };
       } catch (err: any) {
         lastError = err;
@@ -140,7 +165,7 @@ export class DownloadService {
   /**
    * Streams remote asset directly through to client response.
    */
-  public async getUpstreamStream(targetUrl: string, fallbackUrl?: string): Promise<Response> {
+  public async getUpstreamStream(targetUrl: string, fallbackUrl?: string, method = 'GET'): Promise<Response> {
     const candidateUrls = [
       targetUrl,
       this.getOptimizedStreamUrl(targetUrl),
@@ -151,9 +176,11 @@ export class DownloadService {
 
     for (const url of candidateUrls) {
       try {
+        const timeoutMs = method === 'HEAD' ? 6000 : APP_CONFIG.download.timeoutMs;
         const upstream = await safeFetch(url, {
+          method,
           headers: UPSTREAM_HEADERS,
-          signal: AbortSignal.timeout(APP_CONFIG.download.timeoutMs)
+          signal: AbortSignal.timeout(timeoutMs)
         });
 
         if (upstream.ok) {

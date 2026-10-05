@@ -9,34 +9,6 @@
     <meta property="og:description" content="A beautiful universal search and resource browser for images, videos, audio, research papers, maps, and datasets with instant preview and effortless downloads." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <script>
-      // Global shield against third-party extension injection anomalies (e.g. MetaMask, Coinbase Wallet, etc.) in sandboxed iframes
-      (function() {
-        function isExtensionAnomaly(err) {
-          if (!err) return false;
-          var msg = typeof err === 'string'
-            ? err
-            : (err.message || (err.reason && err.reason.message) || (err.reason && typeof err.reason === 'string' ? err.reason : '') || String(err));
-          return /Failed to connect to MetaMask|MetaMask|chrome-extension:\/\/|moz-extension:\/\/|evmProvider|ethereum/i.test(msg);
-        }
-
-        window.addEventListener('unhandledrejection', function(event) {
-          if (isExtensionAnomaly(event.reason)) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-            console.debug('[URMIL Extension Shield] Suppressed unhandled rejection:', event.reason);
-          }
-        }, true);
-
-        window.addEventListener('error', function(event) {
-          if (isExtensionAnomaly(event.message || event.error)) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-            console.debug('[URMIL Extension Shield] Suppressed window error:', event.message || event.error);
-          }
-        }, true);
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -10,7 +10,7 @@ export class DownloadController {
    * Real Asset Download with SHA-256 Checksum Verification
    */
   public async downloadResource(req: Request, res: Response): Promise<void> {
-    const { url, filename, fallbackUrl } = req.body || {};
+    const { url, filename, fallbackUrl, expectedSha256 } = req.body || {};
     if (!url || typeof url !== 'string' || !(await isSafePublicUrlAsync(url))) {
       res.status(400).json({ error: 'Missing or forbidden target url in download request' });
       return;
@@ -18,13 +18,14 @@ export class DownloadController {
 
     try {
       const cleanFilename = sanitizeSafeFilename(filename, 'resource');
-      const result = await downloadService.downloadAndVerify(url, cleanFilename, fallbackUrl);
+      const result = await downloadService.downloadAndVerify(url, cleanFilename, fallbackUrl, expectedSha256);
 
       res.setHeader('Content-Disposition', `attachment; filename="${result.filename}"`);
       res.setHeader('Content-Type', result.contentType);
       res.setHeader('Content-Length', result.sizeBytes.toString());
       res.setHeader('X-URMIL-SHA256', result.sha256);
-      res.setHeader('X-URMIL-Integrity-Verified', 'true');
+      // BUG-006: Only claim true if verified against a trusted expected digest
+      res.setHeader('X-URMIL-Integrity-Verified', result.isVerified ? 'true' : 'false');
 
       res.send(result.buffer);
     } catch (err: any) {
@@ -52,7 +53,7 @@ export class DownloadController {
     }
 
     try {
-      const upstream = await downloadService.getUpstreamStream(targetUrl, fallbackUrl);
+      const upstream = await downloadService.getUpstreamStream(targetUrl, fallbackUrl, req.method);
       const rawContentType = upstream.headers.get('content-type') || 'application/octet-stream';
       const lowerContentType = rawContentType.toLowerCase();
 
@@ -66,7 +67,12 @@ export class DownloadController {
       }
 
       const contentLength = upstream.headers.get('content-length');
-      const safeFilename = sanitizeSafeFilename(requestedFilename, 'download');
+      let safeFilename = sanitizeSafeFilename(requestedFilename, 'download');
+
+      // BUG-007: Align filename extension if upstream served optimized JPEG for TIFF master
+      if (lowerContentType.includes('image/jpeg') && /\.(tiff?)$/i.test(safeFilename)) {
+        safeFilename = safeFilename.replace(/\.(tiff?)$/i, '.jpg');
+      }
 
       res.setHeader('Content-Disposition', `attachment; filename="${safeFilename}"`);
       res.setHeader('Content-Type', rawContentType);

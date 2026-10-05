@@ -394,13 +394,7 @@ Total Assets: ${total}
     const { url: targetUrl } = getBestAssetUrl(item);
     const filename = `${String(itemNum).padStart(2, '0')}_${getSanitizedFilename(item)}`;
 
-    // Add entry to manifest
-    manifestText += `[${itemNum}] ${item.title}\n`;
-    manifestText += `  File:       assets/${filename}\n`;
-    manifestText += `  Category:   ${item.category}\n`;
-    manifestText += `  Creator:    ${item.creator?.name || item.creator?.organization || 'Unknown'}\n`;
-    manifestText += `  License:    ${item.license?.type || 'Open Access'}\n`;
-    manifestText += `  Origin:     ${item.source?.resourceUrl || targetUrl}\n\n`;
+    let isSuccess = false;
 
     // Fetch asset binary
     if (targetUrl) {
@@ -415,7 +409,7 @@ Total Assets: ${total}
             throw new Error(`Batch export exceeded maximum allowable total size of ${Math.round(MAX_BATCH_BYTES / (1024 * 1024))}MB (reached ${Math.round(cumulativeBytes / (1024 * 1024))}MB). Please download items individually.`);
           }
           assetsFolder?.file(filename, blob);
-          continue;
+          isSuccess = true;
         }
       } catch (err: any) {
         if (err.message && err.message.includes('exceeded maximum allowable total size')) {
@@ -425,11 +419,31 @@ Total Assets: ${total}
       }
     }
 
-    // Fallback stub if binary couldn't be retrieved
-    assetsFolder?.file(
-      `${filename}.txt`,
-      `Asset could not be bundled directly into zip.\nDirect URL: ${targetUrl || item.source?.resourceUrl}\nTitle: ${item.title}`
-    );
+    if (isSuccess) {
+      // Add success entry to manifest
+      manifestText += `[${itemNum}] ${item.title}\n`;
+      manifestText += `  Status:     DOWNLOADED_SUCCESSFULLY\n`;
+      manifestText += `  File:       assets/${filename}\n`;
+      manifestText += `  Category:   ${item.category}\n`;
+      manifestText += `  Creator:    ${item.creator?.name || item.creator?.organization || 'Unknown'}\n`;
+      manifestText += `  License:    ${item.license?.type || 'Open Access'}\n`;
+      manifestText += `  Origin:     ${item.source?.resourceUrl || targetUrl}\n\n`;
+    } else {
+      // Fallback stub if binary couldn't be retrieved
+      assetsFolder?.file(
+        `${filename}.txt`,
+        `Asset could not be bundled directly into zip.\nDirect URL: ${targetUrl || item.source?.resourceUrl}\nTitle: ${item.title}`
+      );
+
+      // BUG-008: Explicitly record stub file and failed status in manifest
+      manifestText += `[${itemNum}] ${item.title}\n`;
+      manifestText += `  Status:     FAILED_DOWNLOAD (Stub Created)\n`;
+      manifestText += `  File:       assets/${filename}.txt\n`;
+      manifestText += `  Category:   ${item.category}\n`;
+      manifestText += `  Creator:    ${item.creator?.name || item.creator?.organization || 'Unknown'}\n`;
+      manifestText += `  License:    ${item.license?.type || 'Open Access'}\n`;
+      manifestText += `  Origin:     ${item.source?.resourceUrl || targetUrl}\n\n`;
+    }
   }
 
   onProgress?.(88, 'Finalizing manifest and compressing ZIP archive...');

@@ -85,19 +85,30 @@ class ResourceCacheStore {
     }
   }
 
-  public getKey(query: string, category: string): string {
+  public getKey(query: string, category: string, filters?: SearchFilters): string {
     const q = (query || '').toLowerCase().trim();
     const cat = (category || 'all').toLowerCase().trim();
-    return `${cat}::${q}`;
+    if (!filters) {
+      return `${cat}::${q}`;
+    }
+    const licenses = Array.isArray(filters.license)
+      ? [...filters.license].map(l => l.trim().toLowerCase()).sort().join(',')
+      : '';
+    const quality = (filters.quality || 'Any').trim().toLowerCase();
+    const format = (filters.format || 'all').trim().toLowerCase();
+    const sortBy = (filters.sortBy || 'relevance').trim().toLowerCase();
+    const nasaSub = (filters.nasaSubCategory || '').trim().toLowerCase();
+
+    return `${cat}::${q}::lic=[${licenses}]::q=[${quality}]::fmt=[${format}]::sort=[${sortBy}]::nasa=[${nasaSub}]`;
   }
 
-  public get(query: string, category: string): CacheEntry | undefined {
-    const key = this.getKey(query, category);
+  public get(query: string, category: string, filters?: SearchFilters): CacheEntry | undefined {
+    const key = this.getKey(query, category, filters);
     return this.cache.get(key);
   }
 
-  public set(query: string, category: string, items: ResourceItem[]): CacheEntry {
-    const key = this.getKey(query, category);
+  public set(query: string, category: string, items: ResourceItem[], filters?: SearchFilters): CacheEntry {
+    const key = this.getKey(query, category, filters);
     const existing = this.cache.get(key);
     const combined = existing ? [...existing.items, ...items] : items;
     const deduped = deduplicateResources(combined);

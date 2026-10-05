@@ -1,9 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
+import { APP_CONFIG } from '../config/app_config';
 
 /**
  * Enterprise-grade HTTP security headers middleware.
  * Mitigates MIME sniffing, clickjacking, XSS exploitation,
- * and sensitive header disclosures.
+ * and sensitive header disclosures (BUG-011).
  */
 export function securityHeadersMiddleware(req: Request, res: Response, next: NextFunction): void {
   // Prevent browser MIME-sniffing
@@ -19,18 +20,22 @@ export function securityHeadersMiddleware(req: Request, res: Response, next: Nex
   res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
 
   // Set Content-Security-Policy supporting the live preview environment and media providers
+  const scriptDirectives = APP_CONFIG.environment === 'production'
+    ? "script-src 'self' blob:"
+    : "script-src 'self' 'unsafe-inline' blob:";
+
   res.setHeader(
     'Content-Security-Policy',
     [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' blob:",
+      scriptDirectives,
       "style-src 'self' 'unsafe-inline' https:",
       "font-src 'self' data: https:",
       "img-src 'self' data: blob: https:",
       "media-src 'self' data: blob: https:",
       "connect-src 'self' https: wss: ws:",
-      "frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com https://player.vimeo.com https://geo.dailymotion.com https://archive.org https://yewtu.be https://piped.video blob: https:",
-      "child-src 'self' blob: https:",
+      "frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com https://player.vimeo.com https://geo.dailymotion.com https://archive.org https://yewtu.be https://piped.video blob:",
+      "child-src 'self' blob:",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
