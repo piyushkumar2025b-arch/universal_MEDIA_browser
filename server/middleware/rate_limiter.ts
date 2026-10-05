@@ -26,9 +26,10 @@ setInterval(() => {
 }, 60000);
 
 function sanitizeClientIp(req: Request): string {
-  // Use Express's validated req.ip (governed by app.set('trust proxy'))
-  // This prevents malicious clients from spoofing client IP via crafted X-Forwarded-For headers
-  const ip = req.ip || req.socket.remoteAddress || '127.0.0.1';
+  // Use Express's validated req.ip only if trust proxy is configured (governed by app.set('trust proxy')).
+  // On direct deployments without trusted proxy, bind strictly to TCP socket.remoteAddress to prevent header spoofing (BUG-009).
+  const isProxyTrusted = Boolean(req.app && req.app.get('trust proxy'));
+  const ip = (isProxyTrusted ? req.ip : req.socket.remoteAddress) || req.socket.remoteAddress || '127.0.0.1';
   return ip.replace(/^::ffff:/, '');
 }
 

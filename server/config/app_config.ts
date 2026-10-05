@@ -1,8 +1,18 @@
+const resolvedEnv = process.env.NODE_ENV || 'production';
+
 export const APP_CONFIG = Object.freeze({
   port: 3000,
   host: '0.0.0.0',
-  environment: process.env.NODE_ENV || 'development',
-  isProduction: process.env.NODE_ENV === 'production',
+  environment: resolvedEnv,
+  isProduction: resolvedEnv === 'production',
+
+  // Reverse proxy trust: default to false (zero proxy trust for direct deployments),
+  // unless explicitly configured via TRUST_PROXY or running in known container environment (Cloud Run / K_SERVICE)
+  trustProxy: process.env.TRUST_PROXY !== undefined
+    ? (process.env.TRUST_PROXY === 'true' ? true : process.env.TRUST_PROXY === 'false' ? false : isNaN(Number(process.env.TRUST_PROXY)) ? process.env.TRUST_PROXY : Number(process.env.TRUST_PROXY))
+    : (Boolean(process.env.K_SERVICE || process.env.GOOGLE_CLOUD_PROJECT) ? 1 : false),
+
+  adminSecretKey: process.env.ADMIN_SECRET_KEY || process.env.BENCHMARK_SECRET_KEY,
   
   // Rate Limiting (per IP window)
   rateLimit: {

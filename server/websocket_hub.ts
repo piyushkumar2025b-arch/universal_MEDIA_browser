@@ -306,9 +306,10 @@ export class WebSocketHub {
 
       case 'TEST_PROVIDER': {
         const token = msg.adminKey || msg.token;
-        const secretKey = process.env.ADMIN_KEY || process.env.SYSTEM_API_KEY;
-        if (process.env.NODE_ENV === 'production' && (!secretKey || token !== secretKey)) {
-          this.sendToClient(client, { type: 'ERROR', error: 'Unauthorized: Provider testing requires administrative authorization in production.' });
+        const secretKey = process.env.ADMIN_SECRET_KEY || process.env.BENCHMARK_SECRET_KEY || process.env.ADMIN_KEY || process.env.SYSTEM_API_KEY;
+        const isLoopback = client.ip === '127.0.0.1' || client.ip === '::1';
+        if (!isLoopback && (!secretKey || token !== secretKey)) {
+          this.sendToClient(client, { type: 'ERROR', error: 'Unauthorized: Provider testing requires administrative authorization.' });
           return;
         }
         const providerId = typeof msg.providerId === 'string' ? msg.providerId.slice(0, 80) : '';
@@ -328,9 +329,9 @@ export class WebSocketHub {
 
       case 'BENCHMARK': {
         const token = msg.adminKey || msg.token;
-        const secretKey = process.env.ADMIN_KEY || process.env.SYSTEM_API_KEY;
-        if (process.env.NODE_ENV === 'production' && (!secretKey || token !== secretKey)) {
-          this.sendToClient(client, { type: 'ERROR', error: 'Unauthorized: Benchmarking requires administrative authorization in production.' });
+        const secretKey = process.env.ADMIN_SECRET_KEY || process.env.BENCHMARK_SECRET_KEY || process.env.ADMIN_KEY || process.env.SYSTEM_API_KEY;
+        if (!secretKey || token !== secretKey) {
+          this.sendToClient(client, { type: 'ERROR', error: 'Unauthorized: Benchmarking requires administrative authorization.' });
           return;
         }
         if (WebSocketHub.isBenchmarkActive || (now - WebSocketHub.lastBenchmarkTime < 15000)) {

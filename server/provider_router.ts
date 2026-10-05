@@ -922,7 +922,7 @@ export async function testSingleProvider(providerId: string, customQuery?: strin
   }
 }
 
-export async function executeRoutedSearch(filters: SearchFilters): Promise<RouteExecutionResult> {
+export async function executeRoutedSearch(filters: SearchFilters, parentSignal?: AbortSignal): Promise<RouteExecutionResult> {
   const startTime = Date.now();
   const query = (filters.query || '').trim();
   const plan = generateSearchPlan(filters);
@@ -966,6 +966,7 @@ export async function executeRoutedSearch(filters: SearchFilters): Promise<Route
       fastQuorumCount: APP_CONFIG.search.fastQuorumTarget,
       fastYieldMinTimeMs: APP_CONFIG.search.fastQuorumTimeoutMs,
       maxConcurrency: 16,
+      parentSignal,
       onBackgroundResult: (moreItems) => {
         if (moreItems && moreItems.length > 0) {
           const category = normalizeCategory(filters.category);

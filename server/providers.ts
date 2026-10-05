@@ -15,6 +15,6 @@ export const REAL_DATA_POLICY = Object.freeze({
   rule8: "Never claim an API request succeeded unless it actually succeeded."
 });
 
-export async function executeRealSearch(filters: SearchFilters): Promise<RouteExecutionResult> {
-  return await executeRoutedSearch(filters);
+export async function executeRealSearch(filters: SearchFilters, parentSignal?: AbortSignal): Promise<RouteExecutionResult> {
+  return await executeRoutedSearch(filters, parentSignal);
 }

@@ -19,8 +19,12 @@ async function startServer() {
   // Disable server fingerprinting
   app.disable('x-powered-by');
 
-  // Configure trusted reverse proxy hop (Cloud Run / reverse proxy)
-  app.set('trust proxy', 1);
+  // Configure trusted reverse proxy hop based on deployment settings (BUG-009)
+  if (APP_CONFIG.trustProxy !== false) {
+    app.set('trust proxy', APP_CONFIG.trustProxy);
+  } else {
+    app.set('trust proxy', false);
+  }
 
   // -------------------------------------------------------------
   // Global Middleware Pipeline
