@@ -202,17 +202,22 @@ export async function isSafePublicUrlAsync(targetUrl?: string): Promise<boolean>
       return !isPrivateIpAddress(hostname);
     }
 
-    // Immediately resolve all IPv4 and IPv6 addresses for the hostname
-    const records = await dns.promises.lookup(hostname, { all: true });
-    if (!records || records.length === 0) {
-      return false;
-    }
-
-    // If ANY resolved IP address is private or reserved, reject destination immediately
-    for (const record of records) {
-      if (isPrivateIpAddress(record.address)) {
+    // Check cached validated DNS records first
+    const cached = getCachedDns(hostname);
+    let records = cached;
+    if (!records) {
+      records = await dns.promises.lookup(hostname, { all: true });
+      if (!records || records.length === 0) {
         return false;
       }
+
+      // If ANY resolved IP address is private or reserved, reject destination immediately
+      for (const record of records) {
+        if (isPrivateIpAddress(record.address)) {
+          return false;
+        }
+      }
+      setCachedDns(hostname, records);
     }
 
     return true;
@@ -242,12 +247,44 @@ export function sanitizeSafeFilename(rawFilename?: string, fallback = 'download'
   return cleaned || fallback;
 }
 
+// Short-lived DNS cache to avoid libuv threadpool exhaustion under concurrent bursts
+const dnsCache = new Map<string, { records: dns.LookupAddress[]; expires: number }>();
+
+function getCachedDns(hostname: string): dns.LookupAddress[] | null {
+  const hit = dnsCache.get(hostname.toLowerCase());
+  if (hit && Date.now() < hit.expires) {
+    return hit.records;
+  }
+  return null;
+}
+
+function setCachedDns(hostname: string, records: dns.LookupAddress[]): void {
+  if (dnsCache.size > 2000) {
+    const first = dnsCache.keys().next().value;
+    if (first) dnsCache.delete(first);
+  }
+  dnsCache.set(hostname.toLowerCase(), { records, expires: Date.now() + 15000 });
+}
+
 // Connection-time socket DNS lookup hook to eliminate DNS rebinding TOCTOU window (BUG-005)
 function safeSocketLookup(
   hostname: string,
   options: any,
   callback: (err: Error | null, address?: any, family?: number) => void
 ) {
+  const cached = getCachedDns(hostname);
+  if (cached && cached.length > 0) {
+    for (const record of cached) {
+      if (isPrivateIpAddress(record.address)) {
+        return callback(new Error(`SSRF Blocked: Host ${hostname} resolved to private/reserved IP ${record.address}`));
+      }
+    }
+    if (options && options.all) {
+      return callback(null, cached);
+    }
+    return callback(null, cached[0].address, cached[0].family);
+  }
+
   dns.lookup(hostname, { all: true }, (err, addresses) => {
     if (err) return callback(err);
     if (!addresses || addresses.length === 0) {
@@ -259,6 +296,7 @@ function safeSocketLookup(
         return callback(new Error(`SSRF Blocked: Host ${hostname} resolved to private/reserved IP ${record.address}`));
       }
     }
+    setCachedDns(hostname, addresses);
     if (options && options.all) {
       return callback(null, addresses);
     }
@@ -319,7 +357,8 @@ async function executeBoundHttpRequest(
           }
         }
 
-        const webStream = Readable.toWeb(res);
+        const hasNoBody = options.method === 'HEAD' || res.statusCode === 204 || res.statusCode === 304;
+        const webStream = hasNoBody ? null : Readable.toWeb(res);
         const response = new Response(webStream as any, {
           status: res.statusCode || 200,
           statusText: res.statusMessage || '',

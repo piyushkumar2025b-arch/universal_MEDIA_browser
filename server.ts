@@ -1,3 +1,5 @@
+process.env.UV_THREADPOOL_SIZE = process.env.UV_THREADPOOL_SIZE || '64';
+
 import express from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';

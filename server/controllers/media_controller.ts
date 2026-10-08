@@ -193,12 +193,14 @@ export class MediaController {
         const reader = upstreamRes.body.getReader();
         let isClosed = false;
 
-        req.on('close', () => {
-          isClosed = true;
-          abortController.abort();
-          try {
-            reader.cancel().catch(() => {});
-          } catch {}
+        res.on('close', () => {
+          if (!res.writableEnded) {
+            isClosed = true;
+            abortController.abort();
+            try {
+              reader.cancel().catch(() => {});
+            } catch {}
+          }
         });
 
         const pump = async () => {
@@ -386,12 +388,14 @@ export class MediaController {
         const reader = upstreamRes.body.getReader();
         let isClosed = false;
 
-        req.on('close', () => {
-          isClosed = true;
-          abortController.abort();
-          try {
-            reader.cancel().catch(() => {});
-          } catch {}
+        res.on('close', () => {
+          if (!res.writableEnded) {
+            isClosed = true;
+            abortController.abort();
+            try {
+              reader.cancel().catch(() => {});
+            } catch {}
+          }
         });
 
         const pump = async () => {
@@ -644,14 +648,16 @@ export class MediaController {
       const reader = upstreamRes.body.getReader();
       let isClosed = false;
 
-      req.on('close', () => {
-        isClosed = true;
-        if (activeAbortController) {
-          activeAbortController.abort();
+      res.on('close', () => {
+        if (!res.writableEnded) {
+          isClosed = true;
+          if (activeAbortController) {
+            activeAbortController.abort();
+          }
+          try {
+            reader.cancel().catch(() => {});
+          } catch {}
         }
-        try {
-          reader.cancel().catch(() => {});
-        } catch {}
       });
 
       const pump = async () => {

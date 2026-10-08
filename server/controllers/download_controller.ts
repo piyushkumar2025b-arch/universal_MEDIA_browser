@@ -95,8 +95,10 @@ export class DownloadController {
         let receivedBytes = 0;
         let isAborted = false;
 
-        req.on('close', () => {
-          nodeStream.destroy();
+        res.on('close', () => {
+          if (!res.writableEnded) {
+            nodeStream.destroy();
+          }
         });
 
         // BUG-004: Enforce size limit while streaming even if Content-Length is missing or chunked

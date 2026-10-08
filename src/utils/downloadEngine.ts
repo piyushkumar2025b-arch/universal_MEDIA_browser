@@ -192,7 +192,8 @@ export async function downloadResourceAsset(
   if (options.mode !== 'direct') {
     try {
       options.onProgress?.(25, 'Connecting to download gateway...');
-      const proxyUrl = `/api/download-proxy?url=${encodeURIComponent(targetUrl)}&filename=${encodeURIComponent(filename)}${fallbackUrl ? `&fallback=${encodeURIComponent(fallbackUrl)}` : ''}`;
+      const origin = typeof window !== 'undefined' ? '' : 'http://localhost:3000';
+      const proxyUrl = `${origin}/api/download-proxy?url=${encodeURIComponent(targetUrl)}&filename=${encodeURIComponent(filename)}${fallbackUrl ? `&fallback=${encodeURIComponent(fallbackUrl)}` : ''}`;
       
       // BUG-008: Accurate progress wording without false cryptographic claims on streaming path
       options.onProgress?.(50, 'Streaming asset via gateway...');
@@ -399,7 +400,8 @@ Total Assets: ${total}
     // Fetch asset binary
     if (targetUrl) {
       try {
-        const proxyUrl = `/api/download-proxy?url=${encodeURIComponent(targetUrl)}&filename=${encodeURIComponent(filename)}`;
+        const origin = typeof window !== 'undefined' ? '' : 'http://localhost:3000';
+        const proxyUrl = `${origin}/api/download-proxy?url=${encodeURIComponent(targetUrl)}&filename=${encodeURIComponent(filename)}`;
         const resp = await fetch(proxyUrl);
         if (resp.ok) {
           const blob = await resp.blob();

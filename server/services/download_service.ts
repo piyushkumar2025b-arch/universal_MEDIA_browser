@@ -176,7 +176,7 @@ export class DownloadService {
 
     for (const url of candidateUrls) {
       try {
-        const timeoutMs = method === 'HEAD' ? 6000 : APP_CONFIG.download.timeoutMs;
+        const timeoutMs = APP_CONFIG.download.timeoutMs;
         const upstream = await safeFetch(url, {
           method,
           headers: UPSTREAM_HEADERS,

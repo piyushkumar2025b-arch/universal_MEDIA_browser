@@ -61,7 +61,11 @@ export class SearchController {
       };
 
       const abortController = new AbortController();
-      req.on('close', () => abortController.abort());
+      res.on('close', () => {
+        if (!res.writableEnded) {
+          abortController.abort();
+        }
+      });
 
       const result = await searchService.search(filters, page, pageSize, continuous, abortController.signal);
       res.setHeader('Cache-Control', 'public, max-age=30, stale-while-revalidate=300');
@@ -148,7 +152,11 @@ export class SearchController {
       };
 
       const abortController = new AbortController();
-      req.on('close', () => abortController.abort());
+      res.on('close', () => {
+        if (!res.writableEnded) {
+          abortController.abort();
+        }
+      });
 
       const result = await searchService.search(filters, page, pageSize, continuous, abortController.signal);
       res.setHeader('Cache-Control', 'public, max-age=30, stale-while-revalidate=300');
