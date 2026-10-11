@@ -1,5 +1,5 @@
 import { SearchFilters } from '../src/types/resource';
-import { executeRoutedSearch, RouteExecutionResult } from './provider_router';
+import { executeRoutedSearch, executeStreamingRoutedSearch, RouteExecutionResult } from './provider_router';
 import { PROVIDER_TRACKERS } from './telemetry';
 
 export { PROVIDER_TRACKERS };
@@ -17,4 +17,12 @@ export const REAL_DATA_POLICY = Object.freeze({
 
 export async function executeRealSearch(filters: SearchFilters, parentSignal?: AbortSignal): Promise<RouteExecutionResult> {
   return await executeRoutedSearch(filters, parentSignal);
+}
+
+export async function executeStreamingSearch(
+  filters: SearchFilters,
+  onBatch: (batch: { providerId: string; items: any[]; totalSoFar: number }) => void,
+  parentSignal?: AbortSignal
+): Promise<RouteExecutionResult> {
+  return await executeStreamingRoutedSearch(filters, onBatch, parentSignal);
 }

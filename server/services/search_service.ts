@@ -1,5 +1,5 @@
 import { SearchFilters, ResourceCategory, ResourceItem, SearchResultEnvelope } from '../../src/types/resource';
-import { executeRealSearch } from '../providers';
+import { executeRealSearch, executeStreamingSearch } from '../providers';
 import { RouteExecutionResult } from '../provider_router';
 import { resourceCache } from '../cache_store';
 import { APP_CONFIG } from '../config/app_config';
@@ -236,6 +236,122 @@ export class SearchService {
       newItems,
       isFetchingMore: resourceCache.isBackgroundJobActive(query, category)
     };
+  }
+
+  /**
+   * Real-Time Progressive Streaming Search:
+   * Emits results provider-by-provider as they arrive.
+   * If warm cache exists, emits cached batch in 0ms.
+   */
+  public async streamSearch(
+    filters: SearchFilters,
+    onBatch: (event: { type: 'batch' | 'cached' | 'done' | 'error'; providerId?: string; items?: ResourceItem[]; totalCount?: number; executionTimeMs?: number; error?: string }) => void,
+    signal?: AbortSignal
+  ): Promise<void> {
+    const query = filters.query || '';
+    const category = normalizeCategory(filters.category);
+    filters.category = category;
+
+    // Check cache first for instant sub-millisecond initial batch
+    const cachedEntry = resourceCache.get(query, category, filters);
+    if (cachedEntry && cachedEntry.items.length > 0) {
+      onBatch({
+        type: 'cached',
+        providerId: 'cache',
+        items: cachedEntry.items.slice(0, filters.pageSize || 36),
+        totalCount: cachedEntry.items.length
+      });
+    }
+
+    try {
+      const liveResult = await executeStreamingSearch(
+        filters,
+        (batch) => {
+          onBatch({
+            type: 'batch',
+            providerId: batch.providerId,
+            items: batch.items,
+            totalCount: batch.totalSoFar
+          });
+        },
+        signal
+      );
+
+      // Append fresh items into cache store
+      if (liveResult.results.length > 0) {
+        resourceCache.set(query, category, liveResult.results, filters);
+      }
+
+      onBatch({
+        type: 'done',
+        totalCount: liveResult.totalCount,
+        executionTimeMs: liveResult.executionTimeMs
+      });
+    } catch (err: any) {
+      if (signal?.aborted) return;
+      onBatch({
+        type: 'error',
+        error: err.message || 'Streaming search failed'
+      });
+    }
+  }
+
+  /**
+   * Batch multi-query / multi-category search:
+   * Executes searches in parallel with full cache sharing.
+   */
+  public async searchMulti(
+    queries: Array<{ filters: SearchFilters; page?: number; pageSize?: number }>,
+    signal?: AbortSignal
+  ): Promise<Record<string, SearchResultEnvelope>> {
+    const results: Record<string, SearchResultEnvelope> = {};
+    const promises = queries.map(async (q, idx) => {
+      const key = `${q.filters.category || 'all'}_${q.filters.query || ''}_${idx}`;
+      try {
+        const resp = await this.search(
+          q.filters,
+          q.page || 1,
+          q.pageSize || APP_CONFIG.search.defaultPageSize,
+          false,
+          signal
+        );
+        results[key] = resp;
+      } catch (err: any) {
+        results[key] = {
+          results: [],
+          totalCount: 0,
+          page: 1,
+          pageSize: q.pageSize || 24,
+          totalPages: 1,
+          isFetchingMore: false,
+          isHarvesting: false,
+          cachedCount: 0,
+          executionTimeMs: 0,
+          categoryCounts: {
+            all: 0, images: 0, videos: 0, gifs: 0, music: 0, audio: 0, papers: 0, books: 0,
+            maps: 0, weather: 0, datasets: 0, art: 0, code: 0, finance: 0, biodiversity: 0,
+            knowledge: 0, food: 0, games: 0, '3d': 0, nasa: 0, news: 0
+          },
+          primaryProviderUsed: 'Multi Batch Failure',
+          providerErrors: [err.message]
+        };
+      }
+    });
+
+    await Promise.all(promises);
+    return results;
+  }
+
+  /**
+   * Pre-warms the cache for anticipated queries in background.
+   */
+  public prewarmSearch(filters: SearchFilters): void {
+    const query = filters.query || '';
+    const category = normalizeCategory(filters.category);
+    if (resourceCache.get(query, category, filters)) return;
+
+    // Run non-blocking background fetch
+    this.search(filters, 1, APP_CONFIG.search.defaultPageSize, false).catch(() => {});
   }
 }
 

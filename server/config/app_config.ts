@@ -33,9 +33,11 @@ export const APP_CONFIG = Object.freeze({
     defaultPageSize: 24,
     maxPageSize: 100,
     cacheTtlMs: 300000, // 5 minutes fresh TTL
-    providerTimeoutMs: 3500,
-    fastQuorumTimeoutMs: 1500,
-    fastQuorumTarget: 45,
+    providerTimeoutMs: 2800,
+    fastQuorumTimeoutMs: 400,
+    fastQuorumTarget: 24,
+    streamingBatchMs: 50,
+    maxPoolConcurrency: 24,
   },
 
   // Download & Verification

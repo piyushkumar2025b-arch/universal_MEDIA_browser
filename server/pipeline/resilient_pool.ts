@@ -256,11 +256,11 @@ class ResilientProviderPool {
     options: PoolExecutionOptions = {}
   ): Promise<{ results: ResourceItem[]; errors: string[] }> {
     const { 
-      timeoutMs = 3200,
-      overallDeadlineMs = 3800,
+      timeoutMs = 2800,
+      overallDeadlineMs = 3600,
       fastQuorumCount,
-      fastYieldMinTimeMs = 1200,
-      maxConcurrency = 16,
+      fastYieldMinTimeMs = 400,
+      maxConcurrency = 24,
       parentSignal,
       onBackgroundResult
     } = options;
@@ -281,8 +281,8 @@ class ResilientProviderPool {
       const stateScoreB = healthB?.state === 'OPEN' ? 2 : (healthB?.state === 'HALF_OPEN' ? 1 : 0);
       if (stateScoreA !== stateScoreB) return stateScoreA - stateScoreB;
 
-      const latA = (healthA?.avgLatencyMs && healthA.avgLatencyMs > 0) ? healthA.avgLatencyMs : 500;
-      const latB = (healthB?.avgLatencyMs && healthB.avgLatencyMs > 0) ? healthB.avgLatencyMs : 500;
+      const latA = (healthA?.avgLatencyMs && healthA.avgLatencyMs > 0) ? healthA.avgLatencyMs : 400;
+      const latB = (healthB?.avgLatencyMs && healthB.avgLatencyMs > 0) ? healthB.avgLatencyMs : 400;
       return latA - latB;
     });
 
@@ -319,7 +319,7 @@ class ResilientProviderPool {
           if (!hasYieldedEarly) {
             results.push(...items);
             const elapsed = Date.now() - startTime;
-            const minProviders = Math.min(3, sortedProviderIds.length);
+            const minProviders = Math.min(2, sortedProviderIds.length);
             if (
               fastQuorumCount &&
               results.length >= fastQuorumCount &&
@@ -381,6 +381,96 @@ class ResilientProviderPool {
     hasYieldedEarly = true;
 
     return { results, errors };
+  }
+
+  /**
+   * Real-time streaming federation:
+   * Dispatches providers concurrently and streams batches of results immediately as each provider completes.
+   */
+  public async executeStreamingFederation(
+    providerIds: string[],
+    query: string,
+    dispatchMap: Record<string, (q: string, signal?: AbortSignal) => Promise<ResourceItem[]>>,
+    onProviderBatch: (providerId: string, items: ResourceItem[]) => void,
+    options: PoolExecutionOptions = {}
+  ): Promise<{ totalItems: number; errors: string[] }> {
+    const {
+      timeoutMs = 3200,
+      overallDeadlineMs = 4500,
+      maxConcurrency = 24,
+      parentSignal
+    } = options;
+
+    const errors: string[] = [];
+    let totalItems = 0;
+    const validProviderIds = providerIds.filter((pid) => Boolean(dispatchMap[pid]));
+    if (validProviderIds.length === 0) {
+      return { totalItems, errors };
+    }
+
+    const sortedProviderIds = [...validProviderIds].sort((a, b) => {
+      const latA = this.healthMap.get(a)?.avgLatencyMs || 400;
+      const latB = this.healthMap.get(b)?.avgLatencyMs || 400;
+      return latA - latB;
+    });
+
+    const federationAbortController = new AbortController();
+    if (parentSignal) {
+      if (parentSignal.aborted) {
+        federationAbortController.abort();
+      } else {
+        parentSignal.addEventListener('abort', () => federationAbortController.abort(), { once: true });
+      }
+    }
+
+    let isTerminated = false;
+    let index = 0;
+
+    const executeTask = async (pid: string) => {
+      if (isTerminated || federationAbortController.signal.aborted) return;
+      const fn = dispatchMap[pid];
+      if (!fn) return;
+
+      try {
+        const items = await this.executeProvider(pid, query, fn, timeoutMs, federationAbortController.signal);
+        if (Array.isArray(items) && items.length > 0) {
+          totalItems += items.length;
+          onProviderBatch(pid, items);
+        }
+      } catch (err: any) {
+        if (!this.isCircuitOpen(pid)) {
+          errors.push(`${pid}: ${err.message}`);
+        }
+      }
+    };
+
+    const worker = async () => {
+      while (!isTerminated && !federationAbortController.signal.aborted && index < sortedProviderIds.length) {
+        const currentIndex = index++;
+        if (currentIndex < sortedProviderIds.length) {
+          await executeTask(sortedProviderIds[currentIndex]);
+        }
+      }
+    };
+
+    const workerCount = Math.min(maxConcurrency, sortedProviderIds.length);
+    const workerPromises = Array.from({ length: workerCount }, () => worker());
+
+    const deadlinePromise = new Promise<void>((resolve) => {
+      const timer = setTimeout(() => {
+        isTerminated = true;
+        federationAbortController.abort();
+        resolve();
+      }, overallDeadlineMs);
+      if (typeof timer.unref === 'function') timer.unref();
+    });
+
+    await Promise.race([
+      Promise.all(workerPromises),
+      deadlinePromise
+    ]);
+
+    return { totalItems, errors };
   }
 
   public getHealthSummary(): Record<string, ProviderHealth> {

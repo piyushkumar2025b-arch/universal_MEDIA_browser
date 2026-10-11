@@ -218,3 +218,22 @@ export interface ProviderHealth {
 }
 
 export type ProviderStatus = ProviderHealth;
+
+export type FetchMethod = 
+  | 'auto'          // Adaptive Low-Latency (SWR Cache -> Realtime SSE Stream -> Gateway)
+  | 'streaming'     // Real-Time SSE Stream (Sub-50ms TTFR progressive batches)
+  | 'fastest'       // Fastest Mirror Race (Promise.race across sources for min latency)
+  | 'standard'      // Standard Federated Aggregator (Server-side deduplication & deep ranking)
+  | 'direct'        // Direct Browser Peer API (Client-side open CORS endpoints)
+  | 'waterfall'     // Resilient Waterfall Fallback (Tier-by-tier resilience chain)
+  | 'websocket'     // Live WebSocket Real-Time Stream (Persistent bidirectional socket)
+  | 'deep'          // Deep Provider Sweep (Exhaustive multi-page harvesting)
+  | 'vault';        // Instant Local Vault (Zero-network local archive)
+
+export interface FetchMethodInfo {
+  id: FetchMethod;
+  name: string;
+  badge: string;
+  description: string;
+  typicalLatency: string;
+}

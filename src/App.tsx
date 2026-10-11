@@ -14,10 +14,14 @@ import {
   ResourceCategory, 
   SearchFilters, 
   Collection, 
-  DownloadHistoryItem
+  DownloadHistoryItem,
+  FetchMethod
 } from './types/resource';
 import { 
   searchResources, 
+  searchResourcesStream,
+  executeSearchByMethod,
+  prefetchResourceQuery,
   getUserOwnedResources 
 } from './services/gatewayService';
 import { wsClient } from './services/websocketClient';
@@ -79,6 +83,24 @@ export default function App() {
     page: 1,
     pageSize: 36
   });
+
+  // Multi-method fetching state & telemetry
+  const [fetchMethod, setFetchMethod] = useState<FetchMethod>(() => {
+    try {
+      const saved = localStorage.getItem('urmil_fetch_method');
+      if (saved) return saved as FetchMethod;
+    } catch {}
+    return 'auto';
+  });
+
+  const [latencyMs, setLatencyMs] = useState<number | null>(null);
+  const [sourceSummary, setSourceSummary] = useState<string>('');
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('urmil_fetch_method', fetchMethod);
+    } catch {}
+  }, [fetchMethod]);
 
   const [results, setResults] = useState<ResourceItem[]>([]);
   const [userOwnedList] = useState<ResourceItem[]>(() => getUserOwnedResources());
@@ -150,14 +172,39 @@ export default function App() {
     } catch {}
   }, [downloadHistory]);
 
-  // Stable HTTP search execution
-  const executeHttpSearch = useCallback(async (currentFilters: SearchFilters, signal?: AbortSignal) => {
+  // Progressive streaming & multi-method search execution
+  const executeHttpSearch = useCallback(async (currentFilters: SearchFilters, method: FetchMethod, signal?: AbortSignal) => {
+    const startTime = performance.now();
     try {
-      const resp = await searchResources(currentFilters, signal);
+      const resp = await executeSearchByMethod(
+        method,
+        currentFilters,
+        (batchUpdate) => {
+          if (signal?.aborted) return;
+          if (batchUpdate.items.length > 0) {
+            setResults(batchUpdate.items);
+            setTotalCount(batchUpdate.totalSoFar);
+            // Instant first-contentful-render: hide loading indicator as soon as the first batch arrives
+            setIsLoading(false);
+            if (batchUpdate.sourceSummary) {
+              setSourceSummary(batchUpdate.sourceSummary);
+            }
+            setLatencyMs(Math.round(performance.now() - startTime));
+          }
+        },
+        signal
+      );
       if (signal?.aborted) return;
       setResults(resp.results || []);
       setTotalPages(resp.totalPages || 1);
       setTotalCount(resp.totalCount || (resp.results ? resp.results.length : 0));
+      setSourceSummary(resp.sourceSummary || '');
+      setLatencyMs(resp.executionTimeMs || Math.round(performance.now() - startTime));
+
+      // Speculative prefetching: pre-warm page 2 in background when on page 1
+      if ((currentFilters.page || 1) === 1 && (resp.totalPages || 1) > 1) {
+        prefetchResourceQuery({ ...currentFilters, page: 2 });
+      }
     } catch (err: any) {
       if (err?.name === 'AbortError' || signal?.aborted) return;
       console.error('Search query execution error:', err);
@@ -170,7 +217,7 @@ export default function App() {
   }, []);
 
   // Execute Search: Aborts any in-flight requests to eliminate race conditions
-  const runSearch = useCallback(async (currentFilters: SearchFilters) => {
+  const runSearch = useCallback(async (currentFilters: SearchFilters, methodToUse: FetchMethod) => {
     setIsLoading(true);
 
     if (searchAbortControllerRef.current) {
@@ -184,18 +231,18 @@ export default function App() {
       cancelWsRef.current = null;
     }
 
-    await executeHttpSearch(currentFilters, abortController.signal);
+    await executeHttpSearch(currentFilters, methodToUse, abortController.signal);
   }, [executeHttpSearch]);
 
-  // Execute search when filters are committed (on Enter, category select, or pagination)
+  // Execute search when filters or fetchMethod are committed
   useEffect(() => {
-    runSearch(filters);
+    runSearch(filters, fetchMethod);
     return () => {
       if (searchAbortControllerRef.current) {
         searchAbortControllerRef.current.abort();
       }
     };
-  }, [filters, runSearch]);
+  }, [filters, fetchMethod, runSearch]);
 
   // Committed search handlers (Only searches on Enter / explicit submit)
   const handleCommitSearch = (newQuery: string) => {
@@ -344,6 +391,10 @@ export default function App() {
               onToggleFilters={() => setIsFilterOpen(!isFilterOpen)}
               isFilterOpen={isFilterOpen}
               theme={activeTheme}
+              fetchMethod={fetchMethod}
+              onFetchMethodChange={(method) => setFetchMethod(method)}
+              latencyMs={latencyMs}
+              sourceSummary={sourceSummary}
             />
 
             {/* Optional Collapsible Filter Bar */}

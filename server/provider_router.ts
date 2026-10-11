@@ -965,7 +965,7 @@ export async function executeRoutedSearch(filters: SearchFilters, parentSignal?:
       overallDeadlineMs: 3800, 
       fastQuorumCount: APP_CONFIG.search.fastQuorumTarget,
       fastYieldMinTimeMs: APP_CONFIG.search.fastQuorumTimeoutMs,
-      maxConcurrency: 16,
+      maxConcurrency: APP_CONFIG.search.maxPoolConcurrency || 24,
       parentSignal,
       onBackgroundResult: (moreItems) => {
         if (moreItems && moreItems.length > 0) {
@@ -1037,5 +1037,109 @@ export async function executeRoutedSearch(filters: SearchFilters, parentSignal?:
     primaryProviderUsed: plan.planSummary,
     fallbackUsed,
     providerErrors: processed.length === 0 ? providerErrors : []
+  };
+}
+
+export async function executeStreamingRoutedSearch(
+  filters: SearchFilters,
+  onBatch: (batch: { providerId: string; items: ResourceItem[]; totalSoFar: number }) => void,
+  parentSignal?: AbortSignal
+): Promise<RouteExecutionResult> {
+  const startTime = Date.now();
+  const query = (filters.query || '').trim();
+  const plan = generateSearchPlan(filters);
+
+  const providerErrors: string[] = [];
+  const fetchedItems: ResourceItem[] = [];
+  const seenIds = new Set<string>();
+
+  const dispatchMap = PROVIDER_DISPATCH_MAP;
+  const activeProviders = [...plan.primaryProviders];
+
+  const keyRequiredCheck: Record<string, string | undefined> = {
+    openverse: process.env.OPENVERSE_ACCESS_TOKEN,
+    openverse_audio: process.env.OPENVERSE_ACCESS_TOKEN,
+    pexels: process.env.PEXELS_API_KEY,
+    unsplash: process.env.UNSPLASH_ACCESS_KEY,
+    pixabay: process.env.PIXABAY_API_KEY,
+    giphy: process.env.GIPHY_API_KEY,
+    tenor: process.env.TENOR_API_KEY,
+    freesound: process.env.FREESOUND_API_KEY,
+    github: process.env.GITHUB_TOKEN
+  };
+
+  const fallbackProviders = plan.fallbackProviders || [];
+  for (const fpid of fallbackProviders) {
+    if (keyRequiredCheck[fpid] && !activeProviders.includes(fpid)) {
+      activeProviders.push(fpid);
+    }
+  }
+
+  const { errors: fedErrors } = await resilientPool.executeStreamingFederation(
+    activeProviders,
+    query,
+    dispatchMap,
+    (providerId, rawItems) => {
+      const uniqueBatch: ResourceItem[] = [];
+      for (const item of rawItems) {
+        if (!seenIds.has(item.id)) {
+          seenIds.add(item.id);
+          uniqueBatch.push(item);
+        }
+      }
+      if (uniqueBatch.length > 0) {
+        const ranked = rankAndFilterResources(uniqueBatch, filters);
+        const processed = MediaProcessor.processItems(ranked);
+        if (processed.length > 0) {
+          fetchedItems.push(...processed);
+          onBatch({
+            providerId,
+            items: processed,
+            totalSoFar: fetchedItems.length
+          });
+        }
+      }
+    },
+    {
+      timeoutMs: APP_CONFIG.search.providerTimeoutMs,
+      overallDeadlineMs: 3800,
+      maxConcurrency: APP_CONFIG.search.maxPoolConcurrency || 24,
+      parentSignal
+    }
+  );
+
+  providerErrors.push(...fedErrors);
+
+  const categoryCounts: Record<ResourceCategory, number> = {
+    all: fetchedItems.length,
+    images: fetchedItems.filter((i) => i.category === 'images').length,
+    videos: fetchedItems.filter((i) => i.category === 'videos').length,
+    gifs: fetchedItems.filter((i) => i.category === 'gifs').length,
+    music: fetchedItems.filter((i) => i.category === 'music').length,
+    audio: fetchedItems.filter((i) => i.category === 'audio').length,
+    papers: fetchedItems.filter((i) => i.category === 'papers').length,
+    books: fetchedItems.filter((i) => i.category === 'books').length,
+    maps: fetchedItems.filter((i) => i.category === 'maps').length,
+    weather: fetchedItems.filter((i) => i.category === 'weather').length,
+    datasets: fetchedItems.filter((i) => i.category === 'datasets').length,
+    art: fetchedItems.filter((i) => i.category === 'art').length,
+    code: fetchedItems.filter((i) => i.category === 'code').length,
+    finance: fetchedItems.filter((i) => i.category === 'finance').length,
+    biodiversity: fetchedItems.filter((i) => i.category === 'biodiversity').length,
+    knowledge: fetchedItems.filter((i) => i.category === 'knowledge').length,
+    food: fetchedItems.filter((i) => i.category === 'food').length,
+    games: fetchedItems.filter((i) => i.category === 'games').length,
+    '3d': fetchedItems.filter((i) => i.category === '3d').length,
+    nasa: fetchedItems.filter((i) => i.category === 'nasa').length,
+    news: fetchedItems.filter((i) => i.category === 'news').length
+  };
+
+  return {
+    results: fetchedItems,
+    totalCount: fetchedItems.length,
+    executionTimeMs: Date.now() - startTime,
+    categoryCounts,
+    primaryProviderUsed: plan.planSummary,
+    providerErrors: fetchedItems.length === 0 ? providerErrors : []
   };
 }

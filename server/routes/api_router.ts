@@ -11,6 +11,10 @@ const router = Router();
 // ==========================================
 router.post('/v1/search', (req, res, next) => searchController.searchV1(req, res, next));
 router.get('/v1/search', (req, res, next) => searchController.searchLegacyGet(req, res, next));
+router.get('/v1/search/stream', (req, res) => searchController.searchStream(req, res));
+router.post('/v1/search/stream', (req, res) => searchController.searchStream(req, res));
+router.post('/v1/search/multi', (req, res) => searchController.searchMulti(req, res));
+router.post('/v1/search/prewarm', (req, res) => searchController.prewarm(req, res));
 router.post('/v1/search/poll-background', (req, res) => searchController.pollBackground(req, res));
 router.post('/v1/search/fetch-deep', (req, res) => searchController.fetchDeep(req, res));
 

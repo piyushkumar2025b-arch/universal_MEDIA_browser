@@ -120,6 +120,126 @@ export class SearchController {
   }
 
   /**
+   * GET /api/v1/search/stream and POST /api/v1/search/stream
+   * Progressive Server-Sent Events (SSE) streaming search endpoint.
+   * Yields result batches provider-by-provider as they complete.
+   */
+  public async searchStream(req: Request, res: Response): Promise<void> {
+    const isPost = req.method === 'POST';
+    const body = isPost ? (req.body || {}) : req.query;
+
+    const query = sanitizeQueryString(body.q ?? body.query);
+    const category = normalizeCategory(typeof body.category === 'string' ? body.category : undefined);
+    const rawQuality = typeof body.quality === 'string' ? body.quality : 'Any';
+    const quality = ALLOWED_QUALITY.has(rawQuality) ? rawQuality : 'Any';
+    const licenseRaw = body.license;
+    const license = sanitizeLicenses(Array.isArray(licenseRaw) ? licenseRaw : [licenseRaw]);
+    const format = sanitizeFormatString(body.format);
+    const rawSortBy = typeof body.sortBy === 'string' ? body.sortBy : 'relevance';
+    const sortBy = (ALLOWED_SORT_BY.has(rawSortBy) ? rawSortBy : 'relevance') as any;
+    const pageSize = Math.min(APP_CONFIG.search.maxPageSize, Math.max(6, Number(body.pageSize) || 36));
+
+    const filters: SearchFilters = {
+      category,
+      query,
+      quality,
+      license,
+      format,
+      sortBy,
+      page: 1,
+      pageSize,
+      continuous: false
+    };
+
+    // Prepare SSE Response
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache, no-transform');
+    res.setHeader('Connection', 'keep-alive');
+    res.setHeader('X-Accel-Buffering', 'no');
+    res.flushHeaders?.();
+
+    // Send initial keepalive
+    res.write(': stream-connected\n\n');
+
+    const abortController = new AbortController();
+    res.on('close', () => {
+      if (!res.writableEnded) {
+        abortController.abort();
+      }
+    });
+
+    await searchService.streamSearch(
+      filters,
+      (event) => {
+        if (res.writableEnded) return;
+        res.write(`data: ${JSON.stringify(event)}\n\n`);
+        if (event.type === 'done' || event.type === 'error') {
+          res.end();
+        }
+      },
+      abortController.signal
+    );
+  }
+
+  /**
+   * POST /api/v1/search/multi
+   * Batch parallel search across multiple categories or queries in a single request.
+   */
+  public async searchMulti(req: Request, res: Response): Promise<void> {
+    try {
+      const rawQueries = Array.isArray(req.body?.queries) ? req.body.queries : [];
+      if (rawQueries.length === 0) {
+        res.status(400).json({ error: 'queries array required' });
+        return;
+      }
+
+      const parsedQueries = rawQueries.slice(0, 8).map((q: any) => ({
+        filters: {
+          category: normalizeCategory(q.category),
+          query: sanitizeQueryString(q.query),
+          quality: 'Any',
+          license: [],
+          format: 'all',
+          sortBy: 'relevance'
+        } as SearchFilters,
+        page: Math.max(1, Number(q.page) || 1),
+        pageSize: Math.min(50, Math.max(4, Number(q.pageSize) || 12))
+      }));
+
+      const abortController = new AbortController();
+      res.on('close', () => {
+        if (!res.writableEnded) {
+          abortController.abort();
+        }
+      });
+
+      const multiResults = await searchService.searchMulti(parsedQueries, abortController.signal);
+      res.json({ results: multiResults });
+    } catch (err: any) {
+      console.error('SearchController Error in searchMulti:', err);
+      res.status(500).json({ error: err.message || 'Multi search execution failed' });
+    }
+  }
+
+  /**
+   * POST /api/v1/search/prewarm
+   * Pre-warms the cache for anticipated queries in background.
+   */
+  public prewarm(req: Request, res: Response): void {
+    const { query, category } = req.body || {};
+    const filters: SearchFilters = {
+      category: normalizeCategory(category),
+      query: sanitizeQueryString(query),
+      quality: 'Any',
+      license: [],
+      format: 'all',
+      sortBy: 'relevance'
+    };
+    searchService.prewarmSearch(filters);
+    res.json({ status: 'prewarming', query: filters.query, category: filters.category });
+  }
+
+  /**
    * GET /api/search (Backward compatibility)
    */
   public async searchLegacyGet(req: Request, res: Response, next: NextFunction): Promise<void> {

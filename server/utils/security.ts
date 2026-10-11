@@ -305,12 +305,18 @@ function safeSocketLookup(
 }
 
 const safeHttpAgent = new http.Agent({
-  keepAlive: false,
+  keepAlive: true,
+  keepAliveMsecs: 20000,
+  maxSockets: 120,
+  maxFreeSockets: 40,
   lookup: safeSocketLookup
 });
 
 const safeHttpsAgent = new https.Agent({
-  keepAlive: false,
+  keepAlive: true,
+  keepAliveMsecs: 20000,
+  maxSockets: 120,
+  maxFreeSockets: 40,
   lookup: safeSocketLookup
 });
 
